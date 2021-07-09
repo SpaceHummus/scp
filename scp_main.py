@@ -1,32 +1,52 @@
 # Read yaml configurtation files, based on the schedule, setup lesds, take pictures
-
-
 import cv2
 import time
 from datetime import datetime
-import board
-import neopixel
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
 import yaml
 from system_state import SystemState 
 from system_state import CameraConfiguration
 from system_state import FocusPosition
+import logging
+from camera_handler import CameraHandler
 
+# where do we store the images localy
+IMAGES_DIR = "/home/pi/dev/scp/images/"
 # width = 4056
 # height = 3040
 width = 3264
 height = 2448
 file_name=""
-pixels = neopixel.NeoPixel(board.D18, 12,brightness=2)
 now = datetime.now()
-# g-drive folder ID
-folder_id = ""
 # holds system states configurations
 system_states={}
+states_over_time=[]
+
+# get the system's current state based on current time
+def get_current_state():
+    current_time = time.time()
+    for i in range(len(states_over_time)):
+        d = time.mktime(datetime.strptime(states_over_time[i][0], "%Y/%m/%d %H:%M:%S").timetuple())
+        if d>current_time:
+            if i==0:
+                logging.error("states_over_time starts after current time, taking first value")
+                return states_over_time[i-1][1]
+            else:
+                return states_over_time[i-1][1]
+
+def setup_logging():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s [%(levelname)s] %(funcName)s:%(message)s",
+        handlers=[
+            logging.FileHandler("debug.log"),
+            logging.StreamHandler()
+        ]
+    )    
 
 # read all system states from yaml file and load into memory
-def getSystemStates():
+def get_system_states():
     file = open(r'logic_states.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     
@@ -49,24 +69,31 @@ def getSystemStates():
         system_states[name]=state
          
 
+def get_state_over_time():
+    global states_over_time
+    file = open(r'logic_states.yaml')
+    conf_dic = yaml.load(file, Loader=yaml.FullLoader)
+    states_over_time = conf_dic["states_over_time"] 
+    logging.info("states_over_time:%s",str(states_over_time))
+    # print(time.mktime(datetime.strptime(d, "%Y/%m/%d %H:%M:%S").timetuple()))
 
 # get configuration data from yaml file
 def get_settings():
 
     # get G-Drive folder ID
-    global folder_id
     file = open(r'configuration.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     folder_id=conf_dic["folder_id"]
-    print(folder_id)
-
+    logging.info("G-Drive folder ID:%s",folder_id)
+    get_logic_sates_file(folder_id)
     # get system state data
-    getSystemStates()
-
+    get_system_states()
+    get_state_over_time()
+    
 # get file name by date
 def get_file_name ():
     global file_name
-    file_name =  now.strftime("%y_%m_%d__%H_%M_%S")
+    file_name =  now.strftime("%y-%m-%d__%H_%M")
 
 # add timesamp to image (frame)
 def put_date_time(file_name,image):
@@ -86,6 +113,29 @@ def put_date_time(file_name,image):
     cv2.imwrite(file_name, image)
 
 
+def get_logic_sates_file(folder_id):
+    file_id = ""
+    gauth = GoogleAuth()      
+    # gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json     
+    drive = GoogleDrive(gauth)
+    file_list = drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+    for f in file_list:
+        print('title: %s, id: %s' % (f['title'], f['id']))
+        title = f['title']
+        if title == "01 Commands":
+            folder_id = f['id']
+            file_list2 = drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+            for i in file_list2:
+                print('title: %s, id: %s' % (i['title'], i['id']))
+                title = i['title']
+                if title == "logic_states.yaml":
+                    file_id = i['id']
+    if file_id == "":
+        logging.error("unable to find logic_states.yaml on G-Drive")
+    else:
+        file = drive.CreateFile({'id': file_id})
+        file.GetContentFile('logic_states.yaml') 
+
 # upload image file into G-Drive
 def upload_drive(folder_id,file_name,title_name):
     gauth = GoogleAuth()      
@@ -100,19 +150,20 @@ def upload_drive(folder_id,file_name,title_name):
     # Read file and set it as the content of this instance.
     gfile.SetContentFile(file_name)
     gfile.Upload() # Upload the file.
+    logging.info("uploaded %s to drive",file_name)
 
 # take a single picture from camera
 def take_pic(cam_index, flip, focus, iso, exposure):
     
     global file_name 
-    print("taking picture from cam",cam_index, focus, iso, exposure)
-    path = "/home/pi/dev/scp/images/"
+    logging.info("taking picture from cam:%d focus:%d iso:%d exposure:%d",cam_index, focus, iso, exposure)
+    
     new_file_name=file_name+"_c"+str(cam_index)+ ".txt" 
-    saved_file_name = path + new_file_name
+    saved_file_name = IMAGES_DIR + new_file_name
     f = open(saved_file_name, "a")
+    f.close()
     upload_drive(folder_id, saved_file_name,new_file_name)
-    print("upload to drive")
-
+    
     # we have an issue with the cameras...so return
     return
     
@@ -127,34 +178,39 @@ def take_pic(cam_index, flip, focus, iso, exposure):
     return_value, image = camera.read()
     if flip:
         image = cv2.flip(image,-1)
-    path = "/home/pi/dev/scp/images/" 
     new_file_name=file_name+"_c"+str(cam_index)+ ".jpg"
-    saved_file_name = path + new_file_name
-    print("saving to:",saved_file_name)
+    saved_file_name = IMAGES_DIR + new_file_name
     cv2.imwrite(saved_file_name,image)
     put_date_time(saved_file_name,image)
     upload_drive(folder_id, saved_file_name,new_file_name)
-    print("upload to drive")
     camera.release()
 
-    print("end taking picture, file saved:",saved_file_name)
-
-def start_LED ():
-    pixels.fill((255, 255, 255))
-
-def stop_LED():
-    pixels.fill((0, 0, 0))
-
-
 def main():
-    get_file_name()
-    get_settings()
-    start_LED ()
-    for f in range(100,101,1):
-        take_pic(0,False,f,5,5)
-        take_pic (1,True,f,10,10)
-    stop_LED()
+    setup_logging()
+    logging.info('*** Start ***')
+    # get_file_name()
+    # get_settings()
+    camera = CameraHandler('A')
+    camera.take_pic(20,"_122")
+    # camera.take_pic(1000,"_")
+    # camera.change_active_camera('C')
+    # camera.take_pic(20,"_")
+    # camera.take_pic(1000,"_")
+    
+    # while (True):
+    #     get_current_state()
+    #     time.sleep(1)
+
+    # start_LED ()
+    # for f in range(100,101,1):
+    #     take_pic(0,False,f,5,5)
+    #     take_pic (1,True,f,10,10)
+    # stop_LED()
+    logging.info('*** End ***')
 
 
 if __name__ == "__main__":
     main()
+
+    # logging.error("hello")
+    # print("hello")
