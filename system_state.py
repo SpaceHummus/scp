@@ -1,4 +1,6 @@
 # set of classes to support reading configuration data from logic_states.yaml
+import logging
+
 
 class SystemState:
     #illumination in next release 
@@ -8,14 +10,15 @@ class SystemState:
         self.camera_configuration = camera_configuration
         self.name = name
     def print_values(self):
-        print("name:", self.name)
-        print("image_frequency_min:",self.camera_configuration.image_frequency_min)
-        print("focus_position:")
-        print("\tmin:",self.camera_configuration.focus_position.min)
-        print("\tmax:",self.camera_configuration.focus_position.max)
-        print("\tstep:",self.camera_configuration.focus_position.step)
-        print("exposure:",self.camera_configuration.exposure)
-        print("ISO:",self.camera_configuration.iso)
+        logging.info("System States values:")
+        logging.info("*** name:%s ***", self.name)
+        logging.info("image_frequency_min:%d",self.camera_configuration.image_frequency_min)
+        logging.info("focus_position:")
+        logging.info("\tmin:%d",self.camera_configuration.focus_position.min)
+        logging.info("\tmax:%d",self.camera_configuration.focus_position.max)
+        logging.info("\tstep:%d",self.camera_configuration.focus_position.step)
+        logging.info("exposure:%d",self.camera_configuration.exposure)
+        logging.info("ISO:%d",self.camera_configuration.iso)
 
 class CameraConfiguration:
     image_frequency_min = 5 # How often should we take images (minutes)
