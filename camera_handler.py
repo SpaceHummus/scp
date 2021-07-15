@@ -1,24 +1,24 @@
 import logging
 import RPi.GPIO as gp
 import os
-# from picamera.array import PiRGBArray
-# from picamera import PiCamera
 from ctypes import *
 arducam_vcm =CDLL('./lib/libarducam_vcm.so')
 import time
 from datetime import datetime
-import cv2
+import threading
 
 # where do we store the images localy
-IMAGES_DIR = "/home/pi/dev/scp/images/"
+IMAGES_DIR = "/home/pi/dev/flight-software-main/images/"
+
+def run_camera(name):
+    os.system("raspistill -t 2000")
 
 class CameraHandler:
     activeCamera=''
-    # camera = PiCamera()
-
+    focus=512
 
     # Constructor, index='A'/'B'/'C'/'D'
-    def __init__(self,camera_index,width=4056,height=3040):
+    def __init__(self,camera_index,focus=512,width=4056,height=3040):
         gp.setwarnings(False)
         gp.setmode(gp.BOARD)
 
@@ -38,20 +38,10 @@ class CameraHandler:
         gp.output(21, True)
         gp.output(22, True)
 
-        self.change_active_camera(camera_index)
         arducam_vcm.vcm_init()
 
-        # self.camera.resolution = (width, height)
-        # self.camera.iso = 100
-        # time.sleep(5)
-        # self.camera.shutter_speed = camera.exposure_speed
-        # self.camera.exposure_mode = 'off'
-        # g = self.camera.awb_gains
-        # self.camera.awb_mode = 'off'
-        # self.camera.awb_gains = g
-        # self.camera.brightness = 30
-        # arducam_vcm.vcm_init()
-
+        self.change_active_camera(camera_index)
+        self.change_focus(focus)
 
     # switch active cameras, index='A'/'B'/'C'/'D'
     def change_active_camera(self,camera_index):
@@ -84,35 +74,24 @@ class CameraHandler:
         else:
             logging.error("invalid camera index %s",camera_index)
 
-    # add timesamp to image (frame)
-    def put_date_time(self,file_name,image):
-        now = datetime.now()
-        display_time = now.ctime()
-        font                   = cv2.FONT_HERSHEY_SIMPLEX
-        bottomLeftCornerOfText = (730,350)
-        fontScale              = 5
-        fontColor              = (0,0,0)
-        lineType               = 5
-
-        cv2.putText(image,display_time,
-            bottomLeftCornerOfText,
-            font,
-            fontScale,
-            fontColor,
-            lineType)
-        cv2.imwrite(file_name, image)
+    # change camera focus - due to a bug in the HW, we need to open a thread that starts raspstill in the backbround inparallel, why??? who knows...
+    def change_focus(self,focus):
+        self.focus = focus
+        logging.info("changing focus to:%d",focus)        
+        x = threading.Thread(target=run_camera, args=(1,))
+        x.start()
+        time.sleep(2)
+        arducam_vcm.vcm_write(focus)
+        time.sleep(3)
 
     # take picture , camera_index='A'/'B'/'C'/'D'
-    def take_pic(self, focus,file_name):
-        time.sleep(0.1)
-        arducam_vcm.vcm_write(focus)
+    # return full path saved file, file name
+    def take_pic(self, file_name):
         # setup file name with camera index and focus
-        new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,focus) 
+        new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,self.focus) 
         saved_file_name = IMAGES_DIR + new_file_name
         logging.info("taking picture, image name:%s",saved_file_name)
         cmd = "raspistill -o %s" %saved_file_name 
         os.system(cmd)
         logging.info("done taking picture")
-        # image = self.put_date_time(image)
-
-        # upload_drive(folder_id, saved_file_name,new_file_name)
+        return saved_file_name, new_file_name
