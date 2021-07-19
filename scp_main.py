@@ -10,10 +10,25 @@ from system_state import CameraConfiguration
 import logging
 from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
+import socket
+
 
 # holds system states configurations
 system_states={}
 states_over_time=[]
+
+# wait until DNS service is ready, otherwise GDrive access will not work. This is needed when we run on boot and DNS service tkaes time to load
+def wait_4_dns():
+    while (True):
+        try:
+            addr = socket.gethostbyname('www.googleapis.com')
+            logging.info("Found DNS for www.googleapis.com. IP:%s",addr)
+            return
+        except:
+            logging.error("DNS not ready yet...")
+            time.sleep(1)
+    
+
 
 # get the system's current state based on current time
 def get_current_state():
@@ -103,6 +118,7 @@ def take_pic_and_upload(camera,g_drive,focus):
 
 def main():
     setup_logging()
+    wait_4_dns()
     logging.info('*** Start ***')
     # get handler to G-Drive
     g_drive_handler = GDriveHandler(getGDrive_folder_id())
