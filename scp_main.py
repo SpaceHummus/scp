@@ -116,6 +116,8 @@ def take_pic_and_upload(camera,g_drive,focus):
     except:
         logging.error("timeout while uploading file to G Drive")
 
+
+
 def main():
     setup_logging()
     wait_4_dns()
@@ -125,23 +127,30 @@ def main():
     get_states_settings()
     # get handler for the cameras
     camera = CameraHandler('A',focus=512)
+    last_pic_time = 0
 
     while(True):
         state = get_current_state()
-        state.print_values()
+        state.print_values() 
+        current_time = time.time()
+        
+        if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
 
-        # take take pictures from camera A
-        camera.change_active_camera("A")
-        take_pic_and_upload(camera,g_drive_handler,250)
-        take_pic_and_upload(camera,g_drive_handler,150)        
+            #take take pictures from camera A
+            camera.change_active_camera("A")
+            take_pic_and_upload(camera,g_drive_handler,250)
+            take_pic_and_upload(camera,g_drive_handler,150)        
 
-        # take take pictures from camera C
-        camera.change_active_camera("C")
-        take_pic_and_upload(camera,g_drive_handler,250)
-        take_pic_and_upload(camera,g_drive_handler,150)
-    
-        logging.info('going to sleep...')
-        time.sleep(60*10)
+            # take take pictures from camera C
+            camera.change_active_camera("C")
+            take_pic_and_upload(camera,g_drive_handler,250)
+            take_pic_and_upload(camera,g_drive_handler,150)
+
+            last_pic_time = time.time()
+            logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
+
+        logging.info('going to sleep a minute...')
+        time.sleep(60)
 
 if __name__ == "__main__":
     main()
