@@ -92,7 +92,7 @@ class CameraHandler:
         saved_file_name = IMAGES_DIR + new_file_name
         logging.info("taking picture, image name:%s",saved_file_name)
         if flip_image:
-            cmd = "raspistill -o %s" %saved_file_name
+            cmd = "raspistill -vf -hf -o %s" %saved_file_name
         else:
             cmd = "raspistill -o %s" %saved_file_name 
         os.system(cmd)

@@ -109,7 +109,7 @@ def get_file_name ():
 
 def take_pic_and_upload(camera,g_drive,focus):
     camera.change_focus(focus)
-    full_path_file_name,title_name = camera.take_pic(get_file_name())
+    full_path_file_name,title_name = camera.take_pic(get_file_name(),True)
     
     try:
         g_drive.upload_file(full_path_file_name,title_name)
