@@ -116,7 +116,11 @@ def take_pic_and_upload(camera,g_drive,focus):
     except:
         logging.error("timeout while uploading file to G Drive")
 
-
+# take pictures in all focus values
+def take_pic_all_focus(camera,gdrive,cameraID,focus_list):
+    camera.change_active_camera(cameraID)
+    for f in focus_list:
+        take_pic_and_upload(camera,gdrive,f)
 
 def main():
     setup_logging()
@@ -136,15 +140,8 @@ def main():
         
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
 
-            #take take pictures from camera A
-            camera.change_active_camera("A")
-            take_pic_and_upload(camera,g_drive_handler,250)
-            take_pic_and_upload(camera,g_drive_handler,150)        
-
-            # take take pictures from camera C
-            camera.change_active_camera("C")
-            take_pic_and_upload(camera,g_drive_handler,250)
-            take_pic_and_upload(camera,g_drive_handler,150)
+            take_pic_all_focus(camera,g_drive_handler,"A",state.camera_configuration.focus_position)
+            take_pic_all_focus(camera,g_drive_handler,"C",state.camera_configuration.focus_position)
 
             last_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
