@@ -1,0 +1,21 @@
+# This file describes the configuration used to set up the experiment, software version etc. 
+# Configuration file should be updated once at the beginning of the experiment and shouldn’t change.
+
+# This file's version (for backward and forward compatibility)
+version: '1.0'
+
+# Which build is this hardware corresponding to.
+# See https://docs.google.com/document/d/1RxNrut1hEqf6HO6ec-6cgOr3QxeUWZpxCmhJM_be6ks/edit#heading=h.hfl0aholemb6
+hardware_build: 'B1'
+
+# What chickpea growth protocol version is being used.
+protocol_version: V1 # See protocol at: https://docs.google.com/document/d/1o7A4ir-M8HRkonOMBOIRnNUrh0l3KnluZf8njZER36c/edit#heading=h.8jjiluhy50m
+
+# Seeds specification
+seeds:
+ variety: 'Zehavit'  # Can be Zehavit, Bar, Bili or the name of the seeds used in the experiment
+ batch: ''           # Bag serial number of the seeds used.
+ number: 10          # How many seeds were placed on the agar at the begning of the experiment
+ 
+# Experiment folder ID
+folder_id: '1usWtERCev43R107ccgdIZG83ORlwGnyB' # See guide for how to get folder ID
