@@ -12,7 +12,7 @@ from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
 import socket
 
-
+CONF_FILE_NAME = "scp_conf.yaml"
 # holds system states configurations
 system_states={}
 states_over_time=[]
@@ -85,15 +85,17 @@ def get_state_over_time():
     file = open(r'logic_states.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     states_over_time = conf_dic["states_over_time"] 
+    file.close()
     logging.info("states_over_time:%s",str(states_over_time))
     # print(time.mktime(datetime.strptime(d, "%Y/%m/%d %H:%M:%S").timetuple()))
 
 
 def getGDrive_folder_id():
     # get G-Drive folder ID
-    file = open(r'configuration.yaml')
+    file = open(CONF_FILE_NAME,"r")
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     folder_id=conf_dic["folder_id"]
+    file.close()
     logging.info("G-Drive folder ID:%s",folder_id)
     return folder_id
 
