@@ -53,7 +53,7 @@ def setup_logging():
         level=logging.DEBUG,
         format="%(asctime)s [%(levelname)s] %(funcName)s:%(message)s",
         handlers=[
-            logging.FileHandler("debug.log"),
+            logging.FileHandler("scp_main.log"),
             logging.StreamHandler()
         ]
     )    
