@@ -8,4 +8,5 @@ lib/
 logic_states.yaml
 run_scp_main.sh
 settings.yaml
-
+scp_web.log
+scp_main.log
