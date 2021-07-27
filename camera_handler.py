@@ -8,7 +8,7 @@ from datetime import datetime
 import threading
 
 # where do we store the images localy
-IMAGES_DIR = "/home/pi/dev/flight-software/images/"
+IMAGES_DIR = "images/"
 
 def run_camera(name):
     os.system("raspistill -t 2000")
