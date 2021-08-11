@@ -3,11 +3,12 @@ import logging
 
 
 class SystemState:
-    #illumination in next release 
     camera_configuration = None
+    illumination = None
     name = None
-    def __init__(self,camera_configuration,name):
+    def __init__(self,camera_configuration,illumination,name):
         self.camera_configuration = camera_configuration
+        self.illumination = illumination
         self.name = name
     def print_values(self):
         logging.info("System States values:")
@@ -21,6 +22,11 @@ class SystemState:
             logging.info("ISO:%d",self.camera_configuration.iso)
         else:
             logging.info("camera_configuration:None")
+        if self.illumination != None:
+            logging.info("R:%d",self.illumination.R)
+            logging.info("G:%d",self.illumination.G)
+            logging.info("B:%d",self.illumination.B)
+            logging.info("far_red:%d",self.illumination.far_red)
 
 class CameraConfiguration:
     image_frequency_min = 5 # How often should we take images (minutes)
@@ -32,6 +38,17 @@ class CameraConfiguration:
         self.exposure = exposure
         self.iso = iso
         self.focus_position = focus_position
+
+class Illumination:
+    R = 0
+    G = 0
+    B = 0
+    far_red = 0
+    def __init__(self,R,G,B,far_red):
+        self.R = R
+        self.G = G
+        self.B = B
+        self.far_red = far_red
 
 if __name__ == "__main__":
     s = SystemState(CameraConfiguration(6,20,30,[10,100,5]),"day_sun")    
