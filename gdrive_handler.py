@@ -24,16 +24,19 @@ class GDriveHandler:
     # upload image file into G-Drive
     def upload_file(self,file_name,title_name):
         logging.info("About to upload file:%s title:%s",file_name,title_name)
-        d_fileParams={}
-        d_folderID={}
-        d_folderID ["id"]=self.raw_images_folder_id
-        d_fileParams["parents"] = [d_folderID]
-        d_fileParams["title"]= title_name
-        gfile = self.drive.CreateFile(d_fileParams)
-        # Read file and set it as the content of this instance.
-        gfile.SetContentFile(file_name)
-        gfile.Upload() # Upload the file.
-        logging.info("uploaded %s to drive",file_name)
+        try:
+            d_fileParams={}
+            d_folderID={}
+            d_folderID ["id"]=self.raw_images_folder_id
+            d_fileParams["parents"] = [d_folderID]
+            d_fileParams["title"]= title_name
+            gfile = self.drive.CreateFile(d_fileParams)
+            # Read file and set it as the content of this instance.
+            gfile.SetContentFile(file_name)
+            gfile.Upload() # Upload the file.
+            logging.info("uploaded %s to drive",file_name)
+        except:
+            logging.error("timeout while uploading file to G Drive")
 
     # get the raw images folder if from G-Drive
     def get_raw_images_folder_id(self):

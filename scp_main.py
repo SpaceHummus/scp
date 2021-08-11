@@ -7,11 +7,14 @@ from pydrive.drive import GoogleDrive
 import yaml
 from system_state import SystemState 
 from system_state import CameraConfiguration
+from system_state import Illumination
 import logging
 from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
 import socket
+# import microcontroller
 
+# import led_handler
 CONF_FILE_NAME = "scp_conf.yaml"
 # holds system states configurations
 system_states={}
@@ -68,14 +71,21 @@ def get_system_states():
     for i in range(len(raw_system_states)):
         name = raw_system_states[i]["name"]
         cam_conf=raw_system_states[i]["camera_configuration"]
+        illum=raw_system_states[i]["illumination"] 
+        R= illum["red"]
+        G= illum["green"]
+        B= illum["blue"]
+        far_red= illum["far_red"]
+
         if cam_conf==None:
-            state = SystemState(None,name)  
+            cam_configuration = None  
         else:
             image_frequency_min = cam_conf["image_frequency_min"]
             focus_position = cam_conf["focus_position"]
             exposure = cam_conf["exposure"]
             iso =cam_conf["ISO"]
-            state = SystemState(CameraConfiguration(image_frequency_min,exposure,iso,focus_position),name)  
+            cam_configuration = CameraConfiguration(image_frequency_min,exposure,iso,focus_position)
+        state = SystemState(cam_configuration,Illumination(R,G,B,far_red),name)  
         state.print_values()
         system_states[name]=state
          
@@ -112,17 +122,24 @@ def get_file_name ():
 def take_pic_and_upload(camera,g_drive,focus):
     camera.change_focus(focus)
     full_path_file_name,title_name = camera.take_pic(get_file_name(),True)
-    
-    try:
-        g_drive.upload_file(full_path_file_name,title_name)
-    except:
-        logging.error("timeout while uploading file to G Drive")
+    g_drive.upload_file(full_path_file_name,title_name)
+
+# gets a list of files to upload to g-drive        
+def upload_files(files, g_drive):
+    for f in files:
+        g_drive.upload_file(f[0],f[1])
 
 # take pictures in all focus values
+# returns a list of all file names that were taken
 def take_pic_all_focus(camera,gdrive,cameraID,focus_list):
+    files_list=[]
     camera.change_active_camera(cameraID)
     for f in focus_list:
-        take_pic_and_upload(camera,gdrive,f)
+        camera.change_focus(f)
+        full_path_file_name,title_name = camera.take_pic(get_file_name(),True)
+        files_list.append((full_path_file_name,title_name))
+    return files_list
+
 
 def main():
     setup_logging()
@@ -139,17 +156,22 @@ def main():
         state = get_current_state()
         state.print_values() 
         current_time = time.time()
-        
+        file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
 
-            take_pic_all_focus(camera,g_drive_handler,"A",state.camera_configuration.focus_position)
-            take_pic_all_focus(camera,g_drive_handler,"C",state.camera_configuration.focus_position)
-
+            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"A",state.camera_configuration.focus_position))
+            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"B",state.camera_configuration.focus_position))
+            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"C",state.camera_configuration.focus_position))
+            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"D",state.camera_configuration.focus_position))
+            upload_files(file_list, g_drive_handler)
             last_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
 
+
+        # led_handler.light_pixel(0,11,state.illumination.R,state.illumination.G,state.illumination.B)
+
         logging.info('going to sleep a minute...')
-        time.sleep(60)
+        time.sleep(30)
 
 if __name__ == "__main__":
     main()
