@@ -6,14 +6,16 @@ arducam_vcm =CDLL('./lib/libarducam_vcm.so')
 import time
 from datetime import datetime
 import threading
+import board
+import neopixel
+
 
 # where do we store the images localy
-IMAGES_DIR = "images/"
+IMAGES_DIR = ""
 
 def run_camera(name):
     os.system("raspistill -t 2000")
 
-# convert board pin numbering to bcm numbering
 def board3bcm(pin):
     if pin==7:
         return 4
@@ -118,7 +120,9 @@ class CameraHandler:
         return saved_file_name, new_file_name
 
 
-
 if __name__ == "__main__":
+    pixels = neopixel.NeoPixel(board.D21, 12)
+    pixels.fill((255, 0, 0))
     camera = CameraHandler('A',focus=512)
     camera.take_pic("test",True)
+    pixels.fill((0, 0, 0))
