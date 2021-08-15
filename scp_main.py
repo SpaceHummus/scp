@@ -12,9 +12,9 @@ import logging
 from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
 import socket
-# import microcontroller
+import led_handler
 
-# import led_handler
+
 CONF_FILE_NAME = "scp_conf.yaml"
 # holds system states configurations
 system_states={}
@@ -152,10 +152,19 @@ def main():
     camera = CameraHandler('A',focus=512)
     last_pic_time = 0
 
+
+
     while(True):
         state = get_current_state()
         state.print_values() 
         current_time = time.time()
+
+        led_handler.light_far_red(state.illumination.far_red)
+
+        # change NeoPixle 
+        led_handler.light_pixel(0,11,state.illumination.R,state.illumination.G,state.illumination.B)
+
+        # take picture if needed
         file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
 
@@ -166,9 +175,6 @@ def main():
             upload_files(file_list, g_drive_handler)
             last_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
-
-
-        # led_handler.light_pixel(0,11,state.illumination.R,state.illumination.G,state.illumination.B)
 
         logging.info('going to sleep a minute...')
         time.sleep(30)
