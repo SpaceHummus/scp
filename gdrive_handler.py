@@ -18,6 +18,7 @@ class GDriveHandler:
         self.drive = GoogleDrive(gauth)
         self.main_folder_id = main_folder_id
         self.get_logic_sates_file()
+        self.get_configuration_file()
         self.get_raw_images_folder_id()
 
 
@@ -75,3 +76,26 @@ class GDriveHandler:
         else:
             file = self.drive.CreateFile({'id': file_id})
             file.GetContentFile('logic_states.yaml') 
+
+    # get the configuration.yaml file for G-Drive
+    def get_configuration_file(self):
+        logging.info("Getting configuration.yaml from G-Drive...")
+        folder_id = self.main_folder_id
+        file_id = ""
+        file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+        for f in file_list:
+            logging.debug('title: %s, id: %s' % (f['title'], f['id']))
+            title = f['title']
+            if title == COMMANDS_FOLDER:
+                folder_id = f['id']
+                file_list2 = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+                for i in file_list2:
+                    logging.debug('title: %s, id: %s' % (i['title'], i['id']))
+                    title = i['title']
+                    if title == "configuration.yaml":
+                        file_id = i['id']
+        if file_id == "":
+            logging.error("unable to find configuration.yaml on G-Drive")
+        else:
+            file = self.drive.CreateFile({'id': file_id})
+            file.GetContentFile('configuration.yaml') 

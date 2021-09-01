@@ -19,6 +19,8 @@ CONF_FILE_NAME = "scp_conf.yaml"
 # holds system states configurations
 system_states={}
 states_over_time=[]
+enabled_cameras=[]
+
 
 # wait until DNS service is ready, otherwise GDrive access will not work. This is needed when we run on boot and DNS service tkaes time to load
 def wait_4_dns():
@@ -59,7 +61,17 @@ def setup_logging():
             logging.FileHandler("scp_main.log"),
             logging.StreamHandler()
         ]
-    )    
+    )   
+
+def get_enabled_cameras():
+    global enabled_cameras
+    file = open(r'configuration.yaml')
+    conf_dic = yaml.load(file, Loader=yaml.FullLoader)
+    enabled_cameras = conf_dic["enabled_cameras"] 
+    print(enabled_cameras)
+    return enabled_cameras
+
+
 
 # read all system states from yaml file and load into memory
 def get_system_states():
@@ -148,6 +160,7 @@ def main():
     # get handler to G-Drive
     g_drive_handler = GDriveHandler(getGDrive_folder_id())
     get_states_settings()
+
     # get handler for the cameras
     camera = CameraHandler('A',focus=512)
     last_pic_time = 0
@@ -157,6 +170,8 @@ def main():
     while(True):
         state = get_current_state()
         state.print_values() 
+        enabled_cameras=get_enabled_cameras ()
+
         current_time = time.time()
 
         led_handler.light_far_red(state.illumination.far_red)
@@ -167,14 +182,11 @@ def main():
         # take picture if needed
         file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
-
-            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"A",state.camera_configuration.focus_position))
-            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"B",state.camera_configuration.focus_position))
-            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"C",state.camera_configuration.focus_position))
-            file_list.extend(take_pic_all_focus(camera,g_drive_handler,"D",state.camera_configuration.focus_position))
-            upload_files(file_list, g_drive_handler)
-            last_pic_time = time.time()
-            logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
+            for cam in enabled_cameras:
+                file_list.extend(take_pic_all_focus(camera,g_drive_handler,cam,state.camera_configuration.focus_position))
+                upload_files(file_list, g_drive_handler)
+                last_pic_time = time.time()
+                logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
 
         logging.info('going to sleep a minute...')
         time.sleep(30)
