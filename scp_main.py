@@ -68,7 +68,6 @@ def get_enabled_cameras():
     file = open(r'configuration.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     enabled_cameras = conf_dic["enabled_cameras"] 
-    print(enabled_cameras)
     return enabled_cameras
 
 
@@ -159,10 +158,12 @@ def main():
     logging.info('*** Start ***')
     # get handler to G-Drive
     g_drive_handler = GDriveHandler(getGDrive_folder_id())
+    g_drive_handler.get_logic_sates_file()
+    g_drive_handler.get_configuration_file()
     get_states_settings()
 
     # get handler for the cameras
-    camera = CameraHandler('A',focus=512)
+    camera = CameraHandler()
     last_pic_time = 0
 
 
@@ -170,7 +171,7 @@ def main():
     while(True):
         state = get_current_state()
         state.print_values() 
-        enabled_cameras=get_enabled_cameras ()
+        enabled_cameras=get_enabled_cameras()
 
         current_time = time.time()
 

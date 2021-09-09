@@ -32,11 +32,11 @@ def board3bcm(pin):
 
 
 class CameraHandler:
-    activeCamera=''
+    activeCamera='A'
     focus=512
 
     # Constructor, index='A'/'B'/'C'/'D'
-    def __init__(self,camera_index,focus=512,width=4056,height=3040):
+    def __init__(self,width=4056,height=3040):
         gp.setwarnings(False)
         gp.setmode(gp.BCM)
 
@@ -58,8 +58,6 @@ class CameraHandler:
 
         arducam_vcm.vcm_init()
 
-        self.change_active_camera(camera_index)
-        self.change_focus(focus)
 
     # switch active cameras, index='A'/'B'/'C'/'D'
     def change_active_camera(self,camera_index):
@@ -103,6 +101,7 @@ class CameraHandler:
         time.sleep(3)
 
     # take picture , camera_index='A'/'B'/'C'/'D'
+    # make sure you first call change_active_camera & change_focus
     # return full path saved file, file name
     def take_pic(self, file_name, flip_image=False):
         # setup file name with camera index and focus

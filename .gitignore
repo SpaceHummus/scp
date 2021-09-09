@@ -11,3 +11,5 @@ settings.yaml
 scp_web.log
 scp_main.log
 file_maintenance.log
+gdrive.log
+

@@ -17,8 +17,6 @@ class GDriveHandler:
         gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json     
         self.drive = GoogleDrive(gauth)
         self.main_folder_id = main_folder_id
-        self.get_logic_sates_file()
-        self.get_configuration_file()
         self.get_raw_images_folder_id()
 
 
@@ -99,3 +97,19 @@ class GDriveHandler:
         else:
             file = self.drive.CreateFile({'id': file_id})
             file.GetContentFile('configuration.yaml') 
+
+
+def setup_logging():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s [%(levelname)s] %(funcName)s:%(message)s",
+        handlers=[
+            logging.FileHandler("gdrive.log"),
+            logging.StreamHandler()
+        ]
+    )   
+
+if __name__ == "__main__":
+    setup_logging()
+    logging.info("start g-drive testing")
+    g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
