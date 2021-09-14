@@ -45,20 +45,29 @@ def read_uploaded_files():
 
 
 def delete_old_files():
-    dir_name = '/home/pi/dev/flight-software'
+  #  dir_name = '/home/pi/dev/flight-software'
     # Get list of all files only in the given directory
-    list_of_files = filter( os.path.isfile,
-                            glob.glob(dir_name + '*') )
+  #  list_of_files = filter( os.path.isfile,
+     #                       glob.glob(dir_name + '*') )
     # Sort list of files based on last modification time in ascending order
-    list_of_files = sorted( list_of_files,
-                            key = os.path.getmtime)
+ #   list_of_files = sorted( list_of_files,
+   #                        key = os.path.getmtime)
     # Iterate over sorted list of files and print file path 
     # along with last modification time of file 
-    for file_path in list_of_files:
-        timestamp_str = time.strftime(  '%m/%d/%Y :: %H:%M:%S',
-                                    time.gmtime(os.path.getmtime(file_path))) 
-        print(timestamp_str, ' -->', file_path) 
+  #  for file_path in list_of_files:
+  #      timestamp_str = time.strftime(  '%m/%d/%Y :: %H:%M:%S',
+ #                                   time.gmtime(os.path.getmtime(file_path))) 
+   #     print(timestamp_str, ' -->', file_path) 
 
+    file_list = os.listdir('/home/pi/dev/flight-software')
+    print (file_list)
+
+    #grab last 4 characters of the file name:
+    def last_4chars(x):
+        return(x[-4:])
+
+    file_list_sort = sorted(file_list, key = last_4chars)
+    print (file_list_sort)
 
 def check_free_space():  
     # Path
