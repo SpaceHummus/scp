@@ -103,6 +103,7 @@ class GDriveHandler:
             file = self.drive.CreateFile({'id': file_id})
             file.GetContentFile('configuration.yaml') 
 
+    # download images by start date, end date, list cameras, list focuses, path
     def download_images (self,start_date, end_date, list_camera, list_focus,my_path):
         self.get_raw_images_folder_id()
         folder_id = self.raw_images_folder_id
@@ -156,20 +157,25 @@ def setup_logging():
 
 
 if __name__ == "__main__":
-
-    setup_logging()
-    logging.info("start g-drive testing")
-    g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
-    # usage example: python3 gdrive_handler.py 21-09-10__13_56 21-09-10__13_58 A,B 260 images
-    start_date = sys.argv[1]
-    start_date_new = datetime.strptime(start_date,"%y-%m-%d__%H_%M")
-    end_date = sys.argv[2]
-    end_date_new = datetime.strptime(end_date,"%y-%m-%d__%H_%M")
-    list_camera = sys.argv[3]
-    list_camera_new=list_camera.split(",")
-    list_focus = sys.argv[4]
-    list_focus_split = list_focus.split(",")
-    list_focus_new = [int(i) for i in list_focus_split]
-    my_path = sys.argv[5]
-    print(start_date_new,end_date_new,list_camera_new,list_focus_new)
-    g_drive_handler.download_images(start_date_new,end_date_new,list_camera_new,list_focus_new,'down_images')
+    quit()
+    # setup_logging()
+    # logging.info("start g-drive testing")
+    # g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
+    # # usage example: python3 gdrive_handler.py 21-09-10__13_56 21-09-10__13_58 A,B 260 images
+    # if len(sys.argv)==6:
+    #     start_date = sys.argv[1]
+    #     start_date_new = datetime.strptime(start_date,"%y-%m-%d__%H_%M")
+    #     end_date = sys.argv[2]
+    #     end_date_new = datetime.strptime(end_date,"%y-%m-%d__%H_%M")
+    #     list_camera = sys.argv[3]
+    #     list_camera_new=list_camera.split(",")
+    #     list_focus = sys.argv[4]
+    #     list_focus_split = list_focus.split(",")
+    #     list_focus_new = [int(i) for i in list_focus_split]
+    #     my_path = sys.argv[5]
+    #     print(start_date_new,end_date_new,list_camera_new,list_focus_new)
+    #     g_drive_handler.download_images(start_date_new,end_date_new,list_camera_new,list_focus_new,my_path)
+    # else:
+    #     print("please enter 6 parameters:file name, start date, end date, list cameras, list focuses, path")
+    #     print("for example: python3 gdrive_handler.py 21-09-14__06_20 21-09-14__06_22 A 160 /home/pi/dev/flight-software/down_images")
+    #     quit()
