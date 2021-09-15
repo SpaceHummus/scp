@@ -8,7 +8,8 @@ import os
 import time
 
 CONF_FILE_NAME = "scp_conf.yaml"
-
+IMAGES_PATH = '/home/pi/dev/flight-software/images'
+MAX_USED_SPACE_ALLOWED = 80 # in percent
 
 def setup_logging():
     logging.basicConfig(
@@ -44,48 +45,50 @@ def read_uploaded_files():
     return uploaded_files
 
 
-def delete_old_files():
-  #  dir_name = '/home/pi/dev/flight-software'
-    # Get list of all files only in the given directory
-  #  list_of_files = filter( os.path.isfile,
-     #                       glob.glob(dir_name + '*') )
-    # Sort list of files based on last modification time in ascending order
- #   list_of_files = sorted( list_of_files,
-   #                        key = os.path.getmtime)
-    # Iterate over sorted list of files and print file path 
-    # along with last modification time of file 
-  #  for file_path in list_of_files:
-  #      timestamp_str = time.strftime(  '%m/%d/%Y :: %H:%M:%S',
- #                                   time.gmtime(os.path.getmtime(file_path))) 
-   #     print(timestamp_str, ' -->', file_path) 
+def delete_old_files(path):
 
-    file_list = os.listdir('/home/pi/dev/flight-software')
-    print (file_list)
+    def last_created(x):
+        return(x[1])
+ 
+    def file_info():
+        file_list = []
+        for i in os.listdir(path):
+            a = os.stat(os.path.join(path,i))
+            file_list.append([i,a.st_ctime]) #[file,most_recent_access,created]
+        return file_list
 
-    #grab last 4 characters of the file name:
-    def last_4chars(x):
-        return(x[-4:])
+    file_list = file_info()
+  
+    file_list_sort = sorted(file_list, key = last_created)
 
-    file_list_sort = sorted(file_list, key = last_4chars)
-    print (file_list_sort)
+    # for item in file_list_sort:
+    #     line = "Name: {:<20} | Date Created: {:>20}".format(item[0],time.ctime(item[1]))
+    #     print(line)
 
-def check_free_space():  
-    # Path
-    path = "/home"
-    
+    if len(file_list_sort) > 0 :
+      file_to_del=path+'/'+file_list_sort[0][0]
+      logging.debug("about to delete file:%s",file_to_del)
+      os.remove(file_to_del)
+
+
+def check_used_space(path):  
     # Get the disk usage statistics
     # about the given path
     stat = shutil.disk_usage(path)
     
     # Print disk usage statistics
-    print("Disk usage in %:")
-    print(stat.used/stat.total*100)
+    used_space = int(stat.used/stat.total*100)
+    logging.debug("used disk space:%d%%",used_space) 
+    return used_space
 
 
 if __name__ == "__main__":
-
-    check_free_space()
-    delete_old_files()
+    setup_logging()
+    used_space = check_used_space(IMAGES_PATH)
+    while used_space > MAX_USED_SPACE_ALLOWED:  
+        delete_old_files(IMAGES_PATH)
+        used_space = check_used_space(IMAGES_PATH)
+        time.sleep(1)
 
 
     # setup_logging()
