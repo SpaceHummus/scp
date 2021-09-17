@@ -5,12 +5,9 @@ import RPi.GPIO as GPIO
 
 pixels = neopixel.NeoPixel(board.D21, 12,brightness=0.5)
 GPIO.setmode(GPIO.BCM) 
-GPIO.setup  (13, GPIO.OUT)
 GPIO.setup  (12, GPIO.OUT)
 pwm0_neopixel = GPIO.PWM(12, 100)
-pwm1_far_red = GPIO.PWM(13, 100)
 pwm0_neopixel.start(0)
-pwm1_far_red.start(0)
 
 def start_LED ():
     pixels.fill((255, 255, 255))
@@ -24,7 +21,6 @@ def light_pixel(from_pixle,to_pixle,R,G,B):
 
 def light_far_red(duty_cycle):
     pwm0_neopixel.ChangeDutyCycle(duty_cycle)
-    pwm1_far_red.ChangeDutyCycle(duty_cycle)
 
 
 

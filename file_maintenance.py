@@ -9,7 +9,7 @@ import time
 
 CONF_FILE_NAME = "scp_conf.yaml"
 IMAGES_PATH = '/home/pi/dev/flight-software/images'
-MAX_USED_SPACE_ALLOWED = 80 # in percent
+MAX_USED_SPACE_ALLOWED = 60 # in percent
 
 def setup_logging():
     logging.basicConfig(
