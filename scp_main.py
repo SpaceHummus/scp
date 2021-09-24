@@ -185,7 +185,7 @@ def main():
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
             for cam in enabled_cameras:
                 file_list.extend(take_pic_all_focus(camera,g_drive_handler,cam,state.camera_configuration.focus_position))
-                upload_files(file_list, g_drive_handler)
+                # upload_files(file_list, g_drive_handler)
                 last_pic_time = time.time()
                 logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
 

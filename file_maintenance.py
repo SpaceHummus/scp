@@ -9,7 +9,7 @@ import time
 
 CONF_FILE_NAME = "scp_conf.yaml"
 IMAGES_PATH = '/home/pi/dev/flight-software/images'
-MAX_USED_SPACE_ALLOWED = 60 # in percent
+MAX_USED_SPACE_ALLOWED = 85 # in percent
 
 def setup_logging():
     logging.basicConfig(
@@ -29,7 +29,7 @@ def getGDrive_folder_id():
     file.close()
     return folder_id
 
-def get_file_name(dir_path):
+def get_files_name(dir_path):
     arr = os.listdir(dir_path)
     return arr
 
@@ -39,9 +39,7 @@ def read_uploaded_files():
     uploaded_files={}
     f = open("uploaded_files.log", "r")
     for x in f:
-        print(x)
         uploaded_files[x] = 1
-    print (uploaded_files)
     return uploaded_files
 
 
@@ -84,6 +82,26 @@ def check_used_space(path):
 
 if __name__ == "__main__":
     setup_logging()
+    # upload files that we didn't upload yet... 
+    f = open("uploaded_files.log", "a")    
+    try:
+        uploaded_files = read_uploaded_files()
+        files = get_files_name(IMAGES_PATH)
+        
+        g_drive_handler = GDriveHandler(getGDrive_folder_id())
+
+        c = 0
+        for f_name in files:
+            if uploaded_files.get(f_name+'\n') == None: # meaning we have a file that we didn't upload yet
+                g_drive_handler.upload_file(IMAGES_PATH+"/"+f_name,f_name)
+                f.write(f_name+'\n')
+                f.flush()
+                c+=1
+        logging.info("Uploaded %d files to g-drive",c)
+    finally:
+        f.close()  
+
+    # check and clear space on the SD card if needed
     used_space = check_used_space(IMAGES_PATH)
     while used_space > MAX_USED_SPACE_ALLOWED:  
         delete_old_files(IMAGES_PATH)
@@ -91,18 +109,3 @@ if __name__ == "__main__":
         time.sleep(1)
 
 
-    # setup_logging()
-    # uploaded_files = read_uploaded_files()
-    # files = get_file_name("images")
-    # g_drive_handler = GDriveHandler(getGDrive_folder_id())
-    # f = open("uploaded_files.log", "a")    
-
-    # for f_name in files:
-    #     if uploaded_files.get(f_name+'\n') == None:
-    #         g_drive_handler.upload_file("images/"+f_name,f_name)
-    #         f.write(f_name+'\n')
-    #         f.flush()
-    #     else:
-    #         print("allready uploaded file:",f_name)
-
-    # f.close()  
