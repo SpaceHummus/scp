@@ -119,5 +119,32 @@ class CameraHandler:
 
 
 if __name__ == "__main__":
-    camera = CameraHandler('A',focus=512)
-    camera.take_pic("test",True)
+    camera = CameraHandler()
+
+    print("A")
+    camera.change_active_camera('A')
+    camera.change_focus(200)
+    camera.take_pic("test_take_out_jumpers")
+    camera.change_focus(1000)
+    camera.take_pic("test_take_out_jumpers")
+
+    print("B")
+    camera.change_active_camera('B')
+    camera.change_focus(200)
+    camera.take_pic("test_take_out_jumpers")
+    camera.change_focus(1000)
+    camera.take_pic("test_take_out_jumpers")
+
+    print("C")
+    camera.change_active_camera('C')
+    camera.change_focus(200)
+    camera.take_pic("test_take_out_jumpers")
+    camera.change_focus(1000)
+    camera.take_pic("test_take_out_jumpers")
+
+    print("D")
+    camera.change_active_camera('D')
+    camera.change_focus(200)
+    camera.take_pic("test_take_out_jumpers")
+    camera.change_focus(1000)
+    camera.take_pic("test_take_out_jumpers")

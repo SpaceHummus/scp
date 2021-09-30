@@ -1,6 +1,5 @@
 import pidfile
 import time
-
 print('Starting process')
 try:
     with pidfile.PIDFile():

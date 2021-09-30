@@ -11,6 +11,7 @@ from system_state import Illumination
 import logging
 from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
+from telematry_handler import TelematryHandler
 import socket
 import led_handler
 
@@ -161,6 +162,8 @@ def main():
     g_drive_handler.get_logic_sates_file()
     g_drive_handler.get_configuration_file()
     get_states_settings()
+    telematry_handler = TelematryHandler()
+
 
     # get handler for the cameras
     camera = CameraHandler()
@@ -188,7 +191,8 @@ def main():
                 # upload_files(file_list, g_drive_handler)
                 last_pic_time = time.time()
                 logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
-
+        
+        telematry_handler.write_telematry_csv()
         logging.info('going to sleep a minute...')
         time.sleep(30)
 
