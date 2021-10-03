@@ -173,7 +173,7 @@ def main():
 
     while(True):
         state = get_current_state()
-        state.print_values() 
+        # state.print_values() 
         enabled_cameras=get_enabled_cameras()
 
         current_time = time.time()

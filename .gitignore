@@ -15,3 +15,5 @@ gdrive.log
 down_images/
 telematry.csv
 telematry.log
+pidfile
+

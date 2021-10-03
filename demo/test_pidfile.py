@@ -1,11 +1,18 @@
 import pidfile
 import time
-print('Starting process')
-try:
-    with pidfile.PIDFile():
-        print('Process started')
-        time.sleep(30)
-except pidfile.AlreadyRunningError:
-    print('Already running.')
 
-print('Exiting')
+def is_running():
+    try:
+        with pidfile.PIDFile():
+            print('Process NOT  running.')
+            time.sleep(600)
+            return False
+    except pidfile.AlreadyRunningError:
+        print('Process already running.')
+        return True
+
+if __name__ == "__main__":
+    if is_running():
+        quit()
+    print("running...")
+    time.sleep(600)

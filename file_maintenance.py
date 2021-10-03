@@ -6,6 +6,7 @@ import shutil
 import glob
 import os
 import time
+import pidfile
 
 CONF_FILE_NAME = "scp_conf.yaml"
 IMAGES_PATH = '/home/pi/dev/flight-software/images'
@@ -79,9 +80,7 @@ def check_used_space(path):
     logging.debug("used disk space:%d%%",used_space) 
     return used_space
 
-
-if __name__ == "__main__":
-    setup_logging()
+def main():
     # upload files that we didn't upload yet... 
     f = open("uploaded_files.log", "a")    
     try:
@@ -107,5 +106,19 @@ if __name__ == "__main__":
         delete_old_files(IMAGES_PATH)
         used_space = check_used_space(IMAGES_PATH)
         time.sleep(1)
+
+
+if __name__ == "__main__":
+    setup_logging()
+    try:
+        with pidfile.PIDFile():
+            main()
+    except pidfile.AlreadyRunningError:
+        logging.error('Process already running.')
+
+
+
+
+
 
 
