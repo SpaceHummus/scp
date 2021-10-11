@@ -2,8 +2,12 @@ import board
 import neopixel
 import time
 import RPi.GPIO as GPIO
+ 
 
-pixels = neopixel.NeoPixel(board.D21, 12,brightness=0.5)
+NUM_OF_PIXELS = 2
+
+
+pixels = neopixel.NeoPixel(board.D21, NUM_OF_PIXELS,brightness=0.5)
 GPIO.setmode(GPIO.BCM) 
 GPIO.setup  (12, GPIO.OUT)
 pwm0_neopixel = GPIO.PWM(12, 100)
@@ -48,8 +52,6 @@ if __name__ == "__main__":
     start_LED()
     time.sleep(1)
     stop_LED()
-    light_pixel(0,6,50,100,200)
-    light_pixel(6,11,200,0,0)
     time.sleep(1)
     stop_LED()
     print("end")

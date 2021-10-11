@@ -97,8 +97,9 @@ def main():
                 f.flush()
                 c+=1
         logging.info("Uploaded %d files to g-drive",c)
-    finally:
-        f.close()  
+    except Exception as e: 
+        logging.error('unable to upload file to g-drive: '+ str(e))
+    f.close()  
 
     # check and clear space on the SD card if needed
     used_space = check_used_space(IMAGES_PATH)

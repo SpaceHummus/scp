@@ -24,15 +24,19 @@ enabled_cameras=[]
 
 
 # wait until DNS service is ready, otherwise GDrive access will not work. This is needed when we run on boot and DNS service tkaes time to load
-def wait_4_dns():
+# returns True if we got internet connection & DNS is working. otherwise False
+def wait_4_dns(max_retires):
     while (True):
         try:
             addr = socket.gethostbyname('www.googleapis.com')
             logging.info("Found DNS for www.googleapis.com. IP:%s",addr)
-            return
+            return True
         except:
             logging.error("DNS not ready yet...")
             time.sleep(1)
+        max_retires -=1
+        if max_retires <=0:
+            return False
     
 
 
@@ -143,7 +147,7 @@ def upload_files(files, g_drive):
 
 # take pictures in all focus values
 # returns a list of all file names that were taken
-def take_pic_all_focus(camera,gdrive,cameraID,focus_list):
+def take_pic_all_focus(camera,cameraID,focus_list):
     files_list=[]
     camera.change_active_camera(cameraID)
     for f in focus_list:
@@ -155,21 +159,19 @@ def take_pic_all_focus(camera,gdrive,cameraID,focus_list):
 
 def main():
     setup_logging()
-    wait_4_dns()
     logging.info('*** Start ***')
+    has_dns = wait_4_dns(120) # wait up to two minutes for DNS / Internet access
     # get handler to G-Drive
-    g_drive_handler = GDriveHandler(getGDrive_folder_id())
-    g_drive_handler.get_logic_sates_file()
-    g_drive_handler.get_configuration_file()
+    if has_dns:
+        g_drive_handler = GDriveHandler(getGDrive_folder_id())
+        g_drive_handler.get_logic_sates_file()
+        g_drive_handler.get_configuration_file()
     get_states_settings()
     telematry_handler = TelematryHandler()
-
 
     # get handler for the cameras
     camera = CameraHandler()
     last_pic_time = 0
-
-
 
     while(True):
         state = get_current_state()
@@ -181,14 +183,14 @@ def main():
         led_handler.light_far_red(state.illumination.far_red)
 
         # change NeoPixle 
-        led_handler.light_pixel(0,11,state.illumination.R,state.illumination.G,state.illumination.B)
+        led_handler.stop_LED()
+        led_handler.light_pixel(0,led_handler.NUM_OF_PIXELS-1,state.illumination.R,state.illumination.G,state.illumination.B)
 
         # take picture if needed
         file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
             for cam in enabled_cameras:
-                file_list.extend(take_pic_all_focus(camera,g_drive_handler,cam,state.camera_configuration.focus_position))
-                # upload_files(file_list, g_drive_handler)
+                file_list.extend(take_pic_all_focus(camera,cam,state.camera_configuration.focus_position))
                 last_pic_time = time.time()
                 logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
         

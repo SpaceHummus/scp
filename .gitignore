@@ -16,4 +16,5 @@ down_images/
 telematry.csv
 telematry.log
 pidfile
+uploaded_files.log
 
