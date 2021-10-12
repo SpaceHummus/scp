@@ -26,6 +26,7 @@ class SystemState:
             logging.info("R:%d",self.illumination.R)
             logging.info("G:%d",self.illumination.G)
             logging.info("B:%d",self.illumination.B)
+            logging.info("number_of_leds:%d",self.illumination.number_of_leds)
             logging.info("far_red:%d",self.illumination.far_red)
 
 class CameraConfiguration:
@@ -43,11 +44,13 @@ class Illumination:
     R = 0
     G = 0
     B = 0
+    number_of_leds = 0
     far_red = 0
-    def __init__(self,R,G,B,far_red):
+    def __init__(self,R,G,B,number_of_leds,far_red):
         self.R = R
         self.G = G
         self.B = B
+        self.number_of_leds = number_of_leds
         self.far_red = far_red
 
 if __name__ == "__main__":

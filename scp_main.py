@@ -91,6 +91,7 @@ def get_system_states():
         R= illum["red"]
         G= illum["green"]
         B= illum["blue"]
+        number_of_leds = illum["number_of_leds"]
         far_red= illum["far_red"]
 
         if cam_conf==None:
@@ -101,7 +102,7 @@ def get_system_states():
             exposure = cam_conf["exposure"]
             iso =cam_conf["ISO"]
             cam_configuration = CameraConfiguration(image_frequency_min,exposure,iso,focus_position)
-        state = SystemState(cam_configuration,Illumination(R,G,B,far_red),name)  
+        state = SystemState(cam_configuration,Illumination(R,G,B,number_of_leds,far_red),name)  
         state.print_values()
         system_states[name]=state
          
@@ -184,7 +185,7 @@ def main():
 
         # change NeoPixle 
         led_handler.stop_LED()
-        led_handler.light_pixel(0,led_handler.NUM_OF_PIXELS-1,state.illumination.R,state.illumination.G,state.illumination.B)
+        led_handler.light_pixel(0,state.illumination.number_of_leds-1,state.illumination.R,state.illumination.G,state.illumination.B)
 
         # take picture if needed
         file_list = []

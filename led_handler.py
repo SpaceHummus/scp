@@ -4,7 +4,7 @@ import time
 import RPi.GPIO as GPIO
  
 
-NUM_OF_PIXELS = 2
+NUM_OF_PIXELS = 12
 
 
 pixels = neopixel.NeoPixel(board.D21, NUM_OF_PIXELS,brightness=0.5)

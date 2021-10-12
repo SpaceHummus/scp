@@ -2,9 +2,10 @@ import board
 import neopixel
 import time
 
-pixels = neopixel.NeoPixel(board.D21, 10,brightness=1)
-pixels.fill((3, 3, 3))
-
+pixels = neopixel.NeoPixel(board.D21, 12,brightness=0.5)
+pixels.fill((255,255,255))
+time.sleep(5)
+pixels.fill((0,0,0))
 
 
 
