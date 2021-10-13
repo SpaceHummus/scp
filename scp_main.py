@@ -14,6 +14,8 @@ from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
 import socket
 import led_handler
+import subprocess
+import traceback
 
 
 CONF_FILE_NAME = "scp_conf.yaml"
@@ -157,10 +159,18 @@ def take_pic_all_focus(camera,cameraID,focus_list):
         files_list.append((full_path_file_name,title_name))
     return files_list
 
+def get_version():
+    cmd ="git describe --tags"
+    p = subprocess.Popen(cmd.split(),
+                     stdout=subprocess.PIPE)
+    ret, _ = p.communicate()
+    return ret.strip()
+
+
 
 def main():
     setup_logging()
-    logging.info('*** Start ***')
+    logging.info('*** Start *** ver %s',get_version())
     has_dns = wait_4_dns(120) # wait up to two minutes for DNS / Internet access
     # get handler to G-Drive
     if has_dns:
@@ -200,4 +210,9 @@ def main():
         time.sleep(30)
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception:
+        print(traceback.format_exc())
+        logging.error(traceback.format_exc())
+    

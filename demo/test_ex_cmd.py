@@ -8,6 +8,6 @@ cmd ="git describe --tags"
 
 p = subprocess.Popen(cmd.split(),
                      stdout=subprocess.PIPE)
-preprocessed, _ = p.communicate()
+ret, _ = p.communicate()
 
-print(preprocessed.strip())
+print(ret.strip())

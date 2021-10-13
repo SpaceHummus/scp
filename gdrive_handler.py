@@ -42,19 +42,23 @@ class GDriveHandler:
         except:
             logging.error("timeout while uploading file to G Drive")
 
-    # get the raw images folder if from G-Drive
-    def get_raw_images_folder_id(self):
+    def get_folder_id(self,folder_name):
         folder_id = self.main_folder_id
         file_id = ""
         file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
         for f in file_list:
             logging.debug('title: %s, id: %s' % (f['title'], f['id']))
             title = f['title']
-            if title == RAW_IMAGES_FOLDER:
-                self.raw_images_folder_id = f['id']
-        if self.raw_images_folder_id == "":
+            if title == folder_name:
+                return f['id']
+
+    # get the raw images folder if from G-Drive
+    def get_raw_images_folder_id(self):
+        id = self.get_folder_id(RAW_IMAGES_FOLDER)
+        if id == "":
             logging.error("unable to find Raw Images folder on G-Drive")
         else:
+            self.raw_images_folder_id = id
             logging.info("Raw images folder id:%s",self.raw_images_folder_id)
 
     # get the logic_states.yaml file for G-Drive
