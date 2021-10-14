@@ -8,7 +8,8 @@ import logging
 
 RAW_IMAGES_FOLDER = "03 Raw Images"
 COMMANDS_FOLDER = "01 Commands"
-
+RAW_TELEMETRY_FOLDER = "02 Raw Telemetry"
+FOLDER_ID="1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
 
 class GDriveHandler:
 
@@ -24,6 +25,33 @@ class GDriveHandler:
         self.main_folder_id = main_folder_id
         self.get_raw_images_folder_id()
 
+    # create a new folder in G-Drive
+    # title - The name of the folder
+    # folder_id - The G-Drive parent folder id
+    # return - True if sucess otherwise False
+    def create_folder(self,title,folder_id):
+        try: 
+            gauth = GoogleAuth()
+            gauth.LocalWebserverAuth() 
+            drive = GoogleDrive(gauth)
+
+            file_metadata = {
+            'title': title,
+            'parents':  [{'id': folder_id}],
+            'mimeType': 'application/vnd.google-apps.folder'
+            }
+            folder = drive.CreateFile(file_metadata)
+            folder.Upload()
+            return True
+        except:
+            # logging error
+            return False
+
+    def create_experiment_struct(self,experiment_name):
+        if self.create_folder(experiment_name,FOLDER_ID):
+            self.create_folder(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
+            self.create_folder(RAW_TELEMETRY_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
+            self.create_folder(RAW_IMAGES_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
 
     # upload image file into G-Drive
     def upload_file(self,file_name,title_name):
@@ -42,10 +70,9 @@ class GDriveHandler:
         except:
             logging.error("timeout while uploading file to G Drive")
 
-    def get_folder_id(self,folder_name):
-        folder_id = self.main_folder_id
+    def get_folder_id(self,folder_name,parents_folder_id):
         file_id = ""
-        file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+        file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %parents_folder_id}).GetList()
         for f in file_list:
             logging.debug('title: %s, id: %s' % (f['title'], f['id']))
             title = f['title']
@@ -54,7 +81,7 @@ class GDriveHandler:
 
     # get the raw images folder if from G-Drive
     def get_raw_images_folder_id(self):
-        id = self.get_folder_id(RAW_IMAGES_FOLDER)
+        id = self.get_folder_id(RAW_IMAGES_FOLDER,self.main_folder_id)
         if id == "":
             logging.error("unable to find Raw Images folder on G-Drive")
         else:
@@ -161,10 +188,14 @@ def setup_logging():
 
 
 if __name__ == "__main__":
-    quit()
-    # setup_logging()
+    
+
+    #quit()
+    setup_logging()
     # logging.info("start g-drive testing")
-    # g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
+    g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
+    g_drive_handler.create_experiment_struct("hadas1")
+    #print(g_drive_handler.get_raw_images_folder_id())
     # # usage example: python3 gdrive_handler.py 21-09-10__13_56 21-09-10__13_58 A,B 260 images
     # if len(sys.argv)==6:
     #     start_date = sys.argv[1]
