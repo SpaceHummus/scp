@@ -141,12 +141,12 @@ def get_file_name ():
 def take_pic_and_upload(camera,g_drive,focus):
     camera.change_focus(focus)
     full_path_file_name,title_name = camera.take_pic(get_file_name(),True)
-    g_drive.upload_file(full_path_file_name,title_name)
+    g_drive.upload_image(full_path_file_name,title_name)
 
 # gets a list of files to upload to g-drive        
 def upload_files(files, g_drive):
     for f in files:
-        g_drive.upload_file(f[0],f[1])
+        g_drive.upload_image(f[0],f[1])
 
 # take pictures in all focus values
 # returns a list of all file names that were taken

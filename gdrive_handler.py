@@ -44,22 +44,30 @@ class GDriveHandler:
             folder.Upload()
             return True
         except:
-            # logging error
+            logging.error("Failed to create folder")
             return False
 
     def create_experiment_struct(self,experiment_name):
-        if self.create_folder(experiment_name,FOLDER_ID):
-            self.create_folder(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
-            self.create_folder(RAW_TELEMETRY_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
-            self.create_folder(RAW_IMAGES_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
+        try:
+            if self.create_folder(experiment_name,FOLDER_ID):
+             self.create_folder(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
+             self.upload_file("configuration.yaml","configuration.yaml",self.get_folder_id(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID)))
+             self.upload_file("logic_states.yaml","logic_states.yaml",self.get_folder_id(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID)))
+             self.create_folder(RAW_TELEMETRY_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
+             self.create_folder(RAW_IMAGES_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
+             return True
+        except:
+            logging.error("Failed to create experiment struct")
+            return False
 
-    # upload image file into G-Drive
-    def upload_file(self,file_name,title_name):
+    
+    # upload file into G-Drive
+    def upload_file(self,file_name,title_name,folder_id):
         logging.info("About to upload file:%s title:%s",file_name,title_name)
         try:
             d_fileParams={}
             d_folderID={}
-            d_folderID ["id"]=self.raw_images_folder_id
+            d_folderID ["id"]=folder_id
             d_fileParams["parents"] = [d_folderID]
             d_fileParams["title"]= title_name
             gfile = self.drive.CreateFile(d_fileParams)
@@ -69,6 +77,11 @@ class GDriveHandler:
             logging.info("uploaded %s to drive",file_name)
         except:
             logging.error("timeout while uploading file to G Drive")
+    
+    # upload image file into G-Drive
+    def upload_image(self,file_name,title_name):
+        self.upload_file(file_name,title_name,self.raw_images_folder_id)
+    
 
     def get_folder_id(self,folder_name,parents_folder_id):
         file_id = ""
@@ -194,7 +207,7 @@ if __name__ == "__main__":
     setup_logging()
     # logging.info("start g-drive testing")
     g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
-    g_drive_handler.create_experiment_struct("hadas1")
+    g_drive_handler.create_experiment_struct("hadas10")
     #print(g_drive_handler.get_raw_images_folder_id())
     # # usage example: python3 gdrive_handler.py 21-09-10__13_56 21-09-10__13_58 A,B 260 images
     # if len(sys.argv)==6:
