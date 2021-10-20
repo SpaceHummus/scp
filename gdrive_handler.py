@@ -63,7 +63,7 @@ class GDriveHandler:
     
     # upload file into G-Drive
     def upload_file(self,file_name,title_name,folder_id):
-        logging.info("About to upload file:%s title:%s",file_name,title_name)
+        logging.info("About to upload file:%s title:%s folder_id:%s",file_name,title_name,folder_id)
         try:
             d_fileParams={}
             d_folderID={}
@@ -75,12 +75,14 @@ class GDriveHandler:
             gfile.SetContentFile(file_name)
             gfile.Upload() # Upload the file.
             logging.info("uploaded %s to drive",file_name)
+            return True
         except Exception as e:
             logging.error("error uploading file to G Drive. Error msg:%s",str(e))
+            return False
     
     # upload image file into G-Drive
     def upload_image(self,file_name,title_name):
-        self.upload_file(file_name,title_name,self.get_raw_images_folder_id())
+        return self.upload_file(file_name,title_name,self.get_raw_images_folder_id())
     
 
     def get_folder_id(self,folder_name,parents_folder_id):
@@ -101,6 +103,7 @@ class GDriveHandler:
             else:
                 self.raw_images_folder_id = id
                 logging.info("Raw images folder id:%s",self.raw_images_folder_id)
+                return self.raw_images_folder_id
         else:
             return self.raw_images_folder_id
 

@@ -92,10 +92,10 @@ def main():
         c = 0
         for f_name in files:
             if uploaded_files.get(f_name+'\n') == None: # meaning we have a file that we didn't upload yet
-                g_drive_handler.upload_file(IMAGES_PATH+"/"+f_name,f_name)
-                f.write(f_name+'\n')
-                f.flush()
-                c+=1
+                if g_drive_handler.upload_image(IMAGES_PATH+"/"+f_name,f_name):
+                    f.write(f_name+'\n')
+                    f.flush()
+                    c+=1
         logging.info("Uploaded %d files to g-drive",c)
     except Exception as e: 
         logging.error('unable to upload file to g-drive: '+ str(e))
