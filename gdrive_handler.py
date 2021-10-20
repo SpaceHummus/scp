@@ -20,7 +20,7 @@ class GDriveHandler:
 
     # main_folder_id - the google drive folder ID. it should include "01 Commands" folder and the file logic_states.yaml in it 
     def __init__(self,main_folder_id):
-        gauth = GoogleAuth(http_timeout=60)      
+        gauth = GoogleAuth(settings_file="../credentials/settings.yaml",http_timeout=60)      
         gauth.credentials = Storage(f"../credentials/credentials.json").get()
         gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json     
         self.drive = GoogleDrive(gauth)
