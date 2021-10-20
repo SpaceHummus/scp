@@ -51,8 +51,8 @@ class GDriveHandler:
                 experiment_folder_id = self.get_folder_id(experiment_name,self.main_folder_id)
                 self.create_folder(COMMANDS_FOLDER,experiment_folder_id)
                 cmd_folder_id = self.get_folder_id(COMMANDS_FOLDER,experiment_folder_id)
-                self.upload_file("configuration.yaml","configuration.yaml",cmd_folder_id)
-                self.upload_file("logic_states.yaml","logic_states.yaml",cmd_folder_id)
+                self.upload_file("..\interfaces\configuration.yaml","configuration.yaml",cmd_folder_id)
+                self.upload_file("..\interfaces\logic_states.yaml","logic_states.yaml",cmd_folder_id)
                 self.create_folder(RAW_TELEMETRY_FOLDER,experiment_folder_id)
                 self.create_folder(RAW_IMAGES_FOLDER,experiment_folder_id)
                 return experiment_folder_id
