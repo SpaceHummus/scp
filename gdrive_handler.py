@@ -1,15 +1,16 @@
+import sys
+# sys.path.append("E:/dev/credentials")
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
+from oauth2client.file import Storage
 from datetime import datetime
-import sys
-
 import logging
 
 
 RAW_IMAGES_FOLDER = "03 Raw Images"
 COMMANDS_FOLDER = "01 Commands"
 RAW_TELEMETRY_FOLDER = "02 Raw Telemetry"
-FOLDER_ID="1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
+ROOT_FOLDER_ID="1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
 
 class GDriveHandler:
 
@@ -20,10 +21,10 @@ class GDriveHandler:
     # main_folder_id - the google drive folder ID. it should include "01 Commands" folder and the file logic_states.yaml in it 
     def __init__(self,main_folder_id):
         gauth = GoogleAuth(http_timeout=60)      
+        gauth.credentials = Storage(f"../credentials/credentials.json").get()
         gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json     
         self.drive = GoogleDrive(gauth)
         self.main_folder_id = main_folder_id
-        self.get_raw_images_folder_id()
 
     # create a new folder in G-Drive
     # title - The name of the folder
@@ -31,34 +32,33 @@ class GDriveHandler:
     # return - True if sucess otherwise False
     def create_folder(self,title,folder_id):
         try: 
-            gauth = GoogleAuth()
-            gauth.LocalWebserverAuth() 
-            drive = GoogleDrive(gauth)
 
             file_metadata = {
             'title': title,
             'parents':  [{'id': folder_id}],
             'mimeType': 'application/vnd.google-apps.folder'
             }
-            folder = drive.CreateFile(file_metadata)
+            folder = self.drive.CreateFile(file_metadata)
             folder.Upload()
             return True
-        except:
-            logging.error("Failed to create folder")
+        except Exception as e:
+            logging.error("Failed to create folder. Error msg:%s",str(e))
             return False
 
     def create_experiment_struct(self,experiment_name):
         try:
-            if self.create_folder(experiment_name,FOLDER_ID):
-             self.create_folder(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
-             self.upload_file("configuration.yaml","configuration.yaml",self.get_folder_id(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID)))
-             self.upload_file("logic_states.yaml","logic_states.yaml",self.get_folder_id(COMMANDS_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID)))
-             self.create_folder(RAW_TELEMETRY_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
-             self.create_folder(RAW_IMAGES_FOLDER,self.get_folder_id(experiment_name,FOLDER_ID))
-             return True
-        except:
-            logging.error("Failed to create experiment struct")
-            return False
+            if self.create_folder(experiment_name,self.main_folder_id):
+                experiment_folder_id = self.get_folder_id(experiment_name,self.main_folder_id)
+                self.create_folder(COMMANDS_FOLDER,experiment_folder_id)
+                cmd_folder_id = self.get_folder_id(COMMANDS_FOLDER,experiment_folder_id)
+                self.upload_file("configuration.yaml","configuration.yaml",cmd_folder_id)
+                self.upload_file("logic_states.yaml","logic_states.yaml",cmd_folder_id)
+                self.create_folder(RAW_TELEMETRY_FOLDER,experiment_folder_id)
+                self.create_folder(RAW_IMAGES_FOLDER,experiment_folder_id)
+                return experiment_folder_id
+        except Exception as e:
+            logging.error("Failed to create experiment struct. Error msg:%s",str(e))
+            return None
 
     
     # upload file into G-Drive
@@ -75,12 +75,12 @@ class GDriveHandler:
             gfile.SetContentFile(file_name)
             gfile.Upload() # Upload the file.
             logging.info("uploaded %s to drive",file_name)
-        except:
-            logging.error("timeout while uploading file to G Drive")
+        except Exception as e:
+            logging.error("error uploading file to G Drive. Error msg:%s",str(e))
     
     # upload image file into G-Drive
     def upload_image(self,file_name,title_name):
-        self.upload_file(file_name,title_name,self.raw_images_folder_id)
+        self.upload_file(file_name,title_name,self.get_raw_images_folder_id())
     
 
     def get_folder_id(self,folder_name,parents_folder_id):
@@ -94,12 +94,15 @@ class GDriveHandler:
 
     # get the raw images folder if from G-Drive
     def get_raw_images_folder_id(self):
-        id = self.get_folder_id(RAW_IMAGES_FOLDER,self.main_folder_id)
-        if id == "":
-            logging.error("unable to find Raw Images folder on G-Drive")
+        if self.raw_images_folder_id == "": # first time we ask for images folder ID
+            id = self.get_folder_id(RAW_IMAGES_FOLDER,self.main_folder_id)
+            if id == "":
+                logging.error("unable to find Raw Images folder on G-Drive")
+            else:
+                self.raw_images_folder_id = id
+                logging.info("Raw images folder id:%s",self.raw_images_folder_id)
         else:
-            self.raw_images_folder_id = id
-            logging.info("Raw images folder id:%s",self.raw_images_folder_id)
+            return self.raw_images_folder_id
 
     # get the logic_states.yaml file for G-Drive
     def get_logic_sates_file(self):
@@ -149,8 +152,7 @@ class GDriveHandler:
 
     # download images by start date, end date, list cameras, list focuses, path
     def download_images (self,start_date, end_date, list_camera, list_focus,my_path):
-        self.get_raw_images_folder_id()
-        folder_id = self.raw_images_folder_id
+        folder_id = self.get_raw_images_folder_id()
         logging.info('folder_id: %s' ,folder_id )
 
         file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
@@ -173,22 +175,6 @@ class GDriveHandler:
                         file = self.drive.CreateFile({'id': f['id']})
                         file.GetContentFile(my_path+'/'+f['title'])
 
-    def testDownloadFIle(self):
-        file1 = self.drive.CreateFile({'id': '1zUKIfcAP3jIFr6w-sZHwzWyAwd74OwVo'}) #1ICaPnA5Yw5V5IpQb4r_vCq-Pgl6vjk2W
-
-        # Fetches all basic metadata fields, including file size, last modified etc.
-        # file1.FetchMetadata()
-
-        # # Fetches all metadata available.
-        # file1.FetchMetadata(fetch_all=True)
-
-        # Fetches the 'permissions' metadata field.
-        # file1.FetchMetadata(fields='permissions')
-        # # You can update a list of specific fields like this:
-        # file1.FetchMetadata(fields='permissions,labels,mimeType')
-        print(file1['mimeType'])
-        file1.GetContentFile('down_images/test12.jpg')
-
 def setup_logging():
     logging.basicConfig(
         level=logging.DEBUG,
@@ -199,31 +185,25 @@ def setup_logging():
         ]
     )   
 
-
+ 
 if __name__ == "__main__":
-    
-
-    #quit()
     setup_logging()
-    # logging.info("start g-drive testing")
-    g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
-    g_drive_handler.create_experiment_struct("hadas10")
-    #print(g_drive_handler.get_raw_images_folder_id())
-    # # usage example: python3 gdrive_handler.py 21-09-10__13_56 21-09-10__13_58 A,B 260 images
-    # if len(sys.argv)==6:
-    #     start_date = sys.argv[1]
-    #     start_date_new = datetime.strptime(start_date,"%y-%m-%d__%H_%M")
-    #     end_date = sys.argv[2]
-    #     end_date_new = datetime.strptime(end_date,"%y-%m-%d__%H_%M")
-    #     list_camera = sys.argv[3]
-    #     list_camera_new=list_camera.split(",")
-    #     list_focus = sys.argv[4]
-    #     list_focus_split = list_focus.split(",")
-    #     list_focus_new = [int(i) for i in list_focus_split]
-    #     my_path = sys.argv[5]
-    #     print(start_date_new,end_date_new,list_camera_new,list_focus_new)
-    #     g_drive_handler.download_images(start_date_new,end_date_new,list_camera_new,list_focus_new,my_path)
-    # else:
-    #     print("please enter 6 parameters:file name, start date, end date, list cameras, list focuses, path")
-    #     print("for example: python3 gdrive_handler.py 21-09-14__06_20 21-09-14__06_22 A 160 /home/pi/dev/flight-software/down_images")
-    #     quit()
+    logging.info("start g-drive")
+    # usage example: python3 gdrive_handler.py new_exp [EXP_NAME] 
+    if len(sys.argv)<=1:
+        print("Please enter parameters:command [PARAM_1...PARAM_N]\n")
+        print("supported commands: new_exp - create a new experiment with new folder structures. parametrs: experiment name. prints the new folder id of the experiment\n")
+        print("for example: python3 gdrive_handler.py new_exp \"2021-07-08 B0.1 Yerucham Dev1\"")
+        quit()
+    else:
+        cmd = sys.argv[1]
+        if cmd == "new_exp":
+            if len(sys.argv)<=2:
+                print("missing experiment name parameter")
+                quit()
+            g_drive_handler = GDriveHandler(ROOT_FOLDER_ID)
+            f_id = g_drive_handler.create_experiment_struct(sys.argv[2])
+            logging.info("created new experiment. its folder id is:%s",f_id)
+        else:
+            print("invalid command")
+            quit()
