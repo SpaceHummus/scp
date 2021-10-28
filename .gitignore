@@ -1,11 +1,9 @@
 __pycache__/
 client_secrets.json
-configuration.yaml
 credentials.json
 debug.log
 images/
 lib/
-logic_states.yaml
 run_scp_main.sh
 settings.yaml
 scp_web.log
