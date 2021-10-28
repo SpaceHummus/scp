@@ -1,0 +1,34 @@
+# This file describes the experiment folder (see configuration.yaml folder_id)
+# What are the sub folders, and what they contain
+
+# This file's version (for backward and forward compatibility)
+version: '1.0'
+
+# Sub folder names
+# This folder contains configuration yamls and logic
+configuration_folder: '01 Configuration' 
+
+# This folder contains telemetry and log files as they are downloaded from the experiment
+raw_telemetry_folder: 02 Raw Telemetry
+
+# This folder contains images as they are downloaded from experiment (untouched).
+# This folder contains the raw JPG images taken from the cameras, without any corrections. 
+# Corrected images are saved at processed_images_folder.
+raw_images_folder: '03 Raw Images' 
+
+# This folder contains the raw calibration images used to calibrate camera
+calibration_images_folder: '04 Calibration Images'
+
+# This folder contains corrected images. This folder contains the images after selecting 
+# the best focus, balancing, and camera distortion correction.
+processed_images_folder: '11 Processed Images' 
+
+# This folder contains a more processed telemetry to help us gain insights
+processed_telemetry_folder: '12 Processed Telemetry' 
+
+# This folder contains fused depth maps for each time point
+depth_maps_folder: '13 Depth Maps' 
+
+# This folder contains the final product that can be posted
+# on social media, 3D rendering, graphs etc
+visualization_artifacts_folder: '21 Visualization'

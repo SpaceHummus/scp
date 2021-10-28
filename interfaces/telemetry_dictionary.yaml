@@ -1,0 +1,16 @@
+# This file defines the parameters that will be provided in the telemetry table
+# Below is the list of parameters and information
+
+- time:
+    - units: UTC time string
+    - notes: This is the internal clock of the experiment
+- chamber_temperature:
+    - units: Degrees Celsius
+    - notes: Measured inside the growth chamber
+    - min_recommended_value: 25 # If telemetry value is below this value, parameter will be flagged
+    - max_recommended_value: 35 # If telemetry value is above this value, parameter will be flagged
+- chamber_humidity:
+    - units: Percent %
+    - notes: Measured inside the growth chamber
+    - min_recommended_value: 20 # If telemetry value is below this value, parameter will be flagged
+    - max_recommended_value: 50 # If telemetry value is above this value, parameter will be flagged
