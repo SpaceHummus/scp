@@ -1,0 +1,77 @@
+# This file defines the possible logic states of the system (day, night etc) and illumination
+# and camera operation in these states. This file describes the possible logic states of the system. 
+# The second part of the document describes what are the state vs time
+
+
+# Overall system states
+system_states:
+    - name: 'day_sun' 
+      illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
+        red: 255 
+        green: 255
+        blue: 255
+        number_of_leds: 3
+        far_red: 0
+      camera_configuration: 
+        image_frequency_min: 10 # How often should we take images (minutes)
+        focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
+            - 110
+            - 150
+            - 190
+            - 210
+            - 230
+        exposure: 10
+        ISO: 10
+
+    - name: 'day_shade' 
+      illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
+        red: 100 
+        green: 100
+        blue: 100
+        number_of_leds: 3
+        far_red: 0
+      camera_configuration: 
+        image_frequency_min: 10 # How often should we take images (minutes)
+        focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
+            - 110
+            - 150
+            - 190
+            - 210
+            - 230
+        exposure: 10
+        ISO: 10
+
+    - name: 'night' 
+      illumination: # LED ilumination 0-255
+        red: 0 
+        green: 0
+        blue: 0
+        number_of_leds: 3
+        far_red: 0
+      camera_configuration:
+      
+      # In this mode, experiment is waiting for setup instructions
+    - name: 'standby' 
+      illumination: # LED ilumination 0-255
+        red: 0 
+        green: 0
+        blue: 0
+        number_of_leds: 3
+        far_red: 0
+      camera_configuration:
+        
+# Timeline
+states_over_time:
+    # Below is a list of new state and the time this state will start (all times are UTC)
+    - - '2021/01/01 08:00:00'
+      - standby # The first default mode is standby until experiment starts
+    - - '2021/07/18 08:00:00'
+      - day_sun
+    - - '2021/07/18 08:18:00'
+      - night    
+    - - '2021/07/18 10:39:00'
+      - day_sun   
+    - - '2021/07/18 17:10:00'
+      - night     
+    - - '2021/07/19 07:00:00'    
+      - day_shade
