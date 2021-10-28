@@ -1,5 +1,7 @@
 # Read yaml configurtation files, based on the schedule, setup lesds, take pictures
 
+import sys
+sys.path.insert(1, '../common')
 import time
 from datetime import datetime
 from pydrive.auth import GoogleAuth

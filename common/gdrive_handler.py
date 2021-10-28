@@ -5,12 +5,12 @@ from pydrive.drive import GoogleDrive
 from oauth2client.file import Storage
 from datetime import datetime
 import logging
+import yaml
 
 
 RAW_IMAGES_FOLDER = "03 Raw Images"
 COMMANDS_FOLDER = "01 Commands"
 RAW_TELEMETRY_FOLDER = "02 Raw Telemetry"
-ROOT_FOLDER_ID="1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
 
 class GDriveHandler:
 
@@ -20,8 +20,8 @@ class GDriveHandler:
 
     # main_folder_id - the google drive folder ID. it should include "01 Commands" folder and the file logic_states.yaml in it 
     def __init__(self,main_folder_id):
-        gauth = GoogleAuth(settings_file="../credentials/settings.yaml",http_timeout=60)      
-        gauth.credentials = Storage(f"../credentials/credentials.json").get()
+        gauth = GoogleAuth(settings_file="../../credentials/settings.yaml",http_timeout=60)      
+        gauth.credentials = Storage(f"../../credentials/credentials.json").get()
         gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json     
         self.drive = GoogleDrive(gauth)
         self.main_folder_id = main_folder_id
@@ -45,14 +45,15 @@ class GDriveHandler:
             logging.error("Failed to create folder. Error msg:%s",str(e))
             return False
 
-    def create_experiment_struct(self,experiment_name):
+    def create_experiment_struct(self,experiment_name,experiment_date):
         try:
             if self.create_folder(experiment_name,self.main_folder_id):
                 experiment_folder_id = self.get_folder_id(experiment_name,self.main_folder_id)
                 self.create_folder(COMMANDS_FOLDER,experiment_folder_id)
                 cmd_folder_id = self.get_folder_id(COMMANDS_FOLDER,experiment_folder_id)
-                self.upload_file("..\interfaces\configuration.yaml","configuration.yaml",cmd_folder_id)
-                self.upload_file("..\interfaces\logic_states.yaml","logic_states.yaml",cmd_folder_id)
+                self.upload_file("../interfaces/configuration.yaml","configuration.yaml",cmd_folder_id)
+                self.update_logic_state_file(datetime.strptime(experiment_date,"%Y/%m/%d %H:%M:%S"))
+                self.upload_file("logic_states_new_exp.yaml","logic_states.yaml",cmd_folder_id)
                 self.create_folder(RAW_TELEMETRY_FOLDER,experiment_folder_id)
                 self.create_folder(RAW_IMAGES_FOLDER,experiment_folder_id)
                 return experiment_folder_id
@@ -60,7 +61,25 @@ class GDriveHandler:
             logging.error("Failed to create experiment struct. Error msg:%s",str(e))
             return None
 
-    
+    def update_logic_state_file(self,start_date):
+        states_over_time_new = []
+        file = open(r'../interfaces/logic_states.yaml')
+        conf_dic = yaml.load(file, Loader=yaml.FullLoader)
+        states_over_time_orig = conf_dic["states_over_time"] 
+        file.close()
+
+        date_time_0 = datetime.strptime(states_over_time_orig[0][0],"%Y/%m/%d %H:%M:%S")
+        for i in range(len(states_over_time_orig)):
+            date_time_str = states_over_time_orig[i][0]
+            date_time_obj = datetime.strptime(date_time_str,"%Y/%m/%d %H:%M:%S")
+            updated_date = start_date + (date_time_obj-date_time_0)
+            updated_date = updated_date.strftime('%Y/%m/%d %H:%M:%S')
+            states_over_time_new.append([updated_date,states_over_time_orig[i][1]])
+
+        conf_dic["states_over_time"] = states_over_time_new
+        with open('logic_states_new_exp.yaml','w') as f:
+            yaml.dump(conf_dic, f)
+
     # upload file into G-Drive
     def upload_file(self,file_name,title_name,folder_id):
         logging.info("About to upload file:%s title:%s folder_id:%s",file_name,title_name,folder_id)
@@ -195,17 +214,17 @@ if __name__ == "__main__":
     # usage example: python3 gdrive_handler.py new_exp [EXP_NAME] 
     if len(sys.argv)<=1:
         print("Please enter parameters:command [PARAM_1...PARAM_N]\n")
-        print("supported commands: new_exp - create a new experiment with new folder structures. parametrs: experiment name. prints the new folder id of the experiment\n")
-        print("for example: python3 gdrive_handler.py new_exp \"2021-07-08 B0.1 Yerucham Dev1\"")
+        print("supported commands: new_exp - create a new experiment with new folder structures. parametrs: <experiment name> <experiment date in YYYY/M/D hh:mm:ss> . prints the new folder id of the experiment\n")
+        print("for example: python3 gdrive_handler.py new_exp \"2021-07-08 B0.1 Yerucham Dev1\" \"2021/07/15 10:00:00\"")
         quit()
     else:
         cmd = sys.argv[1]
         if cmd == "new_exp":
-            if len(sys.argv)<=2:
-                print("missing experiment name parameter")
+            if len(sys.argv)<=3:
+                print("missing parameter")
                 quit()
             g_drive_handler = GDriveHandler(ROOT_FOLDER_ID)
-            f_id = g_drive_handler.create_experiment_struct(sys.argv[2])
+            f_id = g_drive_handler.create_experiment_struct(sys.argv[2],sys.argv[3])
             logging.info("created new experiment. its folder id is:%s",f_id)
         else:
             print("invalid command")

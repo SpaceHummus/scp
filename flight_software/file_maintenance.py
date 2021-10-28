@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(1, '../common')
 import yaml
 import os
 from gdrive_handler import GDriveHandler
@@ -9,7 +11,7 @@ import time
 import pidfile
 
 CONF_FILE_NAME = "scp_conf.yaml"
-IMAGES_PATH = '/home/pi/dev/flight-software/images'
+IMAGES_PATH = '/home/pi/dev/scp/flight_software/images'
 MAX_USED_SPACE_ALLOWED = 85 # in percent
 
 def setup_logging():
