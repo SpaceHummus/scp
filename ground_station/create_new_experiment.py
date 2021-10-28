@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     if len(sys.argv)<=1:
         print("usage: creates a new experiment on g-drive with new folder structures. parametrs: <experiment name> <experiment date in YYYY/M/D hh:mm:ss> . prints the new folder id of the experiment\n")
-        print("for example: python3 create_new_experiment.py \"2023-07-08 B0.1 Yerucham Dev1\" \"2021/07/15 10:00:00\"")
+        print("for example: python3 create_new_experiment.py \"2023-07-08 B0.1 Yerucham Dev1\" \"2023/07/15 10:00:00\"")
         quit()
     else:
         if len(sys.argv)<=2:
