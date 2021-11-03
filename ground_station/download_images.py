@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(1, '../common')
 from gdrive_handler import GDriveHandler
 import logging
 import sys
@@ -20,7 +22,7 @@ if len(sys.argv)==7:
     logging.info("start g-drive testing")
     folder_ID=sys.argv[1]
     g_drive_handler = GDriveHandler(folder_ID)
-    # usage example: python3 download_images.py 1usWtERCev43R107ccgdIZG83ORlwGnyB 21-09-14__06_20 21-09-14__06_22 A,C 160,260 /home/pi/dev/flight-software/down_images
+    # usage example: python3 download_images.py 1usWtERCev43R107ccgdIZG83ORlwGnyB 21-09-14__06_20 21-09-14__06_22 A,C 160,260 /home/pi/dev/scp/ground_station/down_images
     start_date = sys.argv[2]
     start_date_new = datetime.strptime(start_date,"%y-%m-%d__%H_%M")
     end_date = sys.argv[3]
@@ -34,6 +36,6 @@ if len(sys.argv)==7:
     print(start_date_new,end_date_new,list_camera_new,list_focus_new)
     g_drive_handler.download_images(start_date_new,end_date_new,list_camera_new,list_focus_new,my_path)
 else:
-    print("please enter 7 parameters:file name,folder ID, start date, end date, list cameras, list focuses, path")
-    print("for example: python3 download_images.py 1usWtERCev43R107ccgdIZG83ORlwGnyB 21-09-14__06_20 21-09-14__06_22 A,C 160,260 /home/pi/dev/flight-software/down_images")
+    print("please enter 6 parameters:folder ID, start date, end date, list cameras, list focuses, path")
+    print("for example: python3 download_images.py 1usWtERCev43R107ccgdIZG83ORlwGnyB 21-09-14__06_20 21-09-14__06_22 A,C 160,260 /home/pi/dev/scp/ground_station/down_images")
     quit()

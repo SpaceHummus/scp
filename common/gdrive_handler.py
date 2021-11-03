@@ -179,23 +179,26 @@ class GDriveHandler:
 
         file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
         for f in file_list:
-            #logging.debug('title: %s, id: %s' % (f['title'], f['id']))
-            title = f['title']
-            info_image=title.split("_C")
-            #logging.info('info_image: %s' ,info_image)
-            date_image=info_image[0]
-            date_image_new= datetime.strptime(date_image,"%y-%m-%d__%H_%M")
-            #logging.info('date_image_new %s' ,date_image_new)
-            camera_image=info_image[1][0]
-            #logging.info('camera_image: %s' ,camera_image)
-            focus_image=int(info_image[1][3:7])
-            #logging.info('focus_image: %s' ,focus_image)
-            if date_image_new>=start_date and date_image_new<=end_date:
-                if camera_image in list_camera:
-                    if focus_image in list_focus:
-                        logging.debug('about to download title: %s, id: %s' % (f['title'], f['id']))
-                        file = self.drive.CreateFile({'id': f['id']})
-                        file.GetContentFile(my_path+'/'+f['title'])
+            try:
+                # logging.debug('title: %s, id: %s' % (f['title'], f['id']))
+                title = f['title']
+                info_image=title.split("_C")
+                # logging.info('info_image: %s' ,info_image)
+                date_image=info_image[0]
+                date_image_new= datetime.strptime(date_image,"%y-%m-%d__%H_%M")
+                # logging.info('date_image_new %s' ,date_image_new)
+                camera_image=info_image[1][0]
+                # logging.info('camera_image: %s' ,camera_image)
+                focus_image=int(info_image[1][3:7])
+                # logging.info('focus_image: %s' ,focus_image)
+                if date_image_new>=start_date and date_image_new<=end_date:
+                    if camera_image in list_camera:
+                        if focus_image in list_focus:
+                            logging.debug('about to download title: %s, id: %s' % (f['title'], f['id']))
+                            file = self.drive.CreateFile({'id': f['id']})
+                            file.GetContentFile(my_path+'/'+f['title'])
+            except Exception as e:
+                logging.error("error chacking image file. Error msg:%s",str(e))
 
 def setup_logging():
     logging.basicConfig(
