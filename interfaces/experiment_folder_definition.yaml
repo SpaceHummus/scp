@@ -19,8 +19,8 @@ raw_images_folder: '03 Raw Images'
 # This folder contains the raw calibration images used to calibrate camera
 calibration_images_folder: '04 Calibration Images'
 
-# This folder contains corrected images. This folder contains the images after selecting 
-# the best focus, balancing, and camera distortion correction.
+# This folder contains corrected images. This folder contains the images corrected for 
+# balancing, and camera distortion correction. It also saves focus stacking images
 processed_images_folder: '11 Processed Images' 
 
 # This folder contains a more processed telemetry to help us gain insights
