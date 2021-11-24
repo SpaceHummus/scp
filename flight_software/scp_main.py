@@ -14,6 +14,7 @@ import logging
 from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
+import image_handler
 import socket
 import led_handler
 import subprocess
@@ -158,6 +159,7 @@ def take_pic_all_focus(camera,cameraID,focus_list):
     for f in focus_list:
         camera.change_focus(f)
         full_path_file_name,title_name = camera.take_pic(get_file_name(),True)
+        image_handler.check_image(full_path_file_name)
         files_list.append((full_path_file_name,title_name))
     return files_list
 
