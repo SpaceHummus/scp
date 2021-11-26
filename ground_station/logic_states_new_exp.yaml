@@ -1,0 +1,64 @@
+states_over_time:
+- - 2022/07/15 10:00:00
+  - standby
+- - 2023/01/29 10:00:00
+  - day_sun
+- - 2023/01/29 10:18:00
+  - night
+- - 2023/01/29 12:39:00
+  - day_sun
+- - 2023/01/29 19:10:00
+  - night
+- - 2023/01/30 09:00:00
+  - day_shade
+system_states:
+- camera_configuration:
+    ISO: 10
+    exposure: 10
+    focus_position:
+    - 110
+    - 150
+    - 190
+    - 210
+    - 230
+    image_frequency_min: 10
+  illumination:
+    blue: 255
+    far_red: 0
+    green: 255
+    number_of_leds: 3
+    red: 255
+  name: day_sun
+- camera_configuration:
+    ISO: 10
+    exposure: 10
+    focus_position:
+    - 110
+    - 150
+    - 190
+    - 210
+    - 230
+    image_frequency_min: 10
+  illumination:
+    blue: 100
+    far_red: 0
+    green: 100
+    number_of_leds: 3
+    red: 100
+  name: day_shade
+- camera_configuration: null
+  illumination:
+    blue: 0
+    far_red: 0
+    green: 0
+    number_of_leds: 3
+    red: 0
+  name: night
+- camera_configuration: null
+  illumination:
+    blue: 0
+    far_red: 0
+    green: 0
+    number_of_leds: 3
+    red: 0
+  name: standby
