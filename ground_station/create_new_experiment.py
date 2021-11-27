@@ -3,9 +3,6 @@ sys.path.insert(1, '../common')
 from gdrive_handler import GDriveHandler
 import logging
 
-ROOT_FOLDER_ID="1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
-
-
 def setup_logging():
     logging.basicConfig(
         level=logging.DEBUG,
@@ -29,7 +26,7 @@ if __name__ == "__main__":
         if len(sys.argv)<=2:
             print("missing parameter")
             quit()
-        g_drive_handler = GDriveHandler(ROOT_FOLDER_ID)
+        g_drive_handler = GDriveHandler()
         f_id = g_drive_handler.create_experiment_struct(sys.argv[1],sys.argv[2])
         logging.info("created new experiment. its folder id is:%s",f_id)
   

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Select images parameters</title>
+</head>
+
+<body>
+    
+    <form action="/searchImages" method="post">
+        <table style="width:100%">
+            <tr>
+                <td>
+                  <label for="experiment">Choose experiment:</label>
+
+                  <select class="form-control" name="experiments">
+                    {% for exp in experiments %}
+                        <option value="{{ exp[0] }}">{{ exp[1] }}</option>
+                    {% endfor %}
+                  </select>
+            
+
+                </td>
+              </tr>
+              <tr>
+              <td>
+                <label for="birthdaytime">Date & time images were taken:</label>
+                <input type="datetime-local" id="imagedatetime" name="imagedatetime">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="camaras">Choose camaras:</label>
+                <select name="thecamaras" id="thecamaras">
+                    <option value="ac">A-C</option>
+                    <option value="bd">B-D</option>
+                </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit">
+                </td>
+              </tr>
+            </table>
+            
+    </form>
+</body>
+
+</html>

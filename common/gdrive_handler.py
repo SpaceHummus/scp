@@ -7,6 +7,7 @@ from datetime import datetime
 import logging
 import yaml
 
+ROOT_FOLDER_ID="1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
 
 RAW_IMAGES_FOLDER = "03 Raw Images"
 COMMANDS_FOLDER = "01 Commands"
@@ -19,7 +20,7 @@ class GDriveHandler:
     drive = None 
 
     # main_folder_id - the google drive folder ID. it should include "01 Commands" folder and the file logic_states.yaml in it 
-    def __init__(self,main_folder_id):
+    def __init__(self,main_folder_id=ROOT_FOLDER_ID):
         gauth = GoogleAuth(settings_file="../../credentials/settings.yaml",http_timeout=60)      
         gauth.credentials = Storage(f"../../credentials/credentials.json").get()
         gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json     
@@ -148,6 +149,20 @@ class GDriveHandler:
         else:
             file = self.drive.CreateFile({'id': file_id})
             file.GetContentFile('logic_states.yaml') 
+
+
+    # get the logic_states.yaml file for G-Drive
+    def get_folder_content(self,folder_id):
+        logging.info("Getting content of folder id:%s",folder_id)
+        res = []
+        file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+        for f in file_list:
+            logging.debug('title: %s, id: %s' % (f['title'], f['id']))
+            res.append((f['id'],f['title']))
+        return res
+
+
+
 
     # get the configuration.yaml file for G-Drive
     def get_configuration_file(self):

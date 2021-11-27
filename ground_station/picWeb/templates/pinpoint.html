@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Pinpoint two images</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <h3>Hello, please choose a point on each picture</h3>
+    <table style="width:100%">
+      <tr>
+        <td>
+          <canvas id="Canvas1" width="507" height="380"
+            style="background-position: center; background-size: contain; background-repeat: no-repeat; background-image: url(https://drive.google.com/uc?export=view&id=1zLAZaQfZnBKc8kXVBMvAkZYg3WggNvBr);" />
+        </td>
+        <td>
+          <canvas id="Canvas2" width="507" height="380"
+            style="background-position: center; background-size: contain; background-repeat: no-repeat; background-image: url(https://drive.google.com/uc?export=view&id=1Yelfi_8-yYINZv6O6zjBsTQgQUBNnSMu);" />
+        </td>
+      </tr>
+    </table>
+
+    <form action="/dataImages" method="post">
+      <table>
+        <tr>
+          <td>
+            <label>x:</label><br>
+            <input type="text" id="xname1" name="xname1"><br>
+          </td>
+          <td>
+            <label>x:</label><br>
+            <input type="text" id="xname2" name="xname2"><br>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>y:</label><br>
+            <input type="text" id="yname1" name="yname1"><br><br>
+          </td>
+          <td>
+            <label>y:</label><br>
+            <input type="text" id="yname2" name="yname2"><br><br>
+          </td>
+        </tr>
+      </table>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+</body>
+
+<script>
+  var x1 = 0;
+  var y1 = 0;
+  var x2 = 0;
+  var y2 = 0;
+
+  function doOnClickCan(can_num, e) {
+    const canvas = document.getElementById("Canvas" + can_num);
+    const context = canvas.getContext("2d");
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    const pos = getMousePos(canvas, e);
+    x = Math.trunc(pos.x);
+    y = Math.trunc(pos.y);
+    console.log(x);
+    console.log(y);
+    document.getElementById("xname" + can_num).value = x * 8;
+    document.getElementById("yname" + can_num).value = y * 8;
+    context.fillStyle = "red";
+    context.beginPath();
+    context.arc(x, y, 3, 0, 2 * Math.PI, true);
+    context.fill();
+  }
+
+  $("#Canvas1").click((e) => doOnClickCan(1, e));
+  $("#Canvas2").click((e) => doOnClickCan(2, e));
+
+  function getMousePos(canvas, evt) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
+</script>
+
+</html>

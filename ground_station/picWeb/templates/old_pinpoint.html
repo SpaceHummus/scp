@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset="utf-8">
+    <title>Pinpoint two images</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}"> -->
+</head>
+
+<body>
+
+    <div>
+        <h3>Hello, please choose a point on each picture</h3>
+        <table style="width:100%">
+            <!-- <tr>
+                <td> <img id="myCanvas1" src="{{url_for('static', filename='pic1.jpg')}}" width="1" height="1"
+                        style="visibility: hidden" />
+                </td>
+                <td> <img id="myCanvas2" src="{{url_for('static', filename='pic1.jpg')}}" width="1" height="1"
+                        style="visibility: hidden" />
+                </td> -->
+            <tr>
+                <td>
+                    backgroundPosition: center,
+						backgroundSize: contain,
+						backgroundRepeat: no-repeat,
+						backgroundImage: url(/static/pic1.jpg),
+                    <canvas id="Canvas1" width="700" height="600" style="border:1px solid #000000; cursor:crosshair" />
+                </td>
+                <td>
+                    <canvas id="Canvas2" width="700" height="600" style="border:1px solid #000000; cursor:crosshair" />
+                </td>
+            </tr>
+        </table>
+
+
+        <form action="/dataImages" method="post">
+            <table>
+                <tr>
+                    <td><label>x:</label><br>
+                        <input type="text" id="xname1" name="xname1"><br>
+                    </td>
+                    <td><label>x:</label><br>
+                        <input type="text" id="xname2" name="xname2"><br>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label>y:</label><br>
+                        <input type="text" id="yname1" name="yname1"><br><br>
+                    </td>
+                    <td><label>y:</label><br>
+                        <input type="text" id="yname2" name="yname2"><br><br>
+                    </td>
+                </tr>
+            </table>
+
+
+
+
+
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+
+</body>
+<script>
+    var x1 = 0;
+    var y1 = 0;
+    var x2 = 0;
+    var y2 = 0;
+
+    function doOnClickCan(can_num, e) {
+        loadToCan(can_num);
+        var canvas = document.getElementById("Canvas" + can_num);
+        var context = canvas.getContext("2d");
+        var pos = getMousePos(canvas, e);
+        x = Math.trunc(pos.x);
+        y = Math.trunc(pos.y);
+        console.log(x);
+        console.log(y);
+        document.getElementById("xname" + can_num).value = x;
+        document.getElementById("yname" + can_num).value = y;
+        context.fillStyle = "#32cd32";
+        context.beginPath();
+        context.arc(x, y, 3, 0, 2 * Math.PI, true);
+        context.fill();
+    }
+
+    $("#Canvas1").click(function (e) {
+        doOnClickCan(1, e);
+    });
+    $("#Canvas2").click(function (e) {
+        doOnClickCan(2, e);
+    });
+
+
+    function getMousePos(canvas, evt) {
+        var rect = canvas.getBoundingClientRect();
+        return {
+            x: evt.clientX - rect.left,
+            y: evt.clientY - rect.top
+        };
+    }
+
+    function loadToCan(can_num) {
+        var canvas = document.getElementById("Canvas" + can_num);
+        var ctx = canvas.getContext("2d");
+        var img = document.getElementById("myCanvas" + can_num);
+        ctx.drawImage(img, 10, 10, 4056, 3040, 10, 10, 4056, 3040);
+    }
+    $(window).on("load", function () {
+        loadToCan(1);
+        loadToCan(2);
+    });
+
+</script>
+
+</html>
