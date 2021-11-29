@@ -155,3 +155,1021 @@ imagedatetime:2021-11-04T22:38
 thecamaras:bd
 2021-11-27 21:38:42,090 [INFO] _log:192.168.14.100 - - [27/Nov/2021 21:38:42] "POST /searchImages HTTP/1.1" 200 -
 2021-11-27 21:38:56,001 [INFO] _log:192.168.14.100 - - [27/Nov/2021 21:38:56] "POST /dataImages HTTP/1.1" 200 -
+2021-11-28 06:57:09,003 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 06:57:09,011 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 06:57:11,940 [INFO] access_token_expired:access_token is expired. Now: 2021-11-28 04:57:11.940790, token_expiry: 2021-11-27 19:52:37
+2021-11-28 06:57:11,940 [INFO] _do_refresh_request:Refreshing access_token
+2021-11-28 06:57:12,410 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 06:57:12,426 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 06:57:12,450 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 06:57:13,170 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 06:57:13,170 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 06:57:13,170 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 06:57:13,170 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 06:57:13,178 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 06:57:13,178 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 06:57:13,178 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 06:57:13,178 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 06:57:13,194 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:57:13] "GET / HTTP/1.1" 200 -
+2021-11-28 06:57:18,568 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:
+thecamaras:ac
+2021-11-28 06:57:18,576 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:57:18] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 06:58:29,777 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 06:58:29,777 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 06:58:35,905 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:
+thecamaras:ac
+2021-11-28 06:58:35,926 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:58:35] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 06:58:42,986 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 06:58:42,994 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 06:58:43,018 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 06:58:43,547 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 06:58:43,547 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 06:58:43,547 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 06:58:43,547 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 06:58:43,555 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 06:58:43,555 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 06:58:43,555 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 06:58:43,555 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 06:58:43,563 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:58:43] "GET / HTTP/1.1" 200 -
+2021-11-28 06:58:46,267 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:
+thecamaras:ac
+2021-11-28 06:58:46,275 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:58:46] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 06:59:11,605 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 06:59:11,605 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 06:59:17,396 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:
+thecamaras:ac
+2021-11-28 06:59:17,412 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:59:17] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 07:24:06,513 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 07:24:06,513 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 07:24:16,176 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 07:24:16,184 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 07:24:16,200 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 07:24:16,901 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 07:24:16,909 [INFO] _log:192.168.14.100 - - [28/Nov/2021 07:24:16] "GET / HTTP/1.1" 200 -
+2021-11-28 07:24:28,762 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:2021-11-22T09:24
+thecamaras:bd
+2021-11-28 07:24:28,770 [INFO] _log:192.168.14.100 - - [28/Nov/2021 07:24:28] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 07:26:19,866 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 07:26:19,866 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 07:26:27,604 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:2021-11-22T09:24
+thecamaras:bd
+2021-11-28 07:26:27,612 [ERROR] log_exception:Exception on /searchImages [POST]
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "e:\dev\flight-software\ground_station\picWeb\main.py", line 35, in search_images
+    img_date_time = datetime.strptime(imagedatetime,"%y-%m-%dT%H:%M")
+  File "E:\programs\Python\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "E:\programs\Python\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '2021-11-22T09:24' does not match format '%y-%m-%dT%H:%M'
+2021-11-28 07:26:27,628 [INFO] _log:192.168.14.100 - - [28/Nov/2021 07:26:27] "[35m[1mPOST /searchImages HTTP/1.1[0m" 500 -
+2021-11-28 08:02:22,149 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 08:02:22,150 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 08:02:24,878 [INFO] access_token_expired:access_token is expired. Now: 2021-11-28 06:02:24.877263, token_expiry: 2021-11-28 05:57:11
+2021-11-28 08:02:24,879 [INFO] _do_refresh_request:Refreshing access_token
+2021-11-28 08:02:25,208 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 08:02:25,214 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 08:02:25,226 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 08:02:25,878 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 08:02:25,878 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 08:02:25,879 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 08:02:25,879 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 08:02:25,879 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 08:02:25,880 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 08:02:25,880 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 08:02:25,880 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 08:02:25,884 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:02:25] "GET / HTTP/1.1" 200 -
+2021-11-28 08:02:34,724 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-11-12T08:03
+thecamaras:ac
+2021-11-28 08:02:34,740 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:02:34] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 08:02:48,760 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:02:48] "POST /dataImages HTTP/1.1" 200 -
+2021-11-28 08:04:39,223 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:04:39] "POST /dataImages HTTP/1.1" 200 -
+2021-11-28 08:04:52,301 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-11-12T08:03
+thecamaras:ac
+2021-11-28 08:04:52,305 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:04:52] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 08:28:47,894 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 08:28:47,896 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 08:28:47,906 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 08:28:48,547 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 08:28:48,548 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 08:28:48,550 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 08:28:48,550 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 08:28:48,551 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 08:28:48,551 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 08:28:48,551 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 08:28:48,552 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 08:28:48,552 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:28:48] "GET / HTTP/1.1" 200 -
+2021-11-28 08:29:03,598 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-11-04T00:28
+thecamaras:ac
+2021-11-28 08:29:03,601 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:29:03] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 08:29:13,726 [INFO] _log:192.168.14.100 - - [28/Nov/2021 08:29:13] "POST /dataImages HTTP/1.1" 200 -
+2021-11-28 09:02:20,783 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 09:02:20,786 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 09:02:20,801 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 09:02:21,430 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 09:02:21,430 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 09:02:21,431 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 09:02:21,431 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 09:02:21,431 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 09:02:21,432 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 09:02:21,432 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 09:02:21,432 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 09:02:21,433 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:02:21] "GET / HTTP/1.1" 200 -
+2021-11-28 09:02:33,499 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-12T09:04
+thecamaras:ac
+2021-11-28 09:02:33,502 [INFO] access_token_expired:access_token is expired. Now: 2021-11-28 07:02:33.502421, token_expiry: 2021-11-28 07:02:24
+2021-11-28 09:02:33,503 [INFO] _do_refresh_request:Refreshing access_token
+2021-11-28 09:02:33,830 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:02:33] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 09:02:55,655 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:02:55] "POST /dataImages HTTP/1.1" 200 -
+2021-11-28 09:10:42,090 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 09:10:42,093 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 09:10:42,112 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 09:10:42,672 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 09:10:42,673 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 09:10:42,673 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 09:10:42,673 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 09:10:42,674 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 09:10:42,674 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 09:10:42,674 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 09:10:42,675 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 09:10:42,676 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:10:42] "GET / HTTP/1.1" 200 -
+2021-11-28 09:12:24,775 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-11T09:14
+thecamaras:bd
+2021-11-28 09:12:24,779 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:12:24] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 09:13:13,391 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:13:13] "POST /dataImages HTTP/1.1" 200 -
+2021-11-28 09:15:21,403 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-28 09:15:21,406 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-28 09:15:21,420 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-28 09:15:22,093 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-28 09:15:22,093 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-28 09:15:22,093 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-28 09:15:22,094 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-28 09:15:22,094 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-28 09:15:22,094 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-28 09:15:22,095 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-28 09:15:22,095 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-28 09:15:22,096 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:15:22] "GET / HTTP/1.1" 200 -
+2021-11-28 09:15:35,647 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:
+thecamaras:ac
+2021-11-28 09:15:35,648 [ERROR] log_exception:Exception on /searchImages [POST]
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "e:\dev\flight-software\ground_station\picWeb\main.py", line 35, in search_images
+  File "E:\programs\Python\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "E:\programs\Python\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '' does not match format '%Y-%m-%dT%H:%M'
+2021-11-28 09:15:35,662 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:15:35] "[35m[1mPOST /searchImages HTTP/1.1[0m" 500 -
+2021-11-28 09:15:48,893 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:2021-11-11T09:17
+thecamaras:ac
+2021-11-28 09:15:48,898 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:15:48] "POST /searchImages HTTP/1.1" 200 -
+2021-11-28 09:21:21,952 [INFO] _log:192.168.14.100 - - [28/Nov/2021 09:21:21] "POST /dataImages HTTP/1.1" 200 -
+2021-11-29 07:42:21,488 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 07:42:21,488 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 07:42:25,908 [INFO] access_token_expired:access_token is expired. Now: 2021-11-29 05:42:25.908566, token_expiry: 2021-11-28 08:02:32
+2021-11-29 07:42:25,932 [INFO] _do_refresh_request:Refreshing access_token
+2021-11-29 07:42:26,279 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-29 07:42:26,319 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 07:42:26,439 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 07:42:27,076 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-29 07:42:27,076 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-29 07:42:27,076 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-29 07:42:27,084 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-29 07:42:27,084 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-29 07:42:27,084 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-29 07:42:27,084 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-29 07:42:27,084 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-29 07:42:27,116 [INFO] _log:192.168.14.100 - - [29/Nov/2021 07:42:27] "GET / HTTP/1.1" 200 -
+2021-11-29 07:42:27,352 [INFO] _log:192.168.14.100 - - [29/Nov/2021 07:42:27] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-11-29 07:42:36,143 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:
+thecamaras:ac
+thefocus:150
+2021-11-29 07:42:36,146 [ERROR] log_exception:Exception on /searchImages [POST]
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "e:\dev\flight-software\ground_station\picWeb\main.py", line 36, in search_images
+    img_date_time = datetime.strptime(imagedatetime,"%Y-%m-%dT%H:%M")
+  File "E:\programs\Python\Python310\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "E:\programs\Python\Python310\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '' does not match format '%Y-%m-%dT%H:%M'
+2021-11-29 07:42:36,189 [INFO] _log:192.168.14.100 - - [29/Nov/2021 07:42:36] "[35m[1mPOST /searchImages HTTP/1.1[0m" 500 -
+2021-11-29 07:43:08,266 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:2021-11-29T07:43
+thecamaras:ac
+thefocus:150
+2021-11-29 07:43:08,282 [INFO] _log:192.168.14.100 - - [29/Nov/2021 07:43:08] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 07:46:46,647 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 07:46:46,647 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 07:47:42,956 [INFO] search_images:experiment:10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 07:47:42,989 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 07:47:43,013 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%2710dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 07:47:43,701 [DEBUG] get_folder_id:title: Open new Jenkins job with GIT.docx, id: 1T93-VvdhjVlhTk70M4hZMC3jldpoqUQF
+2021-11-29 07:47:43,701 [INFO] get_raw_images_folder_id:Raw images folder id:None
+2021-11-29 07:47:43,701 [INFO] get_image_id:folder_id: None
+2021-11-29 07:47:43,709 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%27None%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 07:47:44,118 [ERROR] log_exception:Exception on /searchImages [POST]
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "e:\dev\flight-software\ground_station\picWeb\main.py", line 39, in search_images
+    im1_id = g_drive_handler.get_image_id(img_date_time,"A",thefocus)
+  File "E:\dev\flight-software\ground_station\../common\gdrive_handler.py", line 225, in get_image_id
+    file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" %folder_id}).GetList()
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\apiattr.py", line 162, in GetList
+    for x in self:
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\apiattr.py", line 146, in __next__
+    result = self._GetList()
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\auth.py", line 75, in _decorated
+    return decoratee(self, *args, **kwargs)
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\files.py", line 63, in _GetList
+    self.metadata = self.auth.service.files().list(**dict(self)).execute(
+  File "E:\programs\Python\Python310\lib\site-packages\googleapiclient\_helpers.py", line 131, in positional_wrapper
+    return wrapped(*args, **kwargs)
+  File "E:\programs\Python\Python310\lib\site-packages\googleapiclient\http.py", line 937, in execute
+    raise HttpError(resp, content, uri=self.uri)
+googleapiclient.errors.HttpError: <HttpError 404 when requesting https://www.googleapis.com/drive/v2/files?q=%27None%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json returned "File not found:". Details: "[{'domain': 'global', 'reason': 'notFound', 'message': 'File not found: ', 'locationType': 'other', 'location': 'file'}]">
+2021-11-29 07:47:44,257 [INFO] _log:192.168.14.100 - - [29/Nov/2021 07:47:44] "[35m[1mPOST /searchImages HTTP/1.1[0m" 500 -
+2021-11-29 08:16:42,412 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:16:42,412 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:16:45,941 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-11-29 08:16:45,949 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:16:45,965 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:16:46,593 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-11-29 08:16:46,593 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-11-29 08:16:46,593 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-11-29 08:16:46,593 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-11-29 08:16:46,593 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-11-29 08:16:46,593 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-11-29 08:16:46,600 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-11-29 08:16:46,600 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-11-29 08:16:46,616 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:16:46] "GET / HTTP/1.1" 200 -
+2021-11-29 08:17:34,731 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:17:34,743 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:17:34,752 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:17:35,191 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:17:35,191 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:17:35,191 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:17:35,191 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:17:35,191 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:17:35,215 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:17:35,880 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:17:35] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:19:24,735 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:19:24,735 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:19:32,177 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:19:32,194 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:19:32,208 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:19:32,899 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:19:32,907 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:19:32,907 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:19:32,907 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:19:32,907 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:19:32,923 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:19:33,650 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:19:33,658 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:19:33,666 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:19:33] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:20:34,735 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:20:34,743 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:20:39,783 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:20:39,807 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:20:39,823 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:20:40,515 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:20:40,515 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:20:40,523 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:20:40,523 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:20:40,523 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:20:40,539 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:20:41,085 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:20:41,085 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00
+2021-11-29 08:20:41,085 [INFO] get_image_id:camera_image: C
+2021-11-29 08:20:41,085 [INFO] get_image_id:focus_image: 160
+2021-11-29 08:20:41,093 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:20:41,093 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00
+2021-11-29 08:20:41,093 [INFO] get_image_id:camera_image: A
+2021-11-29 08:20:41,093 [INFO] get_image_id:focus_image: 160
+2021-11-29 08:20:41,109 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:20:41] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:22:07,786 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:22:07,786 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:22:11,357 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:22:11,373 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:22:11,383 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:22:11,823 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:22:11,823 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:22:11,823 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:22:11,831 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:22:11,831 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:22:11,839 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:22:12,602 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:22:12,610 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:22:12,610 [INFO] get_image_id:camera_image: C the_cameraA
+2021-11-29 08:22:12,610 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:22:12,610 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:22:12,610 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:22:12,610 [INFO] get_image_id:camera_image: A the_cameraA
+2021-11-29 08:22:12,610 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:22:12,626 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:22:12] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:23:41,255 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:23:41,255 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:23:44,919 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:23:44,938 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:23:44,947 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:23:45,593 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:23:45,593 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:23:45,593 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:23:45,601 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:23:45,601 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:23:45,609 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:23:46,081 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:23:46,081 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:23:46,081 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:23:46,081 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:23:46,081 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:23:46,089 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:23:46,089 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:23:46,089 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:23:46,105 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:23:46] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:25:35,872 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:25:35,872 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:25:42,058 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:25:42,076 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:25:42,085 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:25:42,703 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:25:42,703 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:25:42,703 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:25:42,703 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:25:42,711 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:25:42,719 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:25:43,213 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:25:43,213 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:25:43,221 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:25:43,221 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:25:43,221 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:25:43,221 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:25:43,221 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:25:43,221 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:25:43,237 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:25:43] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:26:26,613 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:26:26,621 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:26:33,988 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:26:34,004 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:26:34,015 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:26:34,520 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:26:34,520 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:26:34,520 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:26:34,520 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:26:34,520 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:26:34,536 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:26:35,129 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:26:35,137 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:26:35,137 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:26:35,137 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:26:35,145 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:26:35,145 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:26:35,145 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:26:35,153 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:26:35,169 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:26:35] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:27:16,520 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:27:16,520 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:27:21,704 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:27:21,723 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:27:21,732 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:27:22,200 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:27:22,200 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:27:22,200 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:27:22,207 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:27:22,207 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:27:22,215 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:27:22,749 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:27:22,749 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:27:22,749 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:27:22,757 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:27:22,757 [INFO] get_image_id:Found image title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:27:22,773 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:27:22] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:28:17,920 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:28:17,920 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:28:27,719 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:28:27,743 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:28:27,751 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:28:28,287 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:28:28,287 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:28:28,287 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:28:28,287 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:28:28,287 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:28:28,303 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:28:28,778 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:28:28,778 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:28:28,778 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:28:28,778 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:28:28,778 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:28:28,778 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:28:28,778 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:28:28,778 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:28:28,778 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:28:28,794 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:28:28] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:28:56,842 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:28:56,842 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:29:07,848 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:29:07,867 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:29:07,875 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:29:08,525 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:29:08,525 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:29:08,533 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:29:08,533 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:29:08,533 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:29:08,549 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:29:09,244 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:29:09,244 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:29:09,244 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:29:09,244 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:29:09,244 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:29:09,244 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:29:09,252 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:29:09,252 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:29:09,252 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:29:09,260 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:29:09] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:34:44,173 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:34:44,173 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:34:50,012 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:34:50,038 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:34:50,054 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:34:50,852 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:34:50,852 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:34:50,852 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:34:50,852 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:34:50,852 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:34:50,868 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:34:51,468 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:34:51,468 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:34:51,468 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:34:51,476 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:34:51,476 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:34:51,476 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:34:51,484 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:34:51,484 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:34:51,500 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:34:51] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:35:28,596 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:35:28,596 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:35:32,067 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:35:32,091 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:35:32,107 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:35:32,833 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:35:32,833 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:35:32,841 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:35:32,841 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:35:32,841 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:35:32,849 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:35:33,552 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:35:33,552 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:35:33,552 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:35:33,552 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:35:33,560 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:35:33,560 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:35:33,560 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:35:33,560 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:35:33,576 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:35:33] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:35:49,618 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:35:49,618 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:35:53,171 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:35:53,190 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:35:53,205 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:35:53,932 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:35:53,935 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:35:53,937 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:35:53,937 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:35:53,940 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:35:53,955 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:35:54,547 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:35:54,550 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:35:54,550 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:35:54,550 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:35:54,552 [INFO] get_image_id:Found image title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:35:54,565 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:35:54] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:37:17,893 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:37:17,893 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:37:34,295 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:37:34,311 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:37:34,319 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:37:35,003 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:37:35,003 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:37:35,004 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:37:35,005 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:37:35,005 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:37:35,015 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:37:35,519 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:37:35,519 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:37:35,519 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:37:35,524 [INFO] get_image_id:focus_image: 0160 the_focus 160
+2021-11-29 08:37:35,525 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:37:35,525 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:37:35,525 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:37:35,525 [INFO] get_image_id:focus_image: 0160 the_focus 160
+2021-11-29 08:37:35,541 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:37:35] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:38:44,852 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:38:44,860 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:38:44,875 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:38:45,464 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:38:45,464 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:38:45,464 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:38:45,464 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:38:45,472 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:38:45,480 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:38:46,067 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:38:46,067 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:38:46,067 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:38:46,067 [INFO] get_image_id:focus_image: 0160 the_focus 160
+2021-11-29 08:38:46,067 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:38:46,067 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:38:46,067 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:38:46,067 [INFO] get_image_id:focus_image: 0160 the_focus 160
+2021-11-29 08:38:46,074 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:38:46] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:39:01,981 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:39:01,981 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:39:05,874 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:39:05,892 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:39:05,906 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:39:06,447 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:39:06,447 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:39:06,447 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:39:06,447 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:39:06,455 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:39:06,463 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:39:06,960 [DEBUG] get_image_id:title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 08:39:06,962 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:39:06,962 [INFO] get_image_id:camera_image: C the_camera A
+2021-11-29 08:39:06,963 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:39:06,965 [DEBUG] get_image_id:title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:39:06,965 [INFO] get_image_id:date_image_new 2021-08-01 13:58:00 the_date 2021-08-01 13:58:00
+2021-11-29 08:39:06,968 [INFO] get_image_id:camera_image: A the_camera A
+2021-11-29 08:39:06,970 [INFO] get_image_id:focus_image: 160 the_focus 160
+2021-11-29 08:39:06,971 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:39:06,985 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:39:06] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:39:53,936 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 08:39:53,936 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 08:39:56,616 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:39:56,634 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:39:56,650 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:39:57,195 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:39:57,195 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:39:57,195 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:39:57,195 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:39:57,195 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:39:57,203 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:39:57,755 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:39:57,771 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:39:57] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:43:00,698 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 08:43:00,704 [INFO] access_token_expired:access_token is expired. Now: 2021-11-29 06:43:00.704229, token_expiry: 2021-11-29 06:42:25
+2021-11-29 08:43:00,707 [INFO] _do_refresh_request:Refreshing access_token
+2021-11-29 08:43:01,045 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 08:43:01,073 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:43:01,580 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 08:43:01,581 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 08:43:01,581 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:43:01,582 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:43:01,583 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 08:43:01,597 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 08:43:02,046 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 08:43:02,047 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:43:02] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 08:45:06,795 [INFO] _log:192.168.14.100 - - [29/Nov/2021 08:45:06] "POST /dataImages HTTP/1.1" 200 -
+2021-11-29 09:05:15,760 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 09:05:15,762 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 09:05:22,594 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 09:05:22,616 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:05:22,635 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:05:23,199 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 09:05:23,199 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 09:05:23,200 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:05:23,201 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:05:23,202 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:05:23,210 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:05:23,705 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 09:05:23,718 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:05:23] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:10:14,484 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 09:10:14,484 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 09:10:20,026 [INFO] search_images:experiment:1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+imagedatetime:2021-08-01T13:58
+thecamaras:ac
+thefocus:160
+2021-11-29 09:10:20,043 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:10:20,059 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:10:20,776 [DEBUG] get_folder_id:title: 01 Commands, id: 1XQVeR5hJVdwK9j5pvmFHc7E-kzx13hFA
+2021-11-29 09:10:20,776 [DEBUG] get_folder_id:title: 02 Raw Telemetry, id: 12TySjQ6joJzSDYBeL_Ohh9MSuaK9NLKI
+2021-11-29 09:10:20,776 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:10:20,784 [INFO] get_raw_images_folder_id:Raw images folder id:1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:10:20,784 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:10:20,792 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:10:21,293 [INFO] get_image_id:Found image title: 21-08-01__13_58_CA_F0160.jpg, id: 1zqcS0LHsYu-hzjTmFfdKeqQ-2iXBwMtm
+2021-11-29 09:10:21,293 [INFO] get_image_id:folder_id: 1oQd4_c65-IY1q70rIHVqyF5205eVRaM3
+2021-11-29 09:10:21,309 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271oQd4_c65-IY1q70rIHVqyF5205eVRaM3%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:10:21,802 [INFO] get_image_id:Found image title: 21-08-01__13_58_CC_F0160.jpg, id: 1Rj12tO_-EiAFGe396hOJKyHbARxbM6re
+2021-11-29 09:10:21,818 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:10:21] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:11:12,473 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-02-11T07:07
+thecamaras:ac
+thefocus:160
+2021-11-29 09:11:12,480 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:11:12,495 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:11:13,106 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:11:13,106 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:11:13,106 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:11:13,122 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:11:16,601 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QX-YibxmOXUDOjcWYEPJpw60_HQrvJzoi8Bf4CVCvvXLdRyrqh2uyou-Pe-z5v4CGwPlKVBvL9IQkSIAXEByQ2TMFRw5SRAXqZx1NspdPFGoHqxSF1QXWQB0PhF3KWbMnnBbFsrZDIvKsn4a_Xe8TrcNy9oianVVOnLSpv6xr8QnmNsbXHPmaYrqHw2mG06911yAgbFo9nR48egcaQ2mrkDklAixrE5rPgoTVHyKpYSmuT6mHRM1YS7X9Gxtpb-YT08AYvzyFi_uEGV05q15PskEISVw%3D%3D&alt=json
+2021-11-29 09:11:19,391 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RqMt0TAILpTVb85zomgkBnsXvQAWf3IXemDklRogbO80BhSVPenufTm9L1ub-_EDYndRt_89B-80WAsIUhGckeT45XfUHhv85ooQ5EriZ_s5LaVXkU9NwQ9qT6G3rZUFU2ih1_0csb4Dpv0NcnmrlCMMjcMcvmyykWf84iBptdmMQkD9J-qs0C5vlkE5BVDRKjzQpjtvXdCsvW6JLNt4xeIZ_tsI8_NDqLhUfw2l4lx5-Ouwb3w1AGLoTC-IxNtEc7hNgq58ImD7jLiF4XZ1V3szq-lA%3D%3D&alt=json
+2021-11-29 09:11:21,982 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TCafEzQEadPSn3Be_Iq7zudVtMevDCMcG1ZRjSakqNg9ID2HFekoaQnneNIbEo9R-A5ApssvBgAGUXZxyFFpCKDp1TrvW8Jnj21AGggDAeL9AGp7jT0SEMeDJ7iLJk_APF4yzfJgwB7yrbqzuDfAOsAvcvg4yfsUDeMO7YjZ4UBbPTXTj10Isy5_twZ_V9vIYTjWi6zypGRUsUK-HEV5dBVyr1H4-TyYcBm3J9ZgnW5DzT3XtPC6XP7uy-FX4P3i7n424kChI_2DI92xNhm76CEkZcuQ%3D%3D&alt=json
+2021-11-29 09:11:24,297 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QK-ziTU4WuMQ8gPjqd5hGsgX7HNtPu2B6W5-RFtCrJhcQd9UoPxQ-kmg4fKP5uLwg5O2wQdE07MoHVvvaWVYS_xHGZxeBqCdpf9ZLtaiLJCS-53ef1ruvSNQ4HHXDAKIuNNgZzN4okWypNdupAJhNIwdRDahXyEU4ORErkJb33KauTUYeaCPGC7D4xeWxcvOueuwhA66krauc-el6dQ0SwGCtYw8ZZCV39iINKBJW4A5TDxV-kS3O8Ij6PgvLIEr1Qr7e2pXopwdH0KO53Jtu1R-5voQ%3D%3D&alt=json
+2021-11-29 09:11:26,761 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RJ5qXDpUw0_0vudFO4oX7zm-rR-daBgTMhdZoL2AyjSCWhPCkCmCsPqw_UFfwX6l86YGpFbzXofAMCqkJIqvrZIx74JLtqO3gI2z-dQBKaBILDHoxHw8Sdr4QxJwN1TUu14FY4LDX1ohP-v0wuSv5Hj2VepKKuOm0u-0fZItPXvaxFQ_L9Le4XICLGyARy_xiXyg3EcdIPU5DeZiJRg6MhN5IwXqX0TW2cGeOeo_TVQnCWHu8erHjpdI2mjaUzSGne7tRnqsqwVoC6k1Qpfms2_uHoWw%3D%3D&alt=json
+2021-11-29 09:11:29,121 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7STqzl-Sq6vEbFa12-vTEoqYMrIHAG1a1EOh8fxAon7nGAwe73gvBLE7eeikW_Zj_M4ksA0NcsQpBWLVyUQczxLtPcZ3p6i7FXJaSwCuSa_rGR4t8C7T9v8tKaKT6EYYr-t7FA01FMYVsvogHMpmdhlBNVR-TtjMRDgdH3s7JPnW25Y-AaMd6LdVNI9ac1gElH20DcKUvBYYAMPo4buMlRDeuLIuRIgBhCJ4oJsUpT52mJxn4hYvflhVal1MNzeG8FJ_BmKoRO9PygahrDi0YjlQs_m6g%3D%3D&alt=json
+2021-11-29 09:11:31,369 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7R24cTTt52IQCO2t4TxV1EPTtsyjvPD5l1nJNbHWHqJaHCLts_dfOaRLB0eu1bvx-HwcgIyJRvtJ4kZIVmAso2F-tBOmz74mH9BXzP2_MHgKDqK58eY0tJ0N84nRKiQjfdt9E-8Y-5FRV-qwdx6nAzOVqQg30VwPAbc2OSSYSo9D-eNDRsY4yIjAno3O-aGTKZttApTLyLJXZl-uTyVmTK3HlmB6t15lvA0Ka-XHU3v80s8lhLQ5mZcBok3IhnI5HMSREQXJWfILuLSA2P6iActD8D_1w%3D%3D&alt=json
+2021-11-29 09:11:33,725 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SrqZmKcxd0KAr5cArYQEATkrlUZro0EyoVEzSrLRAG9glMFGfheg23T6xBPlv2YqTHIqVfiMvzmwR8QU-Ouwwn_t9P6WKn0BX-4wTPjbQMN3XBcn4CjVYcL0QEXu_4jTA7-GJoYYTLKfJmjDMu_eWTjg6AsrxJ_tQkSDJVs-491Km_PozlIB_KoO-FAI6neARLNtPCCsuxBBOJns5cNSN6XZXpqYO2yhVx_gYXTp7I_qDHksbOgi70aVMtfbEBE2XG-vugPkacXk7b0u7DULiKUJfyVA%3D%3D&alt=json
+2021-11-29 09:11:35,914 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TPFOHvgGUDz4hQRrGEkGb0LSa6baRCyNgqN8oEJU5xycGstPgHWtJDCi7PTsKlWAEld3LBiGEnOyL_Bq1oj0HH7NchGCodmLaQKn1K_7G6YoE4iHEPhUi_WA5B0CMf8OJ4_R8Evhdn7XcuGLTWEswOyI3jTE2RAJbt_GrH6HG0G9M-7jCX_X0FcmQD8Sv6nlKqOroA_FR8P1aywwFaoHYGIJCuVJXnvj6IrBKujAyqkIetgDMlgXQOUrsa7wVbzIfEk8pWquC4f1MhwwatS6rB6feLpw%3D%3D&alt=json
+2021-11-29 09:11:38,326 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SYZokTaj94chVdJMnjq3clFIrJhF8Tymhi5cXD-Lrf9CHLyHorPyeDW8ucFodwDDSoexxpJcrqbMUwV3R-dQQYS5jRCdrMEjl1EaaO6iO9WSvmGnOQtiol9gHfV3tf4rBRxOHLrvdy1H1rkPKReoKv8-uiSAk2qo7R22c8UEL5STpgPnaOTQdgqtJxvqKxFRMaplZjH68Dot0vLkGF-GRx1QrFPGBL0-3P2cIfZu4MqIwgq8Lx7AfSIGKdPQWxsH3qjsR6ACw-oebPKiAUmBCYnQV6HA%3D%3D&alt=json
+2021-11-29 09:11:40,685 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SgHkuErkgIGheBN8f6PymXuCEcKipPNs9sDhbs1g_c4a5rXVaC0nNhtt3NnLYDm_hIEtGKTRI-clSPfJx9Xi-_VQN6CcW5jzeFoxqkMLR3giTfOEPR_lGnr2y4I3yl1F-uRR3tB4N7xAbjPiZOODtNARd5rToxzpBXCD-4H6MRIxll7VsrKhegroZCYlN3HPQZ8MahcYH7qy2xqgLd31B67WHafaPVmVfGDbaNMNzYTQh1mCqLr5e_iE2zJ5wET-8ZStwQ_oqPKCCF3Kc0-Piu2OdyWQ%3D%3D&alt=json
+2021-11-29 09:11:43,035 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7ReBzKr8ddKDluOMJngNUhhMEWdPqNc6t9GOlgazOSGiXCOVyQ3bockpjmIfcqi-QWQzwOIqSorRnz39psdNxz1ZSrO0nuwdwXKDWHTzxNmNhaPxVhNXrwOkjeyYoxgvDHiHQ8iv2E_-8niDhznGrIpIZnuKi3hLJlWh0WUaEecE4rD3PvuKQAu8sop4l4lbwbx1HZYG7JFyKyQfLiNMOX1Y4R7-GTk_NeyzVF_rdf9H5tQu_Tkwc4E86uE6X966C5ZqAecZrPcjmLzE10G8LivUqrHdQ%3D%3D&alt=json
+2021-11-29 09:11:45,193 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Szq6w_2200YQBixNbWW5WF7c07GZBgd69-cwsnXmkWoJMKYgIF7czczvNEg9KW6LVm9u1bVZMhdNO1aLvoYTLVTm5azUXE7oCGFVBCaQMGy_BL9Wgc0ugqbZ4X6jASFDEBkJO_YdXcwXaxs20axoFd0NjZU36juP7Qn7oJmzNBO6j4KFZg6f3Cx8eSggbxPlWIy9J3AIeR6kB_jrpQAITHlgn20fplasWdD0T-OL_ROKvgnCjjbTdHZULffa2SNjNrhoojW97zjknysWJ44bpAHpfeMw%3D%3D&alt=json
+2021-11-29 09:11:47,142 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7T1hW56ibd2nAicxS3Udi-0qc8SDmkJyrhMMoSaO7YrupBwoP1zAdNWhBsapb9No-TA4Nb8-kw3HpVtomQczMYrYNbLetLencAqJMYkb70zMfZvdG6eNq83_VL60ypPYOshu9UJEE7I5j3P0IETKbXTCvPhHLSkWDNYep2UgAw8KCEgelUETB0FVmI04yzq0YHVnEBN4_yr0bpp5Lqc6BruhkKNdUg33SIRTtMlbTOw-hmXHPc5P57TazxLcco1QxiPK_f_L19u4kFfwxljuhdrLTw3Kg%3D%3D&alt=json
+2021-11-29 09:11:49,016 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7T_6amLtc9KFrwmFPFme5bsw3iLTlWvkHi6b3XE0T507QW7g9eL6FzMiJ2UhJjp7f5KQ3QxLvPPi6WGuVvsExVlB3yGkdG7pVQVEOg5Q1zN0ujQZnbv_d4mcZCiBmX3EYGQxoKCXvGfetbMGi2TjsAPu9Vq97xs0iPfqkXmoWX0zkDC4lMhwgSrWt6DaKPtdSIysKMA3NHIaEd7pzJvAUk_uwpwIXcLfAoq5VLH01Ik0l0-5H4w8ZxH95EqvkLntbq65XyY-_qqFsIWONJqCaX_nFKJjg%3D%3D&alt=json
+2021-11-29 09:11:51,053 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QztGYkduipv56oNLjzPE_JvuJMBwdp7UUB1plPWl3s7_jGwh8ejBcCOHl9Lobu-1P8eYScFx_Losdd7E23Qy8By4deKFl61uF0QnGMT-bXapidhlmxwhQPn7eGNH9h-lsK9kZ7VdKnhmB7njrEA-im4lRzlyvxGyYaS5-5vVXYzajddWAiZPxGC1wCIt2ga8qjwQlf-asvRGnQ-2eirNRFgp_wKkckXeyOwhN2MiitqTSbPpw0vkjEgIXPXuRQqwIhjeSXwWPTE-81hXW75I0Ky-Rqpg%3D%3D&alt=json
+2021-11-29 09:11:53,235 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QqnO1idbIQuTDD-y2mmYaEfbVJnLlrAdPGDirfe-yA39uuguTCpuuWQQgDUy6onMl7HYRi08I3FMj4wbJYjru-5h_Ixzqt7McsbsQL1hkiQr9b-v-AebpZPdDYU9_kzUtS60HSgAYoZ-GDROwgC3M1f2Gjy6SHE8PFBDa8CdXhjA5YE0VAjwk4vgCZgdRk9TCB8F0mlJQmWhZRFuEjMIFEwFqGWfTksDrPqAnDMo34BQJ4AoidL6t4hwa-A7xvt73taGgboVgIK027-kJq9pW6QwAMYg%3D%3D&alt=json
+2021-11-29 09:11:55,331 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TuZJpYO_tePBA_eUj-SO5Ul5YjEl4c3qNhTo_C6dKzzqp59Hp1vgjlnQ10LlQUAG7B60_blp56ZOqcDbG9Y3VssSATKjHlFUli7FXyWgMZfTAZ30PFgGL7Nav_ERnydn5_-sY2SG-j3H5VytZpjxXLHpOYm6FCVs3RmM0saO8t7vO8Keb070qDrWZWyYdlzpwXCv6iJSiuAEgikttAYFb-cFz2OArHsU-z6BJ03SdQzgN3b4Ctx6NINf09C1pKBsIWmaJfeT9gGpftyTUY5qsj3Gfbwg%3D%3D&alt=json
+2021-11-29 09:11:57,371 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SF7ReSFHpwXiGHDNRo2-J8ItsTXGPpJhL7zzpShIKntsiQxCo5VCKSe3VZaMfxuSxdd34d8hE2Y8kkxo86hEUOsC_40IiruN8VfppoJ7p90CG_iW-iXrNaG5lB7VKDbPfJDAYmUAGzq7FMI1xRPnTmeixJiyXZ11Wzxd6-YL8JphHuEK2U45n-A98-vM1sUuMBgGBw3dl9qwR2FVwRFxMsGVL8pX7OVcXxmI_sdrtDjGMU0Zo4GbZduZLEnKI44v6YSFfvK_PwX5iE3PsUBUwY2u1ZzQ%3D%3D&alt=json
+2021-11-29 09:11:59,329 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RvMCUcZEb3VC6yuwLlRiYRlBoYZBYJx-ofc53U4SfTGSLfSMziptSWQ54acBMC5AuyCyPIOGw4s-6WmbhK__KW7VuEKmEjjGFQ807GPkPkARQxdHF509GocQ6H2eXCBcC2HhSSUDkCGByH3zVYZVToA0XVwpDA6-PrQKsHqVU0U-i4_7XD4K2CJ7zYvaArwh3h_OMT4uY1Mc4rjn270rbTRNUqUKRWXlKaAnnj5Ln_lqoVKT1JBkPqUN8nBSZcpgz0Kx6LrRChkO0oChmZI5le6hdkwA%3D%3D&alt=json
+2021-11-29 09:12:01,262 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TP1HLche92u28t9uya2vxiE7caCEjzTuZu4b4kTM1Kj75wH7cz06q1Rag2BmD8-GIypREi7DxINgb5ZZ-HFJwbCYi_gpOjDhkGl1y7lnI6nRG8-Vh-D3O-pZzp8sHUA2iTXbumPdr7gANSgGhKXeWUQhMwaSDwPcroZvfhZkaN_sKaHD96kCaev6o96SVjwiwBNuTphMfrhHF15uA2mZf76ghWg5pteucaOfY3TfCJWpDdsBBD5-vCaPuKOINkvN4_AZeQQ9x4rKF9wS3MBs2bwCSO0w%3D%3D&alt=json
+2021-11-29 09:12:03,626 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TW4BnHDFCtCuBVqrz9B4ztX2xowVdPdysSj3chsiHq6YSysa-422-pidvaqKEFP5w2ccoaL09tsg0U7hNB82wbTo5-iTtW6Z27HXkEjliuMEszBoirg5R28vmIX_-tUMWox6lbD-atLlzL0vs0kFv5FAJHwd2GdgcQtN19RFkObTnmz2xx5rvU6xkfa6D6KpZtIi85drppZW8xMZjjesqzzeKkKu9tlIZasOAYyJIkBQMXSC8dNT-b6Cwcws2mfyJjNk1_mZLvJWgqjavK2pESfOGNGA%3D%3D&alt=json
+2021-11-29 09:12:05,833 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SyBaAQAzoRntaIYwfWKZrnFfs7pbv2USsFfE6Crvxowvt93ODbcsb10PXIg_J5GWnsWwjoXr12hU_neY5WA3IHVgmDgExUyoQMtXNzlMDcqiH36sg2V4tjPWow4zANZWxVVGtAZj9I5r4aIemF5443ImoKUHNVNe5dFib2NNy7NzvTuv5tXj4WhAklp3orco1xArQTX4BrSf7ugr4aC4zywKvtjoH0bQ-YYDOhLuOAUiq3BnopP5NUWkYCYseeQIlsbCL3knoOSbQYx6XRqz0ViuGQUA%3D%3D&alt=json
+2021-11-29 09:12:07,920 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TuFCIz-AW0osV3mDYjf8puTeFEg-OT4ZY8gCNErx7MWs_-PKP_0cSt9HUw3vb0MUsgK4fgDUbIlHBJYa2SXto4cZa1kj3VPupgUriwLPXVPSAZgdK2K3_TKPUb1r1Pu2uBxq__bbZ2vyv7iR8s4Pr6QeNYELgQpcc2_DTm27nVEpPZq_oTAU-73CsO_uV4rup5xE9dt646-INKdtqEOBOnYkPuzMKO22SlhKiNXUODPW0VEu5yGA-Cm6SVV1lWyhWDhVDEI3QDhV6cLJrWhtRZuAAdbg%3D%3D&alt=json
+2021-11-29 09:12:10,011 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7ScuypUjgClbNUavtiwtHD71-cvKWbMpAlFczwXEvY0sweR02bLMXUmARywj53S16g-N4G8hsHrtCGA3t1fC-ecwQ3miMxgccbh8tys947o5ymke0XSTBaPvo2xHZ30Oc2a8pIwHnOQzabLk6rDD45SaFN_TQO0-t9jHgfPOMRkp9O76XRkjuDH8cCk8Yi6f50YOsrhc34QXUalVYztu6gBxqjzg-DBBwrb0mlzzAtVj5lveHgcat8LjwFN4nF_mogbEDrx0G-Ct3DXWcUCjCK8zincmg%3D%3D&alt=json
+2021-11-29 09:12:11,932 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Q-Riyj-YhPlgL-u-beCtkr74qTl6jmi-D7d_Pl5Lx4cFhD_x2mpixG-xuAolEZ26E-zh7B1CGbdffXpZ2TMyIFsLKTMk5qiu2tm1JtaafMvYyV8UcLPEFOWaw7bgcEpGdGUEwOEs92fip-1Rs5qJvsiS4YAWmwh5_6Wcu7_D-nNK4lAalh9D9NgITLNSO75vqhpjePzPi4TOQ-BueoKHQxfB3VFxcLrJ_hfRFbTmzzV30nNascMMDdzwH3ON3g1pSpk2ykcKsqF2laSuxuN36StYEOPQ%3D%3D&alt=json
+2021-11-29 09:12:13,831 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TFmii7U5Fgg3U-RVshyg5WH2CnsZILFFc3R1k2IatB9ncysDS4mrAWn2YvWa4VrkCCKKVvGMqoQm7w8PKzCXCVb-aXFYp5L44H0C4MiW7qIx8Jz5E79EvXuypcEzUQcCrpvHLgK2A4d5k_VbBjgUXmfYyYZZfd3LxxxlfrPAujatOhf5zNmpQePGd2t2McNSbH6rIgzlN_tKjgeKsOUh-Ojo33FKqHzg8u13xbOyx7tGg80n9F3xf6O8Dcf3FY-xFEkYmwAeTlJBVDEy3JuJcrhkWK-A%3D%3D&alt=json
+2021-11-29 09:12:15,909 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7S-IX5n61ZzT8JX4Iazm6DRWXVftmTkSTwsdORAh_zAPI7RfZJS3oh7Zj-K1qi6S6XxT5P12wa7xco03Ibrx4VWZj3DJSL2scThblt29DgFFWqd-wFWzKb7N2RDLdP56K_Gk9m3iEURe8dmy6al2ONWMvrkDBcbYHejr8vg1X0atFREH8qHtIGEOv0yWHnsSMjxoEYpb7-HfkuhA8EgXObK3zEP4-Dzm-iePwj1AjJXfNfU0slSb-1-zDuD0xF_eszt4F3IJV88Up7jjcbRXJaQG5CF5A%3D%3D&alt=json
+2021-11-29 09:12:18,133 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Tm4e1g2QpmRmzCzPxQUO8nvkXvw0Xphfg2m2lw-RouHIi009HG_PXE7uaIRyX0K-46toLDwsRtiR1iGuQv05yCt3x2CTFQw8nBDvHwCDdTRHs27ZYqYNSpEXZ23UWQXHuYvaTFn2H4vKZhsYdFwewcMT6g8zzgk77qQ4xDVsWLA3xOfBGZOHmc24wLYml0SrteQz-MyPbRoZS1LGs-t1NclHC3zRfdILNDuxPcuu3_uINqNDGwkSr1ojAbHNYI5HUq4vq2u0KnWi2wOXdC2aQ9-isXKQ%3D%3D&alt=json
+2021-11-29 09:12:20,033 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SDPAeS3JeEmPsWoD1AJcgHujX1CL9s_o511v1gzDHxtj_o0-fSC4yGTn8YOzunjh7T5pcUEGeRQySCLrjt64Qjj4Dl2Pu-bGxstVtK-tLZTz1_Fom0Gu7c5BeLLtdNGlwcTlSHwzrcMQsbQt8UVCnI8hbKxLotROOvv6iVNzgSdZ91xmdJ3zO5AG-v19vZaBTS8aIYNqBXuDzMRX1fH-wNYmfR4F7GRhc14jzXGgE8T_JLPCG1bj4DoRBjlCh6F9rYbkR_9JnHKH883m0YKvh4Ue-qAw%3D%3D&alt=json
+2021-11-29 09:12:22,051 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RfdvAAYUJLnX7l_cfql_inADdatN4Jt-lkSSdLP5VBIg_yiuWtuUqjn233vLZFvkV4rtzPwBzExMk1SDBRknSFlelkhOgeI2fVM9BYgf25s0Wf0N9gg9a66v2gMMyci2xyO9y18RXi_gn3hu7sG2m7TMrfWwWeQW-rpkcVamsKLDJbHAcfok8a40QbV_XlknKnIwDwDZztH6V6ofcGbQKdBiAAlJyRmAcl0ig80UN9iTjfsGgOxrzynJcf_etogzfhwZGN2LTpCtC3YwwxKvYH7Q4vjQ%3D%3D&alt=json
+2021-11-29 09:12:23,896 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SfJiYbOseiZH2CpfmN3DC0BD3M28R27NOrETV2PyPNLhH0qrucMYt8CVDfUWq8tnieTSv2j_qGLjNf2aefBJfTYIpx3BZboosgfdbqBU6PxlPxJHu7bal_12PTO3B4WnWIwqUV-Ibh9vwvoENC6z2hgxbFXW_6Xbou8QWgGwiNdvuBon03UBTkGrozm_mShIorDUOiLVE-bXEUclqZ2IHAZ9J0J5jPt4XSVuSWcF2EIR272MWQyC5iv3v3w3pZVCIhDtHfk17QLgc9WE57WSJMg4GduQ%3D%3D&alt=json
+2021-11-29 09:12:26,271 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QFddUJwkEqqWP406SXtGjEtw-sSDQhOFVZz2ZpdSSWFOe8cCYUo7Z55MQ2gIrVjhqsKDCGABxQ7pIpOaWukjI7XuI_LSm-0aHZHLZhlSrvafWYrA3ztqXs6-YvueqROrCGY_yDuoHanE29WS874TuiYe4eMEEuiuARfzBW0rTw7p2pcFB2KI-L1_UhuYNze005-W8ZwnK6KzdQlGqq278v-ufGLddD0vjLdg36lTjWwkiiKYkNbEAyf6HNyvEdfr0KdNqpdNDaQpts-NFfgCYcLhA2Iw%3D%3D&alt=json
+2021-11-29 09:12:28,326 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QrBHaQobkKwl_-Qdvu4Dyok36IiZ6ZyZhqahxNxdBl0qZjG-drW8J5CwYLF9Q1KQazKFpgDQwV5FGX3_BS5kgBN2yxyV4sgxnkEiCZTVEQuf3Tx8c3ZrcKS1QYcjzil_Mo-7M_ky2ydpsQtE6Gya1jsJnZ6KLUKXjkc6ws_P1u0JPUY-QynPLfEE6o3iOJVnVxS751IN6Gane0rXsbUM37rsuWNbDcdzFPnKmJNMp41dfdrveATg5HBl-rADbYvlANcWNMZmzrXxvvXWk58jTr6LoUTA%3D%3D&alt=json
+2021-11-29 09:12:30,349 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QcuHftb_C7zAEtrrhLUJVmmX2nvV3mOskuiwV29hq0MuvAbtPMJjzj_pHPXpAhTJJQd_Yn20FCU1W_P0_fcmnghiZBtV4XUy0OuEWR9lw_KkLdsf3khuZ3pSetWLXeAfPQnGMKOdkBhslbEw97ezfPvVzZemB9W17PnRNWnBl0GAhDhEyxpSJakBQI-EIdzyCj-yJMS1EmdSLUTmaIbFgPKDjhFUg3pMCg590w2XtDNknfzOu4JS3mduJaSs_wpxrww7xLiba7vYnK4d4a6gytW5u3Hw%3D%3D&alt=json
+2021-11-29 09:12:32,511 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RArvSlDFhMAlsOXAUeDSICPLi613PtqyomAAPMjq6xBaRWaTl_fLAXeHk1NemZ22Ty0yPgpL83tmwx2xsnwqdXQwgsYXfFEd0O4V3JAYlbdklIp91MjKRvmGyLdue0SMaug4rscXwTSxo0KF5DBlxGHF0OuHkF0gthqoXnLnAwHr4K9MddthiDOZN4R31vLbxwe-hsLYmIcDimFtb5x3RR4px-Fis2Nga0UZBL95esmy1WTE2uNjPdUs_JdBo0q9sktZedGy9V-g2IfWC9gL1TXBQjBA%3D%3D&alt=json
+2021-11-29 09:12:34,524 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SxLgzpFSGkCwbkukh942CWboz4990Svv6RBomjexK8IZecDu3SMWeK8snP3SJPD2BhsstoD9SzlKuAxLfY2vlBoFB7PvEESWDGwykVsOAn7Wc0i6P0MEHm1yKXaSHjXHsf3dZtn9PaQjkMvCcVK-1EnzWJfugdJJ9NvsbTUbUBvVE5JaRybz93GQgaxrcE9sKcUHwzsY81ZNCl9MQ-5n7ixR5ttYsbOSHBs-IgZznMuPBMYPyr_LogCrerGMopk3Nn9ndmG2O-nbvtzN4bWVScu3iJmQ%3D%3D&alt=json
+2021-11-29 09:12:36,976 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SbRItzYzdIgrc20ClaEd1DwAAoIOoQQN5j3oYGM50TtzUJgT6vB5hwJ04x72Vs-sVOA-za4Vdqy2EirPrAU3oeo7XseYI_rYUTuCIdBSeKfJaEk9XfZaHkFR-0QkowwL-tlE5yU0sKyo_MmMlQLHVARrz5KzRbmPKcvwZstrW3mwuFaSRvcjUe7oESmEcm1hP773svwx6ulBIGfofV29C78OWoBiuO9GQkI1EURHQFpYDz3m0XlwVi3wAL6tLl2lRQzIaZszrkh-DJEmI9dZnoiqhPTQ%3D%3D&alt=json
+2021-11-29 09:12:39,021 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Rkw6gT1ntzk3HzSX7tLaotJivSdzLsDd7daqcAQYA6QrFrNs6rW8XxJ4sujx9Ez7WZPJCYN2ECu0993e6kK86xoU6h31E20M8PN-bi2jxrfpG1ilHaXzn7aHe7BLnhvmtFW_YmCbXtRKOdiWjFgyTR5_rmM_36iS_Wgg-G9BLEIilrClwj-ISzHH__hmlLC92lJz0sJouHRRIELyCxiomgzHStNRJWmwy37nn6LiNZcyvjHNms3YJ0Xuy5GStuHA77tNxuUsUqrIruDt184hS9zpkMSA%3D%3D&alt=json
+2021-11-29 09:12:41,214 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SV2Hh_NhnJjuyP6ue5_htD31Ys1WUViL93XVlrI325RL7oQbaEz9TJhrEIxY6TYdu8VjKJDJEoVPthyZ4q9NNH_58Cy_bDN4H6L66KjU1H6rQiReJmSv_2NT6apAfWH2taVM0Bf-Zo4br3ZeaBu6FpFb5DjiWum9PZNN9OMTfXnvsR7H-zHR6yA__GW0oFZiiDS7OLw_vOx64FYOfUSw_UB7HQ9RZKY4lpp_QFEKrhBvp_3sOmQT6vBG-2b72bTcDG1jpS6tlAOWb3liNu8AFeXvCCBQ%3D%3D&alt=json
+2021-11-29 09:12:43,142 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TZY5AUjxwVR1vogdAgGBeFLRHckXHHIc0SGLy6qHxGuAkZhEekruuR8ayAr-R9WK_pHHlG5Wb8FXpATrgNmjxgmX6zpu7W2KOCAuFajrHi0VLSj5AkuJqUya5ww6Q5xMn5WHDu66kCNPBHQY5hCnLA3qHGC09-HHpeOYtbfzkZOUrdq6hEyO5ftg3-gimnxm0KvUGFQj20ZhlwIG531piXORUc5P2FtOORTyJlfeotPEN_a6uaCktoPBi9tONF3_097a-j0snhGpYkET6swdKD0EDvaQ%3D%3D&alt=json
+2021-11-29 09:12:45,004 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QYY6-lYE0XIQRiVssfk3aanLVe2iWdCsVW2DmEl97MxCJ4X7EFnrsG2bvFUeY5SiG81nNotP4quqBPegPepacJPgORrufFmhE30PSY8lu4Bo-Faxsh60fuSaDq50QQ-nZ4afmdAPRfNO1Yk5TY4wpIWzKYqwfqEcwHMcrmPdHOZdZncNmscv3Vg7CgQbUERUH6pFBTlVHwvUoBgX2FZKqp0Qk29qbOhsgRhyAYPP97lV84Wae8U82v2qSPtDRHCSzRiXdGVekHSLRSfR0kmuvh4hG_tQ%3D%3D&alt=json
+2021-11-29 09:12:47,057 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RmxCa8bmMnUp8lnDoAtUM4gLssArVldas8aSB7sM2zFyZLuVijVQiH8JdwU1qyFoowNCgy0Euce8STlcrcZwl4hCIK3hTcfKbEPVFw0gYk41tbec5yHv1vGTttn6ZZpM0VlCojKCfVw2ydVmRsBgJ7qvkQehpq7LJI94jjZ1umnPhgntbOm_ZzXcs5Ycjn49Ol3WD6R1D28zqvJWoEKpPqYaPp2G-8DEZ16htdYRqDhEZcjHom-2FSPJfF9lah9870p7ueOCbz9RVq_9jaZR_l6wgteDsb4MLaiWyovgOg0om4H6k%3D&alt=json
+2021-11-29 09:12:48,995 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SXPz49uenGvWqQPhV1fJpR28YTFt5empwIKgcu25022ZEREpcZXy9zHmcGJy-yXKdxuYV3i9Dx9mM_aoKrj49wgvIvlMDRN6k6ugEpowzDL7CXiYSP1hMtCVvI2xGQSuoQ602Q2dLZSVjm4fNHWZ0aoO6tnGT9Jp-9nk5ITCsHLmHwBjIdJOg-ruomgCc9YsIbSTkUch7Fy0W4tTWkpKe0VR9kE23zK3l0rTonke8ECPSYVRwcCQPBA7OPvfA7f61l54KGsc_Kddl-QdgVopjgwG4Tng%3D%3D&alt=json
+2021-11-29 09:12:51,346 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Qvfjdim_jtpLZGHl5h6pCtAzNjEhdiM-xRs6OYSJ-GwukLxU6BzrQ4KtWjH09v1Cw_daVx5PrjDlsbOFeR-W0xsDoMnPkG1iTF72TTGQORgdenVY18u3lx3ovTaOpDDc-m3Mv1y_8968iE0vg5h4qntaWVxTA40gCkk4gNzxjTGlKsIz37zuy7-Q3q3E4e1ua6AQtGIntM7UV1XBCiHFGV-nO-FQoSXcBl2_EspuYrUGbRDke56wz3_kjR_PTPa6R-kbEXJNgTDwVeYTajLxfZOMd4Uw%3D%3D&alt=json
+2021-11-29 09:12:53,834 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Qasd--20Yns2dUBWv_FKXWp0kDfZHL6Zv8ZJ5MesmeQKXuJWz6ZNNibTiz26STRq7osR9o1jhvbC5lwb46g0kMDIH6lg3xZdzlktNhyW-zQ7ynqHD9KVDiLKoZmUaKv0-cnp0wbmmvzMy0uXFKRezqRLik3ECxV-0WK70F4si5w58sell7UkYiwg59TvZvIQQymUK07gFhNhR_ZG1GN7NySa7s2_Igt1iDITJRjdaXdt1b-KvOc0_wxPog3Z8xAnGELKFZAmlfkxpA5eqPNajdqyfJRA%3D%3D&alt=json
+2021-11-29 09:12:55,855 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SA-lau2ihV7lANqTYo60VuSqPuq1VEE-YoTmhYkhKAlWL7zQUDGTSOtkdAgoZKcS9GTRlYmNOAtkycyKRID5FfGulLBX9W6zEEZZ5tffpb9TO9e32quAunf-0_Jt9hhshVOLpE9jDHBRRWnvoPcL9zXJmA4-HeU1vW6NX5EUBn1UcgEoMI6kE_5hNmKWXZXqlqRRkN8PuvzAvzLbVcv4pvaASQ-JwyQu68daGlZni3VGYhyy-JdVxEax7nlcYXobZlaX3Df7QRFIFq0MEQ6AdtE3-PbQ%3D%3D&alt=json
+2021-11-29 09:12:57,828 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RQWtbBwjAB1Ys7Folosb7zPQn4so7wbN605n8APlCMBpEu1VXZ0sWmi8nAo7e0cwoyL_JQ-WqyrGxve9VCYZw27QXHcQm_JB5xuPn_hOkbHRklUwuhtKmHg8Rry8zh-LXAKr1XJeI29ePb4iCZX5d_JjNU6PVfxrxvz6fZkIeqRNjeVPS1oHPYmLHjygO7Pxm6RXLAdzQisoHyRmJoL4TSArMl36hM18SBaBftQ1_W_Tf4s5cR6GiWK7DqPO9LNhZ6rC1c6BNhxVR08eTC5AJL3vifWw%3D%3D&alt=json
+2021-11-29 09:13:00,045 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TRhmSedfndepX4yJuSeNv6I-qhfE1tRE81--6rtD_CeaLyCWxkMBX1TZGAkssoAaQHXMFv3Wh5HCuGc04LnzCruwF2nKRflYWCgE4uT_fPH600gZc8uU2T6C3ViJ2NzZMbK6_H4ejP-BcImPA8get6Y2-5hKNmulCgZNqln6x-pfnuer7gqqQDtn2oGe54vfHpk41GbbXlAF5nomJM5QyyBGumZ-2O5dVCYhgu5kEc9qERQJj_cVM2J4zJsnEBQUBxmZEcNzqUqdGHOjE-IbSmUKXA0g%3D%3D&alt=json
+2021-11-29 09:13:02,297 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Sho3oignX3zQSi_QiU0093NRByuQiiLRIFj89zuS281v6tgZhAgM4oHNnY2lmacW15Rm2zq0ks2yLUKJkF0rz13wxu64neegbVEbJ2eu5Z7y_emPhv3kpjuQJlKwKQ6lc-uLBo3OPdZt-KDVqT2EL7YQt5U82woHOTVr_cAoPUwxyUufhh88LbtBExnIyFRQ81NQgzhmQ7iuRuyEJ7rUtmANEbN7hHxrRn7DLwce_cifeXr-ccdswIdGG_6sy_a1pSmqsQ3cAuAyAwGwoYRkAMSBXenxV4H75OKKm98QJg-2kSldQ%3D&alt=json
+2021-11-29 09:13:04,714 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TxqtVNJvrzF8YvwyN7cx7Ljtwx-QDqkbDN1BUVfhFntqdQWTamO0dh3pvJsYUPFlXwa_GODjBG0BfJr3npAmeQovy1_yWkV_wnesf_NO7p8BGCCY7rTmPIGnpoGXjNeV02trUZYQPdMPz5cn_vytay7wsRjipzhWrleDzrzoi01HRsXLhpqP9jlXaeFdS5ZXXV28wMGx_tjpPd5GTQ3KtzWtZJSGue32iXqlcdQ6cBpCigWhsgWxjEsg3K_HVLQOoLLk8s2lSMQL_NhSmVXCU1OY7zaw%3D%3D&alt=json
+2021-11-29 09:13:07,138 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7S5Dc7Cph0_BwtFsiL-DNDLYHbLAI2VZtEfG-MAHdQpT54vSlN9rFEXsocnlm5pk4r5ivMAO0FcqTorC4-Z0_-U-H3HbY9u6Nm1Y2d9JuzbzvPPrZsKCDEdZhxX9FfqyeM8ZTs8VhcNwd2QfMd6kqb5m-S7LbmSP7dFxT5Z-6v-9-b_pGvDWpbFfInvO_ZEMzfUV8hpdYhzjnz6ki135BzIHtJhqHbOeVzXPy5aBgQJmfJe5jVoS3_iyQBPWZemxgIonzLTSFIvokBJZhDf3crZYeHFBg%3D%3D&alt=json
+2021-11-29 09:13:09,357 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Q1BdH1fLOIOOwVE6f60FsgiqG5AQzArM2Yo_hF3HIvGnkAICKhsCaTAd0_2AjgTLLWhkr53P-o6LGxDLbG82k6vo9ZeCCe5eCsgAd7VPIAoch3er7KNrQPvct6KFdVW-MI1Xj-0gL-YB5rCeiIIeDMFGodSd-HVb_7Ecx1tDFu9kjaRv_jwFWA-VTyQ5VcssgNOVr5mevAzG_VggrYuhD2ugmIgManKBKbzhMdo80OoboP3THmc0FgWqsDJxAKK_Pvx6zDUTz11fDl_uBCeN70vv0lQw%3D%3D&alt=json
+2021-11-29 09:13:11,731 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TVd1lW4hV_XavnmB7tj_KGIIn0oMn6k-p2tg8AU5VEtFAuJNt85kmwJ_5T_vgnzJ3Ra-Q3MBf4I8T807fVlHfQVjlxZ0nEw16n_I63aSpVSDSsp5nPFBvP7wydShZk7SgIRvy-w7DdE_hUC-Nximc8o9269c4UrXo7xGofkgxsfmhKkPUFFYvAYOQz--ZuOsb1vTu0cePl_JvzyB76MBiELv7kCMGUrvYB7nKqDTEtW-40LZmpxYa7F6UqBPWyzbXOQonXGJZqwGV561rS0StSzzO77g%3D%3D&alt=json
+2021-11-29 09:13:14,103 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QTjAha00CaasmPD5bMyS6UQhlxxEViN8VDuNh1f7XqX_g_KpSpJin_8-2yGpfmX6EvPti8xraWfKovneZMa65lNgHwfmm6jx1Lhq17SJRalu2lxivbjNPcd11mupzwfrkx0xQLwqdCZ2jJfu_g9Z2DNhO0xZPjq-VZkxBDjEUWrwhg6Ns_9qv6tmc495Ei0WJm8nydLMHJNiRieCM7Q497kv8v-vNgDPoQOmb3z_u4AeJbOJc7L6eWGsgCNhGj6xNyQ4hZE2O-_-6BxPBPyWfDsg78_A%3D%3D&alt=json
+2021-11-29 09:13:16,352 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7REzPQVbfR6qQJkQlOXdRb1jEXEBkxWd4BqVfAjFgioMtzw7wFELBt7YLBShHeSuawLnYC1npojAb_DlGAB9msbGgGAjeKYjrscROjsFLYR_rs1AEsBU2w7Qc82H0qf0C1GwnxXGC6sVLRcLkhakiwbdq2rWBFhwAq7tkHrkUg8N4kZNIJKzw9vbW_ywIbEbqgbRK48mRemOPVu_c_YEDkhlFetvQfHYdJz0dwefWWtUuySkfpR0nmwwIs4kEbC2s8G69sdjSRFJP7gIt6eCgcQ7xJBAA%3D%3D&alt=json
+2021-11-29 09:13:18,856 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RI8QnkiCUmyNHn6WCXOjrKmHdHMy2235NC9uKpdLI0b_ZiNjIELqm5X5qAyG8ywyzrxdP5XnCGJmEVSC1-Y1ijPkpvIXxGsUbjk9yLIclGW2yI-wQXcr3Qw3r7G8f7dQ4Gjn8UiUcJedsPAiDc13JffSllM1DbMzBP0sWth7qYjF3xliq9bDmloV_ZcWKYnlynYKGo1LUQKXdv7FI3619s_gOyargRkmwkjJkRCEV6l1TMcFJYBPgXApYKQzhufgYmVEUPYRy8oiGRftPVfRuZV410EQ%3D%3D&alt=json
+2021-11-29 09:13:20,945 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QVpWmuPyeSrITCAuAao1Th0Gvgey-mWylDIwX1VUy-n2wg3MoNt1kuhVs4ptON-TZF945gMcKaOqCFAzubMt_Q21U1xmuzuUd1d6uG0KilYv9TOCElFlsv3S5Tc3nfsrVC8iOym1H1xKeR6ke36QBnmIiQz0b-0TKwMVyfQLzlck9iKP6YMiMpHy_RgL7T5JKPxni-xTwTQyuuqOK_KpYcU4P-8GzIKSHixibkRXdHiuwPGSPDZ9Zyg1sQY28mr8TFSnlFatceExzP1HiV3Um9aW_G_w%3D%3D&alt=json
+2021-11-29 09:13:23,002 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Sef9NutcbRdPwb1QAjcj_QVQb7opGHHOjUgWuaptzvDWdFhGX9WavYaRE7R4nNhVRejaf9H1c3xDOr2WKhxQjKlGsdFUl6mGJCF-hUwNi39tWF_eHuMwv8ItgsgXPQCVAa3LumT0q13qNN5f5XULRFimFJeMYjkz2oeYiSC-vDicvNvycz2qiplQPUdRpXlPKfFmDawu-7zvfT_URH6ympgkBPCgvJyEVtHNUddZZsdr47fQtw6hO8Y5NQNToVh0kbrvPbtWgNiBHTo0GPn_WUip8_1XX2sWH600cKHzMOGrgsI2o%3D&alt=json
+2021-11-29 09:13:25,234 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SUkqPm5YJzSAgr2DlEwG0N4Ifmj6tVMlKGwjoLiDNXp9m2nYcyuJtJ8L6SPolgN4oiTQKi_Hfi21gxX6RJ8gN-xBb7g1sZty30JAE9j52mb_r9MuQFb61ib1_feZXzF5vwLmFL_3uZwAtJIxqWl2sZqYGbkaQO5SpvOpX7gD2IFBc1JZL2QwFMhJPC6DbgNMizIUJeR8qayyz8y2ko6ACdu6bHPBkIqkKQ_-q_vU5KA9fYGRbgSKaF15gQKksqtAtU-UA5f_GNgAGWNmZEVbFDXsUpsA%3D%3D&alt=json
+2021-11-29 09:13:27,387 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7R5c1Nn9nN4C4bEVWsZiFT45tkVJVf_IgEbVJff-pml7-lkK-Yy1PAjD0FYUGrnWpAHr0RUbsS13loZi5pDhYwvVbCzT3reohUQxr9tKxMOCH1Cf7Zq8NfVEf7D9VV0QhOUf_1F2a8ggpUgvXd5af6tZkvqWha-tBFkW3UyZuTQkyfMDC_RIOKA7zleuepYIXLGIks1Zg9VWVAloIxe-sZHMc4DWuvZHO5BIiAk3rbz20oh3Kq-j8Ezor9UUTGUClkqPp7BR5Vf1YbVVo0K6CBFtl5-NQ%3D%3D&alt=json
+2021-11-29 09:13:29,488 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RV2tlB100fR5iMqLA_4Ork2fx_pJptOncvr4hXfl4Xp52O6c_TNui_iZmhp6JrEC4AsRsP7-8Mz51j_ERxzns6eebB9OjQxluFAngcCXSaDPRO_qm8I14YqCR5IgXu1U_QiPm4atdLP3YdaVj8Shnod8Uv-QVQfJc97hWlcap04yjlw9OTS2N4nm_g71meXhtcsCEjK8XzUW_on9j7SWFCp0gb9pkO8RYIa3WNO9bdbc1LOJLo_W9v77R6O1AoISIJ3C-jvEgJYkqzSGQIQ85Phk284w%3D%3D&alt=json
+2021-11-29 09:13:31,678 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7S6YJPmY-OgQQMLr6EDKNPogAW3-pDJ3_ojsBDNwP22CniuiVWkxq9aEpNfMxJS6LCHWDpyGgr6vzxjGRyos73dISJstrDX4brkDzHUeIDXCLHDxzYa58puYcMpiN6o_CXMQeod2Md1cjTxUeHpNji2vZpUr2Dd3IwkR0R3MUsEzcCt5f8w2tNYKQgRzJeMetxGcQrKK19jx5JFXsoGArZvu5hXK4W86f7NQsnKPPCM23zWx8oCW9kVwU9U1zNPFJZtA5SnNvwfgand9g0sVK6zJGVJVw%3D%3D&alt=json
+2021-11-29 09:13:33,931 [ERROR] get_image_id:error chacking image file. Error msg:time data 't2.jpg' does not match format '%y-%m-%d__%H_%M'
+2021-11-29 09:13:33,931 [ERROR] get_image_id:error chacking image file. Error msg:time data 'test_small_light.jpg' does not match format '%y-%m-%d__%H_%M'
+2021-11-29 09:13:33,931 [ERROR] get_image_id:error chacking image file. Error msg:time data 'test_small_dark.jpg' does not match format '%y-%m-%d__%H_%M'
+2021-11-29 09:13:34,131 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:13:34,139 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:13:36,171 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QX-YibxmOXUDOjcWYEPJpw60_HQrvJzoi8Bf4CVCvvXLdRyrqh2uyou-Pe-z5v4CGwPlKVBvL9IQkSIAXEByQ2TMFRw5SRAXqZx1NspdPFGoHqxSF1QXWQB0PhF3KWbMkclvo7bkVDNzVvMHwQw3CZuJ1d2UswZeSHsxwCyKJZn06ZbTT-Wbrjic9uPnhvEoGe8lA4PMbGimnrCKRWUL2RjpGdFkTvjiT-7-Iqp4u3PFtvpAi1-rw-eBdMs9IpKuywy2GZm4T_qBnxdArFh0WA12IItg%3D%3D&alt=json
+2021-11-29 09:13:38,349 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RqMt0TAILpTVb85zomgkBnsXvQAWf3IXemDklRogbO80BhSVPenufTm9L1ub-_EDYndRt_89B-80WAsIUhGckeT45XfUHhv85ooQ5EriZ_s5LaVXkU9NwQ9qT6G3rZUFXjB9JDMBsDTRGIa7pBy53DPkyZG5dFSqWxwuupxOrdJBqa8E_fbYUP29thwBgRfT_PXA2h5TwwoYjsV2eH4x0OUJnqay4fC6fzx_Bs68fC--tribcc3oY2PrHpV6ICS-bnFMFWUNu7dQciiKVr1sTfZFJbOw%3D%3D&alt=json
+2021-11-29 09:13:40,479 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TCafEzQEadPSn3Be_Iq7zudVtMevDCMcG1ZRjSakqNg9ID2HFekoaQnneNIbEo9R-A5ApssvBgAGUXZxyFFpCKDp1TrvW8Jnj21AGggDAeL9AGp7jT0SEMeDJ7iLJk_APETvQ6szG-SzaF6uta4WQYSgPzcgk8omxHp-Kfnc7JiJ4cK2qPjIPrYKYn33c9xnPpUWNA5YB1MMY8kPc9hMXCoc84vjV9WgNGt5FkHPX4KpGtrL3gWEk_k2VDrb-UjWEZMfCR04bu6r8CA_zA-uApnB7DRw%3D%3D&alt=json
+2021-11-29 09:13:42,550 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QK-ziTU4WuMQ8gPjqd5hGsgX7HNtPu2B6W5-RFtCrJhcQd9UoPxQ-kmg4fKP5uLwg5O2wQdE07MoHVvvaWVYS_xHGZxeBqCdpf9ZLtaiLJCS-53ef1ruvSNQ4HHXDAKIswCk0MB4HNmfuBPWiQP6XZYq-6kzh70X5yAvjo2ngWNWqk8iuTknecdk88ixVO_6CKw1-VlaicB_ehfQ8_oseCx5Fmwrnl-NguAXGt9ll6g3qEs5vOQr4fLo4Jr6olnqc4LtOKky0VHfY4cE6UuKQmGUZllw%3D%3D&alt=json
+2021-11-29 09:13:44,476 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RJ5qXDpUw0_0vudFO4oX7zm-rR-daBgTMhdZoL2AyjSCWhPCkCmCsPqw_UFfwX6l86YGpFbzXofAMCqkJIqvrZIx74JLtqO3gI2z-dQBKaBILDHoxHw8Sdr4QxJwN1TUu_ijRXd5Ofc1x9K1lwEaheVJVakfzyV8eZA_WZ7hc7YAvxf9b3uzvFxYB7-27PNPP9wh6qnTTgly1IZeevceBqVatPeeBD7fge2is80Mn3MtFZRAu7YIQUZFHGekaYz2fHmeI97cP01zxyew4UsaXtB3qR8w%3D%3D&alt=json
+2021-11-29 09:13:46,240 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7STqzl-Sq6vEbFa12-vTEoqYMrIHAG1a1EOh8fxAon7nGAwe73gvBLE7eeikW_Zj_M4ksA0NcsQpBWLVyUQczxLtPcZ3p6i7FXJaSwCuSa_rGR4t8C7T9v8tKaKT6EYYr9k2SMjO52b4ebO3SNhPDpjJ50mAgM3_irIcYVhe9SrdyFLcIP80DGsVVZCQtRgyb5US2rOlrU6v1YTsJHD1eZDl4M7sb4qXczXenErEwtNa4ZOB1ypxhgAoGxKX5CfSArkPrWgl8VSJ5W1RdrVWtwB1ykcNw%3D%3D&alt=json
+2021-11-29 09:13:48,081 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7R24cTTt52IQCO2t4TxV1EPTtsyjvPD5l1nJNbHWHqJaHCLts_dfOaRLB0eu1bvx-HwcgIyJRvtJ4kZIVmAso2F-tBOmz74mH9BXzP2_MHgKDqK58eY0tJ0N84nRKiQjffWU0zSvU-DS69FjRtiUeljV1UgSGArrxOPAsrZwTspBVLlKgmVnyIWmnpFKp2hJqHUJheJcjY6HgltS_tub2dLC8tGXA6NTh4Qc7fPzg21zJtvXkuDnqxQ3xUydn0hxDagl7PZTZ0DzMxB7hAaJTyS7-EWlA%3D%3D&alt=json
+2021-11-29 09:13:50,171 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SrqZmKcxd0KAr5cArYQEATkrlUZro0EyoVEzSrLRAG9glMFGfheg23T6xBPlv2YqTHIqVfiMvzmwR8QU-Ouwwn_t9P6WKn0BX-4wTPjbQMN3XBcn4CjVYcL0QEXu_4jTAdORDda10eP6wBg2c68GlRgLwERG_CphBNAEV6DpU5ehhgUiHhmXWiblYtQ7c9tXFkALg8VlptlrSv_PLrLEV4jfRY5RCr8xhq5-T9JQa3w7fSgTfLMCyaU9ks8hC8FqVEEq6tLOdramr7xmh9B57WHO2Tnw%3D%3D&alt=json
+2021-11-29 09:13:52,097 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TPFOHvgGUDz4hQRrGEkGb0LSa6baRCyNgqN8oEJU5xycGstPgHWtJDCi7PTsKlWAEld3LBiGEnOyL_Bq1oj0HH7NchGCodmLaQKn1K_7G6YoE4iHEPhUi_WA5B0CMf8OJ4_R8Evhdn7XcuGLTWEswOkae9b_facVvV3ITBs6-caNa7wnEn19XHC69s3UmYwR0lCHviARMhvWVqaSDzyRk62EhBMAlF3SSUY8bFcSAq_ADqRZazdNpiTENdYU5d0ETa3NLaiczV6h-hAH5g9ka9_O_90w%3D%3D&alt=json
+2021-11-29 09:13:53,802 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SYZokTaj94chVdJMnjq3clFIrJhF8Tymhi5cXD-Lrf9CHLyHorPyeDW8ucFodwDDSoexxpJcrqbMUwV3R-dQQYS5jRCdrMEjl1EaaO6iO9WSvmGnOQtiol9gHfV3tf4rAW8sBtpMSGdpMVuwkShjjXsnWGNfCamQrAKISuy7pVRROf932RNmEzFsCkDmHZvJRvyfWPKWOkXDUuFEPKTgzjpxyv38Y5G9QWEs8gPo7SNZyiWAnW5-kvR-Hnc6SCq1icRKE-yqhgY8fqdi5ukFYsCxO6NA%3D%3D&alt=json
+2021-11-29 09:13:55,630 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SgHkuErkgIGheBN8f6PymXuCEcKipPNs9sDhbs1g_c4a5rXVaC0nNhtt3NnLYDm_hIEtGKTRI-clSPfJx9Xi-_VQN6CcW5jzeFoxqkMLR3giTfOEPR_lGnr2y4I3yl1F-uRR3tB4N7xAbjPiZOODtNPren18eCawG5R11OhfuDH-HoGvmdbRK8cmfFsNXPL5-ZmMnsVdW9IUwBikrCnb07iSN-Q-Tewo7T7dFH2NWXCCIHUNqt8XO_9I2xsNtRBsBol-cyCUbqScD85uT6l45T7Q85Hg%3D%3D&alt=json
+2021-11-29 09:13:57,468 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7ReBzKr8ddKDluOMJngNUhhMEWdPqNc6t9GOlgazOSGiXCOVyQ3bockpjmIfcqi-QWQzwOIqSorRnz39psdNxz1ZSrO0nuwdwXKDWHTzxNmNhaPxVhNXrwOkjeyYoxgvDE-kQ4tM2DKY9qmdUzWzm5zh0WOPfalJR5w9YVaPv_v0x5MA7vf-AJ0Tzoe6tB9fSqHmjcl1himOSqjZFB6KlAWGLxZOxTJJ-_jU6ZRx-0OtXJfahFGKJvQmjhCoSjhuVgCTIHIAkH8VNBBQrVB9I5Hv7wljQ%3D%3D&alt=json
+2021-11-29 09:13:59,585 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Szq6w_2200YQBixNbWW5WF7c07GZBgd69-cwsnXmkWoJMKYgIF7czczvNEg9KW6LVm9u1bVZMhdNO1aLvoYTLVTm5azUXE7oCGFVBCaQMGy_BL9Wgc0ugqbZ4X6jASFDHWL6NFAOzo6F78Oi5aCgybFcbgUfKXg5ToTg4MHyx5DxmfI28jNsiUrD7Zplm_oxkUppqMcEAwaLxDTK-GsZuc2NPgePhe9AvmJTuaQKtqFQ2ab8zFYGFeDhB0h4ZIHs5gqjlNFfpINAovq4Uf3m1e-_uDNA%3D%3D&alt=json
+2021-11-29 09:14:01,426 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7T1hW56ibd2nAicxS3Udi-0qc8SDmkJyrhMMoSaO7YrupBwoP1zAdNWhBsapb9No-TA4Nb8-kw3HpVtomQczMYrYNbLetLencAqJMYkb70zMfZvdG6eNq83_VL60ypPYOshu9UJEE7I5j3P0IETKbXTCvPhHLSkWDNYep2UgAw8KCEgelUETB0FVmI04yzq0YGp-glN2OyUbe7OHvW05kc-2qTObpScAnjQKiellGeHcOQSQ7XrdKiKcerhMxR4KWqMdomjnhqJy4klFDO2XzU1AgDzUg%3D%3D&alt=json
+2021-11-29 09:14:03,539 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7T_6amLtc9KFrwmFPFme5bsw3iLTlWvkHi6b3XE0T507QW7g9eL6FzMiJ2UhJjp7f5KQ3QxLvPPi6WGuVvsExVlB3yGkdG7pVQVEOg5Q1zN0ujQZnbv_d4mcZCiBmX3EYFkGeXpRoPAtmaBASQILmUZSxLs0_LpAG8PVti2JZx8rxoIdQQqa0SGMmc_zZOSUh64UWNyTG0G4WZlr5c-iw7a3eG6nsPbjX_B_6pOS949J3ESVbWRNdPqsLOQgz1G54sIZSq4IT34tY36pqubz5i9mr8Beg%3D%3D&alt=json
+2021-11-29 09:14:05,679 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QztGYkduipv56oNLjzPE_JvuJMBwdp7UUB1plPWl3s7_jGwh8ejBcCOHl9Lobu-1P8eYScFx_Losdd7E23Qy8By4deKFl61uF0QnGMT-bXapidhlmxwhQPn7eGNH9h-lsK9kZ7VdKnhmB7njrEA-im4lRzlyvxGyYaS5-5vVXYzajddWAiZPxGC1wCIt2ga8quBIxFh0w5lrjDJfxnpxzJsspr1AhevgLbYHWIhsojAMWQiveU1BwpVSHkLOgfyqyJnRoB46Nwq-svCIVOFyirYtmnJA%3D%3D&alt=json
+2021-11-29 09:14:07,622 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QqnO1idbIQuTDD-y2mmYaEfbVJnLlrAdPGDirfe-yA39uuguTCpuuWQQgDUy6onMl7HYRi08I3FMj4wbJYjru-5h_Ixzqt7McsbsQL1hkiQr9b-v-AebpZPdDYU9_kzUtS60HSgAYoZ-GDROwgC3M1f2Gjy6SHE8PFBDa8CdXhjA5YE0VAjwk4vgCZgdRk9TBj1nwyZs3zihRUMS2gif1nwErwZwQW0ggkAvOK46f5IkeIgr7ccm4vObPaSY_KbmGzjaxn6hDPmT9AuGGakY_UDWKw-A%3D%3D&alt=json
+2021-11-29 09:14:09,683 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TuZJpYO_tePBA_eUj-SO5Ul5YjEl4c3qNhTo_C6dKzzqp59Hp1vgjlnQ10LlQUAG7B60_blp56ZOqcDbG9Y3VssSATKjHlFUli7FXyWgMZfTAZ30PFgGL7Nav_ERnydn5_-sY2SG-j3H5VytZpjxXLHpOYm6FCVs3RmM0saO8t7vO8Keb070qDrWZWyYdlzpwj4m1q7PL8xTBLxdbpJb2KvlG5rQIM9uWqE1KLrsi4MfJWelrwCPRM0zyzTgKdOeDIFUp93ncBazFrFZCtheuSxUyPWQ%3D%3D&alt=json
+2021-11-29 09:14:11,702 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SF7ReSFHpwXiGHDNRo2-J8ItsTXGPpJhL7zzpShIKntsiQxCo5VCKSe3VZaMfxuSxdd34d8hE2Y8kkxo86hEUOsC_40IiruN8VfppoJ7p90CG_iW-iXrNaG5lB7VKDbPfJDAYmUAGzq7FMI1xRPnTmeixJiyXZ11Wzxd6-YL8JphHuEK2U45n-A98-vM1sUuNY_Y9QBO6jhtcW_QUG-x90wOm-CuariZCus7yvrfwqvuIS7OkpmwKp8ixSIW2yUhXLZIDq2vHDhIC1CGgXes3epvcyFg%3D%3D&alt=json
+2021-11-29 09:14:13,767 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RvMCUcZEb3VC6yuwLlRiYRlBoYZBYJx-ofc53U4SfTGSLfSMziptSWQ54acBMC5AuyCyPIOGw4s-6WmbhK__KW7VuEKmEjjGFQ807GPkPkARQxdHF509GocQ6H2eXCBcC2HhSSUDkCGByH3zVYZVToA0XVwpDA6-PrQKsHqVU0U-i4_7XD4K2CJ7zYvaArwh3E0rfgf7noYDEJbvuvjD3MP88SBkEHU0vhR5FHqlx5poSVnj73nn56JI1N47ZBCPydktv7bqj1LTcvBQPlDYkSKuThdQ%3D%3D&alt=json
+2021-11-29 09:14:15,838 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TP1HLche92u28t9uya2vxiE7caCEjzTuZu4b4kTM1Kj75wH7cz06q1Rag2BmD8-GIypREi7DxINgb5ZZ-HFJwbCYi_gpOjDhkGl1y7lnI6nRG8-Vh-D3O-pZzp8sHUA2iTXbumPdr7gANSgGhKXeWUQhMwaSDwPcroZvfhZkaN_sKaHD96kCaev6o96SVjwiz0syfU18sGAn4LGyXDzyV0ldstdFHFCEtqbv-2Uc7haTzPlMsepDVS_cke0U_ohfDaNSA-Ttxs6xCu1-YSiqGCf8BSnQ%3D%3D&alt=json
+2021-11-29 09:14:17,747 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TW4BnHDFCtCuBVqrz9B4ztX2xowVdPdysSj3chsiHq6YSysa-422-pidvaqKEFP5w2ccoaL09tsg0U7hNB82wbTo5-iTtW6Z27HXkEjliuMEszBoirg5R28vmIX_-tUMWox6lbD-atLlzL0vs0kFv5FAJHwd2GdgcQtN19RFkObTnmz2xx5rvU6xkfa6D6KpYOJlmy1ikUL38sqFuvaeF8D7M8MKfH4lQlkjcL6qHCxBLd0Cnzo0--YnOXVN7mV93_GqJvf-SNPHMduQ4FumtkgWdCXg%3D%3D&alt=json
+2021-11-29 09:14:19,847 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SyBaAQAzoRntaIYwfWKZrnFfs7pbv2USsFfE6Crvxowvt93ODbcsb10PXIg_J5GWnsWwjoXr12hU_neY5WA3IHVgmDgExUyoQMtXNzlMDcqiH36sg2V4tjPWow4zANZWxVVGtAZj9I5r4aIemF5443ImoKUHNVNe5dFib2NNy7NzvTuv5tXj4WhAklp3orco1kJzn8O9Kvu6W-TsycmL3txW_3cOxnFjcM7moTD_KKQyosFgfLqrkg8z4hFtvcjfwMvTrMMr7qaDxPuR_yH3Pa6iz25A%3D%3D&alt=json
+2021-11-29 09:14:22,049 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TuFCIz-AW0osV3mDYjf8puTeFEg-OT4ZY8gCNErx7MWs_-PKP_0cSt9HUw3vb0MUsgK4fgDUbIlHBJYa2SXto4cZa1kj3VPupgUriwLPXVPSAZgdK2K3_TKPUb1r1Pu2teE8LVAx0Mkfvp2WqA6JvtQfEo-OWsvOCdnpoq8V18JO1P6-qTfYJ4uN9CXjOEB3pjf4XVo6KbXh2lyriL5VINDT-sLkH6JivbWbJ4krNMfbMIFvFsnOnXEeBUaFLoOIv-2lKVN_O_41Eu8-5DTHemwLO6Cg%3D%3D&alt=json
+2021-11-29 09:14:23,897 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7ScuypUjgClbNUavtiwtHD71-cvKWbMpAlFczwXEvY0sweR02bLMXUmARywj53S16g-N4G8hsHrtCGA3t1fC-ecwQ3miMxgccbh8tys947o5ymke0XSTBaPvo2xHZ30Oc2a8pIwHnOQzabLk6rDD45SaFN_TQO0-t9jHgfPOMRkp9O76XRkjuDH8cCk8Yi6f52pTQZHRTdakqFOJxwIO0QC4k8K7Divsel1cIsnERRCEmJC9EwSWrnBOnrtuyujFbeSlh3LHcShJFoNO0OWOHloJcl-WQ%3D%3D&alt=json
+2021-11-29 09:14:25,691 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Q-Riyj-YhPlgL-u-beCtkr74qTl6jmi-D7d_Pl5Lx4cFhD_x2mpixG-xuAolEZ26E-zh7B1CGbdffXpZ2TMyIFsLKTMk5qiu2tm1JtaafMvYyV8UcLPEFOWaw7bgcEpGdGUEwOEs92fip-1Rs5qJvsiS4YAWmwh5_6Wcu7_D-nNK4lAalh9D9NgITLNSO75vojZTUxxVYyB2FRkaE_3UpEJlmAfx4it1nWw7eWvQNUy5pGeBWPE4F1gBDCsfR86wP9egdMcLSf5ewmbC1aQ-8Add6qmw%3D%3D&alt=json
+2021-11-29 09:14:27,509 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TFmii7U5Fgg3U-RVshyg5WH2CnsZILFFc3R1k2IatB9ncysDS4mrAWn2YvWa4VrkCCKKVvGMqoQm7w8PKzCXCVb-aXFYp5L44H0C4MiW7qIx8Jz5E79EvXuypcEzUQcCrpvHLgK2A4d5k_VbBjgUXmfYyYZZfd3LxxxlfrPAujatOhf5zNmpQePGd2t2McNSZANZpHvVzxDmLqePivAuTPV_SeY18GpbxzTxckax5ypW6mDPyZzBFGWZSk6Tsy8D4WZEyw-Bh66CrlIT8erXJPPLMzTQ%3D%3D&alt=json
+2021-11-29 09:14:29,443 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7S-IX5n61ZzT8JX4Iazm6DRWXVftmTkSTwsdORAh_zAPI7RfZJS3oh7Zj-K1qi6S6XxT5P12wa7xco03Ibrx4VWZj3DJSL2scThblt29DgFFWqd-wFWzKb7N2RDLdP56K_Gk9m3iEURe8dmy6al2ONWMvrkDBcbYHejr8vg1X0atFREH8qHtIGEOv0yWHnsSMi761M57VD9Ol8T8X_8e8pOLczZ32xcwgip73cLmV5arqaGKBHY20H-A0AKVYAJw70fpJW2YS8XJvANiEcKsMyU0_BeAA%3D%3D&alt=json
+2021-11-29 09:14:31,381 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Tm4e1g2QpmRmzCzPxQUO8nvkXvw0Xphfg2m2lw-RouHIi009HG_PXE7uaIRyX0K-46toLDwsRtiR1iGuQv05yCt3x2CTFQw8nBDvHwCDdTRHs27ZYqYNSpEXZ23UWQXHuYvaTFn2H4vKZhsYdFwewcMT6g8zzgk77qQ4xDVsWLA3xOfBGZOHmc24wLYml0Srv1WUINZ_2KRGMMLhGxVC6kjPsUIXhoJBX7eb0IhcO5ZFr840R9YbjLHA8YXeIB6gD6CaBwVkYir8FaA4AX1KWcQtiS2Q%3D%3D&alt=json
+2021-11-29 09:14:33,636 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SDPAeS3JeEmPsWoD1AJcgHujX1CL9s_o511v1gzDHxtj_o0-fSC4yGTn8YOzunjh7T5pcUEGeRQySCLrjt64Qjj4Dl2Pu-bGxstVtK-tLZTz1_Fom0Gu7c5BeLLtdNGlx1c_kwGXE8UJb8WqjSb5RKf0NtByYpOF7I6iQS6GlvSmxVnioRtIAFE3mx2umrA9WWTBVG499me9MOMnRzL-BlVX9f0Nj3csT-K4cQE_T1r4ZUkYW1aR8kPyGsAqeXTQ9U2iEvGN71n6IvK9KbjH8Ib1hqZQ%3D%3D&alt=json
+2021-11-29 09:14:35,510 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RfdvAAYUJLnX7l_cfql_inADdatN4Jt-lkSSdLP5VBIg_yiuWtuUqjn233vLZFvkV4rtzPwBzExMk1SDBRknSFlelkhOgeI2fVM9BYgf25s0Wf0N9gg9a66v2gMMyci2xyO9y18RXi_gn3hu7sG2m7TMrfWwWeQW-rpkcVamsKLDJbHAcfok8a40QbV_XlknJmm6ayjPt9DEzsdNNFUnV_gdcZDEOi02nz81riDu1f-RawH5HZwJ1deq8AZJZ_ImbB7w2jmxZsxwPlh70TDGwbxofXtQ%3D%3D&alt=json
+2021-11-29 09:14:37,484 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SfJiYbOseiZH2CpfmN3DC0BD3M28R27NOrETV2PyPNLhH0qrucMYt8CVDfUWq8tnieTSv2j_qGLjNf2aefBJfTYIpx3BZboosgfdbqBU6PxlPxJHu7bal_12PTO3B4WnWIwqUV-Ibh9vwvoENC6z2hgxbFXW_6Xbou8QWgGwiNdvuBon03UBTkGrozm_mShIqYHAKirJaYm0QkYCXLNoW3TyEMUQDndwe1LkSmgX5ZD7sq8esFHHRxwRdhRaER2kRMcUr20iFXYHMCSijcVxAs8Y24eg%3D%3D&alt=json
+2021-11-29 09:14:39,473 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QFddUJwkEqqWP406SXtGjEtw-sSDQhOFVZz2ZpdSSWFOe8cCYUo7Z55MQ2gIrVjhqsKDCGABxQ7pIpOaWukjI7XuI_LSm-0aHZHLZhlSrvafWYrA3ztqXs6-YvueqROrCGY_yDuoHanE29WS874TuiYe4eMEEuiuARfzBW0rTw7p2pcFB2KI-L1_UhuYNze01zhbiTDyBXJ8AuaYLgVZYlyRJsHE5fm_SqcuFZXi-M3jtIAz8vHovt25j28o_sViJweG2M8gNK4gRiBuo42QQ7PpolKg%3D%3D&alt=json
+2021-11-29 09:14:41,558 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QrBHaQobkKwl_-Qdvu4Dyok36IiZ6ZyZhqahxNxdBl0qZjG-drW8J5CwYLF9Q1KQazKFpgDQwV5FGX3_BS5kgBN2yxyV4sgxnkEiCZTVEQuf3Tx8c3ZrcKS1QYcjzil_MkAuV5KEeLRtYgXcotJ49o3iaI7lnd7nwIILXAMQu9M2OOtTeQ5BvZUYilLP8gW8KleQSQxkx_axtr85Pk-q23S70AIGf5t6_kbv0L1SvhTL23bbjxua27JN7BdYexFHyNbY1HRMHIa7SSin4j3QmNB2LKww%3D%3D&alt=json
+2021-11-29 09:14:43,784 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QcuHftb_C7zAEtrrhLUJVmmX2nvV3mOskuiwV29hq0MuvAbtPMJjzj_pHPXpAhTJJQd_Yn20FCU1W_P0_fcmnghiZBtV4XUy0OuEWR9lw_KkLdsf3khuZ3pSetWLXeAfPQnGMKOdkBhslbEw97ezfPvVzZemB9W17PnRNWnBl0GAhDhEyxpSJakBQI-EIdzyBnjXiJVqJnnNficXUbSz8iysmZBPVNnH0iz_sQdEiJm2sVQyArjWqElU_jL5o8srQR7vfHVOCzrONmU0QZ0Jrf-79Hsw%3D%3D&alt=json
+2021-11-29 09:14:45,823 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RArvSlDFhMAlsOXAUeDSICPLi613PtqyomAAPMjq6xBaRWaTl_fLAXeHk1NemZ22Ty0yPgpL83tmwx2xsnwqdXQwgsYXfFEd0O4V3JAYlbdklIp91MjKRvmGyLdue0SMZioiHJNt0tzy_YtDG-U4mWOEqlPs3DwtCC_oqww45WxzGylBcTPfUJZC3a92tVuJFrkMn1JAXLvuotfyBcPlc2ZlMJo2tZwZ4pyThvuv7ISSSVwGvHzsJo_iciK7gC8ekkyVRK54GGvScTAmNOUAaBn2x4wQ%3D%3D&alt=json
+2021-11-29 09:14:47,989 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SxLgzpFSGkCwbkukh942CWboz4990Svv6RBomjexK8IZecDu3SMWeK8snP3SJPD2BhsstoD9SzlKuAxLfY2vlBoFB7PvEESWDGwykVsOAn7Wc0i6P0MEHm1yKXaSHjXHsf3dZtn9PaQjkMvCcVK-1EnzWJfugdJJ9NvsbTUbUBvVE5JaRybz93GQgaxrcE9sLosRgtoCLGJEva1URBptgPdYwPT35L2HqmatPWXNlrPZfZDM8EORfVucgQIleCTXrYXy4TLEXD4F9lUyP6BPLW8uXIng%3D%3D&alt=json
+2021-11-29 09:14:49,917 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SbRItzYzdIgrc20ClaEd1DwAAoIOoQQN5j3oYGM50TtzUJgT6vB5hwJ04x72Vs-sVOA-za4Vdqy2EirPrAU3oeo7XseYI_rYUTuCIdBSeKfJaEk9XfZaHkFR-0QkowwL-tlE5yU0sKyo_MmMlQLHVARrz5KzRbmPKcvwZstrW3mwuFaSRvcjUe7oESmEcm1hOdanqom2kVIWm1LVET7Gn_cXInbYDxC1ORkChSVV9nM8TLnxRBpjnmdmhA6WbqCaX1DEoVpaHGgNHAzkK1O8aiLVXdIA%3D%3D&alt=json
+2021-11-29 09:14:52,175 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Rkw6gT1ntzk3HzSX7tLaotJivSdzLsDd7daqcAQYA6QrFrNs6rW8XxJ4sujx9Ez7WZPJCYN2ECu0993e6kK86xoU6h31E20M8PN-bi2jxrfpG1ilHaXzn7aHe7BLnhvmtFW_YmCbXtRKOdiWjFgyTR5_rmM_36iS_Wgg-G9BLEIilrClwj-ISzHH__hmlLC90mSIpPdmWhLSB0MJI9XkLS2m6ECchKzNuyTWPE5j1UzSB7BFhcMwMlSJBs6c_kyk4vk79cobU53gnGMLabqNAh9ax5WA%3D%3D&alt=json
+2021-11-29 09:14:54,018 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SV2Hh_NhnJjuyP6ue5_htD31Ys1WUViL93XVlrI325RL7oQbaEz9TJhrEIxY6TYdu8VjKJDJEoVPthyZ4q9NNH_58Cy_bDN4H6L66KjU1H6rQiReJmSv_2NT6apAfWH2taVM0Bf-Zo4br3ZeaBu6FpFb5DjiWum9PZNN9OMTfXnvsR7H-zHR6yA__GW0oFZijsfkbUaPioWWVebPxklDFCOuWVmJDhENxm6gya7ikrh-JHyEYZgWcwh0G27G9DDnT96MovWRGBi_oLPwDjKqakfjDmCw%3D%3D&alt=json
+2021-11-29 09:14:55,987 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TZY5AUjxwVR1vogdAgGBeFLRHckXHHIc0SGLy6qHxGuAkZhEekruuR8ayAr-R9WK_pHHlG5Wb8FXpATrgNmjxgmX6zpu7W2KOCAuFajrHi0VLSj5AkuJqUya5ww6Q5xMn5WHDu66kCNPBHQY5hCnLA3qHGC09-HHpeOYtbfzkZOUrdq6hEyO5ftg3-gimnxm1_kEk4IVP_CRi10OlPSECL3nNuskfzqebwYfRG3GhO8ZvbmTMDb3HfufqYzbP8wWk3zuHg-RVBb8HVCzyMrmNkE1O8DA%3D%3D&alt=json
+2021-11-29 09:14:57,903 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QYY6-lYE0XIQRiVssfk3aanLVe2iWdCsVW2DmEl97MxCJ4X7EFnrsG2bvFUeY5SiG81nNotP4quqBPegPepacJPgORrufFmhE30PSY8lu4Bo-Faxsh60fuSaDq50QQ-nZ4afmdAPRfNO1Yk5TY4wpIWzKYqwfqEcwHMcrmPdHOZdZncNmscv3Vg7CgQbUERUEMVlQFn2H_1GmoYe0fhK0I2VmnLCT5I-Qx4PwpMRs3gwlI3n1OJHPZEd3D8TC8hTiiRe0JxYRqUWkUBF7TYIG9Lj3HwA%3D%3D&alt=json
+2021-11-29 09:14:59,954 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RmxCa8bmMnUp8lnDoAtUM4gLssArVldas8aSB7sM2zFyZLuVijVQiH8JdwU1qyFoowNCgy0Euce8STlcrcZwl4hCIK3hTcfKbEPVFw0gYk41tbec5yHv1vGTttn6ZZpM0VlCojKCfVw2ydVmRsBgJ7lgCF0lhqVZ-LtrxiFifTtiWba7uiLG1LinN7_dZeKqkQl00OYGjjdEMC2xeivGGMNecCPMn3lcvkHBI5xVXqyzT6BpC3ohk6wrhtiRFQGsaA1KqrfH2aXnyDH6jdWmCXjBCM7BpsBh--czoNtQIhtXmS-D8%3D&alt=json
+2021-11-29 09:15:01,910 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SXPz49uenGvWqQPhV1fJpR28YTFt5empwIKgcu25022ZEREpcZXy9zHmcGJy-yXKdxuYV3i9Dx9mM_aoKrj49wgvIvlMDRN6k6ugEpowzDL7CXiYSP1hMtCVvI2xGQSuoQ602Q2dLZSVjm4fNHWZ0aoO6tnGT9Jp-9nk5ITCsHLmHwBjIdJOg-ruomgCc9YsLOUqvrzWXFL4WtvaqqzPlmPFlbrrn-WRp58W8EQZqRbOytqM7O63kQ6GZrpzMYhTQ3aeJbaq7215U_CeA5Hx4aajqnNw%3D%3D&alt=json
+2021-11-29 09:15:03,750 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Qvfjdim_jtpLZGHl5h6pCtAzNjEhdiM-xRs6OYSJ-GwukLxU6BzrQ4KtWjH09v1Cw_daVx5PrjDlsbOFeR-W0xsDoMnPkG1iTF72TTGQORgdenVY18u3lx3ovTaOpDDc-m3Mv1y_8968iE0vg5h4qntaWVxTA40gCkk4gNzxjTGlKsIz37zuy7-Q3q3E4e1uYsDQQ331A8kNM9M2MRFR0byzsP7EW5sWJTvxky79F0NKZ91us_0oZd2yl5wK_GNY4FYH9Ds4lW5B3a8YCtO_gIV2-Eow%3D%3D&alt=json
+2021-11-29 09:15:05,822 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Qasd--20Yns2dUBWv_FKXWp0kDfZHL6Zv8ZJ5MesmeQKXuJWz6ZNNibTiz26STRq7osR9o1jhvbC5lwb46g0kMDIH6lg3xZdzlktNhyW-zQ7ynqHD9KVDiLKoZmUaKv0-cnp0wbmmvzMy0uXFKRezqRLik3ECxV-0WK70F4si5w58sell7UkYiwg59TvZvIQQteN4wUr38qOwHWcgACrRxbpeUeKxOJ_tgHcA7SSJ2rCavsLayImP8s_sgOYO11WBXMdQdwIYBujGm01hDdFeWmonbMQ%3D%3D&alt=json
+2021-11-29 09:15:07,842 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SA-lau2ihV7lANqTYo60VuSqPuq1VEE-YoTmhYkhKAlWL7zQUDGTSOtkdAgoZKcS9GTRlYmNOAtkycyKRID5FfGulLBX9W6zEEZZ5tffpb9TO9e32quAunf-0_Jt9hhshVOLpE9jDHBRRWnvoPcL9zXJmA4-HeU1vW6NX5EUBn1UcgEoMI6kE_5hNmKWXZXqnFhfT9JdxK-M5YnEpsvN-DRkSP4F8xSZaWJbxW-b6zcaLDBdwXa7jhouUoZ7VuwRFRXiFi3YZa2XeoIyzbSPOREETQjw%3D%3D&alt=json
+2021-11-29 09:15:09,696 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RQWtbBwjAB1Ys7Folosb7zPQn4so7wbN605n8APlCMBpEu1VXZ0sWmi8nAo7e0cwoyL_JQ-WqyrGxve9VCYZw27QXHcQm_JB5xuPn_hOkbHRklUwuhtKmHg8Rry8zh-LXAKr1XJeI29ePb4iCZX5d_JjNU6PVfxrxvz6fZkIeqRNjeVPS1oHPYmLHjygO7PxkmeLHbLEag30bWqWc-Vv28nRuV1pNlLg7Ve7kap00ZC0T3ZYsiE1-7VjEy5RA6DzpyuxABuPf5071-riJ9_lDi5fC2Jg%3D%3D&alt=json
+2021-11-29 09:15:11,523 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TRhmSedfndepX4yJuSeNv6I-qhfE1tRE81--6rtD_CeaLyCWxkMBX1TZGAkssoAaQHXMFv3Wh5HCuGc04LnzCruwF2nKRflYWCgE4uT_fPH600gZc8uU2T6C3ViJ2NzZMbK6_H4ejP-BcImPA8get6Y2-5hKNmulCgZNqln6x-pfnuer7gqqQDtn2oGe54vfH3JpPkFoOOofKTj_wg6ktVHVJMaHvOxcmul6W5NOk4gCDc0vfXAzyMCtY4JheeQwcoebUbILUjGfaKGUzVIC4WFLfBsA%3D%3D&alt=json
+2021-11-29 09:15:13,694 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Sho3oignX3zQSi_QiU0093NRByuQiiLRIFj89zuS281v6tgZhAgM4oHNnY2lmacW15Rm2zq0ks2yLUKJkF0rz13wxu64neegbVEbJ2eu5Z7y_emPhv3kpjuQJlKwKQ6lc-uLBo3OPdZt-KDVqT2EL7_v17EncgVDJKZA_uIH_kP9-RDAWsDhjB9RTxparxuEx9irx5GWD6Za0pMzlWKHcI_Zr03_tOIMFWvORK25EPJSql1S9WT0AGc6ktKxK7nPOeJFrqaqJgtci4_lzgMATATJf1M1ww86QIx2k2YMCxMCV7b_w%3D&alt=json
+2021-11-29 09:15:16,129 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TxqtVNJvrzF8YvwyN7cx7Ljtwx-QDqkbDN1BUVfhFntqdQWTamO0dh3pvJsYUPFlXwa_GODjBG0BfJr3npAmeQovy1_yWkV_wnesf_NO7p8BGCCY7rTmPIGnpoGXjNeV21-X6RTu1Ba0XYgXNJrdSKeJlpFsE3VXP6YY3ek3Lj0js7P5etLPtJ6sF5_eb07osWpfNQRAShgJn7UZDGHrCda8Yx29aQlBB7-zbfHcSmBbKxxtUTtjLd7wx57E06TMPGRrYAgqpLe4bXO5TBgDTo8Hupsw%3D%3D&alt=json
+2021-11-29 09:15:18,134 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7S5Dc7Cph0_BwtFsiL-DNDLYHbLAI2VZtEfG-MAHdQpT54vSlN9rFEXsocnlm5pk4r5ivMAO0FcqTorC4-Z0_-U-H3HbY9u6Nm1Y2d9JuzbzvPPrZsKCDEdZhxX9FfqyeOvxiNkErvUjYpk_d2CceWJzoCe5Tw3sH3_0DSzBujvsNHK_taz_BOcZexhvS3kSYkCEEBtjO8wEfLyJomJeEkS4oi1WRtndWhhcxt0aAu4srGua1w7wGEvHHYpHAhUidSyShB4rMftANqkrA1-pnnrdMbK0Q%3D%3D&alt=json
+2021-11-29 09:15:20,129 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Q1BdH1fLOIOOwVE6f60FsgiqG5AQzArM2Yo_hF3HIvGnkAICKhsCaTAd0_2AjgTLLWhkr53P-o6LGxDLbG82k6vo9ZeCCe5eCsgAd7VPIAoch3er7KNrQPvct6KFdVW-Npf6iSqQXHkGwNo1XaHZY0geo_WmUSO6K5PGfeCT-Bv_5oraKhF5dYE1pvZaNcIvsB56EX2vbe9b-IZLfqxbUqHPauT3a4JEQRDQR2CPI32ivBfnfyPCJDQ-QB9vGpYkb5LktQhaZ81-r4WFBQF9JqyNHBCg%3D%3D&alt=json
+2021-11-29 09:15:22,152 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7TVd1lW4hV_XavnmB7tj_KGIIn0oMn6k-p2tg8AU5VEtFAuJNt85kmwJ_5T_vgnzJ3Ra-Q3MBf4I8T807fVlHfQVjlxZ0nEw16n_I63aSpVSDSsp5nPFBvP7wydShZk7SiD52bDOibLveJCtxQfpOQK9hn_eWgg-S89cgj5IMVzkCnyi_g8M_TvyXA82eTGZWnRSVhDX9QKKeg-qspC8JYheH4V86LN6CoCVQYWs-0T5BFz5WKEW1335iePKRk8_XFNezDusUcL_hJVZLnAo_7W-zxcyw%3D%3D&alt=json
+2021-11-29 09:15:24,055 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QTjAha00CaasmPD5bMyS6UQhlxxEViN8VDuNh1f7XqX_g_KpSpJin_8-2yGpfmX6EvPti8xraWfKovneZMa65lNgHwfmm6jx1Lhq17SJRalu2lxivbjNPcd11mupzwfrmvLwLaRZ3WAlzifaJSj7uQ1LOXJzTzmIYcJckCE3n3ippAjXMLsCHTMuMfuNEWh86pN59K2WzolJ808E5hLl2a34d74u4cnfzCUxCoteqM94Op-64yzlIwTyMUR1PhMRQRGvfWqKyMnlmoCeRN_yLx-9SuEw%3D%3D&alt=json
+2021-11-29 09:15:26,278 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7REzPQVbfR6qQJkQlOXdRb1jEXEBkxWd4BqVfAjFgioMtzw7wFELBt7YLBShHeSuawLnYC1npojAb_DlGAB9msbGgGAjeKYjrscROjsFLYR_rs1AEsBU2w7Qc82H0qf0C1tu0Z0za_VtCZuI6QnWqaGETjIS64UME5KD3h20A17r8rHfwjaqYlYmXiRdhxXRGFPjr-6ahJaFIaZdAJZ-xDcuaOEHK1nXbXs4Qdbr45FX8tTP1IQK6l-u97I5TLq4U-PNxAQWRLp9CzpYtXD4cSweQEiyg%3D%3D&alt=json
+2021-11-29 09:15:28,330 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RI8QnkiCUmyNHn6WCXOjrKmHdHMy2235NC9uKpdLI0b_ZiNjIELqm5X5qAyG8ywyzrxdP5XnCGJmEVSC1-Y1ijPkpvIXxGsUbjk9yLIclGW2yI-wQXcr3Qw3r7G8f7dQ4SaCvPVDOR8U9sJpokRQBpZusnhBPQ-C5IhCgfZXL_N31GYiKWLrdlU811EXUgEGLU0adeCIwtU6WITTpyOX9kOl9AFXGecG_eQral8UMUfhZrtILzeCC9STzGUrhwoHU7YtsrjJ_Agk8T01dwPIvkqZfYoA%3D%3D&alt=json
+2021-11-29 09:15:30,670 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7QVpWmuPyeSrITCAuAao1Th0Gvgey-mWylDIwX1VUy-n2wg3MoNt1kuhVs4ptON-TZF945gMcKaOqCFAzubMt_Q21U1xmuzuUd1d6uG0KilYv9TOCElFlsv3S5Tc3nfsrXMs2zS9ZKBNRey0I1B6qEaFM7F_gCXVDTHAxJ0pDEzynpDrbmawhnATvTJ1Xw8-_ALx_qMAPuFBhA955spN_DN9k7I_iaEq0WKf20qI9J8kbdv8OWWBgVgVAaqEVBvm9cve7IMEUaP6fqrmi3T37r8-5T4sA%3D%3D&alt=json
+2021-11-29 09:15:32,721 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7Sef9NutcbRdPwb1QAjcj_QVQb7opGHHOjUgWuaptzvDWdFhGX9WavYaRE7R4nNhVRejaf9H1c3xDOr2WKhxQjKlGsdFUl6mGJCF-hUwNi39tWF_eHuMwv8ItgsgXPQCVAa3LumT0q13qNN5f5XULRFVdHYWOWqaxUr0tbQZtYh5HS2V0heCX3Jr5yjUFB20xwm0ogAj71OaIgp-xtRKiRNm_KT3EpS7BwXv-sH3rhoMnF_pkNvQzHaXMu95J4Dso3vblBY0nlad9D-iJm3m8e_TXuamyRYMdw57SG-niXn23I_i2Q%3D&alt=json
+2021-11-29 09:15:34,879 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7SUkqPm5YJzSAgr2DlEwG0N4Ifmj6tVMlKGwjoLiDNXp9m2nYcyuJtJ8L6SPolgN4oiTQKi_Hfi21gxX6RJ8gN-xBb7g1sZty30JAE9j52mb_r9MuQFb61ib1_feZXzF5vCBVP0251E3uOavZZxPBXsm9J19ddjg80DtEz76oTYXJiBf9kB3qS71cSzjEw_1XfAJ8RN9SnlCwgwOBtGfA-a0KvCO_9VfDVmvONR9z8dNHItoTZJsuK1BfbafTwCde8_NZMl29GvGc2w3861fZiJS7ZmqQ%3D%3D&alt=json
+2021-11-29 09:15:36,750 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7R5c1Nn9nN4C4bEVWsZiFT45tkVJVf_IgEbVJff-pml7-lkK-Yy1PAjD0FYUGrnWpAHr0RUbsS13loZi5pDhYwvVbCzT3reohUQxr9tKxMOCH1Cf7Zq8NfVEf7D9VV0QhMOLgNvwiT0Q1sJNp0h6Anh24apK2oPIPGUtYvsa_D1D40_feLhmeF45W8u6Y-_HbksFAWISGe6v3wFN3ZI9b2Uc_b-5EoSbt0Ln79rppxslH3ZD_QAyPjf9xlsu0nye05kw3EMNApi2GDbUJNg8Hv-EtLjxw%3D%3D&alt=json
+2021-11-29 09:15:38,562 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7RV2tlB100fR5iMqLA_4Ork2fx_pJptOncvr4hXfl4Xp52O6c_TNui_iZmhp6JrEC4AsRsP7-8Mz51j_ERxzns6eebB9OjQxluFAngcCXSaDPRO_qm8I14YqCR5IgXu1U8pFmH_G7gZ8j7gdBzCXyQu2iGT6CFvLp63YJFI4KjK6ryb4g_fbo-0nQvYY73gSOW_uIa9a0wFLEKYjMQVkMbHsjYAtpNOPZJ7hJFJUXozxvD49wQrloMyeiYZ_i5cTF4-o6sUV7mrQvzwL3Gf5YtH8TK38A%3D%3D&alt=json
+2021-11-29 09:15:40,960 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse&maxResults=1000&pageToken=~%21%21~AI9FV7S6YJPmY-OgQQMLr6EDKNPogAW3-pDJ3_ojsBDNwP22CniuiVWkxq9aEpNfMxJS6LCHWDpyGgr6vzxjGRyos73dISJstrDX4brkDzHUeIDXCLHDxzYa58puYcMpiN6o_CXEW3g9QG5KjX4HSnHQoyNl8uClhfUsv5expI5IpuewJbgm55fwJhPWgkcYtSZK-byf4gdDr7HrehLFZwdiyNQK0tsVwYXsi96Wu0ly8a3sqySRMV5Zi9AqKZbFL9Mkvw_07R9LRZpFLGoXJ6K7-ScKoz77BQ%3D%3D&alt=json
+2021-11-29 09:15:43,042 [ERROR] get_image_id:error chacking image file. Error msg:time data 't2.jpg' does not match format '%y-%m-%d__%H_%M'
+2021-11-29 09:15:43,042 [ERROR] get_image_id:error chacking image file. Error msg:time data 'test_small_light.jpg' does not match format '%y-%m-%d__%H_%M'
+2021-11-29 09:15:43,049 [ERROR] get_image_id:error chacking image file. Error msg:time data 'test_small_dark.jpg' does not match format '%y-%m-%d__%H_%M'
+2021-11-29 09:15:43,233 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:15:43] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:38:18,673 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:38:18,698 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:38:19,252 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:38:19,252 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:38:19,252 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:38:19,262 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CC_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:38:19,699 [DEBUG] get_image_id:title: 21-11-29__07_30_CC_F0160.jpg, id: 1FyfwktT1WmdZIt0umRJybayuqk6L1x0Q
+2021-11-29 09:49:18,427 [INFO] access_token_expired:access_token is expired. Now: 2021-11-29 07:49:18.427675, token_expiry: 2021-11-29 07:43:00
+2021-11-29 09:49:18,427 [INFO] _do_refresh_request:Refreshing access_token
+2021-11-29 09:50:05,494 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:50:05,520 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:50:06,151 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:50:06,151 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:50:06,169 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_07_CC_F0160.jpg
+2021-11-29 09:50:06,180 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_07_CC_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:50:06,763 [DEBUG] get_image_id:title: 21-11-29__07_07_CC_F0160.jpg, id: 1RvUPpjaBCJ-SyBctqnk9dM8GfS9oKAjw
+2021-11-29 09:51:20,215 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-29 09:51:20,215 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-29 09:51:31,887 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-02-11T07:07
+thecamaras:ac
+thefocus:160
+2021-11-29 09:51:31,905 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:51:31,921 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:51:32,585 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:51:32,585 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:51:32,585 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-02-11__07_07_CA_F0160.jpg
+2021-11-29 09:51:32,601 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-02-11__07_07_CA_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:51:33,073 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-02-11__07_07_CC_F0160.jpg
+2021-11-29 09:51:33,089 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-02-11__07_07_CC_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:51:33,626 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:51:33] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:54:25,353 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T07:30
+thecamaras:ac
+thefocus:512
+2021-11-29 09:54:25,361 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:54:25,377 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:54:25,947 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:54:25,955 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:54:25,955 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_30_CA_F0512.jpg
+2021-11-29 09:54:25,963 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CA_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:54:26,465 [DEBUG] get_image_id:title: 21-11-29__07_30_CA_F0512.jpg, id: 1RWemEwrwixcx99RRmTI-kWDXkAZZrKCS
+2021-11-29 09:54:26,465 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_30_CC_F0512.jpg
+2021-11-29 09:54:26,473 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CC_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:54:26,980 [DEBUG] get_image_id:title: 21-11-29__07_30_CC_F0512.jpg, id: 1HCcQZZ6vhVpGCd81fOyeEpDserrTRUq-
+2021-11-29 09:54:26,982 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:54:26] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:55:24,281 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T07:30
+thecamaras:bd
+thefocus:512
+2021-11-29 09:55:24,292 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:55:24,306 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:55:24,827 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:55:24,835 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:55:24,835 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_30_CB_F0512.jpg
+2021-11-29 09:55:24,851 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CB_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:55:25,343 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_30_CD_F0512.jpg
+2021-11-29 09:55:25,350 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CD_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:55:25,853 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:55:25] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:55:33,176 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T07:30
+thecamaras:ac
+thefocus:512
+2021-11-29 09:55:33,184 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:55:33,208 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:55:33,767 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:55:33,775 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:55:33,775 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_30_CA_F0512.jpg
+2021-11-29 09:55:33,791 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CA_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:55:34,239 [DEBUG] get_image_id:title: 21-11-29__07_30_CA_F0512.jpg, id: 1RWemEwrwixcx99RRmTI-kWDXkAZZrKCS
+2021-11-29 09:55:34,247 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__07_30_CC_F0512.jpg
+2021-11-29 09:55:34,263 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__07_30_CC_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:55:35,151 [DEBUG] get_image_id:title: 21-11-29__07_30_CC_F0512.jpg, id: 1HCcQZZ6vhVpGCd81fOyeEpDserrTRUq-
+2021-11-29 09:55:35,151 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:55:35] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:56:45,911 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T05:48
+thecamaras:bd
+thefocus:512
+2021-11-29 09:56:45,920 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:56:45,943 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:56:46,645 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:56:46,653 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:56:46,653 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CB_F0512.jpg
+2021-11-29 09:56:46,661 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CB_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:56:47,156 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CD_F0512.jpg
+2021-11-29 09:56:47,163 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CD_F0512.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:56:47,671 [DEBUG] get_image_id:title: 21-11-29__05_48_CD_F0512.jpg, id: 1w3EVFP2VoL-3NLDvZ6V3vIuRE_KUkdMz
+2021-11-29 09:56:47,671 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:56:47] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:58:07,227 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T05:48
+thecamaras:bd
+thefocus:519
+2021-11-29 09:58:07,234 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:58:07,248 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:58:07,751 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:58:07,751 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:58:07,751 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CB_F0519.jpg
+2021-11-29 09:58:07,767 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CB_F0519.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:58:08,258 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CD_F0519.jpg
+2021-11-29 09:58:08,274 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CD_F0519.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:58:08,770 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:58:08] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:58:20,594 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T05:48
+thecamaras:bd
+thefocus:160
+2021-11-29 09:58:20,602 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:58:20,629 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:58:21,164 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:58:21,164 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:58:21,164 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CB_F0160.jpg
+2021-11-29 09:58:21,172 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CB_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:58:21,779 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CD_F0160.jpg
+2021-11-29 09:58:21,795 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CD_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:58:22,287 [DEBUG] get_image_id:title: 21-11-29__05_48_CD_F0160.jpg, id: 1u_NgF-XDjtp73uO84rXsVzrpWlot3AbB
+2021-11-29 09:58:22,295 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:58:22] "POST /searchImages HTTP/1.1" 200 -
+2021-11-29 09:58:33,165 [INFO] search_images:experiment:1usWtERCev43R107ccgdIZG83ORlwGnyB
+imagedatetime:2021-11-29T05:48
+thecamaras:ac
+thefocus:160
+2021-11-29 09:58:33,173 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-11-29 09:58:33,205 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271usWtERCev43R107ccgdIZG83ORlwGnyB%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-11-29 09:58:33,758 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:58:33,758 [INFO] get_raw_images_folder_id:Raw images folder id:1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR
+2021-11-29 09:58:33,758 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CA_F0160.jpg
+2021-11-29 09:58:33,778 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CA_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:58:34,269 [INFO] get_image_id:folder_id: 1CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR, file name:21-11-29__05_48_CC_F0160.jpg
+2021-11-29 09:58:34,277 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271CVkIi5q9yflxKyQMQssX8wTRF-u6Q5bR%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-11-29__05_48_CC_F0160.jpg%27&maxResults=1000&alt=json
+2021-11-29 09:58:34,783 [INFO] _log:192.168.14.100 - - [29/Nov/2021 09:58:34] "POST /searchImages HTTP/1.1" 200 -

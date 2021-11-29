@@ -1,0 +1,46 @@
+2021-11-28 06:56:30,431 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-11-28 06:56:30,431 [INFO] _log: * Running on http://192.168.14.100:8090/ (Press CTRL+C to quit)
+2021-11-28 06:56:34,081 [ERROR] log_exception:Exception on / [GET]
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\oauth2client\clientsecrets.py", line 121, in _loadfile
+    with open(filename, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'client_secrets.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\auth.py", line 386, in LoadClientConfigFile
+    client_type, client_info = clientsecrets.loadfile(client_config_file)
+  File "E:\programs\Python\Python310\lib\site-packages\oauth2client\clientsecrets.py", line 165, in loadfile
+    return _loadfile(filename)
+  File "E:\programs\Python\Python310\lib\site-packages\oauth2client\clientsecrets.py", line 124, in _loadfile
+    raise InvalidClientSecretsError('Error opening file', exc.filename,
+oauth2client.clientsecrets.InvalidClientSecretsError: ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "E:\programs\Python\Python310\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "e:\dev\flight-software\ground_station\picWeb\main.py", line 22, in index
+    g_drive_handler = GDriveHandler()
+  File "E:\dev\flight-software\ground_station\picWeb\../../common\gdrive_handler.py", line 26, in __init__
+    gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\auth.py", line 113, in _decorated
+    self.GetFlow()
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\auth.py", line 443, in GetFlow
+    self.LoadClientConfig()
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\auth.py", line 366, in LoadClientConfig
+    self.LoadClientConfigFile()
+  File "E:\programs\Python\Python310\lib\site-packages\pydrive\auth.py", line 388, in LoadClientConfigFile
+    raise InvalidConfigError('Invalid client secrets file %s' % error)
+pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+2021-11-28 06:56:34,097 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:56:34] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2021-11-28 06:56:34,185 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:56:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

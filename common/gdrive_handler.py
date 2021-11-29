@@ -215,6 +215,26 @@ class GDriveHandler:
             except Exception as e:
                 logging.error("error chacking image file. Error msg:%s",str(e))
 
+    # download images by start date, end date, list cameras, list focuses, path
+    def get_image_id (self,the_date, the_camera, the_focus):
+
+        file_name = the_date.strftime("%y-%m-%d__%H_%M")
+        file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,the_camera,int(the_focus)) 
+
+
+        folder_id = self.get_raw_images_folder_id()
+        logging.info('folder_id: %s, file name:%s' ,folder_id,file_name)
+
+        file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false and title = '%s'" %(folder_id,file_name)}).GetList()
+        for f in file_list:
+            try:
+                logging.debug('title: %s, id: %s' % (f['title'], f['id']))
+                return f['id']
+            except Exception as e:
+                logging.error("error chacking image file. Error msg:%s",str(e))
+
+
+
 def setup_logging():
     logging.basicConfig(
         level=logging.DEBUG,
