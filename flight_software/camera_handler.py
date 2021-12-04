@@ -103,10 +103,10 @@ class CameraHandler:
     # take picture , camera_index='A'/'B'/'C'/'D'
     # make sure you first call change_active_camera & change_focus
     # return full path saved file, file name
-    def take_pic(self, file_name, flip_image=False):
+    def take_pic(self, file_name, flip_image=False, file_directory=IMAGES_DIR):
         # setup file name with camera index and focus
         new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,self.focus) 
-        saved_file_name = IMAGES_DIR + new_file_name
+        saved_file_name = file_directory + new_file_name
         logging.info("taking picture, image name:%s",saved_file_name)
         if flip_image:
             cmd = "raspistill -vf -hf -o %s" %saved_file_name
