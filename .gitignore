@@ -1,11 +1,11 @@
 __pycache__/
-client_secrets.json
-credentials.json
+credentials/client_secrets.json
+credentials/credentials.json
 debug.log
 images/
 lib/
 run_scp_main.sh
-settings.yaml
+credentials/settings.yaml
 scp_web.log
 scp_main.log
 file_maintenance.log
@@ -168,3 +168,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+ground_station/picWeb/credentials.json
