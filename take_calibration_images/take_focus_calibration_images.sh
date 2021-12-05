@@ -3,4 +3,4 @@
 ../flight_software/stop_scp_main.sh
 sleep 1
 
-sudo python3 take_focus_calibration_images.py
+python3 take_focus_calibration_images.py
