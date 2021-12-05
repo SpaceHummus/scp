@@ -20,7 +20,7 @@ def read_image_parameters_file(image_params_file):
     dist_matrix = cv_file.getNode("D").mat()
 
     cv_file.release()
-    return [camera_matrix, dist_matrix]
+    return (camera_matrix, dist_matrix)
 
 
 def undistorted_image(input_image_path, output_image_path, image_params_file):
@@ -33,6 +33,8 @@ def undistorted_image(input_image_path, output_image_path, image_params_file):
     # crop the image
     x, y, w, h = roi
     dst = dst[y:y + h, x:x + w]
+
+    # todo: update output file's exif metadata from the original image
     cv.imwrite(output_image_path, dst)
 
 
