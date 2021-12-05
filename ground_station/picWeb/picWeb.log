@@ -44,3 +44,307 @@ Traceback (most recent call last):
 pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
 2021-11-28 06:56:34,097 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:56:34] "[35m[1mGET / HTTP/1.1[0m" 500 -
 2021-11-28 06:56:34,185 [INFO] _log:192.168.14.100 - - [28/Nov/2021 06:56:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-12-02 17:03:00,788 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-12-02 17:03:00,790 [INFO] _log: * Running on http://192.168.30.48:8090/ (Press CTRL+C to quit)
+2021-12-02 17:03:04,842 [ERROR] log_exception:Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 121, in _loadfile
+    with open(filename, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'client_secrets.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 386, in LoadClientConfigFile
+    client_type, client_info = clientsecrets.loadfile(client_config_file)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 165, in loadfile
+    return _loadfile(filename)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 124, in _loadfile
+    raise InvalidClientSecretsError('Error opening file', exc.filename,
+oauth2client.clientsecrets.InvalidClientSecretsError: ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:/dev/space_hummus/scp/ground_station/picWeb/main.py", line 28, in index
+    g_drive_handler = GDriveHandler()
+  File "C:\dev\space_hummus\scp\common\gdrive_handler.py", line 26, in __init__
+    gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 113, in _decorated
+    self.GetFlow()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 443, in GetFlow
+    self.LoadClientConfig()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 366, in LoadClientConfig
+    self.LoadClientConfigFile()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 388, in LoadClientConfigFile
+    raise InvalidConfigError('Invalid client secrets file %s' % error)
+pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+2021-12-02 17:03:04,848 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:03:04] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2021-12-02 17:03:04,852 [ERROR] log_exception:Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 121, in _loadfile
+    with open(filename, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'client_secrets.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 386, in LoadClientConfigFile
+    client_type, client_info = clientsecrets.loadfile(client_config_file)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 165, in loadfile
+    return _loadfile(filename)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 124, in _loadfile
+    raise InvalidClientSecretsError('Error opening file', exc.filename,
+oauth2client.clientsecrets.InvalidClientSecretsError: ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:/dev/space_hummus/scp/ground_station/picWeb/main.py", line 28, in index
+    g_drive_handler = GDriveHandler()
+  File "C:\dev\space_hummus\scp\common\gdrive_handler.py", line 26, in __init__
+    gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 113, in _decorated
+    self.GetFlow()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 443, in GetFlow
+    self.LoadClientConfig()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 366, in LoadClientConfig
+    self.LoadClientConfigFile()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 388, in LoadClientConfigFile
+    raise InvalidConfigError('Invalid client secrets file %s' % error)
+pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+2021-12-02 17:03:04,855 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:03:04] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2021-12-02 17:03:05,016 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:03:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-12-02 17:03:05,028 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:03:05] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-12-02 17:03:07,344 [ERROR] log_exception:Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 121, in _loadfile
+    with open(filename, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'client_secrets.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 386, in LoadClientConfigFile
+    client_type, client_info = clientsecrets.loadfile(client_config_file)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 165, in loadfile
+    return _loadfile(filename)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 124, in _loadfile
+    raise InvalidClientSecretsError('Error opening file', exc.filename,
+oauth2client.clientsecrets.InvalidClientSecretsError: ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:/dev/space_hummus/scp/ground_station/picWeb/main.py", line 28, in index
+    g_drive_handler = GDriveHandler()
+  File "C:\dev\space_hummus\scp\common\gdrive_handler.py", line 26, in __init__
+    gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 113, in _decorated
+    self.GetFlow()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 443, in GetFlow
+    self.LoadClientConfig()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 366, in LoadClientConfig
+    self.LoadClientConfigFile()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 388, in LoadClientConfigFile
+    raise InvalidConfigError('Invalid client secrets file %s' % error)
+pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+2021-12-02 17:03:07,351 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:03:07] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2021-12-02 17:14:32,178 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-12-02 17:14:32,179 [INFO] _log: * Running on http://192.168.30.48:8090/ (Press CTRL+C to quit)
+2021-12-02 17:14:35,223 [ERROR] log_exception:Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 121, in _loadfile
+    with open(filename, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'client_secrets.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 386, in LoadClientConfigFile
+    client_type, client_info = clientsecrets.loadfile(client_config_file)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 165, in loadfile
+    return _loadfile(filename)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 124, in _loadfile
+    raise InvalidClientSecretsError('Error opening file', exc.filename,
+oauth2client.clientsecrets.InvalidClientSecretsError: ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:/dev/space_hummus/scp/ground_station/picWeb/main.py", line 28, in index
+    g_drive_handler = GDriveHandler()
+  File "C:\dev\space_hummus\scp\common\gdrive_handler.py", line 26, in __init__
+    gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 113, in _decorated
+    self.GetFlow()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 443, in GetFlow
+    self.LoadClientConfig()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 366, in LoadClientConfig
+    self.LoadClientConfigFile()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 388, in LoadClientConfigFile
+    raise InvalidConfigError('Invalid client secrets file %s' % error)
+pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+2021-12-02 17:14:35,236 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:14:35] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2021-12-02 17:14:37,128 [ERROR] log_exception:Exception on / [GET]
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 121, in _loadfile
+    with open(filename, 'r') as fp:
+FileNotFoundError: [Errno 2] No such file or directory: 'client_secrets.json'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 386, in LoadClientConfigFile
+    client_type, client_info = clientsecrets.loadfile(client_config_file)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 165, in loadfile
+    return _loadfile(filename)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\oauth2client\clientsecrets.py", line 124, in _loadfile
+    raise InvalidClientSecretsError('Error opening file', exc.filename,
+oauth2client.clientsecrets.InvalidClientSecretsError: ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:/dev/space_hummus/scp/ground_station/picWeb/main.py", line 28, in index
+    g_drive_handler = GDriveHandler()
+  File "C:\dev\space_hummus\scp\common\gdrive_handler.py", line 26, in __init__
+    gauth.CommandLineAuth() # need this only one time per user, after that credentials are stored in credentials.json
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 113, in _decorated
+    self.GetFlow()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 443, in GetFlow
+    self.LoadClientConfig()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 366, in LoadClientConfig
+    self.LoadClientConfigFile()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\pydrive\auth.py", line 388, in LoadClientConfigFile
+    raise InvalidConfigError('Invalid client secrets file %s' % error)
+pydrive.settings.InvalidConfigError: Invalid client secrets file ('Error opening file', 'client_secrets.json', 'No such file or directory', 2)
+2021-12-02 17:14:37,131 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:14:37] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2021-12-02 17:15:13,114 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-12-02 17:15:13,116 [INFO] _log: * Running on http://192.168.30.48:8090/ (Press CTRL+C to quit)
+2021-12-02 17:15:17,708 [INFO] access_token_expired:access_token is expired. Now: 2021-12-02 15:15:17.708094, token_expiry: 2021-10-19 10:07:03
+2021-12-02 17:15:17,711 [INFO] _do_refresh_request:Refreshing access_token
+2021-12-02 17:15:18,256 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-12-02 17:15:18,263 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-12-02 17:15:18,290 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-12-02 17:15:19,226 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-12-02 17:15:19,227 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-12-02 17:15:19,227 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-12-02 17:15:19,227 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-12-02 17:15:19,227 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-12-02 17:15:19,228 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-12-02 17:15:19,228 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-12-02 17:15:19,228 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-12-02 17:15:19,250 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:15:19] "GET / HTTP/1.1" 200 -
+2021-12-02 17:15:56,737 [INFO] search_images:experiment:1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+imagedatetime:
+thecamaras:ac
+thefocus:
+2021-12-02 17:15:56,738 [INFO] search_images:experiment:1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+imagedatetime:2021-12-03T17:17
+thecamaras:ac
+thefocus:110
+2021-12-02 17:15:56,742 [ERROR] log_exception:Exception on /searchImages [POST]
+Traceback (most recent call last):
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\site-packages\flask\app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "C:/dev/space_hummus/scp/ground_station/picWeb/main.py", line 42, in search_images
+    img_date_time = datetime.strptime(imagedatetime, "%Y-%m-%dT%H:%M")
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\_strptime.py", line 568, in _strptime_datetime
+    tt, fraction, gmtoff_fraction = _strptime(data_string, format)
+  File "C:\Users\itayg\.conda\envs\scp-env\lib\_strptime.py", line 349, in _strptime
+    raise ValueError("time data %r does not match format %r" %
+ValueError: time data '' does not match format '%Y-%m-%dT%H:%M'
+2021-12-02 17:15:56,751 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:15:56] "[35m[1mPOST /searchImages HTTP/1.1[0m" 500 -
+2021-12-02 17:15:56,751 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-12-02 17:15:56,780 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-12-02 17:15:57,483 [DEBUG] get_folder_id:title: 03 Raw Images, id: 1bgEkGvZheBTDXY7LOaSKZLalUJZQCquI
+2021-12-02 17:15:57,484 [INFO] get_raw_images_folder_id:Raw images folder id:1bgEkGvZheBTDXY7LOaSKZLalUJZQCquI
+2021-12-02 17:15:57,484 [INFO] get_image_id:folder_id: 1bgEkGvZheBTDXY7LOaSKZLalUJZQCquI, file name:21-12-03__17_17_CA_F0110.jpg
+2021-12-02 17:15:57,501 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271bgEkGvZheBTDXY7LOaSKZLalUJZQCquI%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-12-03__17_17_CA_F0110.jpg%27&maxResults=1000&alt=json
+2021-12-02 17:15:58,096 [INFO] get_image_id:folder_id: 1bgEkGvZheBTDXY7LOaSKZLalUJZQCquI, file name:21-12-03__17_17_CC_F0110.jpg
+2021-12-02 17:15:58,113 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271bgEkGvZheBTDXY7LOaSKZLalUJZQCquI%27+in+parents+and+trashed%3Dfalse+and+title+%3D+%2721-12-03__17_17_CC_F0110.jpg%27&maxResults=1000&alt=json
+2021-12-02 17:15:58,880 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:15:58] "POST /searchImages HTTP/1.1" 200 -
+2021-12-02 17:16:18,279 [INFO] _log:192.168.30.48 - - [02/Dec/2021 17:16:18] "POST /dataImages HTTP/1.1" 200 -
+2021-12-04 15:52:31,031 [WARNING] _log: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+2021-12-04 15:52:31,032 [INFO] _log: * Running on http://10.0.0.9:8090/ (Press CTRL+C to quit)
+2021-12-04 15:52:34,033 [INFO] access_token_expired:access_token is expired. Now: 2021-12-04 13:52:34.033555, token_expiry: 2021-12-02 16:15:17
+2021-12-04 15:52:34,035 [INFO] _do_refresh_request:Refreshing access_token
+2021-12-04 15:52:38,425 [INFO] get_folder_content:Getting content of folder id:1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ
+2021-12-04 15:52:38,431 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-12-04 15:52:38,449 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-12-04 15:52:43,206 [DEBUG] get_folder_content:title: Wiki, id: 10dTaM0N2_MsGc-jPYpMtEsodCHdGQ51X
+2021-12-04 15:52:43,206 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle2, id: 1XZrkA1Wk3R0c73JrjTHurr9KRWU9ETVQ
+2021-12-04 15:52:43,206 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Growth Cycle1, id: 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+2021-12-04 15:52:43,206 [DEBUG] get_folder_content:title: 2021-08-07 B1.1 Yonatan Focus Calibration, id: 1Fy_6gvOlbvfLexSRVAw2vMhi-Pi7A-9a
+2021-12-04 15:52:43,206 [DEBUG] get_folder_content:title: 2021-08-01 B0.1 TestDiffUSer, id: 1-DcQ0tMlUop4fLeaSDejKHxfENTS-kB2
+2021-12-04 15:52:43,207 [DEBUG] get_folder_content:title: sd_images, id: 1xrLpqMKpIhICT1Yk2r6zGvwYebYJtWIg
+2021-12-04 15:52:43,207 [DEBUG] get_folder_content:title: calibration_images, id: 1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm
+2021-12-04 15:52:43,207 [DEBUG] get_folder_content:title: 2021-07-08 B0.1 Yerucham Dev1, id: 1usWtERCev43R107ccgdIZG83ORlwGnyB
+2021-12-04 15:52:43,220 [INFO] _log:10.0.0.9 - - [04/Dec/2021 15:52:43] "GET / HTTP/1.1" 200 -
+2021-12-04 15:52:43,336 [INFO] _log:10.0.0.9 - - [04/Dec/2021 15:52:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2021-12-04 15:52:57,433 [INFO] search_images:experiment:1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh
+imagedatetime:2021-12-02T15:52
+thecamaras:ac
+thefocus:100
+2021-12-04 15:52:57,437 [INFO] get_configuration_file:Getting configuration.yaml from G-Drive...
+2021-12-04 15:52:57,439 [INFO] autodetect:file_cache is only supported with oauth2client<4.0.0
+2021-12-04 15:52:57,455 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-12-04 15:52:57,991 [DEBUG] get_configuration_file:title: 11 Processed Images, id: 1vMKtbHaX0I1ZL8zK5ROcM0AM-SCRUa3W
+2021-12-04 15:52:57,992 [DEBUG] get_configuration_file:title: 03 Raw Images, id: 1QjRLpPyl7Vijq3SxdI8Yaw71qSxmcC0R
+2021-12-04 15:52:57,992 [DEBUG] get_configuration_file:title: 02 Raw Telemetry, id: 1lE6ItnX4gskw1WBF_n2r7wjZFW8y-1NJ
+2021-12-04 15:52:57,992 [DEBUG] get_configuration_file:title: 01 Commands, id: 1p3G4sscvBjBCkWQw2KFbV99FXeiA26qF
+2021-12-04 15:52:58,003 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files?q=%271p3G4sscvBjBCkWQw2KFbV99FXeiA26qF%27+in+parents+and+trashed%3Dfalse&maxResults=1000&alt=json
+2021-12-04 15:52:58,556 [DEBUG] get_configuration_file:title: logic_states.yaml, id: 1NJPRFIQWWIE9pDu2GVPHMsoF22Umac_F
+2021-12-04 15:52:58,556 [DEBUG] get_configuration_file:title: configuration.yaml, id: 1PS1UN1x6exnMxVbf5CdRdETuTqO4swh7
+2021-12-04 15:52:58,566 [DEBUG] method:URL being requested: GET https://www.googleapis.com/drive/v2/files/1PS1UN1x6exnMxVbf5CdRdETuTqO4swh7?alt=json
