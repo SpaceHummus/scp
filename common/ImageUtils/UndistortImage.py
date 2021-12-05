@@ -2,11 +2,11 @@ import cv2 as cv
 import argparse
 
 
-def update_image_metadata(in_img, out_img):
-    from exif import Image
-    with open(in_img, 'rb') as image_file:
-        with open(out_img, 'wb') as new_image_file:
-            new_image_file.write(Image(image_file).get_file())
+# def update_image_metadata(in_img, out_img):
+#     from exif import Image
+#     with open(in_img, 'rb') as image_file:
+#         with open(out_img, 'wb') as new_image_file:
+#             new_image_file.write(Image(image_file).get_file())
 
 
 def read_image_parameters_file(image_params_file):
@@ -37,7 +37,7 @@ def undistorted_image(input_image_path, output_image_path, image_params_file):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='ומגןדאםרא ןמפוא ןצשעקד image')
+    parser = argparse.ArgumentParser(description='undistorted image using distortion parameters (from calibration)')
     parser.add_argument("--input_image", help="path to the first image", type=str)
     parser.add_argument("--output_image", help="path to the second image", type=str)
     parser.add_argument("--calibration_data", help="path to the calibration file", type=str)
