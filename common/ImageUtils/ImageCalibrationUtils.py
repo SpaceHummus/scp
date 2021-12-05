@@ -1,4 +1,5 @@
 import glob
+import os
 
 import cv2 as cv
 import numpy as np
@@ -217,11 +218,10 @@ def show_chess_board_image(columns, corners, frame, ret, rows):
 
 def read_images_from_folder(images_folder):
     print(f'calibrating images for folder {images_folder}')
-    images_names = glob.glob(images_folder)
+    images_names = glob.glob(os.path.join(images_folder, '*.jpg'))
     images = []
     print('reading images')
     for image_name in alive_it(images_names):
         im = cv.imread(image_name, 1)
         images.append(im)
     return images
-
