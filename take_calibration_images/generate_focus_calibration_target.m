@@ -64,7 +64,6 @@ y_index_start = round(...
 y_index_end   = y_index_start+size(text_im,1)-1;
 
 im(y_index_start:y_index_end,x_index_start:x_index_end) = text_im;
-imshow(im);
 
 %% Save
 imshow(im);
