@@ -7,10 +7,14 @@
 system_states:
     - name: 'day_sun' 
       illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
-        red: 255 
-        green: 255
-        blue: 255
-        number_of_leds: 3
+        group1:
+            red: 50 
+            green: 60
+            blue: 70
+        group2:
+            red: 80 
+            green: 90
+            blue: 100
         far_red: 0
       camera_configuration: 
         image_frequency_min: 10 # How often should we take images (minutes)
@@ -25,10 +29,14 @@ system_states:
 
     - name: 'day_shade' 
       illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
-        red: 100 
-        green: 100
-        blue: 100
-        number_of_leds: 3
+        group1:
+            red: 50 
+            green: 60
+            blue: 70
+        group2:
+            red: 80 
+            green: 90
+            blue: 100
         far_red: 0
       camera_configuration: 
         image_frequency_min: 10 # How often should we take images (minutes)
@@ -43,20 +51,28 @@ system_states:
 
     - name: 'night' 
       illumination: # LED ilumination 0-255
-        red: 0 
-        green: 0
-        blue: 0
-        number_of_leds: 3
+        group1:
+            red: 50 
+            green: 60
+            blue: 70
+        group2:
+            red: 80 
+            green: 90
+            blue: 100
         far_red: 0
       camera_configuration:
       
       # In this mode, experiment is waiting for setup instructions
     - name: 'standby' 
       illumination: # LED ilumination 0-255
-        red: 0 
-        green: 0
-        blue: 0
-        number_of_leds: 3
+        group1:
+            red: 50 
+            green: 60
+            blue: 70
+        group2:
+            red: 80 
+            green: 90
+            blue: 100
         far_red: 0
       camera_configuration:
         
