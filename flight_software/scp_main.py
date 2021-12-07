@@ -10,6 +10,7 @@ import yaml
 from system_state import SystemState 
 from system_state import CameraConfiguration
 from system_state import Illumination
+from system_state import RGB
 import logging
 from camera_handler import CameraHandler
 from gdrive_handler import GDriveHandler
@@ -93,10 +94,14 @@ def get_system_states():
         name = raw_system_states[i]["name"]
         cam_conf=raw_system_states[i]["camera_configuration"]
         illum=raw_system_states[i]["illumination"] 
-        R= illum["red"]
-        G= illum["green"]
-        B= illum["blue"]
-        number_of_leds = illum["number_of_leds"]
+        g1= illum["group1"]
+        R1=g1["red"]
+        G1=g1["green"]
+        B1=g1["blue"]
+        g2= illum["group2"]
+        R2=g2["red"]
+        G2=g2["green"]
+        B2=g2["blue"]
         far_red= illum["far_red"]
 
         if cam_conf==None:
@@ -107,7 +112,8 @@ def get_system_states():
             exposure = cam_conf["exposure"]
             iso =cam_conf["ISO"]
             cam_configuration = CameraConfiguration(image_frequency_min,exposure,iso,focus_position)
-        state = SystemState(cam_configuration,Illumination(R,G,B,number_of_leds,far_red),name)  
+            Illumination_group=Illumination(RGB(R1,G1,B1),RGB(R2,G2,B2),far_red)
+        state = SystemState(cam_configuration,Illumination_group,name)  
         state.print_values()
         system_states[name]=state
          
@@ -199,7 +205,11 @@ def main():
 
         # change NeoPixle 
         led_handler.stop_LED()
-        led_handler.light_pixel(0,state.illumination.number_of_leds-1,state.illumination.R,state.illumination.G,state.illumination.B)
+        #led_handler.light_pixel(0,state.illumination.number_of_leds-1,state.illumination.R,state.illumination.G,state.illumination.B)
+        #led_handler.light_pixel(0,state.illumination.number_of_leds-1,state.illumination.R,state.illumination.G,state.illumination.B)
+
+        #######################
+        
 
         # take picture if needed
         file_list = []

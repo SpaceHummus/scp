@@ -23,10 +23,12 @@ class SystemState:
         else:
             logging.info("camera_configuration:None")
         if self.illumination != None:
-            logging.info("R:%d",self.illumination.R)
-            logging.info("G:%d",self.illumination.G)
-            logging.info("B:%d",self.illumination.B)
-            logging.info("number_of_leds:%d",self.illumination.number_of_leds)
+            logging.info("R1:%d",self.illumination.group1_rgb.R)
+            logging.info("G1:%d",self.illumination.group1_rgb.G)
+            logging.info("B1:%d",self.illumination.group1_rgb.B)
+            logging.info("R2:%d",self.illumination.group2_rgb.R)
+            logging.info("G2:%d",self.illumination.group2_rgb.G)
+            logging.info("B2:%d",self.illumination.group2_rgb.B)
             logging.info("far_red:%d",self.illumination.far_red)
 
 class CameraConfiguration:
@@ -41,17 +43,23 @@ class CameraConfiguration:
         self.focus_position = focus_position
 
 class Illumination:
-    R = 0
-    G = 0
-    B = 0
-    number_of_leds = 0
+    group1_rgb = None
+    group2_rgb = None
     far_red = 0
-    def __init__(self,R,G,B,number_of_leds,far_red):
-        self.R = R
-        self.G = G
-        self.B = B
-        self.number_of_leds = number_of_leds
+    def __init__(self,group1_rgb,group2_rgb,far_red):
+        self.group1_rgb = group1_rgb
+        self.group2_rgb = group2_rgb
         self.far_red = far_red
+
+        
+class RGB:
+   R = 0
+   G = 0
+   B = 0
+   def __init__(self,R,G,B):
+       self.R = R
+       self.G = G
+       self.B = B
 
 if __name__ == "__main__":
     s = SystemState(CameraConfiguration(6,20,30,[10,100,5]),"day_sun")    
