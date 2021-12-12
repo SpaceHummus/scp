@@ -18,14 +18,12 @@ import logging
 # Number of x-y robot positions
 n_robot_positions = 25
 
-# Z positions
-camera_height_above_iPad_mm = [50, 75, 100]
-
-# What camera focus positions should we try?
-camera_focus_settings = [110,150,190,210,230]
+# Z positions & camera focus positions (for each height one focus position)
+camera_height_above_iPad_mm = [100,  80,  65,  58,  52]
+camera_focus_settings =       [110, 150, 190, 210, 230]
 
 # Time it takes to complete image aquisition for each x-y position
-time_per_image_set_sec = 70
+time_per_image_set_sec = 10
 
 def create_image_folder_if_not_exist(path):
     is_exist = os.path.exists(path)
@@ -66,27 +64,26 @@ def main():
     val = input("Press Enter when robot is finished moving to the center position")
     
     # Loop over all heights
-    for h in camera_height_above_iPad_mm:
+    for i in range(len(camera_height_above_iPad_mm)):
         
-        print("h={0}mm".format(h))
+        h = camera_height_above_iPad_mm[i]
+        f = camera_focus_settings[i]
+        print("h={0}mm, focus settings={1}".format(h,f))
+    
+        camera.change_focus(f)
         
         # Loop over all x-y positions
         for position_counter in range(n_robot_positions):
     
             aquisition_start_time = time.time()
             print("Taking images for x-y position {0} of {1}mm".format(position_counter,n_robot_positions))
-        
-            # Loop over focus positions
-            for camera_focus_setting in camera_focus_settings:
-                # Change focus
-                camera.change_focus(camera_focus_setting)
+
+            # Take a picture
+            image_file_name_prefix = "h{0:02d}mm_pos{1:02d}".format(h,position_counter)
+            camera.take_pic(image_file_name_prefix,file_directory=output_folder_path)
                 
-                # Take a picture
-                image_file_name_prefix = "h{0:02d}mm_pos{1:02d}".format(h,position_counter)
-                camera.take_pic(image_file_name_prefix,file_directory=output_folder_path)
-                
-                t=time.time()
-                print(t-aquisition_start_time)
+            t=time.time()
+            print(t-aquisition_start_time)
         
             # Notify user 
             print("  Aquisition done, move to next x-y position")

@@ -11,14 +11,14 @@ y0_mm = 300; % mm
 camera_distance_from_bottom_of_robot_mm = 15; % Camera is installed 15mm above the bottom of the robot arm
 
 % The minimal FOV that the camera has (usually along the v axis)
-camera_fov_deg = 56; % From https://www.arducam.com/product/arducam-12mp-imx477-motorized-focus-high-quality-camera-for-raspberry-pi/
+camera_fov_deg = 70; % From https://www.arducam.com/product/arducam-12mp-imx477-motorized-focus-high-quality-camera-for-raspberry-pi/
 
 % Target size from generate_distortion_calibration_target.m
-target_size_mm = 30; % = n_boxes_x*box_size
+target_size_mm = 40; % = n_boxes_x*box_size
 
 % Inputs from take_distortion_calibration_images.py
-time_per_image_set_sec = 70;
-camera_height_above_iPad_mm = [50, 75, 100];
+time_per_image_set_sec = 10;
+camera_height_above_iPad_mm = [100,  80,  65,  58,  52];
 
 %% Open the gcode file and write setup information
 time_per_image_set_msec = time_per_image_set_sec*1e3;
