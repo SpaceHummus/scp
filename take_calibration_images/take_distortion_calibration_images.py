@@ -18,15 +18,14 @@ import logging
 # Number of x-y robot positions
 n_robot_positions = 25
 
+# Z positions
+camera_height_above_iPad_mm = [50, 75, 100]
+
 # What camera focus positions should we try?
 camera_focus_settings = [110,150,190,210,230]
 
 # Time it takes to complete image aquisition for each x-y position
 time_per_image_set_sec = 70
-
-# What iPad positions are we qualifying
-iPad_positions = ['iPad lay flat on ground','iPad promped 1cm on top','iPad promped 1cm on bottom','iPad promped 1cm on left','iPad promped 1cm on right']
-
 
 def create_image_folder_if_not_exist(path):
     is_exist = os.path.exists(path)
@@ -63,22 +62,19 @@ def main():
     # Ask user to start robot
     print("")
     print("Make shure the robot is centered at the pattern")
-    
-    position_counter = 0
+    print("On Rotric's consule run take_distortion_calibration_images.gcode")
+    val = input("Press Enter when robot is finished moving to the center position")
     
     # Loop over all heights
-    for iPad_position in iPad_positions:
+    for h in camera_height_above_iPad_mm:
         
-        print("Set iPad position to: {0}".format(iPad_position))
-        print("On Rotric's consule run take_distortion_calibration_images.gcode")
-        val = input("Press Enter when robot is finished moving to the center position")
+        print("h={0}mm".format(h))
         
         # Loop over all x-y positions
-        for robot_arm_position in range(n_robot_positions):
-            position_counter = position_counter + 1
+        for position_counter in range(n_robot_positions):
     
             aquisition_start_time = time.time()
-            print("Taking images for x-y position {0} of {1}mm".format(robot_arm_position,n_robot_positions))
+            print("Taking images for x-y position {0} of {1}mm".format(position_counter,n_robot_positions))
         
             # Loop over focus positions
             for camera_focus_setting in camera_focus_settings:
@@ -86,7 +82,7 @@ def main():
                 camera.change_focus(camera_focus_setting)
                 
                 # Take a picture
-                image_file_name_prefix = "pos{0:02d}".format(position_counter)
+                image_file_name_prefix = "h{0:02d}mm_pos{1:02d}".format(h,position_counter)
                 camera.take_pic(image_file_name_prefix,file_directory=output_folder_path)
                 
                 t=time.time()

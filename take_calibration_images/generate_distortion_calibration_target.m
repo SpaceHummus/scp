@@ -1,5 +1,4 @@
 % This script will generate a checkered target in a white background
-% mesure MTF, by adjusting focus one could find the optimal focus position
 
 %% Inputs
 
@@ -7,9 +6,9 @@
 pixel_size = 0.25; %mm
 
 % Checkered pattern
-box_size = 5; %mm
-n_boxes_x = 6;
-n_boxes_y = 5;
+box_size = 2; %mm
+n_boxes_x = 15;
+n_boxes_y = 13;
 
 % Scale Bar
 scalebar_size = 100; %mm
