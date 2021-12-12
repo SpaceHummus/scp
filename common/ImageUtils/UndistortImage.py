@@ -16,8 +16,8 @@ def read_image_parameters_file(image_params_file):
 
     # note we also have to specify the type to retrieve other wise we only get a
     # FileNode object back instead of a matrix
-    camera_matrix = cv_file.getNode("K").mat()
-    dist_matrix = cv_file.getNode("D").mat()
+    camera_matrix = cv_file.getNode("mtx").mat()
+    dist_matrix = cv_file.getNode("dist").mat()
 
     cv_file.release()
     return (camera_matrix, dist_matrix)

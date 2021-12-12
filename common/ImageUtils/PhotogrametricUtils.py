@@ -8,16 +8,18 @@ from common.ImageUtils import ImageCalibrationUtils
 
 class PhotogrammetryTool:
 
-    def __init__(self, cam_mtx1, cam_mtx2, R, T):
+    def __init__(self, cam_mtx1, cam_mtx2, R0, T0, R1, T1, scale=1):
         self.cam_mtx2 = cam_mtx2
         self.cam_mtx1 = cam_mtx1
 
         # RT matrix for C1 is identity.
-        self.RT1 = np.concatenate([np.eye(3), [[0], [0], [0]]], axis=-1)
+        self.RT1 = np.concatenate([R0, T0], axis=-1)
         self.P1 = self.cam_mtx1 @ self.RT1  # projection matrix for C1
         # RT matrix for C2 is the R and T obtained from stereo calibration.
-        self.RT2 = np.concatenate([R, T], axis=-1)
+        self.RT2 = np.concatenate([R1, T1], axis=-1)
         self.P2 = self.cam_mtx2 @ self.RT2  # projection matrix for C2
+
+        self.scale = scale
 
     def update_RT(self, R, T):
         self.RT2 = np.concatenate([R, T], axis=-1)
@@ -25,22 +27,21 @@ class PhotogrammetryTool:
 
     @staticmethod
     def from_file(stereo_calibration_file_path):
-        cam_mtx1, _, cam_mtx2, _, R, T = ImageCalibrationUtils.read_stereo_calibration_file(
+        cam_mtx1, _, cam_mtx2, _, R0, T0, R1, T1 = ImageCalibrationUtils.read_stereo_calibration_file(
             stereo_calibration_file_path)
 
-        return PhotogrammetryTool(cam_mtx1, cam_mtx2, R, T)
+        return PhotogrammetryTool(cam_mtx1, cam_mtx2, R0, T0, R1, T1)
 
-    def get_updated_transformation_and_projection(self, R, T):
+    def get_updated_transformation_and_projection(self, R0, T0, R1, T1):
         """
         return updated projections and transformation from cam2 to cam1 for point triangulation
         :return:
         """
         # RT matrix for C1 is identity.
-        self.RT1 = np.concatenate([np.eye(3), [[0], [0], [0]]], axis=-1)
+        self.RT1 = np.concatenate([R0, T0], axis=-1)
         self.P1 = self.cam_mtx1 @ self.RT1  # projection matrix for C1
-
         # RT matrix for C2 is the R and T obtained from stereo calibration.
-        self.RT2 = np.concatenate([R, T], axis=-1)
+        self.RT2 = np.concatenate([R1, T1], axis=-1)
         self.P2 = self.cam_mtx2 @ self.RT2  # projection matrix for C2
 
     @staticmethod
@@ -86,7 +87,7 @@ class PhotogrammetryTool:
             p3ds.append(_p3d)
 
         p3ds = np.array(p3ds)
-        return p3ds
+        return p3ds * self.scale
 
     def calculate_HRT_from_points(self, uvs1, uvs2):
         """
@@ -146,3 +147,9 @@ class PhotogrammetryTool:
         ax.set_zlim3d(0, 100)
         ax.scatter(p3ds[:, 0], p3ds[:, 1], p3ds[:, 2])
         plt.show()
+
+    @staticmethod
+    def from_yaml_str(yaml_str):
+        cam_mtx1, _, cam_mtx2, _, R0, T0, R1, T1, scale = ImageCalibrationUtils.bundle_config_from_str(yaml_str)
+
+        return PhotogrammetryTool(cam_mtx1, cam_mtx2, R0, T0, R1, T1)

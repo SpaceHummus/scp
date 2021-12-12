@@ -2,12 +2,10 @@ import glob
 import os
 import shutil
 
-import numpy
 import numpy as np
 
 from ImageCalibrationUtils import calibrate_camera
 import argparse
-from alive_progress import alive_it
 
 
 def get_unique_focus_levels(calibration_images):
@@ -30,11 +28,17 @@ def calibrate_folder_camera(images_folder: str, calibration_result_path: str, ro
     focus_img_dict = get_unique_focus_levels(calibration_images)
 
     if os.path.exists(tmp_folder_path):
-        shutil.rmtree(tmp_folder_path)
+        i = 0
+        tmp_folder_path = f'{tmp_folder_path}_{i}'
+        while os.path.exists(i_tmp_name):
+            i += 1
+            i_tmp_name = f'{tmp_folder_path}_{i}'
+        tmp_folder_path = tmp_folder_path
+        # shutil.rmtree(tmp_folder_path)
 
     os.makedirs(tmp_folder_path)
 
-    for f in focus_img_dict:
+    for f in list(focus_img_dict)[::-1]:
         print(f'calibration focus level: {f}')
         tmp_focus_folder = os.path.join(tmp_folder_path, f)
         os.makedirs(tmp_focus_folder)
@@ -48,9 +52,6 @@ def calibrate_folder_camera(images_folder: str, calibration_result_path: str, ro
                          world_scaling=world_scaling,
                          save_result_in_file=True
                          )
-
-    # print(focus_level)
-    #
 
 
 if __name__ == '__main__':

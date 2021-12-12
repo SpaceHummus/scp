@@ -1,6 +1,6 @@
 import glob
 import os
-
+import yaml
 import cv2 as cv
 import numpy as np
 from alive_progress import alive_it
@@ -66,13 +66,14 @@ def calibrate_camera(images_folder, rows=5, columns=8, world_scaling=1., save_re
     obj_points = []  # 3d point in real world space
 
     print('calibrating frames')
-    for frame in alive_it(images):
+    for frame in alive_it(images[::1]):
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
         # find the checkerboard
         ret, corners = cv.findChessboardCorners(gray, (rows, columns), None)
 
         if ret == True:
+            print("found")
             # Convolution size used to improve corner detection. Don't make this too large.
             conv_size = (11, 11)
 
@@ -85,6 +86,8 @@ def calibrate_camera(images_folder, rows=5, columns=8, world_scaling=1., save_re
 
             obj_points.append(reference_points)
             img_points.append(corners)
+        else:
+            print("not found")
 
     ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(obj_points, img_points, (width, height), None, None)
 
@@ -100,7 +103,7 @@ def read_stereo_calibration_file(file_path):
     read the parameters from the calibration yml file
     the file should contain the following : mtx1, dist1, mtx2, dist2, R, T by those names
     :param file_path: path to the calibration store data
-    :return: mtx1, dist1, mtx2, dist2, R, T
+    :return: mtx1, dist1, mtx2, dist2, R1, T1, R2, T2
     """
     cv_file = cv.FileStorage(file_path, cv.FILE_STORAGE_READ)
 
@@ -110,9 +113,11 @@ def read_stereo_calibration_file(file_path):
     dist1 = cv_file.getNode("dist1").mat()
     mtx2 = cv_file.getNode("mtx2").mat()
     dist2 = cv_file.getNode("dist2").mat()
-    R = cv_file.getNode("R").mat()
-    T = cv_file.getNode("T").mat()
-    return mtx1, dist1, mtx2, dist2, R, T
+    R1 = cv_file.getNode("R1").mat()
+    T1 = cv_file.getNode("T1").mat()
+    R2 = cv_file.getNode("R2").mat()
+    T2 = cv_file.getNode("T2").mat()
+    return mtx1, dist1, mtx2, dist2, R1, T1, R2, T2
 
 
 def stereo_calibrate(mtx1, dist1, mtx2, dist2, frames_folder, rows=5, columns=8, world_scaling=1.,
@@ -225,3 +230,29 @@ def read_images_from_folder(images_folder):
         im = cv.imread(image_name, 1)
         images.append(im)
     return images
+
+
+def get_mtx_from_dict(mat_data):
+    if type(mat_data) is dict and 'data' in mat_data:
+        return np.asarray(mat_data['data']).reshape((mat_data['rows'], mat_data['cols']))
+    return mat_data
+
+
+def bundle_config_from_str(yaml_str: str):
+    yaml_str = yaml_str.replace('%YAML:1.0', '', 1).replace('---', '', 1).replace('!!opencv-matrix', '')
+    yaml_data = yaml.safe_load(yaml_str)
+
+    for attr in yaml_data:
+        yaml_data[attr] = get_mtx_from_dict(yaml_data[attr])
+
+    mtx1 = yaml_data["mtx1"]
+    dist1 = yaml_data["dist1"]
+    mtx2 = yaml_data["mtx2"]
+    dist2 = yaml_data["dist2"]
+    R1 = yaml_data["R1"]
+    T1 = yaml_data["T1"]
+    R2 = yaml_data["R2"]
+    T2 = yaml_data["T2"]
+    scale = yaml_data['scale'] if 'scale' in yaml_data else 1
+
+    return mtx1, dist1, mtx2, dist2, R1, T1, R2, T2, scale
