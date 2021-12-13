@@ -16,10 +16,10 @@ import logging
 #########################################################################
 
 # Number of x-y robot positions
-n_robot_positions = 25
+n_robot_positions = 49
 
 # Z positions & camera focus positions (for each height one focus position)
-camera_height_above_iPad_mm = [100,  80,  65,  58,  52]
+camera_height_above_iPad_mm = [110,  80,  65,  58,  52]
 camera_focus_settings =       [110, 150, 190, 210, 230]
 
 # Time it takes to complete image aquisition for each x-y position
