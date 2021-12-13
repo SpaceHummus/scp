@@ -1,3 +1,4 @@
+import os
 import sys
 # sys.path.append("E:/dev/credentials")
 from pydrive.auth import GoogleAuth
@@ -20,9 +21,16 @@ class GDriveHandler:
     drive = None
 
     # main_folder_id - the google drive folder ID. it should include "01 Commands" folder and the file logic_states.yaml in it 
-    def __init__(self, main_folder_id=ROOT_FOLDER_ID):
-        gauth = GoogleAuth(settings_file="../../credentials/settings.yaml", http_timeout=60)
-        gauth.credentials = Storage(f"../../credentials/credentials.json").get()
+    def __init__(self, main_folder_id=ROOT_FOLDER_ID, credentials_folder=None):
+
+        if credentials_folder is None:
+            gauth = GoogleAuth(settings_file="../../credentials/settings.yaml", http_timeout=60)
+            gauth.credentials = Storage(f"../../credentials/credentials.json").get()
+
+        else:
+            gauth = GoogleAuth(settings_file=os.path.join(credentials_folder, "settings.yaml"), http_timeout=60)
+            gauth.credentials = Storage(os.path.join(credentials_folder, "credentials.json")).get()
+
         gauth.CommandLineAuth()  # need this only one time per user, after that credentials are stored in credentials.json
         self.drive = GoogleDrive(gauth)
         self.main_folder_id = main_folder_id
@@ -159,6 +167,14 @@ class GDriveHandler:
             logging.debug('title: %s, id: %s' % (f['title'], f['id']))
             res.append((f['id'], f['title']))
         return res
+
+    def get_all_files(self):
+        try:
+            file_list = self.drive.ListFile({'q': "'%s' in parents and trashed=false" % self.main_folder_id}).GetList()
+            return file_list
+        except:
+            logging.error(f"404 not found images in get all files, folder id:{self.main_folder_id}")
+            return None
 
     # get the configuration.yaml file for G-Drive
     def get_configuration_file(self):

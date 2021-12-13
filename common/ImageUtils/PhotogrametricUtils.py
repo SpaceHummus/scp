@@ -152,4 +152,4 @@ class PhotogrammetryTool:
     def from_yaml_str(yaml_str):
         cam_mtx1, _, cam_mtx2, _, R0, T0, R1, T1, scale = ImageCalibrationUtils.bundle_config_from_str(yaml_str)
 
-        return PhotogrammetryTool(cam_mtx1, cam_mtx2, R0, T0, R1, T1)
+        return PhotogrammetryTool(cam_mtx1, cam_mtx2, R0, T0, R1, T1, scale=scale)

@@ -61,10 +61,10 @@ if __name__ == '__main__':
                         help="path to the folder in which the yaml files will be written",
                         type=str)
     parser.add_argument("--camera_prefix", help="prefix for the camera name, default is \'\'", type=str, default='')
-    parser.add_argument("--rows", help="number of rows in the chess board pattern, default 5", type=int, default=5)
+    parser.add_argument("--rows", help="number of rows in the chess board pattern, default 5", type=int, default=12)
     parser.add_argument("--columns", help="number of columns in the chess board pattern, default 8", type=int,
-                        default=8)
-    parser.add_argument("--scaling", help="size of each square, default 1.0", type=float, default=1.)
+                        default=14)
+    parser.add_argument("--scaling", help="size of each square, default 1.0", type=float, default=2.)
 
     args = parser.parse_args()
     calibrate_folder_camera(images_folder=args.input_folder,
