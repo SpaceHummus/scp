@@ -17,7 +17,7 @@ camera_fov_deg = 70*1.5; % From https://www.arducam.com/product/arducam-12mp-imx
 target_size_mm = 40; % = n_boxes_x*box_size
 
 % Inputs from take_distortion_calibration_images.py
-time_per_image_set_sec = 10;
+time_per_image_set_sec = 20;
 camera_height_above_iPad_mm = [110,  80,  65,  58,  52];
 n_robot_positions = 49;
 
@@ -62,6 +62,12 @@ for hi=1:length(camera_height_above_iPad_mm)
     %% Print options
     xx = xx(:);
     yy = yy(:);
+	
+	if mod(hi,2) == 0
+		% Start from the end y position since we don't need to travel that long for it
+		xx = flip(xx);
+		yy = flip(yy);
+	end
     
     for xi=1:length(xx)
         fprintf(fid,'G0 X%.0f Y%.0f\n',xx(xi)+x0,yy(xi)+y0);

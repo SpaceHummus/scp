@@ -24,7 +24,7 @@ camera_height_above_iPad_mm = [110,  80,  65,  58,  52]
 camera_focus_settings =       [110, 150, 190, 210, 230]
 
 # Time it takes to complete image aquisition for each x-y position
-time_per_image_set_sec = 10
+time_per_image_set_sec = 20
 
 def create_image_folder_if_not_exist(path):
     is_exist = os.path.exists(path)
@@ -67,6 +67,7 @@ def main():
     val = input("Press Enter when robot is finished moving to the center position")
     
     # Loop over all heights
+    image_counter = 0
     for i in range(len(camera_height_above_iPad_mm)):
         
         h = camera_height_above_iPad_mm[i]
@@ -77,13 +78,19 @@ def main():
         
         # Loop over all x-y positions
         for position_counter in range(n_robot_positions):
+            
+            pos = position_counter
+            if (i % 2) == 0: 
+                # Positions are flipped, start from the end
+                pos = len(n_robot_positions)-position_counter-1
     
             aquisition_start_time = time.time()
-            print("Taking images for x-y position {0} of {1}mm".format(position_counter,n_robot_positions))
+            print("Taking images for x-y position {0} of {1}mm".format(pos,n_robot_positions))
 
             # Take a picture
-            image_file_name_prefix = "h{0:02d}mm_pos{1:02d}".format(h,position_counter)
+            image_file_name_prefix = "img{0:03d}_h{1:02d}mm_pos{2:02d}".format(image_counter,h,pos)
             camera.take_pic(image_file_name_prefix,file_directory=output_folder_path)
+            image_counter = image_counter + 1
                 
             t=time.time()
             print(t-aquisition_start_time)
