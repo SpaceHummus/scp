@@ -28,8 +28,10 @@ time_per_image_set_sec = 300
 def create_image_folder_if_not_exist(path):
     is_exist = os.path.exists(path)
     
-    if not is_exist:
-        os.makedirs(path)
+    if  is_exist:
+        shutil.rmtree(path)
+    
+    os.makedirs(path)   
         
 def setup_logging():
     logging.basicConfig(
