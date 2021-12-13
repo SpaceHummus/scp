@@ -11,14 +11,15 @@ y0_mm = 300; % mm
 camera_distance_from_bottom_of_robot_mm = 15; % Camera is installed 15mm above the bottom of the robot arm
 
 % The minimal FOV that the camera has (usually along the v axis)
-camera_fov_deg = 56; % From https://www.arducam.com/product/arducam-12mp-imx477-motorized-focus-high-quality-camera-for-raspberry-pi/
+camera_fov_deg = 70*1.5; % From https://www.arducam.com/product/arducam-12mp-imx477-motorized-focus-high-quality-camera-for-raspberry-pi/
 
 % Target size from generate_distortion_calibration_target.m
-target_size_mm = 30; % = n_boxes_x*box_size
+target_size_mm = 40; % = n_boxes_x*box_size
 
 % Inputs from take_distortion_calibration_images.py
-time_per_image_set_sec = 70;
-camera_height_above_iPad_mm = [50, 75, 100];
+time_per_image_set_sec = 10;
+camera_height_above_iPad_mm = [110,  80,  65,  58,  52];
+n_robot_positions = 49;
 
 %% Open the gcode file and write setup information
 time_per_image_set_msec = time_per_image_set_sec*1e3;
@@ -29,8 +30,8 @@ fprintf(fid,';G21   (Set units to millimeters)\n');
 fprintf(fid,'\n');
 fprintf(fid,'; Go up to signal the robot is going and allow user to click enter\n');
 fprintf(fid,'G0 Z%0.f (Camera height of %.0fmm)\n',...
-    camera_height_above_iPad_mm(round(end/2))-camera_distance_from_bottom_of_robot_mm, ...
-    camera_height_above_iPad_mm(round(end/2)));
+    min(camera_height_above_iPad_mm-camera_distance_from_bottom_of_robot_mm), ...
+    min(camera_height_above_iPad_mm));
 fprintf(fid,'G4 P10 (Wait for a bit)\n');
 fprintf(fid,'\n');
 fprintf(fid,'; Go to the center positioning\n');
@@ -48,8 +49,11 @@ for hi=1:length(camera_height_above_iPad_mm)
     	h);
     
     %% Compute max travel distance
+    if round(sqrt(n_robot_positions)) ~= sqrt(n_robot_positions)
+        error('Please select n_robot_positions = %.0f which is a square of an integer',n_robot_positions);
+    end
     max_travel_mm = sin(camera_fov_deg/2*pi/180)*h-target_size_mm/2;
-    travel_mm = round(linspace(-max_travel_mm,max_travel_mm,5));
+    travel_mm = round(linspace(-max_travel_mm,max_travel_mm,sqrt(n_robot_positions)));
     
     % Set a grid
     [xx,yy] = meshgrid(travel_mm,travel_mm);
@@ -68,6 +72,6 @@ end
 %% Clean up
 fprintf(fid,'\n; Go to the center positioning\n');
 fprintf(fid,'G0 X%.0f Y%.0f\n',x0_mm,y0_mm);
-fprintf(fid,'G0 Z%.0f\n',camera_height_above_iPad_mm(1)-camera_distance_from_bottom_of_robot_mm);
+fprintf(fid,'G0 Z%.0f\n',min(camera_height_above_iPad_mm-camera_distance_from_bottom_of_robot_mm));
 fprintf(fid,'G4 P1\n');
 fclose(fid);

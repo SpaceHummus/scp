@@ -7,8 +7,8 @@ pixel_size = 0.25; %mm
 
 % Checkered pattern
 box_size = 2; %mm
-n_boxes_x = 15;
-n_boxes_y = 13;
+n_boxes_x = 20;
+n_boxes_y = 15;
 
 % Scale Bar
 scalebar_size = 100; %mm
