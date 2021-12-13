@@ -3,7 +3,7 @@
 ;G21   (Set units to millimeters)
 
 ; Go up to signal the robot is going and allow user to click enter
-G0 Z50 (Camera height of 65mm)
+G0 Z37 (Camera height of 52mm)
 G4 P10 (Wait for a bit)
 
 ; Go to the center positioning
@@ -274,5 +274,5 @@ G4 P10000
 
 ; Go to the center positioning
 G0 X0 Y300
-G0 Z85
+G0 Z37
 G4 P1

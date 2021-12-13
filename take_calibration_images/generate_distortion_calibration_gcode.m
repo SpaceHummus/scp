@@ -29,8 +29,8 @@ fprintf(fid,';G21   (Set units to millimeters)\n');
 fprintf(fid,'\n');
 fprintf(fid,'; Go up to signal the robot is going and allow user to click enter\n');
 fprintf(fid,'G0 Z%0.f (Camera height of %.0fmm)\n',...
-    camera_height_above_iPad_mm(round(end/2))-camera_distance_from_bottom_of_robot_mm, ...
-    camera_height_above_iPad_mm(round(end/2)));
+    min(camera_height_above_iPad_mm-camera_distance_from_bottom_of_robot_mm), ...
+    min(camera_height_above_iPad_mm));
 fprintf(fid,'G4 P10 (Wait for a bit)\n');
 fprintf(fid,'\n');
 fprintf(fid,'; Go to the center positioning\n');
@@ -68,6 +68,6 @@ end
 %% Clean up
 fprintf(fid,'\n; Go to the center positioning\n');
 fprintf(fid,'G0 X%.0f Y%.0f\n',x0_mm,y0_mm);
-fprintf(fid,'G0 Z%.0f\n',camera_height_above_iPad_mm(1)-camera_distance_from_bottom_of_robot_mm);
+fprintf(fid,'G0 Z%.0f\n',min(camera_height_above_iPad_mm-camera_distance_from_bottom_of_robot_mm));
 fprintf(fid,'G4 P1\n');
 fclose(fid);
