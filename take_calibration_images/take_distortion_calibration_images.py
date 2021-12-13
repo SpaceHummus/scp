@@ -80,7 +80,7 @@ def main():
         for position_counter in range(n_robot_positions):
             
             pos = position_counter
-            if (i % 2) == 0: 
+            if (i % 2) == 1: 
                 # Positions are flipped, start from the end
                 pos = n_robot_positions-position_counter-1
     
