@@ -82,7 +82,7 @@ def main():
             pos = position_counter
             if (i % 2) == 0: 
                 # Positions are flipped, start from the end
-                pos = len(n_robot_positions)-position_counter-1
+                pos = n_robot_positions-position_counter-1
     
             aquisition_start_time = time.time()
             print("Taking images for x-y position {0} of {1}mm".format(pos,n_robot_positions))
