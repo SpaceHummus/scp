@@ -17,7 +17,7 @@ camera_fov_deg = 70*1.5; % From https://www.arducam.com/product/arducam-12mp-imx
 target_size_mm = 40; % = n_boxes_x*box_size
 
 % Inputs from take_distortion_calibration_images.py
-time_per_image_set_sec = 20;
+time_per_image_set_sec = 30;
 camera_height_above_iPad_mm = [110,  80,  65,  58,  52];
 n_robot_positions = 49;
 

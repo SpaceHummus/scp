@@ -12,6 +12,7 @@ import numpy as np
 import os
 import logging
 import shutil
+from PIL import Image
 
 # General configuration of this script, these numbers should match .gcode
 #########################################################################
@@ -24,7 +25,7 @@ camera_height_above_iPad_mm = [110,  80,  65,  58,  52]
 camera_focus_settings =       [110, 150, 190, 210, 230]
 
 # Time it takes to complete image aquisition for each x-y position
-time_per_image_set_sec = 20
+time_per_image_set_sec = 30
 
 def create_image_folder_if_not_exist(path):
     is_exist = os.path.exists(path)
@@ -65,6 +66,7 @@ def main():
     print("Make shure the robot is centered at the pattern")
     print("On Rotric's consule run take_distortion_calibration_images.gcode")
     val = input("Press Enter when robot is finished moving to the center position")
+    time.sleep(2) # Add a delay to let system stabilize
     
     # Loop over all heights
     image_counter = 0
@@ -86,11 +88,27 @@ def main():
     
             aquisition_start_time = time.time()
             print("Taking images for x-y position {0} of {1}mm".format(pos,n_robot_positions))
+            
+            # Take a sample picture (robot might be still moving
+            tmp_file_path, _ = camera.take_pic("tmp")
 
             # Take a picture
             image_file_name_prefix = "img{0:03d}_h{1:02d}mm_pos{2:02d}".format(image_counter,h,pos)
-            camera.take_pic(image_file_name_prefix,file_directory=output_folder_path)
+            img_file_path, _ = camera.take_pic(image_file_name_prefix,file_directory=output_folder_path)
             image_counter = image_counter + 1
+            
+            # Compare the two images taken, if they are different arm was still moving while the first image was taken and need to be re-done
+            tmp_img = np.array(Image.open(tmp_file_path)) # Read image
+            img = np.array(Image.open(img_file_path)) # Read image
+            tmp_img = np.mean(tmp_img, 2, np.float32)# Convert to RGB
+            img = np.mean(img, 2, np.float32)# Convert to RGB
+            img_diff = np.abs(tmp_img-img) # Compute the difference
+            if np.count_nonzero(img_diff>50) > 20: 
+                # Some pixels are meaningfully different, we need to add a short delay to make sure camera is not moving
+                print("Meaningful difference, we need to add time to timer")
+                is_burn_more_time = True
+            else:
+                is_burn_more_time = False
                 
             t=time.time()
             print(t-aquisition_start_time)
@@ -105,6 +123,9 @@ def main():
                 print("ERROR - ran out of time, please increase time_per_image_set_sec")
                 return
             time.sleep(time_left)
+            
+            if is_burn_more_time:
+                time.sleep(5) # Sleep for x seconds
         
     print("All Done")
     
