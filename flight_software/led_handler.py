@@ -19,10 +19,17 @@ def start_LED ():
 def stop_LED():
     pixels.fill((0, 0, 0))
 
+# Set Neopixel intensity
+# Inputs:
+#   from_pixle, to_pixle - pixel index to set intensity (0 to 19)
+#   R,G,B from 0 to 255
 def light_pixel(from_pixle,to_pixle,R,G,B):
     for i in range(from_pixle,to_pixle+1):
         pixels[i] = (R,G,B)
 
+# Set far red intensity 
+# Inputs:
+#   duty_cycle - from 0 to 100
 def light_far_red(duty_cycle):
     pwm0_neopixel.ChangeDutyCycle(duty_cycle)
 
