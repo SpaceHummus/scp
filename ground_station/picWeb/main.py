@@ -1,7 +1,7 @@
 import sys
 import numpy as np
 
-sys.path.insert(1, '../common')
+sys.path.insert(1, '../../common')
 from common.gdrive_handler import GDriveHandler
 from flask import Flask, request, render_template, redirect, url_for
 import logging
