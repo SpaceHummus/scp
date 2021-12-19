@@ -1,4 +1,4 @@
-import cv2 as cv
+from cv2 import cv2 as cv
 import numpy as np
 from alive_progress import alive_it
 from scipy import linalg
