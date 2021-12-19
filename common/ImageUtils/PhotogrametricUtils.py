@@ -3,7 +3,7 @@ import numpy as np
 from alive_progress import alive_it
 from scipy import linalg
 
-import ImageCalibrationUtils
+from common/ImageUtils import ImageCalibrationUtils
 
 
 class PhotogrammetryTool:
