@@ -116,4 +116,4 @@ if __name__ == '__main__':
     # g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
     # g_drive_handler.get_image_id(img_date_time,"C","160")
 
-    app.run(host='127.0.0.1', port=8099)
+    app.run(host='127.0.0.1', port=8090)
