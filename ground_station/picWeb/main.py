@@ -6,7 +6,7 @@ from gdrive_handler import GDriveHandler
 from flask import Flask, request, render_template, redirect, url_for
 import logging
 from datetime import datetime
-from common.ImageUtils.PhotogrametricUtils import PhotogrammetryTool
+from ImageUtils.PhotogrametricUtils import PhotogrammetryTool
 
 
 def setup_logging():
