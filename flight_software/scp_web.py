@@ -24,15 +24,21 @@ def setup_logging():
 app = Flask(__name__)
  #Flask-WTF requires an encryption key - the string can be anything
 app.config['SECRET_KEY'] = 'G2HWAV3MGfNTqsrYQg8EcMrdTimkZ724'
-CONF_FILE_NAME = "scp_conf.yaml"
-
 Bootstrap(app)
+
+#################### Main Page ########################################
+@app.route('/')
+def main_page():
+    return render_template('main.html')
+
+#################### Set Google Folder Page ########################################
+CONF_FILE_NAME = "scp_conf.yaml"
 class ConfForm(FlaskForm):
     name = StringField('Google folder id:', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
-@app.route('/', methods=['GET', 'POST'])
-def main():
+@app.route('/SetGoogleFolder/', methods=['GET', 'POST'])
+def set_google_folder():
     form = ConfForm()
     if request.method == 'GET':
         a_yaml_file = open(CONF_FILE_NAME,'r')
