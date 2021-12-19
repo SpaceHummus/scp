@@ -95,13 +95,7 @@ def led_testing():
     
     # Set LEDs - Control side
     led_handler.light_pixel(5,9,int(form.c_r.data),int(form.c_g.data),int(form.c_b.data))
-    led_handler.light_pixel(15,19,int(form.c_r.data),int(form.c_g.data),int(form.c_b.data))  
-
-    time.sleep(1)
-    led_handler.light_pixel(0,1,0,0,0)
-    time.sleep(1)
-    led_handler.light_pixel(0,4,int(form.s_r.data),int(form.s_g.data),int(form.s_b.data))
-    
+    led_handler.light_pixel(15,19,int(form.c_r.data),int(form.c_g.data),int(form.c_b.data))    
     
     return render_template('led_testing.html', form=form)
 
