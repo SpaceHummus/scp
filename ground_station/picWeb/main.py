@@ -1,3 +1,4 @@
+import argparse
 import sys
 import numpy as np
 
@@ -112,8 +113,8 @@ def get_all_experiments():
 
 if __name__ == '__main__':
     setup_logging()
-    # img_date_time = datetime.strptime("2021-11-29T07:07","%Y-%m-%dT%H:%M")
-    # g_drive_handler = GDriveHandler("1usWtERCev43R107ccgdIZG83ORlwGnyB")
-    # g_drive_handler.get_image_id(img_date_time,"C","160")
-
-    app.run(host='127.0.0.1', port=8090)
+    parser = argparse.ArgumentParser(description='run the web server for the growth estimation UI')
+    parser.add_argument('--host', help="host name for the app", default='0.0.0.0', type=str)
+    parser.add_argument('--port', help="port number for the app", default=8090, type=int)
+    args = parser.parse_args()
+    app.run(host=args.host, port=args.port)
