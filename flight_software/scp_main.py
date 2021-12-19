@@ -209,8 +209,8 @@ def main():
 
         # change NeoPixle 
         led_handler.stop_LED()
-        #led_handler.light_pixel(0,state.illumination.number_of_leds-1,state.illumination.R,state.illumination.G,state.illumination.B)
-        #led_handler.light_pixel(0,state.illumination.number_of_leds-1,state.illumination.R,state.illumination.G,state.illumination.B)
+        led_handler.light_pixel_by_list ([0,1,2,3,4,10,11,12,13,14],state.illumination.group1_rgb)  
+        led_handler.light_pixel_by_list ([5,6,7,8,9,15,16,17,18,19],state.illumination.group2_rgb)     
 
         #######################
         

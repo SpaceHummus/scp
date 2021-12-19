@@ -32,7 +32,11 @@ def light_pixel(from_pixle,to_pixle,R,G,B):
 #   duty_cycle - from 0 to 100
 def light_far_red(duty_cycle):
     pwm0_neopixel.ChangeDutyCycle(duty_cycle)
-    
+
+# light a subset of LEDs    
+def light_pixel_by_list(pixels_list,RGB):
+    for i in range(len(pixels_list)):
+        pixels[pixels_list[i]] = (RGB.R,RGB.G,RGB.B)
 
 # Built in test to try all LEDs
 def built_in_test ():
