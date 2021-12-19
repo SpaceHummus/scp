@@ -15,6 +15,7 @@ class SystemState:
         logging.info("name:%s", self.name)
         if self.camera_configuration != None:
             logging.info("image_frequency_min:%d",self.camera_configuration.image_frequency_min)
+            logging.info("root_image_frequency_min:%d",self.camera_configuration.root_image_frequency_min)
             logging.info("focus_position:")
             for fp in self.camera_configuration.focus_position:
                 logging.info("* %d",fp)
@@ -33,11 +34,13 @@ class SystemState:
 
 class CameraConfiguration:
     image_frequency_min = 5 # How often should we take images (minutes)
+    root_image_frequency_min = 60 # How often should we take images (minutes)    
     exposure = 10
     iso = 10
     focus_position = []
-    def __init__(self,image_frequency_min,exposure,iso,focus_position):
+    def __init__(self,image_frequency_min, root_image_frequency_min, exposure,iso,focus_position):
         self.image_frequency_min = image_frequency_min
+        self.root_image_frequency_min = root_image_frequency_min
         self.exposure = exposure
         self.iso = iso
         self.focus_position = focus_position

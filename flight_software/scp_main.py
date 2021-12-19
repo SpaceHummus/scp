@@ -13,6 +13,7 @@ from system_state import Illumination
 from system_state import RGB
 import logging
 from camera_handler import CameraHandler
+from root_image_handler import RootImageHandler
 from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
 import image_handler
@@ -107,11 +108,12 @@ def get_system_states():
         if cam_conf==None:
             cam_configuration = None  
         else:
+            root_image_frequency_min = cam_conf["root_image_frequency_min"]
             image_frequency_min = cam_conf["image_frequency_min"]
             focus_position = cam_conf["focus_position"]
             exposure = cam_conf["exposure"]
             iso =cam_conf["ISO"]
-            cam_configuration = CameraConfiguration(image_frequency_min,exposure,iso,focus_position)
+            cam_configuration = CameraConfiguration(image_frequency_min, root_image_frequency_min, exposure,iso,focus_position)
             Illumination_group=Illumination(RGB(R1,G1,B1),RGB(R2,G2,B2),far_red)
         state = SystemState(cam_configuration,Illumination_group,name)  
         state.print_values()
@@ -192,7 +194,9 @@ def main():
 
     # get handler for the cameras
     camera = CameraHandler()
+    root_image = RootImageHandler()
     last_pic_time = 0
+    last_root_pic_time = 0
 
     while(True):
         state = get_current_state()
@@ -219,6 +223,13 @@ def main():
                 last_pic_time = time.time()
                 logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
         
+        # take root picture if needed
+        if (state.camera_configuration != None) and (current_time - last_root_pic_time >=(60*state.camera_configuration.root_image_frequency_min)):
+            root_image.take_pic(get_file_name())
+            last_root_pic_time = time.time()
+            logging.info("going to wait %d minute(s) before next root picture",state.camera_configuration.root_image_frequency_min)
+        
+
         telematry_handler.write_telematry_csv()
         logging.info('going to sleep a minute...')
         time.sleep(30)
