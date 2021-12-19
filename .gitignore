@@ -171,3 +171,4 @@ fabric.properties
 ground_station/picWeb/credentials.json
 /ground_station/picWeb/static/node_modules/
 ground_station/picWeb/picWeb.log
+ground_station/picWeb/picWeb.log
