@@ -1,7 +1,7 @@
 import glob
 import os
 import shutil
-
+from threading import Thread
 import numpy as np
 
 from ImageCalibrationUtils import calibrate_camera
@@ -24,6 +24,8 @@ def calibrate_folder_camera(images_folder: str, calibration_result_path: str, ro
 
     calibration_images = glob.glob('*.jpg')
     tmp_folder_path = os.path.join(images_folder, '_tmp')
+    if os.path.exists(tmp_folder_path):
+        shutil.rmtree(tmp_folder_path)
 
     focus_img_dict = get_unique_focus_levels(calibration_images)
 
@@ -45,13 +47,16 @@ def calibrate_folder_camera(images_folder: str, calibration_result_path: str, ro
         for img in focus_img_dict[f]:
             shutil.copy2(src=os.path.join(images_folder, img), dst=os.path.join(tmp_focus_folder, img))
 
-        calibrate_camera(images_folder=tmp_focus_folder,
-                         calibration_result_path=os.path.join(calibration_result_path, f'{camera_prefix}_{f}.yaml'),
-                         rows=rows,
-                         columns=columns,
-                         world_scaling=world_scaling,
-                         save_result_in_file=True
-                         )
+        calib_func = lambda: calibrate_camera(images_folder=tmp_focus_folder,
+                                              calibration_result_path=os.path.join(calibration_result_path,
+                                                                                   f'{camera_prefix}_{f}.yaml'),
+                                              rows=rows,
+                                              columns=columns,
+                                              world_scaling=world_scaling,
+                                              save_result_in_file=True
+                                              )
+        # Thread(target=calib_func).start()
+        calib_func()
 
 
 if __name__ == '__main__':
