@@ -1,0 +1,98 @@
+Hummus in Space camera board quick start manual
+
+UART configuration:
+Baud rate:	115200
+Start bit:	1 ('0')
+Stop bit:	1 ('1')
+Parity:		None
+Bit Order:	lsb to msb
+
+
+CPLD UFM (User Flash Memory) structure:
+2 sectors (0,1), each holding 256 addresses of 16bits data.
+Sector 0 (address 0x000 - 0x0FF): Holds configuration data for imager #0.
+Sector 1 (address 0x100 - 0x1FF): Holds configuration data for imager #1.
+Configuration data format:
+
+Address LSB:	Data MSB											Data LSB
+0x00			N/A 												N = Last valid address of configuration data
+0x01			Data of 1st register in imager to be written		Address of 1st register in imager to be written
+0x02			Data of 2nd register in imager to be written		Address of 2nd register in imager to be written
+....
+N				Data of last register in imager to be written		Address of last register in imager to be written
+
+
+To get an image from a certain imager, the imager needs to be reset and configured (at least once after power up).
+Once the imager is reset and configured, it can produce frame after frame without configuration (as long as it is not reset or powered down between frames).
+
+===============================================================================================================================================================
+Supported commands (received by board via UART):
+Note: All even opcodes refer to Imager 0 and/or UFM sector 0. For any even opcode M, the odd opcode M+1 is the same command for Imager 1 and/or UFM sector 1.
+
+0x00:		Get a single image frame from imager 0. Should be sent only after the imager is configured.
+			Expected result: 137244 bytes of the image frame are sent back to the host.
+			Once frame is received the board is ready for further commands.
+			
+0x02:		Reset imager 0. Should be sent before any access to imager 0 after the board powers up.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+
+0x04:		Configure imager 0. UFM sector 0 configuration data is read, and written to imager 0 registers.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+
+0x06:		Read from imager 0 address space. The opcode is followed by an address byte (0..255).
+			Expected result: Once the operation is complete the read data from the specified register is sent back
+			to the host (single byte).
+			
+0x08:		Write to imager 0 address space. The opcode is followed by an address byte (0..255), and then a data byte.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+			
+0x0A:		Read from UFM sector 0 address space. The opcode is followed by an address byte (0..255).
+			Expected result: Once the operation is complete the read data from the specified register is sent back
+			to the host. 2 bytes total. First the LSB, then the MSB.
+			
+0x0C:		Erase UFM sector 0.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+			
+0x0E:		Write to UFM sector 0 address space. The opcode is followed by an address byte (0..255), the LSB of the
+			data to write, and the MSB of the data to write.
+			Note: The UFM sector must be erased before any data can be written to it.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+			
+0x10:		Change the state of the IR LEDs of imager 0 to constantly on (light).
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+
+0x12:		Change the state of the IR LEDs of imager 0 to constantly off (dark).
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+			
+0x14:		Change the state of the IR LEDs of imager 0 to be controlled by imager 0.
+			Note: this is the default state of the IR LEDs after the board is powered on.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+
+0x16:		Change the state of the white LEDs of imager 0 to constantly on (light).
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+
+0x18:		Change the state of the white LEDs of imager 0 to constantly off (dark).
+			Note: this is the default state of the white LEDs after the board is powered on.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+			
+0x1A:		Change the state of the white LEDs of imager 0 to be controlled by imager 0.
+			Expected result: Once the operation is complete the board returns the command opcode back to the host.
+
+===============================================================================================================================================================
+
+Nominal flow:
+1.	After power up/ board reset:
+	*	Send reset command to imager 0 and wait for reply.
+	*	Send configuration command to imager 0 and wait for reply.
+	*	Send reset command to imager 0 and wait for reply.
+	*	Send configuration command to imager 0 and wait for reply.
+2.	When a frame is required from imager X (0/1):
+	*	Turn off ambient lighting.
+	*	Set imager X IR LEDs state to the desired state if different than the default. Wait for reply.
+	*	Set imager X white LEDs state to the desired state if different than the default.Wait for reply.
+	*	Send a get frame command to imager X and wait for reply.
+	*	Turn ambient light back on if required.
+
+
+	
+
