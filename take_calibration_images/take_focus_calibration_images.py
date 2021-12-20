@@ -11,6 +11,7 @@ import string
 import numpy as np
 import os
 import logging
+import shutil
 
 # General configuration of this script, these numbers should match .gcode
 #########################################################################
