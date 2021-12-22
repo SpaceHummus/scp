@@ -123,11 +123,11 @@ fprintf(fid,'calibration_date: ''%s''\n',calibration_date);
 fprintf(fid,'\n# For each height, what is the recommended focus setting\n');
 fprintf(fid,'height_mm:\n');
 for i=1:length(h)
-    fprintf(fid,'\t- %.0f\n',h(i));
+    fprintf(fid,' - %.0f\n',h(i));
 end
 fprintf(fid,'focus_setting:\n');
 for i=1:length(h)
-    fprintf(fid,'\t- %.0f\n',recommended_focus_setting(i));
+    fprintf(fid,' - %.0f\n',recommended_focus_setting(i));
 end
 fclose(fid);
 

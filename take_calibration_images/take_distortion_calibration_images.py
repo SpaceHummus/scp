@@ -21,8 +21,9 @@ from PIL import Image
 n_robot_positions = 49
 
 # Z positions & camera focus positions (for each height one focus position)
-camera_height_above_iPad_mm = [110,  80,  65,  58,  52]
-camera_focus_settings =       [110, 150, 190, 210, 230]
+camera_height_above_iPad_mm = [90,  70,  60,  50,  43]
+# Comment below if you would like to use focus setting to verify for each height what focus setting to use
+# camera_focus_settings =       [110, 150, 190, 210, 230] 
 
 # Time it takes to complete image aquisition for each x-y position
 time_per_image_set_sec = 30
@@ -47,8 +48,6 @@ def setup_logging():
 
 def main():
     setup_logging()
-    camera = camera_handler.CameraHandler()
-    camera.change_active_camera('A')
 
     # Get input from user about the camera we will use today
     print("What is the camera serial number we will calibrate today (Example: C01)?")
@@ -56,6 +55,9 @@ def main():
     camera_sn = camera_sn.upper()
     print("Selected '{0}'".format(camera_sn))
     time.sleep(1)
+    
+    camera = camera_handler.CameraHandler(camera_id=camera_sn)
+    camera.change_active_camera('A')
     
     # Create output folder
     output_folder_path = "{0}_distortion_calibration_images_{1}/".format(camera_sn,time.strftime("%Y-%m-%d"))
@@ -73,10 +75,9 @@ def main():
     for i in range(len(camera_height_above_iPad_mm)):
         
         h = camera_height_above_iPad_mm[i]
-        f = camera_focus_settings[i]
+        f = camera.change_focus_to_h(h)
+        # camera.change_focus(f) # Directly control focus
         print("h={0}mm, focus settings={1}".format(h,f))
-    
-        camera.change_focus(f)
         
         # Loop over all x-y positions
         for position_counter in range(n_robot_positions):
