@@ -34,6 +34,7 @@ def board3bcm(pin):
 class CameraHandler:
     activeCamera='A'
     focus=512
+    focus_distance=None
 
     # Constructor, index='A'/'B'/'C'/'D'
     def __init__(self,width=4056,height=3040):
@@ -93,6 +94,7 @@ class CameraHandler:
     # change camera focus - due to a bug in the HW, we need to open a thread that starts raspstill in the backbround inparallel, why??? who knows...
     def change_focus(self,focus):
         self.focus = focus
+        self.focus_distance= None # When changing focus directly, focus_distance is unknown
         logging.info("changing focus to:%d",focus)        
         x = threading.Thread(target=run_camera, args=(1,))
         x.start()
@@ -104,9 +106,15 @@ class CameraHandler:
     # make sure you first call change_active_camera & change_focus
     # return full path saved file, file name
     def take_pic(self, file_name, flip_image=False, file_directory=IMAGES_DIR):
-        # setup file name with camera index and focus
-        new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,self.focus) 
+        # Generate file name and path string
+        if self.focus_distance == None:
+            focus_distance_string = ""
+        else:
+            focus_distance_string = "H{0:03d}mm_".format(self.focus_distance)
+        new_file_name="{0}_C{1}_{2}F{3:04d}.jpg".format(file_name,self.activeCamera,focus_distance_string,self.focus) 
         saved_file_name = file_directory + new_file_name
+        
+        # Aquire image
         logging.info("taking picture, image name:%s",saved_file_name)
         if flip_image:
             cmd = "raspistill -vf -hf -o %s" %saved_file_name
@@ -114,6 +122,7 @@ class CameraHandler:
             cmd = "raspistill -o %s" %saved_file_name 
         os.system(cmd)
         logging.info("done taking picture")
+        
         return saved_file_name, new_file_name
 
 
