@@ -67,12 +67,12 @@ def built_in_test ():
     
     print("Neopixel off, far RED on max intensity")
     light_pixel(from_pixel,to_pixel,0,0,0)
-    light_far_red(100)
+    light_far_red(50)
     time.sleep(1)
     
     print("Light everything - max intensity")
     light_pixel(from_pixel,to_pixel,255,255,255)
-    light_far_red(100)
+    light_far_red(50)
     time.sleep(1)
     
     print("Turn off everything")
@@ -80,10 +80,39 @@ def built_in_test ():
     stop_LED()
     time.sleep(1)
     print("Done")
+    
+    
+# Shine light at max nominal condition
+def built_in_test_nominal_condition ():
+
+    from_pixel = 0
+    to_pixel = NUM_OF_PIXELS-1
+    
+    print("Turn off everything")
+    stop_LED()
+    light_far_red(0)
+    time.sleep(1);
+    
+    print("Nominal Ilumination")
+    light_pixel(from_pixel,to_pixel,150,210,255)
+    light_far_red(12)
+    time.sleep(10)
+    
+    print("Extra Umpf")
+    light_pixel(from_pixel,to_pixel,255,255,255)
+    light_far_red(15)
+    time.sleep(10)
+    
+    print("Turn off everything")
+    stop_LED()
+    light_far_red(0)
+    time.sleep(1);
+    print("Done")
 
 
 if __name__ == "__main__":
     built_in_test()
+    built_in_test_nominal_condition()
     # GPIO.setmode(GPIO.BOARD) 
     # GPIO.setup  (38, GPIO.OUT)
     # pwm = GPIO.PWM(38, 100)
