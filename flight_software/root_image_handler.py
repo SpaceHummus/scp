@@ -23,6 +23,21 @@ class RootImageHandler:
         self.send_uart_cmd(ser,b'\x18')
         ser.close()
 
+    def IR_led_on(self):
+        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        self.send_uart_cmd(ser,b'\x10')
+        ser.close()
+
+    def IR_led_off(self):
+        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        self.send_uart_cmd(ser,b'\x12')
+        ser.close()
+   
+    def IR_controlled_by_imager(self):
+        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        self.send_uart_cmd(ser,b'\x14')
+        ser.close()
+
     def take_pic(self,file_name):
         logging.info("about to take root image...")
         ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
@@ -34,8 +49,10 @@ class RootImageHandler:
         file = open(IMAGES_DIR+file_name+".bin", "wb")
         try:
             for i in range(IMAGE_SIZE):
+                print("sending x00",i)
                 ser.write(b'\x00')              
                 s = ser.read(1)
+                print("got",s)
                 file.write(s)
                 # print(s)
             
@@ -51,3 +68,4 @@ if __name__ == "__main__":
     root_image.white_led_on()
     sleep(0.5)
     root_image.white_led_off()
+    root_image.take_pic("ttt")

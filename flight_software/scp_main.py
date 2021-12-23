@@ -82,7 +82,13 @@ def get_enabled_cameras():
     enabled_cameras = conf_dic["enabled_cameras"] 
     return enabled_cameras
 
-
+def set_switches():
+    file = open(r'configuration.yaml')
+    conf_dic = yaml.load(file, Loader=yaml.FullLoader)
+    led_switch = conf_dic["led_switch_status"] 
+    print (led_switch)
+    air_sense_switch = conf_dic["air_sense_switch_status"]
+    print (air_sense_switch)
 
 # read all system states from yaml file and load into memory
 def get_system_states():
@@ -193,6 +199,8 @@ def main():
     telematry_handler = TelematryHandler()
 
     # get handler for the cameras
+    set_switches()
+    quit()
     camera = CameraHandler()
     root_image = RootImageHandler()
     last_pic_time = 0
