@@ -6,9 +6,6 @@ arducam_vcm =CDLL('./lib/libarducam_vcm.so')
 import time
 from datetime import datetime
 import threading
-import yaml
-import glob
-import numpy as np
 
 # where do we store the images localy
 IMAGES_DIR = "images/"
@@ -37,11 +34,10 @@ def board3bcm(pin):
 class CameraHandler:
     activeCamera='A'
     focus=512
-    focus_distance=None
     focus_setting=None
 
     # Constructor, index='A'/'B'/'C'/'D'
-    def __init__(self,width=4056,height=3040, camera_id=""):
+    def __init__(self,width=4056,height=3040):
         gp.setwarnings(False)
         gp.setmode(gp.BCM)
 
@@ -62,24 +58,6 @@ class CameraHandler:
         gp.output(board3bcm(22), True)
 
         arducam_vcm.vcm_init()
-        
-        # If camera id is specified, search for focus_setting file and load it
-        if camera_id != "":
-            # Search for camera setting yaml
-            match_file_paths = glob.glob("{0}_focus_setting_*.yaml".format(camera_id))
-            if len(match_file_paths) == 0:
-                logging.error("Cannot find any camera id: {0}_focus_setting_*.yaml".format(camera_id))
-                return
-            
-            # Load information from yaml
-            file = open(match_file_paths[0],"r")
-            self.focus_setting = yaml.load(file, Loader=yaml.FullLoader)
-            file.close()
-            
-            logging.info(
-                "Loaded focus setting for camera id {0} aquired at {1}".format(
-                self.focus_setting["camera_id"],self.focus_setting["calibration_date"]))
-
 
     # switch active cameras, index='A'/'B'/'C'/'D'
     def change_active_camera(self,camera_index):
@@ -115,7 +93,6 @@ class CameraHandler:
     # Change camera focus - due to a bug in the HW, we need to open a thread that starts raspstill in the backbround inparallel, why??? who knows...
     def change_focus(self,focus):
         self.focus = focus
-        self.focus_distance= None # When changing focus directly, focus_distance is unknown
         logging.info("changing focus to:%d",focus)        
         x = threading.Thread(target=run_camera, args=(1,))
         x.start()
@@ -123,38 +100,13 @@ class CameraHandler:
         arducam_vcm.vcm_write(focus)
         time.sleep(3)
         
-    # Change camera focus to a specific height
-    # INPUTS:
-    #   height_mm - new height in mm to set focus to
-    # OUTPUTS:
-    #   returns the new focus
-    def change_focus_to_h(self, height_mm):
-        
-        # Check focus_setting exists
-        if self.focus_setting == None:
-            logging.error("No focus setting, please specify camera id on class constractor")
-            return
-        
-        # Using interpolation, figure out what is the recommended focus value
-        focus = np.interp(height_mm,self.focus_setting["height_mm"],self.focus_setting["focus_setting"])
-        focus = int(focus) # Make sure this is a round number
-        
-        # Set new focus
-        self.change_focus(focus)
-        self.focus_distance = height_mm
-        
-        return focus
     
     # take picture , camera_index='A'/'B'/'C'/'D'
     # make sure you first call change_active_camera & change_focus
     # return full path saved file, file name
     def take_pic(self, file_name, flip_image=False, file_directory=IMAGES_DIR):
         # Generate file name and path string
-        if self.focus_distance == None:
-            focus_distance_string = ""
-        else:
-            focus_distance_string = "H{0:03d}mm_".format(self.focus_distance)
-        new_file_name="{0}_C{1}_{2}F{3:04d}.jpg".format(file_name,self.activeCamera,focus_distance_string,self.focus) 
+        new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,self.focus) 
         saved_file_name = file_directory + new_file_name
         
         # Aquire image

@@ -13,6 +13,7 @@ import os
 import logging
 import shutil
 from PIL import Image
+import focus_setting
 
 # General configuration of this script, these numbers should match .gcode
 #########################################################################
@@ -48,6 +49,8 @@ def setup_logging():
 
 def main():
     setup_logging()
+    camera = camera_handler.CameraHandler()
+    camera.change_active_camera('A')
 
     # Get input from user about the camera we will use today
     print("What is the camera serial number we will calibrate today (Example: C01)?")
@@ -56,8 +59,8 @@ def main():
     print("Selected '{0}'".format(camera_sn))
     time.sleep(1)
     
-    camera = camera_handler.CameraHandler(camera_id=camera_sn)
-    camera.change_active_camera('A')
+    fs = focus_setting.FocusSetting(camera_sn)
+    
     
     # Create output folder
     output_folder_path = "{0}_distortion_calibration_images_{1}/".format(camera_sn,time.strftime("%Y-%m-%d"))
@@ -75,7 +78,8 @@ def main():
     for i in range(len(camera_height_above_iPad_mm)):
         
         h = camera_height_above_iPad_mm[i]
-        f = camera.change_focus_to_h(h)
+        f = fs.focus_distance_to_setting(h)
+        camera.change_focus(f)
         # camera.change_focus(f) # Directly control focus
         print("h={0}mm, focus settings={1}".format(h,f))
         
