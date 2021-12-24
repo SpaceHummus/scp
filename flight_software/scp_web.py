@@ -11,6 +11,7 @@ from wtforms.validators import DataRequired
 import logging
 import time
 import led_handler
+import os
 
 def setup_logging():
     logging.basicConfig(
@@ -57,6 +58,13 @@ def set_google_folder():
         with open(CONF_FILE_NAME, 'w') as file:
             documents = yaml.dump(dict_file, file)
         return render_template('scp_conf.html', form=form, message = "Data saved!")
+        
+#################### Stop SCP process ##############################################
+
+@app.route('/StopSCPMain/')
+def stop_scp_main():    
+    os.system('./stop_scp_main.sh')
+    return render_template('stop_scp_main.html')
         
 #################### LED Testing ###################################################
 class LEDForm(FlaskForm):
