@@ -77,12 +77,12 @@ def led_testing():
     if request.method == 'GET':
         # User hadn't submitted information yet, set default values
         form.s_r.data = 150
-        form.s_g.data = 200
+        form.s_g.data = 210
         form.s_b.data = 255
-        form.s_fr.data = 10
+        form.s_fr.data = 12
         
         form.c_r.data = 150
-        form.c_g.data = 200
+        form.c_g.data = 210
         form.c_b.data = 255
     
     # Stop all LEDs before starting illumination
