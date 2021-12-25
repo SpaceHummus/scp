@@ -10,6 +10,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import logging
 import time
+from datetime import datetime
 import led_handler
 import os
 
@@ -31,7 +32,9 @@ Bootstrap(app)
 #################### Main Page #####################################################
 @app.route('/')
 def main_page():
-    return render_template('main.html')
+    now = datetime.now()
+    time_str = now.strftime("%y-%m-%d__%H_%M")
+    return render_template('main.html', rpi_time=time_str)
 
 #################### Set Google Folder Page ########################################
 CONF_FILE_NAME = "scp_conf.yaml"
