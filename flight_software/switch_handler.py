@@ -22,9 +22,10 @@ class SwitchHandler:
     # switch:  SWITCH_LED_PIN / SWITCH_AIR_SENSE_PIN / SWITCH_MEDTRONIC_PIN
     # value: SWITCH_ON or SWITCH_OFF
     def set_switch(self,switch,value):
+        # Notice: on = low, off = high
         if value == "on":
             logging.info("setting switch %d on",switch)
-            GPIO.output(switch,True)
+            GPIO.output(switch,False)
         else:
             logging.info("setting switch %d off",switch)
-            GPIO.output(switch,False)
+            GPIO.output(switch,True)
