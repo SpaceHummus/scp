@@ -94,7 +94,7 @@ def led_testing():
         form.force_reset.data = False
     
     # Stop all LEDs before starting illumination
-    if form.force_reset == True:
+    if form.force_reset.data == True:
         sw_handler = switch_handler.SwitchHandler()
         sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, "off")
         time.sleep(1) # Add a delay to let system stabilize
