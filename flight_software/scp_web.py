@@ -112,6 +112,41 @@ def led_testing():
     led_handler.light_pixel(15,19,int(form.r.data),int(form.g.data),int(form.b.data))    
     
     return render_template('led_testing.html', form=form)
+    
+#################### Switch & A2D Testing ##########################################
+class SwitchForm(FlaskForm):
+    switch_LED = BooleanField(label='LEDs')
+    switch_medtronic = BooleanField(label='Medtronic')
+    switch_air_sensor = BooleanField(label='Air Sensor')
+    
+    submit = SubmitField('Set Switches')
+@app.route('/SwitchesAndAnalogs/', methods=['GET', 'POST'])
+def switch_and_analog_testing():
+    
+    form = SwitchForm()
+    if request.method == 'GET':
+        # User hadn't submitted information yet, set default values
+        form.switch_LED.data = False
+        form.switch_air_sensor.data = False
+        form.switch_medtronic.data = False
+    
+    # Set switch status
+    sw_handler = switch_handler.SwitchHandler()
+    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, form.switch_LED.data)
+    sw_handler.set_switch(switch_handler.SWITCH_AIR_SENSE_PIN, form.switch_air_sensor.data)
+    sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN, form.switch_medtronic.data)
+    
+    time.sleep(1)
+    
+    # Read INA status
+    INA_Value = "Not Implemented"
+    A2D_0 = "Not Implemented"
+    A2D_1 = "Not Implemented"
+    A2D_2 = "Not Implemented"
+    A2D_3 = "Not Implemented"
+    
+    return render_template('switch_and_analog_testing.html', form=form, 
+        INA_Value=INA_Value, A2D_0=A2D_0,A2D_1=A2D_1,A2D_2=A2D_2,A2D_3=A2D_3)
 
 if __name__ == '__main__':
     setup_logging()

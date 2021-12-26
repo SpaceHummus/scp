@@ -23,7 +23,7 @@ class SwitchHandler:
     # value: SWITCH_ON or SWITCH_OFF
     def set_switch(self,switch,value):
         # Notice: on = low, off = high
-        if value == "on":
+        if value == "on" or value == True:
             logging.info("setting switch %d on",switch)
             GPIO.output(switch,False)
         else:

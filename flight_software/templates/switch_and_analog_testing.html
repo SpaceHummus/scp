@@ -1,0 +1,64 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+SCP Settings 
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+	
+	  <h1 class="pt-5 pb-2">Analog Values</h1>
+	  
+	   <table>
+		   <tr>
+			 <th>Analong</th>
+			 <th>Value</th>
+			 <th>Notes</th>
+		   </tr>
+		   <tr>
+			 <td>INA</td>
+			 <td>{{ INA_Value }}</td>
+			 <td></td>
+		   </tr>
+		   <tr>
+			 <td>A2D_0</td>
+			 <td>{{ A2D_0 }}</td>
+			 <td></td>
+		   </tr>
+		   <tr>
+			 <td>A2D_1</td>
+			 <td>{{ A2D_1 }}</td>
+			 <td></td>
+		   </tr>
+		   <tr>
+			 <td>A2D_2</td>
+			 <td>{{ A2D_2 }}</td>
+			 <td></td>
+		   </tr>
+		   <tr>
+			 <td>A2D_3</td>
+			 <td>{{ A2D_3 }}</td>
+		   </tr>
+	    </table> 
+
+      <h1 class="pt-5 pb-2">Set Switch Stauts</h1>
+      {{ wtf.quick_form(form) }}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
