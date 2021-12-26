@@ -7,6 +7,10 @@ IMAGES_DIR = "images/"
 
 class RootImageHandler:
 
+
+    def get_serial_connection(self):
+        return serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+    
     def send_uart_cmd(self,serial, data):
         print("Sending:",data)
         serial.write(data)              
@@ -14,33 +18,33 @@ class RootImageHandler:
         print("recevied:",s)
     
     def white_led_on(self):
-        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        ser = self.get_serial_connection()
         self.send_uart_cmd(ser,b'\x16')
         ser.close()
 
     def white_led_off(self):
-        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        ser = self.get_serial_connection()
         self.send_uart_cmd(ser,b'\x18')
         ser.close()
 
     def IR_led_on(self):
-        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        ser = self.get_serial_connection()
         self.send_uart_cmd(ser,b'\x10')
         ser.close()
 
     def IR_led_off(self):
-        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        ser = self.get_serial_connection()
         self.send_uart_cmd(ser,b'\x12')
         ser.close()
    
     def IR_controlled_by_imager(self):
-        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        ser = self.get_serial_connection()
         self.send_uart_cmd(ser,b'\x14')
         ser.close()
 
     def take_pic(self,file_name):
         logging.info("about to take root image...")
-        ser = serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
+        ser = self.get_serial_connection()
         # reset the cam
         self.send_uart_cmd(ser,b'\x02')
         # configure the cam

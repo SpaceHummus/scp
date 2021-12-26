@@ -3,24 +3,25 @@
 import sys
 sys.path.insert(1, '../common')
 import time
+import yaml
 from datetime import datetime
+import logging
+import socket
+import subprocess
+import traceback
 from pydrive.auth import GoogleAuth
 from pydrive.drive import GoogleDrive
-import yaml
 from system_state import SystemState 
 from system_state import CameraConfiguration
 from system_state import Illumination
 from system_state import RGB
-import logging
 from camera_handler import CameraHandler
 from root_image_handler import RootImageHandler
 from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
+import switch_handler
 import image_handler
-import socket
 import led_handler
-import subprocess
-import traceback
 
 
 CONF_FILE_NAME = "scp_conf.yaml"
@@ -28,7 +29,8 @@ CONF_FILE_NAME = "scp_conf.yaml"
 system_states={}
 states_over_time=[]
 enabled_cameras=[]
-
+sw_handler = switch_handler.SwitchHandler()
+medtronic_switch = "on"
 
 # wait until DNS service is ready, otherwise GDrive access will not work. This is needed when we run on boot and DNS service tkaes time to load
 # returns True if we got internet connection & DNS is working. otherwise False
@@ -82,13 +84,23 @@ def get_enabled_cameras():
     enabled_cameras = conf_dic["enabled_cameras"] 
     return enabled_cameras
 
+# turn on/off the switches
 def set_switches():
+    global medtronic_switch
     file = open(r'configuration.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     led_switch = conf_dic["led_switch_status"] 
-    print (led_switch)
+    logging.info("led_switch:%s",led_switch)
+    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,led_switch)
+
     air_sense_switch = conf_dic["air_sense_switch_status"]
-    print (air_sense_switch)
+    logging.info("air_sense_switch:%s",air_sense_switch)
+    sw_handler.set_switch(switch_handler.SWITCH_AIR_SENSE_PIN,air_sense_switch)
+
+    medtronic_switch = conf_dic["medtronic_switch_status"]
+    logging.info("medtronic_switch:%s",medtronic_switch)
+    sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,medtronic_switch)
+    
 
 # read all system states from yaml file and load into memory
 def get_system_states():
@@ -198,9 +210,10 @@ def main():
     get_states_settings()
     telematry_handler = TelematryHandler()
 
-    # get handler for the cameras
+    # turn on/off the switches
     set_switches()
-    quit()
+
+    # get handler for the cameras
     camera = CameraHandler()
     root_image = RootImageHandler()
     last_pic_time = 0
@@ -214,16 +227,9 @@ def main():
         current_time = time.time()
 
         led_handler.light_far_red(state.illumination.far_red)
-
-        # change NeoPixle 
-        led_handler.stop_LED()
-        led_handler.light_pixel_by_list ([0,1,2,3,4,10,11,12,13,14],state.illumination.group1_rgb)  
-        led_handler.light_pixel_by_list ([5,6,7,8,9,15,16,17,18,19],state.illumination.group2_rgb)     
-
-        #######################
         
 
-        # take picture if needed
+        # take main pictures if needed
         file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
             for cam in enabled_cameras:
@@ -231,16 +237,26 @@ def main():
                 last_pic_time = time.time()
                 logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
         
-        # take root picture if needed
-        if (state.camera_configuration != None) and (current_time - last_root_pic_time >=(60*state.camera_configuration.root_image_frequency_min)):
+        # take root pictures if needed
+        led_handler.stop_LED() # first close the LEDs
+        if (medtronic_switch =="on") and (state.camera_configuration != None) and (current_time - last_root_pic_time >=(60*state.camera_configuration.root_image_frequency_min)):
+            # first reset the medtroic card
+            sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_OFF)
+            time.sleep(0.1)
+            sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_ON)
             root_image.take_pic(get_file_name())
             last_root_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next root picture",state.camera_configuration.root_image_frequency_min)
         
 
+        # change NeoPixle LEDs
+        led_handler.light_pixel_by_list ([0,1,2,3,4,10,11,12,13,14],state.illumination.group1_rgb)  
+        led_handler.light_pixel_by_list ([5,6,7,8,9,15,16,17,18,19],state.illumination.group2_rgb)     
+
+
         telematry_handler.write_telematry_csv()
         logging.info('going to sleep a minute...')
-        time.sleep(30)
+        time.sleep(60)
 
 if __name__ == "__main__":
     try:
