@@ -6,7 +6,7 @@ import RPi.GPIO as GPIO
 
 SWITCH_LED_PIN=23
 SWITCH_AIR_SENSE_PIN=22
-SWITCH_MEDTRONIC_PIN=13
+SWITCH_MEDTRONIC_PIN=27
 SWITCH_ON = "on"
 SWITCH_OFF = "off"
 
@@ -29,3 +29,9 @@ class SwitchHandler:
         else:
             logging.info("setting switch %d off",switch)
             GPIO.output(switch,True)
+
+if __name__ == "__main__":
+    sh = SwitchHandler()
+    sh.set_switch(SWITCH_LED_PIN,SWITCH_OFF)
+    sh.set_switch(SWITCH_AIR_SENSE_PIN,SWITCH_OFF)
+    sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_ON)
