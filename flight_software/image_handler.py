@@ -9,40 +9,31 @@ SKIP_PIXELS = 40
 def check_img_size(img):
     try :
         image_size = len(img.fp.read())
-        print("File Size In Bytes:- ",image_size)
+        logging.debug("File Size In Bytes:%d",image_size)
         return (image_size > MIN_IMAGE_SIZE)
     except :
         return False
 
-#print("is image big enough?", is_Image_valid(img_link))
 
 # function for getting rgb for a pixel
-
 def rgb_of_pixel(img_rgb, x, y):
     r, g, b = img_rgb.getpixel((x, y))
     a = (r, g, b)
     return a
 
-#img = "/home/pi/dev/flight-software/images/21-10-07__09_51_CA_F0260.jpg"
-#print ("rgb of pixel is:", rgb_of_pixel(img, 1, 1))
 
 # function for getting image size in pixels
-
 def get_num_pixels(img):
     width, height = img.size
     return width*height
     
 
-#print ("image size in pixels:", get_num_pixels ("/home/pi/dev/flight-software/images/21-10-07__09_51_CA_F0260.jpg"))
-
 #function for getting height & width
-
 def image_width_height(img):
     width,height = img.size
     return width, height
 
 #print("image width @ height:", image_width_height())
-
 def check_black_pixels(img):
     im_rgb = img.convert('RGB')
     w,h = image_width_height(img)
@@ -64,6 +55,7 @@ def check_black_pixels(img):
     else :
         return True
 
+# run alll image chekcs (size + black pixels)
 def check_image(img_path):
     try:
         img = Image.open(img_path)
