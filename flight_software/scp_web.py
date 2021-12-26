@@ -6,12 +6,13 @@ import yaml
 from flask import Flask, request, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
 import logging
 import time
 from datetime import datetime
 import led_handler
+import switch_handler
 import os
 
 def setup_logging():
@@ -71,42 +72,44 @@ def stop_scp_main():
         
 #################### LED Testing ###################################################
 class LEDForm(FlaskForm):
-    s_r = StringField('Experiment Chamber Red (0-255):', validators=[DataRequired()])
-    s_g = StringField('Experiment Chamber Green (0-255):', validators=[DataRequired()])
-    s_b = StringField('Experiment Chamber Blue (0-255):', validators=[DataRequired()])
-    s_fr = StringField('Experiment Chamber Far Red (0-100):', validators=[DataRequired()])
+    r = StringField('Red (0-255):', validators=[DataRequired()])
+    g = StringField('Green (0-255):', validators=[DataRequired()])
+    b = StringField('Blue (0-255):', validators=[DataRequired()])
+    fr = StringField('Far Red (0-100):', validators=[DataRequired()])
     
-    c_r = StringField('Control Chamber Red (0-255):', validators=[DataRequired()])
-    c_g = StringField('Control Chamber Green (0-255):', validators=[DataRequired()])
-    c_b = StringField('Control Chamber Blue (0-255):', validators=[DataRequired()])
+    force_reset = BooleanField(label='Power Cycle')
     
-    submit = SubmitField('Change LEDs')
+    submit = SubmitField('Set LEDs')
 @app.route('/LEDTesting/', methods=['GET', 'POST'])
 def led_testing():
     
     form = LEDForm()
     if request.method == 'GET':
         # User hadn't submitted information yet, set default values
-        form.s_r.data = 150
-        form.s_g.data = 210
-        form.s_b.data = 255
-        form.s_fr.data = 12
+        form.r.data = 150
+        form.g.data = 210
+        form.b.data = 255
+        form.fr.data = 12
         
-        form.c_r.data = 150
-        form.c_g.data = 210
-        form.c_b.data = 255
+        form.force_reset.data = False
     
     # Stop all LEDs before starting illumination
-    # led_handler.stop_LED()
+    if form.force_reset == True:
+        sw_handler = switch_handler.SwitchHandler()
+        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, "off")
+        time.sleep(1) # Add a delay to let system stabilize
+        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, "on")
+        time.sleep(1) # Add a delay to let system stabilize
+        # led_handler.stop_LED()
     
     # Set LEDs - Shade avoidance side   
-    led_handler.light_pixel(0,4,int(form.s_r.data),int(form.s_g.data),int(form.s_b.data))
-    led_handler.light_pixel(10,14,int(form.s_r.data),int(form.s_g.data),int(form.s_b.data))
-    led_handler.light_far_red(int(form.s_fr.data))
+    led_handler.light_pixel(0,4,int(form.r.data),int(form.g.data),int(form.b.data))
+    led_handler.light_pixel(10,14,int(form.r.data),int(form.g.data),int(form.b.data))
+    led_handler.light_far_red(int(form.fr.data))
     
     # Set LEDs - Control side
-    led_handler.light_pixel(5,9,int(form.c_r.data),int(form.c_g.data),int(form.c_b.data))
-    led_handler.light_pixel(15,19,int(form.c_r.data),int(form.c_g.data),int(form.c_b.data))    
+    led_handler.light_pixel(5,9,int(form.r.data),int(form.g.data),int(form.b.data))
+    led_handler.light_pixel(15,19,int(form.r.data),int(form.g.data),int(form.b.data))    
     
     return render_template('led_testing.html', form=form)
 
