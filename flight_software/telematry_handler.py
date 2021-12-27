@@ -34,7 +34,8 @@ class TelematryHandler:
     def get_veml7700_telemetry(self):
         try:
             veml7700 = adafruit_veml7700.VEML7700(self.i2c)
-            logging.debug("Ambient light:%d, Lux: %d", veml7700.light, veml7700.lux)
+            logging.debug("Ambient light:%d, Lux: %d",
+                          veml7700.light, veml7700.lux)
             return [veml7700.light, veml7700.lux]
 
         except Exception as e:
@@ -61,9 +62,9 @@ class TelematryHandler:
     def get_a2d_telemetry(self):
         a2d_address = 0x48
         bus_address = [0x40, 0x41, 0x42, 0x43]
-        bus = smbus.SMBus(1)
         try:
-            i2c_read = [read_i2c_value(a2d_address, bus_addres) for bus_addres in bus_address]
+            i2c_read = [self.read_i2c_value(a2d_address, bus_addres)
+                        for bus_addres in bus_address]
             logging.debug(f"A2D returned values: {i2c_read}")
             return i2c_read
 
@@ -89,10 +90,11 @@ class TelematryHandler:
             writer.writerow(row)
 
     @staticmethod
-    def read_i2c_value(i2c_address,bus_addr):
-            bus.write_byte(i2c_address, bus_addr)
-            value = bus.read_byte(a2d_address)
-            return value
+    def read_i2c_value(i2c_address, bus_addr):
+        bus = smbus.SMBus(1)
+        bus.write_byte(i2c_address, bus_addr)
+        value = bus.read_byte(i2c_address)
+        return value
 
 
 def setup_logging():
