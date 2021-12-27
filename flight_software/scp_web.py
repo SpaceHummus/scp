@@ -63,12 +63,21 @@ def set_google_folder():
             documents = yaml.dump(dict_file, file)
         return render_template('scp_conf.html', form=form, message = "Data saved!")
         
-#################### Stop SCP process ##############################################
-
+#################### Simple Commands ###############################################
 @app.route('/StopSCPMain/')
 def stop_scp_main():    
     os.system('./stop_scp_main.sh')
-    return render_template('stop_scp_main.html')
+    return render_template('simple_commands.html', message="Running stop_scp_main.sh right now to stop logic")
+
+@app.route('/Reboot/')
+def reboot():    
+    os.system('sudo reboot')
+    return render_template('simple_commands.html', message="Running 'sudo reboot' right now to stop logic")
+    
+@app.route('/Shutdown/')
+def shutdown():    
+    os.system('sudo shutdown now')
+    return render_template('simple_commands.html', message="Running 'sudo shutdown now' right now to stop logic")
         
 #################### LED Testing ###################################################
 class LEDForm(FlaskForm):
