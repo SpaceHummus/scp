@@ -92,6 +92,7 @@ def led_testing():
         form.fr.data = 12
         
         form.force_reset.data = False
+        return render_template('led_testing.html', form=form)
     
     # Stop all LEDs before starting illumination
     if form.force_reset.data == True:
