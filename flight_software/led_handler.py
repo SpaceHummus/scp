@@ -111,7 +111,7 @@ def built_in_test_nominal_condition ():
 
 
 if __name__ == "__main__":
-    light_pixel(0,NUM_OF_PIXELS-1,255,255,255)
+    # light_pixel(0,NUM_OF_PIXELS-1,255,255,255)
     light_pixel(0,NUM_OF_PIXELS-1,0,0,0)
     time.sleep(2000)
     # built_in_test()
