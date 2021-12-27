@@ -62,14 +62,8 @@ class TelematryHandler:
         a2d_address = 0x48
         bus_address = [0x40, 0x41, 0x42, 0x43]
         bus = smbus.SMBus(1)
-
-        def read_i2c_value(bus_addr):
-            bus.write_byte(a2d_address, bus_addr)
-            value = bus.read_byte(a2d_address)
-            return value
-
         try:
-            i2c_read = [read_i2c_value(bus_addres) for bus_addres in bus_address]
+            i2c_read = [read_i2c_value(a2d_address, bus_addres) for bus_addres in bus_address]
             logging.debug(f"A2D returned values: {i2c_read}")
             return i2c_read
 
@@ -93,6 +87,12 @@ class TelematryHandler:
             row = row + bme680_list + veml7700_list + ina260_list + a2d_list
 
             writer.writerow(row)
+
+    @staticmethod
+    def read_i2c_value(i2c_address,bus_addr):
+            bus.write_byte(i2c_address, bus_addr)
+            value = bus.read_byte(a2d_address)
+            return value
 
 
 def setup_logging():
