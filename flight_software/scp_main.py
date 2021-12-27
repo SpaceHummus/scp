@@ -254,7 +254,7 @@ def main():
         led_handler.light_pixel_by_list ([5,6,7,8,9,15,16,17,18,19],state.illumination.group2_rgb)     
 
 
-        telematry_handler.write_telematry_csv()
+        telematry_handler.write_telemetry_csv()
         logging.info('going to sleep a minute...')
         time.sleep(60)
 
