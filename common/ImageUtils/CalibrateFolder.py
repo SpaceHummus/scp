@@ -55,8 +55,8 @@ def calibrate_folder_camera(images_folder: str, calibration_result_path: str, ro
                                               world_scaling=world_scaling,
                                               save_result_in_file=True
                                               )
-        # Thread(target=calib_func).start()
-        calib_func()
+        Thread(target=calib_func).start()
+        # calib_func()
 
 
 if __name__ == '__main__':

@@ -42,7 +42,7 @@ def calibrate_camera(images_folder, rows=5, columns=8, world_scaling=1., save_re
         rvecs, 'Rs rotation vectors'
         tvecs, 'Ts translation vectors'
     """
-
+    print(images_folder, "started calibration")
     # read the images from a folder
     images = read_images_from_folder(images_folder)
 
@@ -56,8 +56,8 @@ def calibrate_camera(images_folder, rows=5, columns=8, world_scaling=1., save_re
     reference_points = world_scaling * reference_points
 
     # frame dimensions. Frames should be the same size.
-    width = images[0].shape[1]
-    height = images[0].shape[0]
+    width = images[list(images.keys())[0]].shape[1]
+    height = images[list(images.keys())[0]].shape[0]
 
     # Pixel coordinates of checkerboards
     img_points = []  # 2d points in image plane.
@@ -65,15 +65,21 @@ def calibrate_camera(images_folder, rows=5, columns=8, world_scaling=1., save_re
     # coordinates of the checkerboard in checkerboard world space.
     obj_points = []  # 3d point in real world space
 
-    print('calibrating frames')
-    for frame in alive_it(images[::1]):
+    # print('calibrating frames')
+
+    successes_fail_dict = {}
+    for i, im_name in enumerate(images):
+        print(f"------------------------------")
+        print(f"on {images_folder}")
+        print(f"image {i} out of {len(images)}")
+        frame = images[im_name]
         gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
 
         # find the checkerboard
         ret, corners = cv.findChessboardCorners(gray, (rows, columns), None)
 
         if ret == True:
-            print("found")
+            # print("found")
             # Convolution size used to improve corner detection. Don't make this too large.
             conv_size = (11, 11)
 
@@ -83,15 +89,25 @@ def calibrate_camera(images_folder, rows=5, columns=8, world_scaling=1., save_re
             # shows the image with the chess corners for debug)
             if show_debug_images:
                 show_chess_board_image(columns, corners, frame, ret, rows)
-
+            successes_fail_dict[im_name] = f'corners found, ret value: {ret} '
             obj_points.append(reference_points)
             img_points.append(corners)
         else:
-            print("not found")
+            successes_fail_dict[im_name] = f'not found'
+
+            # print("not found")
+    print(images_folder, "done calibration")
+
+    if not os.path.exists(os.path.dirname(calibration_result_path)):
+        os.makedirs(os.path.dirname(calibration_result_path))
+
+    with open(calibration_result_path + 'log', 'w') as f:
+        for im_name in successes_fail_dict:
+            f.write(f'{im_name},{successes_fail_dict[im_name]}\n')
 
     ret, mtx, dist, rvecs, tvecs = cv.calibrateCamera(obj_points, img_points, (width, height), None, None)
 
-    print(f'finished calibrating {images_folder}, rmse:', ret)
+    # print(f'finished calibrating {images_folder}, rmse:', ret)
     if save_result_in_file:
         save_cv_file(file_path=calibration_result_path, ret=ret, mtx=mtx, dist=dist)
 
@@ -224,11 +240,11 @@ def show_chess_board_image(columns, corners, frame, ret, rows):
 def read_images_from_folder(images_folder):
     print(f'calibrating images for folder {images_folder}')
     images_names = glob.glob(os.path.join(images_folder, '*.jpg'))
-    images = []
+    images = {}
     print('reading images')
-    for image_name in alive_it(images_names):
+    for image_name in images_names:
         im = cv.imread(image_name, 1)
-        images.append(im)
+        images[image_name] = im
     return images
 
 
