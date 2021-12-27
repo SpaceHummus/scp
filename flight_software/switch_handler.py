@@ -34,4 +34,4 @@ if __name__ == "__main__":
     sh = SwitchHandler()
     sh.set_switch(SWITCH_LED_PIN,SWITCH_OFF)
     sh.set_switch(SWITCH_AIR_SENSE_PIN,SWITCH_OFF)
-    sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_ON)
+    sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_OFF)

@@ -47,7 +47,7 @@ def built_in_test ():
     print("Turn off everything")
     stop_LED()
     light_far_red(0)
-    time.sleep(1);
+    time.sleep(1)
     
     print("Neopixel Red")
     light_pixel(from_pixel,to_pixel,255,0,0)
@@ -111,8 +111,11 @@ def built_in_test_nominal_condition ():
 
 
 if __name__ == "__main__":
-    built_in_test()
-    built_in_test_nominal_condition()
+    light_pixel(0,NUM_OF_PIXELS-1,255,255,255)
+    light_pixel(0,NUM_OF_PIXELS-1,0,0,0)
+    time.sleep(2000)
+    # built_in_test()
+    # built_in_test_nominal_condition()
     # GPIO.setmode(GPIO.BOARD) 
     # GPIO.setup  (38, GPIO.OUT)
     # pwm = GPIO.PWM(38, 100)
