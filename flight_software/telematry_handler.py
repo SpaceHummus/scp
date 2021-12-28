@@ -8,6 +8,10 @@ import csv
 import logging
 import adafruit_ina260
 import smbus
+from gpiozero import CPUTemperature
+from gpiozero import LoadAverage
+
+
 
 TELE_FILE = 'telematry.csv'
 
@@ -48,6 +52,7 @@ class TelematryHandler:
         try:
             ina260 = adafruit_ina260.INA260(self.i2c)
             ina260.mode = adafruit_ina260.Mode.CONTINUOUS
+            time.sleep(0.05)
             logging.debug(
                 "Current: %.4f mA Voltage: %.4f V Power%.4f mW"
                 % (ina260.current, ina260.voltage, ina260.power)
@@ -71,6 +76,21 @@ class TelematryHandler:
         except Exception as e:
             logging.error(f"error reading from A2D i2c channel: \n{e}")
             return [f"N/A A2D-{b}" for b in range(4)]
+    
+    def get_raspberry_telemetry(self):
+        try:
+            cpu_temp = CPUTemperature()
+            cpu_load = int(LoadAverage(minutes=1).load_average*100)
+            ###########
+            free_space = 0
+            logging.debug("CPUTemperature:%d, cpu_load: %d "'%'" free_space: %d ", cpu_temp.temperature, cpu_load, free_space)
+            return [cpu_temp.temperature, cpu_load, free_space]
+        except Exception as e:
+            logging.error(
+                f"error while reading from the raspberry telemetry: \n{e}"
+            )
+            return ['N/A cpu_temp', 'N/A cpu_load', 'N/A free_space']
+
 
     def write_telemetry_csv(self):
         with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
@@ -81,11 +101,12 @@ class TelematryHandler:
             veml7700_list = self.get_veml7700_telemetry()
             ina260_list = self.get_ina260_telemetry()
             a2d_list = self.get_a2d_telemetry()
+            raspberry_telemetry_list = self.get_raspberry_telemetry()
 
             writer = csv.writer(f)
             row = list()
             row.append(date_time)
-            row = row + bme680_list + veml7700_list + ina260_list + a2d_list
+            row = row + bme680_list + veml7700_list + ina260_list + a2d_list + raspberry_telemetry_list
 
             writer.writerow(row)
 

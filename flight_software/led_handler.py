@@ -2,16 +2,17 @@ import board
 import neopixel
 import time
 import RPi.GPIO as GPIO
- 
+import switch_handler
 
 NUM_OF_PIXELS = 20
 
 
 pixels = neopixel.NeoPixel(board.D21, NUM_OF_PIXELS,brightness=0.5)
+
 GPIO.setmode(GPIO.BCM) 
 GPIO.setup  (12, GPIO.OUT)
-pwm0_neopixel = GPIO.PWM(12, 100)
-pwm0_neopixel.start(0)
+pwm0 = GPIO.PWM(12, 100)
+# pwm0.start(0)
 
 def start_LED ():
     pixels.fill((255, 255, 255))
@@ -31,7 +32,9 @@ def light_pixel(from_pixle,to_pixle,R,G,B):
 # Inputs:
 #   duty_cycle - from 0 to 100
 def light_far_red(duty_cycle):
-    pwm0_neopixel.ChangeDutyCycle(duty_cycle)
+    pwm0.stop()
+    pwm0.start(duty_cycle)
+    pwm0.ChangeDutyCycle(duty_cycle)
 
 # light a subset of LEDs    
 def light_pixel_by_list(pixels_list,RGB):
@@ -111,9 +114,19 @@ def built_in_test_nominal_condition ():
 
 
 if __name__ == "__main__":
+    sw_handler = switch_handler.SwitchHandler()
+    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_OFF)
+    time.sleep(1)
+    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_ON)
+    time.sleep(1)
+    # light_pixel(0,NUM_OF_PIXELS-1,0,10,0)
+    # light_far_red(100)
+    # time.sleep(20)
+    # print("moving to 10 dc")
+    # light_far_red(10)
+    # time.sleep(20000)
     # light_pixel(0,NUM_OF_PIXELS-1,255,255,255)
     # light_pixel(0,NUM_OF_PIXELS-1,0,0,0)
-    # time.sleep(2000)
     built_in_test()
     built_in_test_nominal_condition()
     # GPIO.setmode(GPIO.BOARD) 

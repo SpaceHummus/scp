@@ -2,6 +2,7 @@
 
 import logging
 import RPi.GPIO as GPIO
+import time
 
 
 SWITCH_LED_PIN=23
@@ -29,6 +30,7 @@ class SwitchHandler:
         else:
             logging.info("setting switch %d off",switch)
             GPIO.output(switch,True)
+        time.sleep(0.2)
 
 if __name__ == "__main__":
     sh = SwitchHandler()
