@@ -258,13 +258,14 @@ def main():
             # first reset the medtroic card
             sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_OFF)
             sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_ON)
+            time.sleep(1) # wait for root psb to start...
             root_image.take_pic(get_file_name())
             if led_switch: # turn led switch back on if needed
                 sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_ON)
             last_root_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next root picture",state.camera_configuration.root_image_frequency_min)
         
-        telematry_handler.write_telemetry_csv()
+        telematry_handler.write_telemetry_csv() 
         logging.info('going to sleep a minute...')
         time.sleep(60)
 

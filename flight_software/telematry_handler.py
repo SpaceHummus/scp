@@ -101,12 +101,12 @@ class TelematryHandler:
             veml7700_list = self.get_veml7700_telemetry()
             ina260_list = self.get_ina260_telemetry()
             a2d_list = self.get_a2d_telemetry()
-            raspberry_telemetry_list = self.get_raspberry_telemetry()
+            # raspberry_telemetry_list = self.get_raspberry_telemetry()
 
             writer = csv.writer(f)
             row = list()
             row.append(date_time)
-            row = row + bme680_list + veml7700_list + ina260_list + a2d_list + raspberry_telemetry_list
+            row = row + bme680_list + veml7700_list + ina260_list + a2d_list #+ raspberry_telemetry_list
 
             writer.writerow(row)
 
