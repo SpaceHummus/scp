@@ -35,11 +35,14 @@ class TelematryHandler:
             )
             return ['N/A temperature', 'N/A gas', 'N/A humidity', 'N/A pressure']
 
-    def get_veml7700_telemetry(self):
+    def get_veml7700_telemetry(self, chunnel = None):
         try:
+            if chunnel:
+                self.swith_i2c_chunnel(chunnel)
+
             veml7700 = adafruit_veml7700.VEML7700(self.i2c)
-            logging.debug("Ambient light:%d, Lux: %d",
-                          veml7700.light, veml7700.lux)
+            logging.debug("Ambient light:%d, Lux: %d || on chunnel: %d",
+                          veml7700.light, veml7700.lux, chunnel)
             return [veml7700.light, veml7700.lux]
 
         except Exception as e:
@@ -91,24 +94,35 @@ class TelematryHandler:
             )
             return ['N/A cpu_temp', 'N/A cpu_load', 'N/A free_space']
 
+    def swith_i2c_chunnel(self,chunnel):
+        switch_addres =0x73 
+        bus = smbus.SMBus(1)
+        bus.write_byte(switch_addres ,chunnel)
+
+
 
     def write_telemetry_csv(self):
         with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
             now = datetime.now()  # current date and time
             date_time = now.strftime("%m/%d/%Y %H:%M:%S")
 
-            bme680_list = self.get_bme680_telemetry()
-            veml7700_list = self.get_veml7700_telemetry()
-            ina260_list = self.get_ina260_telemetry()
-            a2d_list = self.get_a2d_telemetry()
+            bme680_list, veml7700_list_1, veml7700_list_2, ina260_list, a2d_list = self.read_all_telemetry()
             # raspberry_telemetry_list = self.get_raspberry_telemetry()
 
             writer = csv.writer(f)
             row = list()
             row.append(date_time)
-            row = row + bme680_list + veml7700_list + ina260_list + a2d_list #+ raspberry_telemetry_list
+            row = row + bme680_list + veml7700_list_1+ veml7700_list_2 + ina260_list + a2d_list #+ raspberry_telemetry_list
 
             writer.writerow(row)
+
+    def read_all_telemetry(self):
+        bme680_list = self.get_bme680_telemetry()
+        veml7700_list_1 = self.get_veml7700_telemetry(0x1)
+        veml7700_list_2 = self.get_veml7700_telemetry(0x2)
+        ina260_list = self.get_ina260_telemetry()
+        a2d_list = self.get_a2d_telemetry()
+        return bme680_list,veml7700_list_1,veml7700_list_2,ina260_list,a2d_list
 
     @staticmethod
     def read_i2c_value(i2c_address, bus_addr):
@@ -129,5 +143,14 @@ def setup_logging():
     )
 
 
+def read_all_telemetry():
+    tm = TelematryHandler()
+    while True:
+        print(tm.read_all_telemetry())
+        time.sleep(0.05)
+
+
+
 if __name__ == "__main__":
     quit()
+    # read_all_telemetry()
