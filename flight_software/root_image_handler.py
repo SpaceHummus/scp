@@ -11,13 +11,13 @@ class RootImageHandler:
     def get_serial_connection(self):
         return serial.Serial ("/dev/ttyAMA0", 115200,parity='N',stopbits=1, timeout=0.1)    #on PI2
     
-    def send_uart_cmd(self,serial, data, read_back=True):
+    def send_uart_cmd(self,serial, data, read_back_bytes=1):
         logging.info("Sending:%s",data)
         serial.write(data)
-        if read_back:
-            s = serial.read(1)
-            print(s)
+        if read_back_bytes>0:
+            s = serial.read(read_back_bytes)
             logging.info("recevied:%s",s)
+            return s
     
     def white_led_on(self):
         ser = self.get_serial_connection()
@@ -55,6 +55,20 @@ class RootImageHandler:
         self.send_uart_cmd(ser,b'\x1B')
         ser.close()
 
+    def get_config(self, file_name):
+        ser = self.get_serial_connection()
+        values = bytearray([10,0]) # first byte in mem is the size of the whole memory 
+        m_size = root_image.send_uart_cmd(ser,values,2)   
+        logging.info(m_size)
+        file = open(IMAGES_DIR+file_name+".cfg", "wb")
+        try:
+            for i in range(1,m_size[0]):
+                values = bytearray([10,i])
+                data = root_image.send_uart_cmd(ser,values,2) 
+                file.write(data)
+        finally:
+            file.close()
+
     def take_pic(self,file_name):
         logging.info("about to take root image...")
         ser = self.get_serial_connection()
@@ -67,7 +81,7 @@ class RootImageHandler:
         # take image
         file = open(IMAGES_DIR+file_name+"C0.bin", "wb")
         try:
-            self.send_uart_cmd(ser,b'\x00',False)
+            self.send_uart_cmd(ser,b'\x00',0)
             for i in range(IMAGE_SIZE):
                 s = ser.read(1)
                 # print("byte",i)              
@@ -78,7 +92,7 @@ class RootImageHandler:
 
         file = open(IMAGES_DIR+file_name+"C1.bin", "wb")
         try:
-            self.send_uart_cmd(ser,b'\x01',False)
+            self.send_uart_cmd(ser,b'\x01',0)
             for i in range(IMAGE_SIZE):
                 s = ser.read(1)
                 # print("byte",i)
@@ -90,21 +104,25 @@ class RootImageHandler:
             ser.close()
         logging.info("done taking root image...")        
 
+def setup_logging():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s [%(levelname)s] %(funcName)s:%(message)s",
+        handlers=[
+            logging.StreamHandler()
+        ]
+    )    
 
 
 if __name__ == "__main__":
+    setup_logging()
     root_image = RootImageHandler()
-    root_image.white_led_on()
-    # ser = root_image.get_serial_connection()
-    # i = 0 
-    # values = bytearray([10,i])
-    # root_image.send_uart_cmd(ser,values,False)   
-    # m_size = ser.read(2)
-    # print(m_size)
-
-    # for i in range(1,m_size):
-    #     values = bytearray([10,i])
-    #     root_image.send_uart_cmd(ser,values)   
+    root_image.get_config("root")
+    # root_image.white_led_on()
+    # sleep(1)
+    # root_image.white_led_off()
+    # sleep(1)
+  
 
     # root_image.take_pic("first_pic")
     # root_image.White_led_controlled_by_imager()
