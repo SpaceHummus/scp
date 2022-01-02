@@ -181,12 +181,12 @@ def upload_files(files, g_drive):
 
 # take pictures in all focus values
 # returns a list of all file names that were taken
-def take_pic_all_focus(camera,cameraID,focus_list):
+def take_pic_all_focus(camera,cameraID,focus_list,file_name_prefix):
     files_list=[]
     camera.change_active_camera(cameraID)
     for f in focus_list:
         camera.change_focus(f)
-        full_path_file_name,title_name = camera.take_pic(get_file_name(),True)
+        full_path_file_name,title_name = camera.take_pic(file_name_prefix,True)
         image_handler.check_image(full_path_file_name)
         files_list.append((full_path_file_name,title_name))
     return files_list
@@ -247,8 +247,9 @@ def main():
         # take main pictures if needed
         file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
+            file_name_prefix = get_file_name() # File name prefix (date and time) is selected once before taking all images such that they have the same time
             for cam in enabled_cameras:
-                file_list.extend(take_pic_all_focus(camera,cam,state.camera_configuration.focus_position))
+                file_list.extend(take_pic_all_focus(camera,cam,state.camera_configuration.focus_position,file_name_prefix))
                 last_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
         
