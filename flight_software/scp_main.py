@@ -224,6 +224,7 @@ def main():
     while(True):
         state = get_current_state()
 
+        # check if state was changed, if yes, update LEDs
         if pre_state_name != state.name:
             logging.info('entering a new state:%s',state.name)    
             # reset led switch - becuase of issues with first led
@@ -236,8 +237,7 @@ def main():
 
             # change NeoPixle LEDs
             #led_handler.stop_LED() # first close the LEDs
-            led_handler.light_pixel_by_list ([0,1,2,3,4,10,11,12,13,14],state.illumination.group1_rgb)  
-            led_handler.light_pixel_by_list ([5,6,7,8,9,15,16,17,18,19],state.illumination.group2_rgb)     
+            led_handler.light_all_pixels(state.illumination.group1_rgb,state.illumination.group2_rgb)
         pre_state_name = state.name
 
         enabled_cameras=get_enabled_cameras()
@@ -261,8 +261,11 @@ def main():
             sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_ON)
             time.sleep(1) # wait for root psb to start...
             root_image.take_pic(get_file_name())
-            if led_switch: # turn led switch back on if needed
+            if led_switch: # turn led switch back on if needed and bring back the LED light
                 sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_ON)
+                time.sleep(1) # wait a sec...
+                led_handler.light_all_pixels(state.illumination.group1_rgb,state.illumination.group2_rgb)
+                led_handler.light_far_red(state.illumination.far_red)
             last_root_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next root picture",state.camera_configuration.root_image_frequency_min)
         

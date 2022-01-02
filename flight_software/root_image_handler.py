@@ -13,9 +13,10 @@ class RootImageHandler:
     
     def send_uart_cmd(self,serial, data, read_back=True):
         logging.info("Sending:%s",data)
-        serial.write(data)              
+        serial.write(data)
         if read_back:
             s = serial.read(1)
+            print(s)
             logging.info("recevied:%s",s)
     
     def white_led_on(self):
@@ -93,7 +94,19 @@ class RootImageHandler:
 
 if __name__ == "__main__":
     root_image = RootImageHandler()
-    root_image.take_pic("first_pic")
+    root_image.white_led_on()
+    # ser = root_image.get_serial_connection()
+    # i = 0 
+    # values = bytearray([10,i])
+    # root_image.send_uart_cmd(ser,values,False)   
+    # m_size = ser.read(2)
+    # print(m_size)
+
+    # for i in range(1,m_size):
+    #     values = bytearray([10,i])
+    #     root_image.send_uart_cmd(ser,values)   
+
+    # root_image.take_pic("first_pic")
     # root_image.White_led_controlled_by_imager()
     # sleep(10000)
     # root_image.white_led_on()

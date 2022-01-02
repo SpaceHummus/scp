@@ -6,6 +6,8 @@ import switch_handler
 
 NUM_OF_PIXELS = 20
 
+GROUP1_LED_INDEX = [0,1,2,3,4,10,11,12,13,14]
+GROUP2_LED_INDEX = [5,6,7,8,9,15,16,17,18,19]
 
 pixels = neopixel.NeoPixel(board.D21, NUM_OF_PIXELS,brightness=0.5)
 
@@ -40,6 +42,12 @@ def light_far_red(duty_cycle):
 def light_pixel_by_list(pixels_list,RGB):
     for i in range(len(pixels_list)):
         pixels[pixels_list[i]] = (RGB.R,RGB.G,RGB.B)
+
+# light both groups of LEDs based on thier RGB settings 
+def light_all_pixels(RGB_GROUP1,RGB_GROUP2):
+    light_pixel_by_list (GROUP1_LED_INDEX,RGB_GROUP1)     
+    light_pixel_by_list (GROUP2_LED_INDEX,RGB_GROUP2)     
+
 
 # Built in test to try all LEDs
 def built_in_test ():
