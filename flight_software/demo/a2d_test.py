@@ -12,19 +12,26 @@ bus = smbus.SMBus(1)
 def check_a2d(read):
     bus.write_byte(address,read)
     value = bus.read_byte(address)
-    print(read)
-    print("AOUT:%d  " %(value))
-    time.sleep(1)
+    txt=""
+    if read == A0:
+       txt="(poti)"
+    if read == A1:
+       txt="(light)"
+    if read == A2:
+       txt="(temp)"
+    print("%x%s responds:%d  " %(read,txt, value))
+    time.sleep(0.1)
 
 while True:
     # bus.write_byte(address,A1)
     # value = bus.read_byte(address)
     # print("AOUT:%1.3f  " %(value*3.3/255))
     # time.sleep(0.1)
-    os.system('clear')
+    # os.system('clear')
     check_a2d(A0)
     check_a2d(A1)
     check_a2d(A2)
     check_a2d(A3)
-    time.sleep(10)
+    print("-------")
+    time.sleep(5)
     
