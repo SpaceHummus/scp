@@ -12,7 +12,7 @@ hardware_build: 'B2'
 seeds:
  variety: 'Zehavit'  # Can be Zehavit, Bar, Bili or the name of the seeds used in the experiment
  batch: ''           # Bag serial number of the seeds used.
- number: 13          # How many seeds were placed on the agar at the begning of the experiment
+ number: 28          # How many seeds were placed on the agar at the begning of the experiment
  
 # list of enabled cameras (['A'/'B'/'C'/'D']) 
 enabled_cameras:
