@@ -14,10 +14,12 @@ seeds:
  batch: ''           # Bag serial number of the seeds used.
  number: 28          # How many seeds were placed on the agar at the begning of the experiment
  
-# list of enabled cameras (['A'/'B'/'C'/'D']) 
-enabled_cameras:
-    - 'A'
-    - 'B' 
+# List camera ids that are connected to each camera position.
+# If a camera is not connected set id to ''. For example camera_A_id: ''
+camera_A_id: 'C04'
+camera_B_id: 'C05'
+camera_C_id: 'C06'
+camera_D_id: 'C07'
     
 led_switch_status:
     'off' #on or off

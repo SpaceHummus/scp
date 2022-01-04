@@ -34,7 +34,6 @@ def board3bcm(pin):
 class CameraHandler:
     activeCamera='A'
     focus=512
-    focus_setting=None
 
     # Constructor, index='A'/'B'/'C'/'D'
     def __init__(self,width=4056,height=3040):

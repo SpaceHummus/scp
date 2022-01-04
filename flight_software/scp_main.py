@@ -16,6 +16,7 @@ from system_state import CameraConfiguration
 from system_state import Illumination
 from system_state import RGB
 from camera_handler import CameraHandler
+from camera_handler_high_level import CameraHandlerHighLevel
 from root_image_handler import RootImageHandler
 from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
@@ -28,7 +29,6 @@ CONF_FILE_NAME = "scp_conf.yaml"
 # holds system states configurations
 system_states={}
 states_over_time=[]
-enabled_cameras=[]
 sw_handler = switch_handler.SwitchHandler()
 medtronic_switch = "on"
 led_switch = "on"
@@ -77,13 +77,6 @@ def setup_logging():
             logging.StreamHandler()
         ]
     )   
-
-def get_enabled_cameras():
-    global enabled_cameras
-    file = open(r'configuration.yaml')
-    conf_dic = yaml.load(file, Loader=yaml.FullLoader)
-    enabled_cameras = conf_dic["enabled_cameras"] 
-    return enabled_cameras
 
 # turn on/off the switches
 def set_switches():
@@ -217,6 +210,7 @@ def main():
 
     # get handler for the cameras
     camera = CameraHandler()
+    camera_handler_high_level = CameraHandlerHighLevel()
     root_image = RootImageHandler()
     last_pic_time = 0
     last_root_pic_time = 0
@@ -240,7 +234,7 @@ def main():
             led_handler.light_all_pixels(state.illumination.group1_rgb,state.illumination.group2_rgb)
         pre_state_name = state.name
 
-        enabled_cameras=get_enabled_cameras()
+        enabled_cameras = camera_handler_high_level.get_enabled_cameras()
 
         current_time = time.time()        
 
