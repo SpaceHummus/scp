@@ -14,7 +14,7 @@ class FocusSetting:
         # Search for camera setting yaml
         match_file_paths = glob.glob("{0}_focus_setting_*.yaml".format(camera_id))
         if len(match_file_paths) == 0:
-            logging.error("Cannot find any camera id: {0}_focus_setting_*.yaml".format(camera_id))
+            logging.warning("Cannot find any camera id: {0}_focus_setting_*.yaml try downloading it from here: https://drive.google.com/drive/folders/1ZO1JT48JYjxW5SwMPtwgC-zfydXtHrcm".format(camera_id))
             return
         
         # Load information from yaml
