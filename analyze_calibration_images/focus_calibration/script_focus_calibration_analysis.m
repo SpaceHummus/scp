@@ -2,7 +2,7 @@
 
 %% Inputs
 
-folder_path = '..\..\take_calibration_images\C05_focus_calibration_images_2021-12-21\';
+folder_path = '..\..\take_calibration_images\C04_focus_calibration_images_2022-01-04\';
 direction = 'x'; % Are lines parallel to 'x' direction? If so write 'x'
 
 %% Process Folder Name
