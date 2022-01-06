@@ -16,12 +16,18 @@ class SystemState:
         if self.camera_configuration != None:
             logging.info("image_frequency_min:%d",self.camera_configuration.image_frequency_min)
             logging.info("root_image_frequency_min:%d",self.camera_configuration.root_image_frequency_min)
-            # logging.info("camera_A_id_C04:%d",self.camera_configuration.focus_position.camera_A_id_C04)
-            # logging.info("camera_A_id_C04 focus_position:")
-            # for fp in self.camera_configuration.camera_A_id_C04:
-            #     logging.info("* %d",fp)
-
-            logging.info("exposure:%d",self.camera_configuration.exposure)
+            logging.info("camera_A focus_position:")
+            for fp in self.camera_configuration.focus_position["A"]:
+                logging.info("* %d",fp)
+            logging.info("camera_B focus_position:")
+            for fp in self.camera_configuration.focus_position["B"]:
+                logging.info("* %d",fp)
+            logging.info("camera_C focus_position:")
+            for fp in self.camera_configuration.focus_position["C"]:
+                logging.info("* %d",fp)
+            logging.info("camera_D focus_position:")
+            for fp in self.camera_configuration.focus_position["D"]:
+                logging.info("* %d",fp)
             logging.info("ISO:%d",self.camera_configuration.iso)
         else:
             logging.info("camera_configuration:None")
@@ -39,24 +45,12 @@ class CameraConfiguration:
     root_image_frequency_min = 60 # How often should we take images (minutes)    
     exposure = 10
     iso = 10
-    focus_position = None
-    def __init__(self,image_frequency_min, root_image_frequency_min, exposure,iso,focus_position):
+    focus_position = {}
+    def __init__(self,image_frequency_min, root_image_frequency_min,iso,focus_position):
         self.image_frequency_min = image_frequency_min
         self.root_image_frequency_min = root_image_frequency_min
-        self.exposure = exposure
         self.iso = iso
         self.focus_position = focus_position
-
-class FocusPosition:
-    camera_A_id_C04 = []
-    camera_B_id_C05 = []
-    camera_C_id_C06 = []
-    camera_D_id_C07 = []
-    def __init__(self,camera_A_id_C04, camera_B_id_C05, camera_C_id_C06, camera_D_id_C07):
-        self.camera_A_id_C04 = camera_A_id_C04
-        self.camera_B_id_C05 = camera_B_id_C05
-        self.camera_C_id_C06 = camera_C_id_C06
-        self.camera_D_id_C07 = camera_D_id_C07
 
 class Illumination:
     group1_rgb = None

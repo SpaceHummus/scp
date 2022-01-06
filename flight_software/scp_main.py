@@ -15,7 +15,6 @@ from system_state import SystemState
 from system_state import CameraConfiguration
 from system_state import Illumination
 from system_state import RGB
-from system_state import FocusPosition
 from camera_handler import CameraHandler
 from camera_handler_high_level import CameraHandlerHighLevel
 from root_image_handler import RootImageHandler
@@ -117,22 +116,14 @@ def get_system_states():
         G2=g2["green"]
         B2=g2["blue"]
         far_red= illum["far_red"]
-        
-
         if cam_conf==None:
             cam_configuration = None  
         else:
             root_image_frequency_min = cam_conf["root_image_frequency_min"]
             image_frequency_min = cam_conf["image_frequency_min"]
             focus_position = cam_conf["focus_position"]
-            camera_A_id_C04 = focus_position["camera_A_id_C04"]
-            camera_B_id_C05 = focus_position["camera_B_id_C05"]
-            camera_C_id_C06 = focus_position["camera_C_id_C06"]
-            camera_D_id_C07 = focus_position["camera_D_id_C07"]
-
-            exposure = cam_conf["exposure"]
             iso =cam_conf["ISO"]
-            cam_configuration = CameraConfiguration(image_frequency_min, root_image_frequency_min, exposure,iso,FocusPosition(camera_A_id_C04,camera_B_id_C05,camera_C_id_C06,camera_D_id_C07))
+            cam_configuration = CameraConfiguration(image_frequency_min, root_image_frequency_min,iso,focus_position)
         Illumination_group=Illumination(RGB(R1,G1,B1),RGB(R2,G2,B2),far_red)
         state = SystemState(cam_configuration,Illumination_group,name)  
         state.print_values()
@@ -183,30 +174,11 @@ def upload_files(files, g_drive):
 def take_pic_all_focus(camera,cameraID,focus_list,file_name_prefix):
     files_list=[]
     camera.change_active_camera(cameraID)
-    if cameraID == "C04":
-        for f in focus_list.camera_A_id_C04:
-            camera.change_focus(f)
-            full_path_file_name,title_name = camera.take_pic(file_name_prefix,True)
-            image_handler.check_image(full_path_file_name)
-            files_list.append((full_path_file_name,title_name))
-    elif cameraID == "C05":
-        for f in focus_list.camera_B_id_C05:
-            camera.change_focus(f)
-            full_path_file_name,title_name = camera.take_pic(file_name_prefix,True)
-            image_handler.check_image(full_path_file_name)
-            files_list.append((full_path_file_name,title_name))
-    elif cameraID == "C06":
-        for f in focus_list.camera_C_id_C06:
-            camera.change_focus(f)
-            full_path_file_name,title_name = camera.take_pic(file_name_prefix,True)
-            image_handler.check_image(full_path_file_name)
-            files_list.append((full_path_file_name,title_name))
-    elif cameraID == "C07":
-        for f in focus_list.camera_D_id_C07:
-            camera.change_focus(f)
-            full_path_file_name,title_name = camera.take_pic(file_name_prefix,True)
-            image_handler.check_image(full_path_file_name)
-            files_list.append((full_path_file_name,title_name))
+    for f in focus_list[cameraID]:
+        camera.change_focus(f)
+        full_path_file_name,title_name = camera.take_pic(file_name_prefix,True)
+        image_handler.check_image(full_path_file_name)
+        files_list.append((full_path_file_name,title_name))
     return files_list
 
 def get_version():

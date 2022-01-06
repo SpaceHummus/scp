@@ -10,7 +10,7 @@ import adafruit_ina260
 import smbus
 from gpiozero import CPUTemperature
 from gpiozero import LoadAverage
-
+import file_maintenance
 
 
 TELE_FILE = 'telematry.csv'
@@ -85,7 +85,7 @@ class TelematryHandler:
             cpu_temp = CPUTemperature()
             cpu_load = int(LoadAverage(minutes=1).load_average*100)
             ###########
-            free_space = 0
+            free_space = file_maintenance.check_used_space(file_maintenance.IMAGES_PATH)
             logging.debug("CPUTemperature:%d, cpu_load: %d "'%'" free_space: %d ", cpu_temp.temperature, cpu_load, free_space)
             return [cpu_temp.temperature, cpu_load, free_space]
         except Exception as e:
@@ -106,13 +106,13 @@ class TelematryHandler:
             now = datetime.now()  # current date and time
             date_time = now.strftime("%m/%d/%Y %H:%M:%S")
 
-            bme680_list, veml7700_list_1, veml7700_list_2, ina260_list, a2d_list = self.read_all_telemetry()
+            bme680_list, veml7700_list_1, veml7700_list_2, ina260_list, a2d_list , rasp_list= self.read_all_telemetry()
             # raspberry_telemetry_list = self.get_raspberry_telemetry()
 
             writer = csv.writer(f)
             row = list()
             row.append(date_time)
-            row = row + bme680_list + veml7700_list_1+ veml7700_list_2 + ina260_list + a2d_list #+ raspberry_telemetry_list
+            row = row + bme680_list + veml7700_list_1+ veml7700_list_2 + ina260_list + a2d_list + rasp_list #+ raspberry_telemetry_list
 
             writer.writerow(row)
 
@@ -122,7 +122,8 @@ class TelematryHandler:
         veml7700_list_2 = self.get_veml7700_telemetry(0x2)
         ina260_list = self.get_ina260_telemetry()
         a2d_list = self.get_a2d_telemetry()
-        return bme680_list,veml7700_list_1,veml7700_list_2,ina260_list,a2d_list
+        raspberry_list = self.get_raspberry_telemetry()
+        return bme680_list,veml7700_list_1,veml7700_list_2,ina260_list,a2d_list,raspberry_list
 
     @staticmethod
     def read_i2c_value(i2c_address, bus_addr):
@@ -152,5 +153,6 @@ def read_all_telemetry():
 
 
 if __name__ == "__main__":
-    quit()
-    # read_all_telemetry()
+    tel = TelematryHandler()
+    data = tel.get_raspberry_telemetry()
+    print(data)
