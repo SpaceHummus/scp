@@ -13,6 +13,7 @@ import time
 from datetime import datetime
 import led_handler
 import switch_handler
+from telematry_handler import TelematryHandler
 import os
 
 def setup_logging():
@@ -149,14 +150,11 @@ def switch_and_analog_testing():
     time.sleep(1)
     
     # Read INA status
-    INA_Value = "Not Implemented"
-    A2D_0 = "Not Implemented"
-    A2D_1 = "Not Implemented"
-    A2D_2 = "Not Implemented"
-    A2D_3 = "Not Implemented"
+    tm = TelematryHandler ()
+    data = tm.get_ina260_telemetry()
     
     return render_template('switch_and_analog_testing.html', form=form, 
-        INA_Value=INA_Value, A2D_0=A2D_0,A2D_1=A2D_1,A2D_2=A2D_2,A2D_3=A2D_3)
+        current_mA=data[0], voltage=data[1], power_mW=data[2])
 
 if __name__ == '__main__':
     setup_logging()
