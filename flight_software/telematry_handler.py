@@ -35,7 +35,7 @@ class TelematryHandler:
             )
             return ['N/A temperature', 'N/A gas', 'N/A humidity', 'N/A pressure']
 
-    def get_veml7700_telemetry(self, chunnel = None):
+    def get_veml7700_telemetry(self, chunnel = None): #chunnel can be 1 or 2
         try:
             if chunnel:
                 self.swith_i2c_chunnel(chunnel)

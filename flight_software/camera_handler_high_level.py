@@ -6,12 +6,14 @@ import time
 from datetime import datetime
 import threading
 import yaml
-from focus_setting import FocusSetting
 from camera_handler import CameraHandler
 
+import sys
+sys.path.insert(1, '../common')
+from focus_setting import FocusSetting
+
+
 # This module builds on camrea_handler.py to implement higher level functionality such as distance to focus value
-
-
 class CameraHandlerHighLevel:
 
     # Camera ids

@@ -17,6 +17,7 @@ import camera_handler_high_level
 from telematry_handler import TelematryHandler
 import os
 from shutil import copyfile
+import root_image_handler
 
 def setup_logging():
     logging.basicConfig(
@@ -133,7 +134,7 @@ class SwitchForm(FlaskForm):
     switch_air_sensor = BooleanField(label='Air Sensor')
     
     submit = SubmitField('Set Switches')
-@app.route('/SwitchesAndAnalogs/', methods=['GET', 'POST'])
+@app.route('/SwitchesAndAnalogsTesting/', methods=['GET', 'POST'])
 def switch_and_analog_testing():
     
     form = SwitchForm()
@@ -165,7 +166,7 @@ class CameraForm(FlaskForm):
     
     submit = SubmitField('Take a Picture')
     
-@app.route('/Cameras/', methods=['GET', 'POST'])
+@app.route('/CamerasTesting/', methods=['GET', 'POST'])
 def camera_testing():
     form = CameraForm()
     if request.method == 'GET':
@@ -186,7 +187,46 @@ def camera_testing():
     
     return render_template('camera_testing.html', form=form)
     
-
+#################### Medtronic #####################################################
+class MedtronicForm(FlaskForm):
+    white_LEDs = BooleanField(label='White LEDs')
+    IR_LEDs = BooleanField(label='IR LEDs')
+    
+    submit = SubmitField('Set LEDs')
+    
+@app.route('/MedtronicTesting/', methods=['GET', 'POST'])
+def medtronic_testing():
+    form = MedtronicForm()
+    
+    # Turn on medtronic
+    sw_handler = switch_handler.SwitchHandler()
+    sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN, "on")
+    
+    if request.method == 'GET':
+        # User hadn't submitted information yet, set default values
+        form.white_LEDs.data = False
+        form.IR_LEDs.data = False
+    else:
+        # Switch LEDs acordingly
+        image_handler = root_image_handler.RootImageHandler()
+        if form.white_LEDs.data:
+            image_handler.white_led_on()
+        else:
+            image_handler.white_led_off()
+            
+        if form.IR_LEDs.data:
+            image_handler.IR_led_on()
+        else:
+            image_handler.IR_led_off()
+    
+    # Read Ilumination status
+    time.sleep(1) # Let light turn on before querry intensity
+    tm = TelematryHandler ()
+    data1 = tm.get_veml7700_telemetry(1)
+    data2 = tm.get_veml7700_telemetry(2)
+    
+    return render_template('medtronic_testing.html', form=form, 
+        data1_0=data1[0], data1_1=data1[1], data2_0=data2[0], data2_1=data2[1])
 
 #################### Main ##########################################################
 if __name__ == '__main__':

@@ -1,0 +1,50 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{ super() }}
+	<style>
+		body { background: #e8f1f9; }
+	</style>
+{% endblock %}
+
+
+{% block title %}
+SCP Settings 
+{% endblock %}
+
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-lg-8 mx-lg-auto mx-md-auto">
+	
+	  <h1 class="pt-5 pb-2">Light Sensor</h1>
+	  
+	   <table>
+		   <tr>
+			 <th> Light Sensor </th>
+			 <th> Ambient Light </th>
+			 <th> Lux </th>
+		   </tr>
+		   <tr>
+			 <td>Sensor1</td>
+			 <td>{{ data1_0 }}</td>
+			 <td>{{ data1_1 }}</td>
+		   </tr>
+		   <tr>
+			 <td>Sensor2</td>
+			 <td>{{ data2_0 }}</td>
+			 <td>{{ data2_1 }}</td>
+		   </tr>
+	    </table> 
+
+      <h1 class="pt-5 pb-2">Set Medtronic Stauts</h1>
+      {{ wtf.quick_form(form) }}
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}
