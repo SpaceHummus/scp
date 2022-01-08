@@ -173,6 +173,7 @@ def camera_testing():
         # User hadn't submitted information yet, set default values
         form.camera.data = 'A'
         form.focus_distance_mm.data = "100"
+        out_file_path = ""
     else:    
         distance = float(form.focus_distance_mm.data)
         
@@ -181,11 +182,15 @@ def camera_testing():
         file_path = cam.take_pic_all_distances(form.camera.data,[distance])
         
         # Copy to the static folder where iamge is found
-        if not os.path.exists('static'):
+        out_file_path = "%{0}_{1}.jpg".format(form.camera.data,round(time.time()*24*60*60))
+        if not os.path.exists('static'): # Make dir if it doesn't exist
             os.makedirs('static')
-        copyfile(file_path[0][0],'static/1.jpg')
+        if os.path.exists('static/'+out_file_path): # Remove file if it's already there
+            os.remove('static/'+out_file_path)
+            
+        copyfile(file_path[0][0],'static/'+out_file_path)
     
-    return render_template('camera_testing.html', form=form)
+    return render_template('camera_testing.html', form=form, out_file_path=out_file_path)
     
 #################### Medtronic #####################################################
 class MedtronicForm(FlaskForm):
