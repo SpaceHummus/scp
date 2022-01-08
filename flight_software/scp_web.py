@@ -6,15 +6,17 @@ import yaml
 from flask import Flask, request, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
-from wtforms import StringField, BooleanField, SubmitField
+from wtforms import StringField, BooleanField, SubmitField, RadioField
 from wtforms.validators import DataRequired
 import logging
 import time
 from datetime import datetime
 import led_handler
 import switch_handler
+import camera_handler_high_level
 from telematry_handler import TelematryHandler
 import os
+from shutil import copyfile
 
 def setup_logging():
     logging.basicConfig(
@@ -140,14 +142,14 @@ def switch_and_analog_testing():
         form.switch_LED.data = False
         form.switch_air_sensor.data = False
         form.switch_medtronic.data = False
-    
-    # Set switch status
-    sw_handler = switch_handler.SwitchHandler()
-    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, form.switch_LED.data)
-    sw_handler.set_switch(switch_handler.SWITCH_AIR_SENSE_PIN, form.switch_air_sensor.data)
-    sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN, form.switch_medtronic.data)
-    
-    time.sleep(1)
+    else:
+        # Set switch status
+        sw_handler = switch_handler.SwitchHandler()
+        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, form.switch_LED.data)
+        sw_handler.set_switch(switch_handler.SWITCH_AIR_SENSE_PIN, form.switch_air_sensor.data)
+        sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN, form.switch_medtronic.data)
+        
+        time.sleep(1)
     
     # Read INA status
     tm = TelematryHandler ()
@@ -156,6 +158,37 @@ def switch_and_analog_testing():
     return render_template('switch_and_analog_testing.html', form=form, 
         current_mA=data[0], voltage=data[1], power_mW=data[2])
 
+#################### Camera Testing ################################################
+class CameraForm(FlaskForm):
+    camera = RadioField(label="Camera", choices=[('A','A'),('B','B'),('C','C'),('D','D')])
+    focus_distance_mm = StringField(label="Focus Distance mm")
+    
+    submit = SubmitField('Take a Picture')
+    
+@app.route('/Cameras/', methods=['GET', 'POST'])
+def camera_testing():
+    form = CameraForm()
+    if request.method == 'GET':
+        # User hadn't submitted information yet, set default values
+        form.camera.data = 'A'
+        form.focus_distance_mm.data = "100"
+    else:    
+        distance = float(form.focus_distance_mm.data)
+        
+        # Take an image
+        cam = camera_handler_high_level.CameraHandlerHighLevel()
+        file_path = cam.take_pic_all_distances(form.camera.data,[distance])
+        
+        # Copy to the static folder where iamge is found
+        if not os.path.exists('static'):
+            os.makedirs('static')
+        copyfile(file_path[0][0],'static/1.jpg')
+    
+    return render_template('camera_testing.html', form=form)
+    
+
+
+#################### Main ##########################################################
 if __name__ == '__main__':
     setup_logging()
     logging.info('*** Start ***')
