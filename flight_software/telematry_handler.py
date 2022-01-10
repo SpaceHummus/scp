@@ -18,6 +18,7 @@ TELE_FILE = 'telematry.csv'
 
 class TelematryHandler:
     i2c = None
+    current_logic_state_name = ""
 
     def __init__(self):
         self.i2c = board.I2C()
@@ -121,7 +122,7 @@ class TelematryHandler:
         # Telemetry file doesn't exist, make sure to open a new one and write header
         with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
             writer = csv.writer(f)
-            writer.writerow(['Time','Parameter Name','Value','Units'])
+            writer.writerow(['Time','Parameter Name','Value','Units','Logic State'])
             
     # Write a telemetry line to file
     def write_telemetry_line_to_csv(self,parameter_time, parameter_name, parameter_value, parameter_units):
@@ -133,7 +134,7 @@ class TelematryHandler:
                 parameter_value = "%.4f" % parameter_value
             
             writer = csv.writer(f)
-            writer.writerow([date_time, parameter_name, parameter_value, parameter_units])
+            writer.writerow([date_time, parameter_name, parameter_value, parameter_units, self.current_logic_state_name])
 
     ############# High Level Functionality ###################################################################
     
@@ -160,6 +161,9 @@ class TelematryHandler:
             self.write_telemetry_line_to_csv(telematry_time,'RPI_CPU_Temperature',  rasp_list[0],'C')
             self.write_telemetry_line_to_csv(telematry_time,'RPI_CPU_Load',         rasp_list[1],'%')
             self.write_telemetry_line_to_csv(telematry_time,'RPI_Free_Space',       rasp_list[2],'%')
+            
+    def set_current_logic_state_name(self,new_logic_state_name):
+        self.current_logic_state_name = new_logic_state_name
 
     def read_all_telemetry(self):
         bme680_list = self.get_bme680_telemetry()

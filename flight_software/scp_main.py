@@ -214,7 +214,10 @@ def main():
     last_root_pic_time = 0
     pre_state_name=""
     while(True):
+    
+        # Capture current logic state
         state = get_current_state()
+        telematry_handler.set_current_logic_state_name(state.name)
 
         # check if state was changed, if yes, update LEDs
         if pre_state_name != state.name:
