@@ -54,7 +54,7 @@ def set_led_state(new_logic_state):
         
         # Next switch off all Neopixels
         th.set_current_logic_state_name(ls_name+"2")
-        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,"Off")
+        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,"off")
         time.sleep(0.5)
         th.write_telemetry_csv() # Gather paramters
     
@@ -64,7 +64,7 @@ def set_led_state(new_logic_state):
         
         # First, switch master power switch on
         th.set_current_logic_state_name(ls_name+"3")
-        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,"On")
+        sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,"on")
         time.sleep(0.5)
         th.write_telemetry_csv() # Gather paramters after switch is on
         
