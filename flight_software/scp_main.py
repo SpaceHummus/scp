@@ -22,7 +22,7 @@ from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
 import switch_handler
 import image_handler
-import led_handler
+import led_handler_high_level
 
 
 CONF_FILE_NAME = "scp_conf.yaml"
@@ -212,34 +212,19 @@ def main():
     root_image = RootImageHandler()
     last_pic_time = 0
     last_root_pic_time = 0
-    pre_state_name=""
     while(True):
+        # Record current time such that all steps in this iteration have the same time
+        current_time = time.time()
     
         # Capture current logic state
         state = get_current_state()
         telematry_handler.set_current_logic_state_name(state.name)
+        
+        # Set LED status (internal logic will make sure we don't turn on/off leds if not needed)
+        led_handler_high_level.set_led_state(state)
 
-        # check if state was changed, if yes, update LEDs
-        if pre_state_name != state.name:
-            logging.info('entering a new state:%s',state.name)    
-            # reset led switch - becuase of issues with first led
-            sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_OFF)
-            time.sleep(1)
-            if led_switch:
-                sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_ON)
-                time.sleep(1)                    
-            led_handler.light_far_red(state.illumination.far_red)
-
-            # change NeoPixle LEDs
-            #led_handler.stop_LED() # first close the LEDs
-            led_handler.light_all_pixels(state.illumination.group1_rgb,state.illumination.group2_rgb)
-        pre_state_name = state.name
-
+        # Take main pictures if needed
         enabled_cameras = camera_handler_high_level.get_enabled_cameras()
-
-        current_time = time.time()        
-
-        # take main pictures if needed
         file_list = []
         if (state.camera_configuration != None) and (current_time - last_pic_time >=(60*state.camera_configuration.image_frequency_min)):
             file_name_prefix = get_file_name() # File name prefix (date and time) is selected once before taking all images such that they have the same time
@@ -248,19 +233,24 @@ def main():
                 last_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next picture",state.camera_configuration.image_frequency_min)
         
-        # take root pictures if needed
+        # Take root pictures if needed
         if (medtronic_switch =="on") and (state.camera_configuration != None) and (current_time - last_root_pic_time >=(60*state.camera_configuration.root_image_frequency_min)):
-            sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_OFF) # turn leds off
-            # first reset the medtroic card
+        
+            # Before turning on medtronic, switch off main LEDs
+            led_handler_high_level.set_led_state("off")
+            
+            # Reset the medtroic card
             sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_OFF)
             sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_ON)
             time.sleep(1) # wait for root psb to start...
+            
+            # Take the image
             root_image.take_pic(get_file_name())
-            if led_switch: # turn led switch back on if needed and bring back the LED light
-                sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_ON)
-                time.sleep(1) # wait a sec...
-                led_handler.light_all_pixels(state.illumination.group1_rgb,state.illumination.group2_rgb)
-                led_handler.light_far_red(state.illumination.far_red)
+            
+            # Set LEDs back
+            led_handler_high_level.set_led_state(state)
+            
+            # Set a handle for the next image
             last_root_pic_time = time.time()
             logging.info("going to wait %d minute(s) before next root picture",state.camera_configuration.root_image_frequency_min)
         
