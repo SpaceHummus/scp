@@ -11,7 +11,7 @@ import smbus
 from gpiozero import CPUTemperature
 from gpiozero import LoadAverage
 import file_maintenance
-
+import os
 
 TELE_FILE = 'telematry.csv'
 
@@ -21,7 +21,9 @@ class TelematryHandler:
 
     def __init__(self):
         self.i2c = board.I2C()
-
+        
+    
+    ############# Functions for Telemetry Gathering ##########################################################
     def get_bme680_telemetry(self):
         try:
             bme680 = adafruit_bme680.Adafruit_BME680_I2C(self.i2c)
@@ -57,7 +59,7 @@ class TelematryHandler:
             ina260.mode = adafruit_ina260.Mode.CONTINUOUS
             time.sleep(0.05)
             logging.debug(
-                "Current: %.4f mA Voltage: %.4f V Power%.4f mW"
+                "Current: %.4f mA Voltage: %.4f V Power: %.4f mW"
                 % (ina260.current, ina260.voltage, ina260.power)
             )
             return [ina260.current, ina260.voltage, ina260.power]
@@ -86,7 +88,7 @@ class TelematryHandler:
             cpu_load = int(LoadAverage(minutes=1).load_average*100)
             ###########
             free_space = file_maintenance.check_used_space(file_maintenance.IMAGES_PATH)
-            logging.debug("CPUTemperature:%d, cpu_load: %d "'%'" free_space: %d ", cpu_temp.temperature, cpu_load, free_space)
+            logging.debug("CPUTemperature:%d, cpu_load: %d %% free_space: %d ", cpu_temp.temperature, cpu_load, free_space)
             return [cpu_temp.temperature, cpu_load, free_space]
         except Exception as e:
             logging.error(
@@ -94,27 +96,70 @@ class TelematryHandler:
             )
             return ['N/A cpu_temp', 'N/A cpu_load', 'N/A free_space']
 
+    ############# END Functions for Telemetry Gathering ######################################################
+    ############# Functions I2C Management ###################################################################
     def swith_i2c_chunnel(self,chunnel):
         switch_addres =0x73 
         bus = smbus.SMBus(1)
         bus.write_byte(switch_addres ,chunnel)
+        
+    @staticmethod
+    def read_i2c_value(i2c_address, bus_addr):
+        bus = smbus.SMBus(1)
+        bus.write_byte(i2c_address, bus_addr)
+        value = bus.read_byte(i2c_address)
+        return value
+        
+    ############# Functions for Writing Telemetry to File ####################################################
+    
+    # Starts a telemetry csv file if it doesn't exist and place header line.
+    def start_telemetry_csv_file(self):
+        if os.path.exists(TELE_FILE):
+            # File exist, no need to do anything
+            return
+    
+        # Telemetry file doesn't exist, make sure to open a new one and write header
+        with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
+            writer = csv.writer(f)
+            writer.writerow(['Time','Parameter Name','Value','Units'])
+            
+    # Write a telemetry line to file
+    def write_telemetry_line_to_csv(self,parameter_time, parameter_name, parameter_value, parameter_units):
+        with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
+            date_time = parameter_time.strftime("%m/%d/%Y %H:%M:%S")
+            
+            # If paramter has a numeric value, convert it to readable format
+            if type(parameter_value) == float:
+                parameter_value = "%.4f" % parameter_value
+            
+            writer = csv.writer(f)
+            writer.writerow([date_time, parameter_name, parameter_value, parameter_units])
 
-
-
+    ############# High Level Functionality ###################################################################
+    
+    # Gather all telemetry and write it to CSV file
     def write_telemetry_csv(self):
         with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
-            now = datetime.now()  # current date and time
-            date_time = now.strftime("%m/%d/%Y %H:%M:%S")
-
+            telematry_time = datetime.now()  # current date and time
+            
+            # Gather all telemetry
             bme680_list, veml7700_list_1, veml7700_list_2, ina260_list, a2d_list , rasp_list= self.read_all_telemetry()
-            # raspberry_telemetry_list = self.get_raspberry_telemetry()
 
-            writer = csv.writer(f)
-            row = list()
-            row.append(date_time)
-            row = row + bme680_list + veml7700_list_1+ veml7700_list_2 + ina260_list + a2d_list + rasp_list #+ raspberry_telemetry_list
-
-            writer.writerow(row)
+            # Write telemetry to CSV
+            self.write_telemetry_line_to_csv(telematry_time,'BME680_Temperature',   bme680_list[0],'C')
+            self.write_telemetry_line_to_csv(telematry_time,'BME680_Gas',           bme680_list[1],'Ohm')
+            self.write_telemetry_line_to_csv(telematry_time,'BME680_Humidity',      bme680_list[2],'%')
+            self.write_telemetry_line_to_csv(telematry_time,'BME680_Pressure',      bme680_list[3],'hPa')
+            self.write_telemetry_line_to_csv(telematry_time,'VEML7700_1_Raw_Value', veml7700_list_1[0],'N/A')
+            self.write_telemetry_line_to_csv(telematry_time,'VEML7700_1_Lux',       veml7700_list_1[1],'Lux')
+            self.write_telemetry_line_to_csv(telematry_time,'VEML7700_2_Raw_Value', veml7700_list_2[0],'N/A')
+            self.write_telemetry_line_to_csv(telematry_time,'VEML7700_2_Lux',       veml7700_list_2[1],'Lux')
+            self.write_telemetry_line_to_csv(telematry_time,'INA260_Current',       ina260_list[0],'mA')
+            self.write_telemetry_line_to_csv(telematry_time,'INA260_Voltage',       ina260_list[1],'V')
+            self.write_telemetry_line_to_csv(telematry_time,'INA260_Power',         ina260_list[2],'mW')
+            self.write_telemetry_line_to_csv(telematry_time,'RPI_CPU_Temperature',  rasp_list[0],'C')
+            self.write_telemetry_line_to_csv(telematry_time,'RPI_CPU_Load',         rasp_list[1],'%')
+            self.write_telemetry_line_to_csv(telematry_time,'RPI_Free_Space',       rasp_list[2],'%')
 
     def read_all_telemetry(self):
         bme680_list = self.get_bme680_telemetry()
@@ -124,13 +169,6 @@ class TelematryHandler:
         a2d_list = self.get_a2d_telemetry()
         raspberry_list = self.get_raspberry_telemetry()
         return bme680_list,veml7700_list_1,veml7700_list_2,ina260_list,a2d_list,raspberry_list
-
-    @staticmethod
-    def read_i2c_value(i2c_address, bus_addr):
-        bus = smbus.SMBus(1)
-        bus.write_byte(i2c_address, bus_addr)
-        value = bus.read_byte(i2c_address)
-        return value
 
 
 def setup_logging():

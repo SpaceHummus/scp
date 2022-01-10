@@ -201,6 +201,7 @@ def main():
         g_drive_handler.get_configuration_file()
     get_states_settings()
     telematry_handler = TelematryHandler()
+    telematry_handler.start_telemetry_csv_file() # Start a file by placing header if we haven't done so already
 
     # turn on/off the switches
     set_switches()
