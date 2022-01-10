@@ -26,6 +26,7 @@ import led_handler_high_level
 
 
 CONF_FILE_NAME = "scp_conf.yaml"
+WAIT_FOR_DNS_IN_SEC = 15
 # holds system states configurations
 system_states={}
 states_over_time=[]
@@ -193,7 +194,7 @@ def get_version():
 def main():
     setup_logging()
     logging.info('*** Start *** ver %s',get_version())
-    has_dns = wait_4_dns(120) # wait up to two minutes for DNS / Internet access
+    has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC) # wait for DNS / Internet access
     # get handler to G-Drive
     if has_dns:
         g_drive_handler = GDriveHandler(getGDrive_folder_id())

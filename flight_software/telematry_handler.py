@@ -95,7 +95,7 @@ class TelematryHandler:
             logging.error(
                 f"error while reading from the raspberry telemetry: \n{e}"
             )
-            return ['N/A cpu_temp', 'N/A cpu_load', 'N/A free_space']
+            return ['N/A cpu_temp', 'N/A cpu_load', 'N/A used_space']
 
     ############# END Functions for Telemetry Gathering ######################################################
     ############# Functions I2C Management ###################################################################
@@ -137,7 +137,7 @@ class TelematryHandler:
                 'A2D_0[V]','A2D_1[V]','A2D_2[V]','A2D_3[V]',
                 'RPI_CPU_Temperature[C]',
                 'RPI_CPU_Load[%]',
-                'RPI_Free_Space[%]',
+                'RPI_Used_Space[%]',
                 ])
                 
 
