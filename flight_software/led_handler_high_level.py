@@ -65,17 +65,17 @@ def set_led_state(new_logic_state):
         # First, switch master power switch on
         th.set_current_logic_state_name(ls_name+"3")
         sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,"on")
-        time.sleep(0.5)
+        time.sleep(1)
         th.write_telemetry_csv() # Gather paramters after switch is on
         
         # Next switch on FR LEDs
-        th.set_current_logic_state_name(ls_name+"3")
+        th.set_current_logic_state_name(ls_name+"4")
         led_handler.light_far_red(new_logic_state.illumination.far_red)
         time.sleep(0.5)
         th.write_telemetry_csv() # Gather paramters of just FR
         
         # Finally Set Neopixel Values
-        th.set_current_logic_state_name(ls_name+"4")
+        th.set_current_logic_state_name(ls_name+"5")
         led_handler.light_all_pixels(
             new_logic_state.illumination.group1_rgb,
             new_logic_state.illumination.group2_rgb)
@@ -98,6 +98,8 @@ def setup_logging():
 
 if __name__ == "__main__":
     setup_logging()
+    th = TelematryHandler()
+    th.start_telemetry_csv_file()
 
     # Define states and toggle between them
     rgb_day = system_state.RGB(150,210,210)
