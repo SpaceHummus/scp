@@ -13,6 +13,8 @@ ROOT_FOLDER_ID = "1TeYo5TB0DSDe4QAPa_7Wjta79ZxSd4pQ"
 RAW_IMAGES_FOLDER = "03 Raw Images"
 COMMANDS_FOLDER = "01 Commands"
 RAW_TELEMETRY_FOLDER = "02 Raw Telemetry"
+PROCESSED_IMAGES_FOLDER = "11 processed images"
+
 
 
 class GDriveHandler:
@@ -65,6 +67,7 @@ class GDriveHandler:
                 self.upload_file("logic_states_new_exp.yaml", "logic_states.yaml", cmd_folder_id)
                 self.create_folder(RAW_TELEMETRY_FOLDER, experiment_folder_id)
                 self.create_folder(RAW_IMAGES_FOLDER, experiment_folder_id)
+                self.create_folder(PROCESSED_IMAGES_FOLDER, experiment_folder_id)
                 return experiment_folder_id
         except Exception as e:
             logging.error("Failed to create experiment struct. Error msg:%s", str(e))
@@ -274,15 +277,15 @@ class GDriveHandler:
     def get_bundle_adj(self, the_camera, thefocus):
         pass
 
-    def setup_logging():
-        logging.basicConfig(
-            level=logging.DEBUG,
-            format="%(asctime)s [%(levelname)s] %(funcName)s:%(message)s",
-            handlers=[
-                logging.FileHandler("gdrive.log"),
-                logging.StreamHandler()
-            ]
-        )
+def setup_logging():
+    logging.basicConfig(
+        level=logging.DEBUG,
+        format="%(asctime)s [%(levelname)s] %(funcName)s:%(message)s",
+        handlers=[
+            logging.FileHandler("gdrive.log"),
+            logging.StreamHandler()
+        ]
+    )
 
 
 if __name__ == "__main__":

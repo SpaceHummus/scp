@@ -5,91 +5,151 @@
 
 # Overall system states
 system_states:
-    - name: 'day_sun' 
-      illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
+    - name: 'night_pic' 
+      illumination: # LED ilumination 0-255
         group1:
-            red: 150 
-            green: 210
-            blue: 255
+            red: 234 
+            green: 23
+            blue: 123
         group2:
-            red: 150 
-            green: 210
-            blue: 255
-        far_red: 0
+            red: 54
+            green: 134
+            blue: 243
+        far_red: 75 # enter the PWM duty cycle 0-100% 
+      camera_configuration: 
+        image_frequency_min: 3 # How often should we take images (minutes)
+        root_image_frequency_min: 10 # How often should we take images (minutes)
+        focus_position:
+            A:
+                - 467
+                - 30
+                - 1000
+            B:
+                - 800
+                - 0
+            C:
+                - 1000
+            D:
+                - 467
+                - 354
+                - 1000
+                - 801
+                - 542
+        ISO: 10
+
+    - name: 'day_sun' 
+      illumination: # LED ilumination 0-255
+        group1:
+            red: 233 
+            green: 143
+            blue: 243
+        group2:
+            red: 0 
+            green: 255
+            blue: 0
+        far_red: 0 # enter the PWM duty cycle 0-100% 
       camera_configuration: 
         image_frequency_min: 10 # How often should we take images (minutes)
-        root_image_frequency_min: 60 # How often should we take root images (minutes)
-        focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
-            - 110
-            - 150
-            - 190
-            - 210
-            - 230
-        exposure: 10
+        root_image_frequency_min: 60 # How often should we take images (minutes)
+        focus_position:
+            A:
+                - 567
+                - 26
+            B:
+                - 845
+            C:
+                - 154
+                - 366
+            D:
+                - 789
+                - 45
+                - 456
         ISO: 10
 
     - name: 'day_shade' 
-      illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
+      illumination: # LED ilumination 0-255
         group1:
-            red: 150 
-            green: 210
-            blue: 255
+            red: 243 
+            green: 253
+            blue: 132
         group2:
-            red: 150 
-            green: 210
-            blue: 255
-        far_red: 12
+            red: 243
+            green: 153
+            blue: 193
+        far_red: 46 # enter the PWM duty cycle 0-100%
       camera_configuration: 
-        image_frequency_min: 10 # How often should we take images (minutes)
-        root_image_frequency_min: 60 # How often should we take root images (minutes)
-        focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
-            - 110
-            - 150
-            - 190
-            - 210
-            - 230
-        exposure: 10
+        image_frequency_min: 5 # How often should we take images (minutes)
+        root_image_frequency_min: 12 # How often should we take root images (minutes)
+        focus_position:
+            A:
+                - 956
+            B:
+                - 845
+                - 123
+            C:
+                - 1000
+                - 965
+            D:
+                - 467
+                - 354
+                - 563
+                - 124
+        ISO: 10
+        
+    - name: 'Itay' 
+      illumination: # LED ilumination 0-255
+        group1:
+            red: 200 
+            green: 200
+            blue: 100
+        group2:
+            red: 0 
+            green: 0
+            blue: 0
+        far_red: 20 # enter the PWM duty cycle 0-100%
+      camera_configuration: 
+        image_frequency_min: 5 # How often should we take images (minutes)
+        root_image_frequency_min: 15 # How often should we take images (minutes)
+        focus_position:
+            A:
+                - 741
+                - 365
+                - 452
+                - 546
+            B:
+                - 800
+                - 78
+                - 966
+            C:
+                - 474
+                - 444
+            D:
+                - 467
         ISO: 10
 
     - name: 'night' 
-      illumination: # LED ilumination 0-255
+      illumination: # LED ilumination 0-255 
         group1:
-            red: 0 
+            red: 150 
             green: 0
             blue: 0
         group2:
             red: 0 
             green: 0
             blue: 0
-        far_red: 0
-      camera_configuration:
-      
-      # In this mode, experiment is waiting for setup instructions
-    - name: 'standby' 
-      illumination: # LED ilumination 0-255
-        group1:
-            red: 0 
-            green: 0
-            blue: 0
-        group2:
-            red: 0 
-            green: 0
-            blue: 0
-        far_red: 0
+        far_red: 100 # enter the PWM duty cycle 0-100%
       camera_configuration:
         
 # Timeline
 states_over_time:
     # Below is a list of new state and the time this state will start (all times are UTC)
-    - - '2021/01/01 08:00:00'
-      - standby # The first default mode is standby until experiment starts
-    - - '2021/07/18 08:00:00'
+    - - '2021/12/30 11:35:00'
+      - Itay
+    - - '2021/12/30 11:40:00'
+      - night   
+    - - '2021/12/30 11:45:00'
+      - day_shade   
+    - - '2021/12/30 11:55:00'
       - day_sun
-    - - '2021/07/18 08:18:00'
-      - night    
-    - - '2021/07/18 10:39:00'
+    - - '2021/12/30 12:10:00'
       - day_sun   
-    - - '2021/07/18 17:10:00'
-      - night     
-    - - '2021/07/19 07:00:00'    
-      - day_shade
