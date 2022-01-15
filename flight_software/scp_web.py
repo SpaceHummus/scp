@@ -6,6 +6,7 @@ import yaml
 from flask import Flask, request, render_template, redirect, url_for
 from flask_bootstrap import Bootstrap
 from flask_wtf import FlaskForm
+from flask import request
 from wtforms import StringField, BooleanField, SubmitField, RadioField
 from wtforms.validators import DataRequired
 import logging
@@ -232,6 +233,57 @@ def medtronic_testing():
     
     return render_template('medtronic_testing.html', form=form, 
         data1_0=data1[0], data1_1=data1[1], data2_0=data2[0], data2_1=data2[1])
+        
+#################### Party Mode ####################################################
+@app.route('/PartyMode/') # Set PartyMode?mode=x, replace x with 1,2 
+def party_mode():   
+
+    def change_color(r_s,g_s,b_s,fr_s,r_e,g_e,b_e,fr_e,n_steps=50):
+        delta_r = (r_e-r_s)/n_steps
+        delta_g = (g_e-g_s)/n_steps
+        delta_b = (b_e-b_s)/n_steps
+        delta_fr = (fr_e-fr_s)/n_steps
+        
+        r = r_s
+        g = g_s
+        b = b_s
+        fr = fr_s
+        
+        for i in range(n_steps+1):
+            led_handler.light_pixel(0,19,int(r),int(g),int(b))
+            led_handler.light_far_red(int(fr))
+            
+            r = r + delta_r
+            g = g + delta_g
+            b = b + delta_b
+            
+            time.sleep(0.01)
+    
+    # Figure out which party mode to use
+    party_mode = request.args.get('mode')
+    if type(party_mode) == str:
+        party_mode = float(party_mode)
+    else:
+        party_mode = 1 # Default value
+        
+    if party_mode==1: # First party mode
+        for i in range(2):
+            change_color(255,0,0,0,       255,255,0,0)    
+            change_color(255,255,0,0,     0,255,0,0)  
+            change_color(0,255,0,0,       0,255,255,0)  
+            change_color(0,255,255,0,     0,0,255,0)  
+            change_color(0,0,255,0,       255,0,255,0)  
+            change_color(255,0,255,0,     255,0,0,0) 
+            
+        change_color(255,0,0,0,     255,255,255,0)
+    else:
+        for i in range(4):
+            change_color(0,0,0,0,           150,210,255,0)
+            change_color(150,210,255,0,     0,0,0,0)
+            change_color(0,0,0,0,           255,0,0,12)
+            change_color(255,0,0,12,        0,0,0,0)
+    
+    return render_template('simple_commands.html', message="Party Over")
 
 #################### Main ##########################################################
 if __name__ == '__main__':
