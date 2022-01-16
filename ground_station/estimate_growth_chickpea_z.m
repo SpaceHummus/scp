@@ -1,6 +1,6 @@
 %% Inputs
 output_file_name = 'animated.gif';
-base_input_folder = '..\images';
+base_input_folder = '..\images'; % Input images folder (03 Raw Images)
 
 date_str = '22-01-14__23_40';
 

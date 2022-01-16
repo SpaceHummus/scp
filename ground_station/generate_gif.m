@@ -1,6 +1,6 @@
 %% Inputs
 output_file_name = 'animated.gif';
-base_input_folder = '..\images';
+base_input_folder = '..\images'; % Input images folder (03 Raw Images)
 
 ds1 = fileDatastore([base_input_folder '\*CA_F0130.jpg'],'ReadFcn',@imread);
 ds2 = fileDatastore([base_input_folder '\*CC_F0130.jpg'],'ReadFcn',@imread);
