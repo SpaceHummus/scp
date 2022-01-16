@@ -238,7 +238,7 @@ def main():
         if (medtronic_switch =="on") and (state.camera_configuration != None) and (current_time - last_root_pic_time >=(60*state.camera_configuration.root_image_frequency_min)):
         
             # Before turning on medtronic, switch off main LEDs
-            led_handler_high_level.set_led_state("off")
+            led_handler_high_level.set_led_state("Off")
             
             # Reset the medtroic card
             sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN,switch_handler.SWITCH_OFF)
