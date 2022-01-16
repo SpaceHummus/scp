@@ -52,6 +52,9 @@ class CameraHandlerHighLevel:
         if self.camera_D_id:
             self.camera_D_focus_setting = FocusSetting(self.camera_D_id)
     
+    def init_camera_handler():
+        self.camera_handler = CameraHandler()
+    
     # Get a list of connected cameras
     def get_enabled_cameras(self):
         enabled_cameras = []
@@ -100,9 +103,7 @@ class CameraHandlerHighLevel:
     def take_pic_all_distances (self, camera_pos, distance_list_mm, file_name_prefix = "test"):
         # Init
         files_list=[]
-        if self.camera_handler is None:
-            self.camera_handler = CameraHandler()
-            
+
         # Set active camera 
         self.camera_handler.change_active_camera(camera_pos)
         
