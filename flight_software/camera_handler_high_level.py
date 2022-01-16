@@ -52,7 +52,7 @@ class CameraHandlerHighLevel:
         if self.camera_D_id:
             self.camera_D_focus_setting = FocusSetting(self.camera_D_id)
     
-    def init_camera_handler():
+    def init_camera_handler(self):
         self.camera_handler = CameraHandler()
     
     # Get a list of connected cameras
