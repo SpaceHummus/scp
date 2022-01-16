@@ -205,7 +205,7 @@ def camera_testing():
                 int(form.r.data),int(form.g.data),int(form.b.data),
                 int(form.fr.data))
         else:
-            led_handler_high_level.set_led_rgb("Off")
+            led_handler_high_level.set_led_state("Off")
         
         image_handler = root_image_handler.RootImageHandler()
         if form.medtronic_white_LEDs.data == True:
