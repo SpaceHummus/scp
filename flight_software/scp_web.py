@@ -19,6 +19,7 @@ from telematry_handler import TelematryHandler
 import os
 from shutil import copyfile
 import root_image_handler
+import led_handler_high_level
 
 def setup_logging():
     logging.basicConfig(
@@ -165,6 +166,13 @@ class CameraForm(FlaskForm):
     camera = RadioField(label="Camera", choices=[('A','A'),('B','B'),('C','C'),('D','D')])
     focus_distance_mm = StringField(label="Focus Distance mm")
     
+    LED_on = BooleanField(label='Turn LEDs before taking a picture?')
+    r = StringField('Red (0-255):', validators=[DataRequired()])
+    g = StringField('Green (0-255):', validators=[DataRequired()])
+    b = StringField('Blue (0-255):', validators=[DataRequired()])
+    fr = StringField('Far Red (0-100):', validators=[DataRequired()])
+    medtronic_white_LEDs = BooleanField(label='Use Medtronic White LEDs?')
+    
     submit = SubmitField('Take a Picture')
     
 @app.route('/CamerasTesting/', methods=['GET', 'POST'])
@@ -174,16 +182,45 @@ def camera_testing():
         # User hadn't submitted information yet, set default values
         form.camera.data = 'A'
         form.focus_distance_mm.data = "100"
+        form.r.data = 150
+        form.g.data = 210
+        form.b.data = 255
+        form.fr.data = 12
+        
+        form.LED_on.data = False
+        form.medtronic_white_LEDs.data = False
+        
         out_file_path = ""
     else:    
         distance = float(form.focus_distance_mm.data)
+        sw_handler = switch_handler.SwitchHandler()
+        cam = camera_handler_high_level.CameraHandlerHighLevel()
+        cam.init_camera_handler()
+        
+        # If needed turn on LEDs
+        # Stop all LEDs before starting illumination
+        if form.LED_on.data == True:
+            led_handler_high_level.set_led_rgb(
+                int(form.r.data),int(form.g.data),int(form.b.data),
+                int(form.r.data),int(form.g.data),int(form.b.data),
+                int(form.fr.data))
+        else:
+            led_handler_high_level.set_led_rgb("Off")
+        
+        image_handler = root_image_handler.RootImageHandler()
+        if form.medtronic_white_LEDs.data == True:
+            image_handler.white_led_on()
+        else:
+            image_handler.white_led_off()
+        
+        time.sleep(1)
         
         # Take an image
-        cam = camera_handler_high_level.CameraHandlerHighLevel()
-        file_path = cam.take_pic_all_distances(form.camera.data,[distance])
+        file_path = cam.take_pic_all_distances(form.camera.data,[distance],
+            file_name_prefix="{0}".format(round(time.time()*24*60*60)))
         
         # Copy to the static folder where iamge is found
-        out_file_path = "%{0}_{1}.jpg".format(form.camera.data,round(time.time()*24*60*60))
+        out_file_path = file_path[0][1]
         if not os.path.exists('static'): # Make dir if it doesn't exist
             os.makedirs('static')
         if os.path.exists('static/'+out_file_path): # Remove file if it's already there
