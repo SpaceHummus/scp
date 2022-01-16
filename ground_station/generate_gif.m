@@ -5,10 +5,10 @@ base_input_folder = '..\images'; % Input images folder (03 Raw Images)
 ds1 = fileDatastore([base_input_folder '\*CA_F0130.jpg'],'ReadFcn',@imread);
 ds2 = fileDatastore([base_input_folder '\*CC_F0130.jpg'],'ReadFcn',@imread);
 
-image_in_n = 3; % Don't pick every image to put in gif, use one in n
+frame_freq_hr = 0.5; % Pick one frame every x hours
 
 % Set start and end times for the video
-t_start_hr = 100;
+t_start_hr = 0;
 
 %% Set figure
 h = figure(1);
@@ -23,15 +23,13 @@ open(v);
 t_0 = time_of_first_picture(base_input_folder);
 t_end = time_picture_was_taken(ds1.Files{end});
 
-if t_0-t_end > 2
-    time_format = 'days';
-else
-    time_format = 'hours';
-end
+
+time_format = 'hours';
 
 %% 
 firstNightImage = true;
 clear isEnvelop
+t_image = 0;
 for n = 1:length(ds1.Files)
     try
     t = time_picture_was_taken(ds1.Files{n});
@@ -39,6 +37,11 @@ for n = 1:length(ds1.Files)
     if (t-t_0)*24 < t_start_hr
         continue;
     end
+    
+    if ((t-t_image)*24 < frame_freq_hr)
+        continue;
+    end
+    t_image = t;
     
     imA = imread(ds1.Files{n});
     imB = imread(ds2.Files{n});
@@ -83,7 +86,7 @@ for n = 1:length(ds1.Files)
     % Write to the GIF File 
     if n == 1 
       imwrite(imind,cm,output_file_name,'gif', 'Loopcount',inf); 
-    elseif mod(n,image_in_n)==0 % Save every other image
+    else
       imwrite(imind,cm,output_file_name,'gif','WriteMode','append'); 
     end 
     
