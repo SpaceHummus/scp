@@ -84,6 +84,21 @@ def set_led_state(new_logic_state):
         
     # Set new state
     current_logic_state = new_logic_state
+
+# Set LEDs using rgb instead of state
+def set_led_rgb(r1,g1,b1,r2,g2,b2,far_red):
+    
+    # Define dummy state
+    rgb1 = system_state.RGB(r1,g1,b1)
+    rgb2 = system_state.RGB(r2,g2,b2)
+    camera_config = system_state.CameraConfiguration(60,60,10,[])
+    ilumination = system_state.Illumination(rgb1,rgb2,far_red)
+    state = system_state.SystemState(camera_config,ilumination,'my_state')
+    
+    # Make sure we switch to the new state
+    current_logic_state = "Off"
+    
+    set_led_state(state)
     
 
 def setup_logging():
