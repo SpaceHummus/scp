@@ -5,65 +5,65 @@
 
 # Overall system states
 system_states:
-    - name: 'day_shade' 
-        illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
-            group1:
-                red: 150 
-                green: 210
-                blue: 255
-            group2:
-                red: 150 
-                green: 210
-                blue: 255
-            far_red: 12
-        camera_configuration: 
-            image_frequency_min: 30 # How often should we take images (minutes)
-            root_image_frequency_min: 60 # How often should we take root images (minutes)
-            focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
-                A:
-                    - 130
-                    - 145
-                B:
-                    - 400
-                C:
-                    - 130
-                    - 145
-                D:
-                    - 400
-            ISO: 10
+  - name: 'day_shade' 
+    illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
+        group1:
+            red: 150 
+            green: 210
+            blue: 255
+        group2:
+            red: 150 
+            green: 210
+            blue: 255
+        far_red: 12
+    camera_configuration: 
+        image_frequency_min: 30 # How often should we take images (minutes)
+        root_image_frequency_min: 60 # How often should we take root images (minutes)
+        focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
+            A:
+                - 130
+                - 145
+            B:
+                - 400
+            C:
+                - 130
+                - 145
+            D:
+                - 400
+        ISO: 10
 
-    - name: 'night' 
-        illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
-            group1:
-                red: 0 
-                green: 0
-                blue: 0
-            group2:
-                red: 0 
-                green: 0
-                blue: 0
-            far_red: 0
-            camera_configuration:
-                image_frequency_min: 60 # How often should we take images (minutes)
-                root_image_frequency_min: 60 # How often should we take root images (minutes)
-                focus_position: 
-                    A:
-                        - 130
-                    B:
-                        - 130
-                    C:
-                        - 130
-                    D:
-                        - 130
-                ISO: 10
+  - name: 'night' 
+    illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
+        group1:
+            red: 0 
+            green: 0
+            blue: 0
+        group2:
+            red: 0 
+            green: 0
+            blue: 0
+        far_red: 0
+    camera_configuration:
+        image_frequency_min: 60 # How often should we take images (minutes)
+        root_image_frequency_min: 60 # How often should we take root images (minutes)
+        focus_position: 
+            A:
+                - 130
+            B:
+                - 130
+            C:
+                - 130
+            D:
+                - 130
+        ISO: 10
         
 # Timeline
 states_over_time:
     # Below is a list of new state and the time this state will start (all times are UTC)
     - - '2022/01/15 06:00:00'
-      - day_sun
+      - day_shade
     - - '2022/01/16 05:55:00'
       - night
     - - '2022/01/16 06:00:00'
-      - day_sun   
+      - day_shade   
   
