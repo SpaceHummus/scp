@@ -29,7 +29,7 @@ time_format = 'hours';
 %% 
 firstNightImage = true;
 clear isEnvelop
-t_image = 0;
+t_image = t_0-1;
 for n = 1:length(ds1.Files)
     try
     t = time_picture_was_taken(ds1.Files{n});
@@ -40,8 +40,11 @@ for n = 1:length(ds1.Files)
     
     if ((t-t_image)*24 < frame_freq_hr)
         continue;
+    elseif (t-t_image)*24 > frame_freq_hr*2
+        t_image = t;
+    else
+        t_image = t_image+frame_freq_hr/24;
     end
-    t_image = t;
     
     imA = imread(ds1.Files{n});
     imB = imread(ds2.Files{n});
