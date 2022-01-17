@@ -17,7 +17,7 @@ system_states:
                 blue: 255
             far_red: 12
         camera_configuration: 
-            image_frequency_min: 10 # How often should we take images (minutes)
+            image_frequency_min: 30 # How often should we take images (minutes)
             root_image_frequency_min: 60 # How often should we take root images (minutes)
             focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
                 A:
