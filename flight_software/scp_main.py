@@ -192,17 +192,21 @@ def get_version():
 
 
 def main():
+    # Load up logging, gather first telemetry
     setup_logging()
     logging.info('*** Start *** ver %s',get_version())
+    telematry_handler = TelematryHandler()
+    telematry_handler.start_telemetry_csv_file() # Start a file by placing header if we haven't done so already
+    telematry_handler.set_current_logic_state_name("Booting")
+    telematry_handler.write_telemetry_csv() 
+    
+    # Get handler to G-Drive
     has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC) # wait for DNS / Internet access
-    # get handler to G-Drive
     if has_dns:
         g_drive_handler = GDriveHandler(getGDrive_folder_id())
         g_drive_handler.get_logic_sates_file()
         g_drive_handler.get_configuration_file()
     get_states_settings()
-    telematry_handler = TelematryHandler()
-    telematry_handler.start_telemetry_csv_file() # Start a file by placing header if we haven't done so already
 
     # turn on/off the switches
     set_switches()
