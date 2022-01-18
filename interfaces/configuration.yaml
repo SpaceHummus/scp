@@ -26,5 +26,7 @@ led_switch_status:
 air_sense_switch_status:
     'on' #on or off
 medtronic_switch_status: 
-    'on' #on or off
+    'off' #on or off
+    
+medtronic_card: 'M-2'
 
