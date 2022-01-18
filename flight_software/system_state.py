@@ -28,7 +28,6 @@ class SystemState:
             logging.info("camera_D focus_position:")
             for fp in self.camera_configuration.focus_position["D"]:
                 logging.info("* %d",fp)
-            logging.info("ISO:%d",self.camera_configuration.iso)
         else:
             logging.info("camera_configuration:None")
         if self.illumination != None:
@@ -43,13 +42,10 @@ class SystemState:
 class CameraConfiguration:
     image_frequency_min = 5 # How often should we take images (minutes)
     root_image_frequency_min = 60 # How often should we take images (minutes)    
-    exposure = 10
-    iso = 10
     focus_position = {}
-    def __init__(self,image_frequency_min, root_image_frequency_min,iso,focus_position):
+    def __init__(self,image_frequency_min, root_image_frequency_min,focus_position):
         self.image_frequency_min = image_frequency_min
         self.root_image_frequency_min = root_image_frequency_min
-        self.iso = iso
         self.focus_position = focus_position
 
 class Illumination:
@@ -73,7 +69,6 @@ class RGB:
 
 if __name__ == "__main__":
     s = SystemState(CameraConfiguration(6,20,30,[10,100,5]),"day_sun")    
-    print(s.camera_configuration.iso)
     print(s.camera_configuration.focus_position)
 
     

@@ -32,7 +32,6 @@ system_states={}
 states_over_time=[]
 sw_handler = switch_handler.SwitchHandler()
 medtronic_switch = "on"
-led_switch = "on"
 
 # wait until DNS service is ready, otherwise GDrive access will not work. This is needed when we run on boot and DNS service tkaes time to load
 # returns True if we got internet connection & DNS is working. otherwise False
@@ -82,13 +81,10 @@ def setup_logging():
 # turn on/off the switches
 def set_switches():
     global medtronic_switch
-    global led_switch
     file = open(r'configuration.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
     file.close()
-    led_switch = conf_dic["led_switch_status"] 
-    logging.info("led_switch:%s",led_switch)
-    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,led_switch)
+    sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,switch_handler.SWITCH_ON)
 
     air_sense_switch = conf_dic["air_sense_switch_status"]
     logging.info("air_sense_switch:%s",air_sense_switch)
@@ -125,8 +121,7 @@ def get_system_states():
             root_image_frequency_min = cam_conf["root_image_frequency_min"]
             image_frequency_min = cam_conf["image_frequency_min"]
             focus_position = cam_conf["focus_position"]
-            iso =cam_conf["ISO"]
-            cam_configuration = CameraConfiguration(image_frequency_min, root_image_frequency_min,iso,focus_position)
+            cam_configuration = CameraConfiguration(image_frequency_min, root_image_frequency_min, focus_position)
         Illumination_group=Illumination(RGB(R1,G1,B1),RGB(R2,G2,B2),far_red)
         state = SystemState(cam_configuration,Illumination_group,name)  
         state.print_values()
