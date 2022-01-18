@@ -85,6 +85,7 @@ def set_switches():
     global led_switch
     file = open(r'configuration.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
+    file.close()
     led_switch = conf_dic["led_switch_status"] 
     logging.info("led_switch:%s",led_switch)
     sw_handler.set_switch(switch_handler.SWITCH_LED_PIN,led_switch)
@@ -102,6 +103,7 @@ def set_switches():
 def get_system_states():
     file = open(r'logic_states.yaml')
     conf_dic = yaml.load(file, Loader=yaml.FullLoader)
+    file.close()
     
     raw_system_states = conf_dic["system_states"]
     for i in range(len(raw_system_states)):
