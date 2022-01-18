@@ -21,8 +21,6 @@ camera_B_id: 'C05'
 camera_C_id: 'C06'
 camera_D_id: 'C07'
     
-led_switch_status:
-    'off' #on or off
 air_sense_switch_status:
     'on' #on or off
 medtronic_switch_status: 

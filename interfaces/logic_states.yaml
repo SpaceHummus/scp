@@ -30,7 +30,6 @@ system_states:
                 - 145
             D:
                 - 400
-        ISO: 10
 
   - name: 'night' 
     illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
@@ -55,7 +54,6 @@ system_states:
                 - 130
             D:
                 - 130
-        ISO: 10
         
 # Timeline
 states_over_time:
