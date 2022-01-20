@@ -88,9 +88,9 @@ class TelematryHandler:
             cpu_temp = CPUTemperature()
             cpu_load = int(LoadAverage(minutes=1).load_average*100)
             ###########
-            free_space = file_maintenance.check_used_space(file_maintenance.IMAGES_PATH)
-            logging.debug("CPUTemperature:%d, cpu_load: %d %% free_space: %d ", cpu_temp.temperature, cpu_load, free_space)
-            return [cpu_temp.temperature, cpu_load, free_space]
+            used_space = file_maintenance.check_used_space(file_maintenance.IMAGES_PATH)
+            logging.debug("CPUTemperature:%d, cpu_load: %d %% used_space: %d ", cpu_temp.temperature, cpu_load, used_space)
+            return [cpu_temp.temperature, cpu_load, used_space]
         except Exception as e:
             logging.error(
                 f"error while reading from the raspberry telemetry: \n{e}"
