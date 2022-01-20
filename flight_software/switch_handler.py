@@ -32,8 +32,20 @@ class SwitchHandler:
             GPIO.output(switch,True)
         time.sleep(0.2)
 
+
+def stress_test(num_of_loops):
+    sh = SwitchHandler()  
+    for i in range(num_of_loops):
+        sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_ON)
+        print("switch is on", i)
+        time.sleep(60)
+        sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_OFF)
+        print("switch is off", i)
+        time.sleep(60)
+
 if __name__ == "__main__":
+    # stress_test(30*24)
     sh = SwitchHandler()
-    sh.set_switch(SWITCH_LED_PIN,SWITCH_OFF)
+  #  sh.set_switch(SWITCH_LED_PIN,SWITCH_OFF)
     # sh.set_switch(SWITCH_AIR_SENSE_PIN,SWITCH_ON)
-    # sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_ON)
+    sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_OFF)

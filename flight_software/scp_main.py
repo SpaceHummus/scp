@@ -20,6 +20,7 @@ from camera_handler_high_level import CameraHandlerHighLevel
 from root_image_handler import RootImageHandler
 from gdrive_handler import GDriveHandler
 from telematry_handler import TelematryHandler
+from utils import wait_4_dns
 import switch_handler
 import image_handler
 import led_handler_high_level
@@ -33,20 +34,21 @@ states_over_time=[]
 sw_handler = switch_handler.SwitchHandler()
 medtronic_switch = "on"
 
+
 # wait until DNS service is ready, otherwise GDrive access will not work. This is needed when we run on boot and DNS service tkaes time to load
 # returns True if we got internet connection & DNS is working. otherwise False
-def wait_4_dns(max_retires):
-    while (True):
-        try:
-            addr = socket.gethostbyname('www.googleapis.com')
-            logging.info("Found DNS for www.googleapis.com. IP:%s",addr)
-            return True
-        except:
-            logging.error("DNS not ready yet...")
-            time.sleep(1)
-        max_retires -=1
-        if max_retires <=0:
-            return False
+# def wait_4_dns(max_retires):
+#     t = time.time()
+#     while (True):
+#         try:
+#             addr = socket.gethostbyname('www.googleapisAAA.com')
+#             logging.info("Found DNS for www.googleapis.com. IP:%s",addr)
+#             return True
+#         except:
+#             logging.error("DNS not ready yet...")
+#             time.sleep(1)
+#         if time.time()-t >= max_retires:
+#             return False
     
 
 

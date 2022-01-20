@@ -9,10 +9,14 @@ import glob
 import os
 import time
 import pidfile
+from utils import wait_4_dns
+
 
 CONF_FILE_NAME = "scp_conf.yaml"
 IMAGES_PATH = '/home/pi/dev/scp/flight_software/images'
 MAX_USED_SPACE_ALLOWED = 85 # in percent
+WAIT_FOR_DNS_IN_SEC = 1
+
 
 def setup_logging():
     logging.basicConfig(
@@ -84,23 +88,25 @@ def check_used_space(path):
 
 def main():
     # upload files that we didn't upload yet... 
-    f = open("uploaded_files.log", "a")    
-    try:
-        uploaded_files = read_uploaded_files()
-        files = get_files_name(IMAGES_PATH)
-        
-        g_drive_handler = GDriveHandler(getGDrive_folder_id())
+    f = open("uploaded_files.log", "a")   
+    has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC)
+    if has_dns:
+        try:
+            uploaded_files = read_uploaded_files()
+            files = get_files_name(IMAGES_PATH)
+            
+            g_drive_handler = GDriveHandler(getGDrive_folder_id())
 
-        c = 0
-        for f_name in files:
-            if uploaded_files.get(f_name+'\n') == None: # meaning we have a file that we didn't upload yet
-                if g_drive_handler.upload_image(IMAGES_PATH+"/"+f_name,f_name):
-                    f.write(f_name+'\n')
-                    f.flush()
-                    c+=1
-        logging.info("Uploaded %d files to g-drive",c)
-    except Exception as e: 
-        logging.error('unable to upload file to g-drive: '+ str(e))
+            c = 0
+            for f_name in files:
+                if uploaded_files.get(f_name+'\n') == None: # meaning we have a file that we didn't upload yet
+                    if g_drive_handler.upload_image(IMAGES_PATH+"/"+f_name,f_name):
+                        f.write(f_name+'\n')
+                        f.flush()
+                        c+=1
+            logging.info("Uploaded %d files to g-drive",c)
+        except Exception as e: 
+            logging.error('unable to upload file to g-drive: '+ str(e))
     f.close()  
 
     # check and clear space on the SD card if needed

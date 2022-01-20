@@ -100,36 +100,46 @@ class RootImageHandler:
     def take_pic(self,file_name):
         logging.info("about to take root image...")
         ser = self.get_serial_connection()
-        # reset the cam
-        self.send_uart_cmd(ser,b'\x02')
-        self.send_uart_cmd(ser,b'\x03')
-        # configure the cam
-        self.send_uart_cmd(ser,b'\x04')
-        self.send_uart_cmd(ser,b'\x05')
-        # take image
-        file = open(IMAGES_DIR+file_name+"C0.bin", "wb")
-        try:
-            self.send_uart_cmd(ser,b'\x00',0)
-            for i in range(IMAGE_SIZE):
-                s = ser.read(1)
-                # print("byte",i)              
-                file.write(s)
-                # print(s)
-        finally:
-            file.close()
+        # reset the cam 0
+        ret1 = self.send_uart_cmd(ser,b'\x02')
+        # configure the cam 0
+        ret2 =self.send_uart_cmd(ser,b'\x04')
+        if ret1 != b'' and ret2 != b'':
+            # take image 0
+            file = open(IMAGES_DIR+file_name+"C0.bin", "wb")
+            try:
+                self.send_uart_cmd(ser,b'\x00',0)
+                for i in range(IMAGE_SIZE):
+                    s = ser.read(1)
+                    if s == b'':
+                        logging.error("unable to take pic from root imager 0")
+                        break
+                    file.write(s)
+            finally:
+                file.close()
+        else:
+            logging.error("unable to take pic from root imager 0")
 
-        file = open(IMAGES_DIR+file_name+"C1.bin", "wb")
-        try:
-            self.send_uart_cmd(ser,b'\x01',0)
-            for i in range(IMAGE_SIZE):
-                s = ser.read(1)
-                # print("byte",i)
-                file.write(s)
-                # print(s)
-
-        finally:
-            file.close()
-            ser.close()
+        # reset the cam 0
+        ret1 = self.send_uart_cmd(ser,b'\x03')
+        # configure the cam 0
+        ret2 =self.send_uart_cmd(ser,b'\x05')
+        if ret1 != b'' and ret2 != b'':
+            # take image 1
+            file = open(IMAGES_DIR+file_name+"C1.bin", "wb")
+            try:
+                self.send_uart_cmd(ser,b'\x01',0)
+                for i in range(IMAGE_SIZE):
+                    s = ser.read(1)
+                    if s == b'':
+                        logging.error("unable to take pic from root imager 0")
+                        break
+                    file.write(s)
+            finally:
+                file.close()
+                ser.close()
+        else:
+            logging.error("unable to take pic from root imager 1")
         logging.info("done taking root image...")        
 
 def setup_logging():
@@ -149,17 +159,15 @@ if __name__ == "__main__":
     
     setup_logging()
     root_image = RootImageHandler()
-    root_image.get_config("root0.cfg",0)
-    root_image.get_config("root1.cfg",1)
-    root_image.set_config("root0.cfg",0)
-    root_image.set_config("root1.cfg",1)
+    # root_image.get_config("root0.cfg",0)
+    # root_image.get_config("root1.cfg",1)
+    # root_image.set_config("root0.cfg",0)
+    # root_image.set_config("root1.cfg",1)
     # root_image.white_led_on()
     # sleep(1)
     # root_image.white_led_off()
-    # sleep(1)
-  
-
-    # root_image.take_pic("first_pic")
+    # sleep(1)  
+    root_image.take_pic("first_pic")
     # root_image.White_led_controlled_by_imager()
     # sleep(10000)
     # root_image.white_led_on()
