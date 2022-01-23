@@ -199,12 +199,17 @@ def main():
     telematry_handler.set_current_logic_state_name("Booting")
     telematry_handler.write_telemetry_csv() 
     
-    # Get handler to G-Drive
-    has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC) # wait for DNS / Internet access
-    if has_dns:
-        g_drive_handler = GDriveHandler(getGDrive_folder_id())
-        g_drive_handler.get_logic_sates_file()
-        g_drive_handler.get_configuration_file()
+    # Get handler to G-Drive, if it fails carry on
+    try:
+        has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC) # wait for DNS / Internet access
+        if has_dns:
+            g_drive_handler = GDriveHandler(getGDrive_folder_id())
+            g_drive_handler.get_logic_sates_file()
+            g_drive_handler.get_configuration_file()
+    except Exception:
+        logging.error(traceback.format_exc())
+        
+    # Read the states frol yaml
     get_states_settings()
 
     # turn on/off the switches
