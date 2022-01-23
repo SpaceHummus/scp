@@ -24,7 +24,7 @@ camera_D_id: 'C07'
 air_sense_switch_status:
     'on' #on or off
 medtronic_switch_status: 
-    'off' #on or off
+    'on' #on or off
     
 medtronic_card: 'M-2'
 
