@@ -71,17 +71,19 @@ class TelematryHandler:
             return ['N/A current', 'N/A voltage', 'N/A power']
 
     def get_a2d_telemetry(self):
-        a2d_address = 0x48
-        bus_address = [0x40, 0x41, 0x42, 0x43]
-        try:
-            i2c_read = [self.read_i2c_value(a2d_address, bus_addres)
-                        for bus_addres in bus_address]
-            logging.debug(f"A2D returned values: {i2c_read}")
-            return i2c_read
-
-        except Exception as e:
-            logging.error(f"error reading from A2D i2c channel: \n{e}")
-            return [f"N/A A2D-{b}" for b in range(4)]
+        # A2D telemetry is not functional, return N/A values
+        return [f"N/A A2D-{b}" for b in range(4)]
+        
+        #a2d_address = 0x48
+        #bus_address = [0x40, 0x41, 0x42, 0x43]
+        #try:
+        #    i2c_read = [self.read_i2c_value(a2d_address, bus_addres)
+        #                for bus_addres in bus_address]
+        #    logging.debug(f"A2D returned values: {i2c_read}")
+        #    return i2c_read
+        #except Exception as e:
+        #    logging.error(f"error reading from A2D i2c channel: \n{e}")
+        #    return [f"N/A A2D-{b}" for b in range(4)]
     
     def get_raspberry_telemetry(self):
         try:
