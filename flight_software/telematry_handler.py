@@ -12,6 +12,7 @@ from gpiozero import CPUTemperature
 from gpiozero import LoadAverage
 import file_maintenance
 import os
+import switch_handler
 
 TELE_FILE = 'telematry.csv'
 
@@ -19,10 +20,11 @@ TELE_FILE = 'telematry.csv'
 class TelematryHandler:
     i2c = None
     current_logic_state_name = ""
+    sw_handler = None
 
     def __init__(self):
         self.i2c = board.I2C()
-        
+        self.sw_handler = switch_handler.SwitchHandler()
     
     ############# Functions for Telemetry Gathering ##########################################################
     def get_bme680_telemetry(self):
@@ -98,6 +100,15 @@ class TelematryHandler:
                 f"error while reading from the raspberry telemetry: \n{e}"
             )
             return ['N/A cpu_temp', 'N/A cpu_load', 'N/A used_space']
+            
+    def get_switch_status_telemetry(self):
+        
+        return [
+            self.sw_handler.get_switch_status(switch_handler.SWITCH_LED_PIN), 
+            self.sw_handler.get_switch_status(switch_handler.SWITCH_AIR_SENSE_PIN),
+            self.sw_handler.get_switch_status(switch_handler.SWITCH_MEDTRONIC_PIN)
+            ]
+        
 
     ############# END Functions for Telemetry Gathering ######################################################
     ############# Functions I2C Management ###################################################################
@@ -125,6 +136,7 @@ class TelematryHandler:
         with open(TELE_FILE, 'a', encoding='UTF8', newline='') as f:
             writer = csv.writer(f)
             writer.writerow(['Date&Time','Logic State',
+                'LED_Switch','Air_Sensor_Switch','Medtronic_Switch',
                 'BME680_Temperature[C]',
                 'BME680_Gas[Ohm]',
                 'BME680_Humidity[%]',
@@ -152,13 +164,13 @@ class TelematryHandler:
             # Gather all telemetry
             now = datetime.now()  # current date and time
             date_time = now.strftime("%m/%d/%Y %H:%M:%S")
-            bme680_list, veml7700_list_1, veml7700_list_2, ina260_list, a2d_list , rasp_list = self.read_all_telemetry()
+            switch_list, bme680_list, veml7700_list_1, veml7700_list_2, ina260_list, a2d_list , rasp_list = self.read_all_telemetry()
 
             writer = csv.writer(f)
             row = list()
             row.append(date_time)
             row.append(self.current_logic_state_name)
-            row = row + bme680_list + veml7700_list_1 + veml7700_list_2 + ina260_list + a2d_list + rasp_list
+            row = row + switch_list + bme680_list + veml7700_list_1 + veml7700_list_2 + ina260_list + a2d_list + rasp_list
 
             writer.writerow(row)
             
@@ -166,13 +178,14 @@ class TelematryHandler:
         self.current_logic_state_name = new_logic_state_name
 
     def read_all_telemetry(self):
+        switch_list = self.get_switch_status_telemetry()
         bme680_list = self.get_bme680_telemetry()
         veml7700_list_1 = self.get_veml7700_telemetry(0x1)
         veml7700_list_2 = self.get_veml7700_telemetry(0x2)
         ina260_list = self.get_ina260_telemetry()
         a2d_list = self.get_a2d_telemetry()
         raspberry_list = self.get_raspberry_telemetry()
-        return bme680_list,veml7700_list_1,veml7700_list_2,ina260_list,a2d_list,raspberry_list
+        return switch_list,bme680_list,veml7700_list_1,veml7700_list_2,ina260_list,a2d_list,raspberry_list
 
 
 def setup_logging():
