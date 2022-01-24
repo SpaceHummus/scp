@@ -209,16 +209,18 @@ def main():
     except Exception:
         logging.error(traceback.format_exc())
         
+    # Get handler for the cameras
+    camera = CameraHandler()
+    camera_handler_high_level = CameraHandlerHighLevel()
+    root_image = RootImageHandler()
+        
     # Read the states frol yaml
     get_states_settings()
 
     # turn on/off the switches
     set_switches()
 
-    # get handler for the cameras
-    camera = CameraHandler()
-    camera_handler_high_level = CameraHandlerHighLevel()
-    root_image = RootImageHandler()
+    # Main loop
     last_pic_time = 0
     last_root_pic_time = 0
     while(True):

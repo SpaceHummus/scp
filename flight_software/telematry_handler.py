@@ -109,7 +109,6 @@ class TelematryHandler:
             ]
             
         logging.debug("LED:%s, Air Sensor:%s, Medtronic: %s", sense[0], sense[1], sense[2])
-        
         return sense
 
     ############# END Functions for Telemetry Gathering ######################################################
