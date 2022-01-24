@@ -102,13 +102,15 @@ class TelematryHandler:
             return ['N/A cpu_temp', 'N/A cpu_load', 'N/A used_space']
             
     def get_switch_status_telemetry(self):
-        
-        return [
+        sense = [
             self.sw_handler.get_switch_status(switch_handler.SWITCH_LED_PIN), 
             self.sw_handler.get_switch_status(switch_handler.SWITCH_AIR_SENSE_PIN),
             self.sw_handler.get_switch_status(switch_handler.SWITCH_MEDTRONIC_PIN)
             ]
+            
+        logging.debug("LED:%s, Air Sensor:%s, Medtronic: %s", sense[0], sense[1], sense[2])
         
+        return sense
 
     ############# END Functions for Telemetry Gathering ######################################################
     ############# Functions I2C Management ###################################################################
