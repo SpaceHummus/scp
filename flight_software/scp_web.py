@@ -140,14 +140,14 @@ class SwitchForm(FlaskForm):
 def switch_and_analog_testing():
     
     form = SwitchForm()
+    sw_handler = switch_handler.SwitchHandler()
     if request.method == 'GET':
         # User hadn't submitted information yet, set default values
-        form.switch_LED.data = False
-        form.switch_air_sensor.data = False
-        form.switch_medtronic.data = False
+        form.switch_LED.data = sw_handler.get_switch_status(switch_handler.SWITCH_LED_PIN) == "on"
+        form.switch_air_sensor.data = sw_handler.get_switch_status(switch_handler.SWITCH_AIR_SENSE_PIN) == "on"
+        form.switch_medtronic.data = sw_handler.get_switch_status(switch_handler.SWITCH_MEDTRONIC_PIN) == "on"
     else:
         # Set switch status
-        sw_handler = switch_handler.SwitchHandler()
         sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, form.switch_LED.data)
         sw_handler.set_switch(switch_handler.SWITCH_AIR_SENSE_PIN, form.switch_air_sensor.data)
         sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN, form.switch_medtronic.data)
@@ -156,10 +156,11 @@ def switch_and_analog_testing():
     
     # Read INA status
     tm = TelematryHandler ()
-    data = tm.get_ina260_telemetry()
+    data_ina = tm.get_ina260_telemetry()
+    data_bme = tm.get_bme680_telemetry()
     
     return render_template('switch_and_analog_testing.html', form=form, 
-        current_mA=data[0], voltage=data[1], power_mW=data[2])
+        current_mA=data_ina[0], voltage=data_ina[1], power_mW=data_ina[2], temperature=data_bme[0], gas=data_bme[1], humidity=data_bme[2],pressure=data_bme[3])
 
 #################### Camera Testing ################################################
 class CameraForm(FlaskForm):

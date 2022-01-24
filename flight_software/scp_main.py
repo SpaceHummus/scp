@@ -196,24 +196,35 @@ def main():
     logging.info('*** Start *** ver %s',get_version())
     telematry_handler = TelematryHandler()
     telematry_handler.start_telemetry_csv_file() # Start a file by placing header if we haven't done so already
-    telematry_handler.set_current_logic_state_name("Booting")
-    telematry_handler.write_telemetry_csv() 
     
-    # Get handler to G-Drive
-    has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC) # wait for DNS / Internet access
-    if has_dns:
-        g_drive_handler = GDriveHandler(getGDrive_folder_id())
-        g_drive_handler.get_logic_sates_file()
-        g_drive_handler.get_configuration_file()
+    # Get handler to G-Drive, if it fails carry on
+    try:
+        has_dns = wait_4_dns(WAIT_FOR_DNS_IN_SEC) # wait for DNS / Internet access
+        if has_dns:
+            g_drive_handler = GDriveHandler(getGDrive_folder_id())
+            g_drive_handler.get_logic_sates_file()
+            g_drive_handler.get_configuration_file()
+    except Exception:
+        logging.error(traceback.format_exc())
+    telematry_handler.set_current_logic_state_name("Booting_0")
+    telematry_handler.write_telemetry_csv() 
+        
+    # Get handler for the cameras
+    camera = CameraHandler()
+    camera_handler_high_level = CameraHandlerHighLevel()
+    root_image = RootImageHandler()
+    telematry_handler.set_current_logic_state_name("Booting_1")
+    telematry_handler.write_telemetry_csv()
+        
+    # Read the states frol yaml
     get_states_settings()
 
     # turn on/off the switches
     set_switches()
+    telematry_handler.set_current_logic_state_name("Booting_2")
+    telematry_handler.write_telemetry_csv()
 
-    # get handler for the cameras
-    camera = CameraHandler()
-    camera_handler_high_level = CameraHandlerHighLevel()
-    root_image = RootImageHandler()
+    # Main loop
     last_pic_time = 0
     last_root_pic_time = 0
     while(True):

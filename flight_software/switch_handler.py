@@ -31,6 +31,14 @@ class SwitchHandler:
             logging.info("setting switch %d off",switch)
             GPIO.output(switch,True)
         time.sleep(0.2)
+        
+    # Return the current digital status of the switch
+    def get_switch_status(self, switch):
+        state = GPIO.input(switch)
+        if state:
+            return "off"
+        else:
+            return "on"
 
 
 def stress_test(num_of_loops):
