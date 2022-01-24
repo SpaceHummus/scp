@@ -27,7 +27,7 @@ import led_handler_high_level
 
 
 CONF_FILE_NAME = "scp_conf.yaml"
-WAIT_FOR_DNS_IN_SEC = 15
+WAIT_FOR_DNS_IN_SEC = 30
 # holds system states configurations
 system_states={}
 states_over_time=[]
