@@ -63,7 +63,7 @@ class RootImageHandler:
         logging.info(m_size)
         file = open(IMAGES_DIR+file_name, "wb")
         try:
-            for adress in range(1,m_size[0],2):
+            for adress in range(0,m_size[0]+1):
                 values = bytearray([cmd,adress])
                 data = self.send_uart_cmd(ser,values,2) 
                 file.write(data)
@@ -73,10 +73,14 @@ class RootImageHandler:
     def set_config(self, file_name, sector):
         ser = self.get_serial_connection()
         #first eraze the memory
-        cmd = 12+sector
-        values = bytearray([cmd])  
-        self.send_uart_cmd(ser,cmd)
-        
+        # cmd = 12+sector
+        # values = bytearray([cmd])  
+        ack = self.send_uart_cmd(ser,b'\x02')
+        ack = self.send_uart_cmd(ser,b'\x0C')
+        if ack != b'\x0C':
+            logging.error("unable to eraze UFM")
+            return
+        return             
         cmd = 14+sector
         file = open(IMAGES_DIR+file_name, "rb")
         try:
@@ -87,7 +91,7 @@ class RootImageHandler:
                     break
                 else:
                     values = bytearray([cmd,adress,data[0],data[1]])
-                    adress+=2
+                    adress+=1
                     self.send_uart_cmd(ser,values) 
         finally:
             file.close()
@@ -161,13 +165,13 @@ if __name__ == "__main__":
     root_image = RootImageHandler()
     # root_image.get_config("root0.cfg",0)
     # root_image.get_config("root1.cfg",1)
-    # root_image.set_config("root0.cfg",0)
+    root_image.set_config("root0.cfg",0)
     # root_image.set_config("root1.cfg",1)
     # root_image.white_led_on()
     # sleep(1)
     # root_image.white_led_off()
     # sleep(1)  
-    root_image.take_pic("first_pic")
+    # root_image.take_pic("first_pic")
     # root_image.White_led_controlled_by_imager()
     # sleep(10000)
     # root_image.white_led_on()
