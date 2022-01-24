@@ -140,14 +140,14 @@ class SwitchForm(FlaskForm):
 def switch_and_analog_testing():
     
     form = SwitchForm()
+    sw_handler = switch_handler.SwitchHandler()
     if request.method == 'GET':
         # User hadn't submitted information yet, set default values
-        form.switch_LED.data = False
-        form.switch_air_sensor.data = False
-        form.switch_medtronic.data = False
+        form.switch_LED.data = sw_handler.get_switch_status(switch_handler.SWITCH_LED_PIN) == "on"
+        form.switch_air_sensor.data = sw_handler.get_switch_status(switch_handler.SWITCH_AIR_SENSE_PIN) == "on"
+        form.switch_medtronic.data = sw_handler.get_switch_status(switch_handler.SWITCH_MEDTRONIC_PIN) == "on"
     else:
         # Set switch status
-        sw_handler = switch_handler.SwitchHandler()
         sw_handler.set_switch(switch_handler.SWITCH_LED_PIN, form.switch_LED.data)
         sw_handler.set_switch(switch_handler.SWITCH_AIR_SENSE_PIN, form.switch_air_sensor.data)
         sw_handler.set_switch(switch_handler.SWITCH_MEDTRONIC_PIN, form.switch_medtronic.data)
