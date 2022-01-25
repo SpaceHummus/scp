@@ -76,10 +76,20 @@ def set_led_state(new_logic_state):
         
         # Finally Set Neopixel Values
         th.set_current_logic_state_name(ls_name+"5")
-        led_handler.light_all_pixels(
-            new_logic_state.illumination.group1_rgb,
-            new_logic_state.illumination.group2_rgb)
-        time.sleep(0.5)
+        if ( # Make sure at least one LED value is >0, if not there is no reason to send command
+            new_logic_state.illumination.group1_rgb.R > 0 or 
+            new_logic_state.illumination.group1_rgb.G > 0 or 
+            new_logic_state.illumination.group1_rgb.B > 0 or 
+            new_logic_state.illumination.group2_rgb.R > 0 or 
+            new_logic_state.illumination.group2_rgb.G > 0 or 
+            new_logic_state.illumination.group2_rgb.B > 0
+            ):
+            led_handler.light_all_pixels(
+                new_logic_state.illumination.group1_rgb,
+                new_logic_state.illumination.group2_rgb)
+            time.sleep(0.5)
+        else:
+            logging.info('All neopixel values are 0, no reason to send a command to turn them on')
         th.write_telemetry_csv() # Gather paramters of just FR
         
     # Set new state
