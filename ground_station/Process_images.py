@@ -103,7 +103,7 @@ def Video_writer(image_folder, video_folder, camera, start_time):
 my_dir = "C:/Users/GAL/Desktop/Space_Hummus/Images/cycle1/" # input('enter dir  ')
 print(my_dir)
 print(my_dir + "Merged_images")
-#focus_staking(my_dir)
+focus_staking(my_dir)
 video_folder = my_dir
 start_time = "21-08-17__05_00"
 # example: datetime.datetime(2017, 6, 21, 18, 25, 30)
