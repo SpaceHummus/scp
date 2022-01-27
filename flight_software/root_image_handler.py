@@ -14,6 +14,7 @@ class RootImageHandler:
     def send_uart_cmd(self,serial, data, read_back_bytes=1):
         logging.info("Sending:%s",data)
         serial.write(data)
+        sleep(0.5)
         if read_back_bytes>0:
             s = serial.read(read_back_bytes)
             logging.info("recevied:%s",s)
@@ -155,23 +156,18 @@ def setup_logging():
         ]
     )    
 
-
 if __name__ == "__main__":
-
-
-
-    
     setup_logging()
     root_image = RootImageHandler()
     # root_image.get_config("root0.cfg",0)
     # root_image.get_config("root1.cfg",1)
-    root_image.set_config("root0.cfg",0)
+    # root_image.set_config("root0.cfg",0)
     # root_image.set_config("root1.cfg",1)
     # root_image.white_led_on()
     # sleep(1)
     # root_image.white_led_off()
     # sleep(1)  
-    # root_image.take_pic("first_pic")
+    root_image.take_pic("first_pic")
     # root_image.White_led_controlled_by_imager()
     # sleep(10000)
     # root_image.white_led_on()
