@@ -21,15 +21,13 @@ system_states:
         root_image_frequency_min: 60 # How often should we take root images (minutes)
         focus_position: # For default camera focus position see: https://docs.google.com/document/d/1sb-BmAasWBzJqOFpYntOCUgcbxAmfYCU_5ESntReu9s/edit#
             A:
-                - 130
-                - 145
+                - 310
             B:
-                - 400
+                - 245
             C:
-                - 130
-                - 145
+                - 220
             D:
-                - 400
+                - 270
 
   - name: 'night' 
     illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
@@ -47,13 +45,13 @@ system_states:
         root_image_frequency_min: 60 # How often should we take root images (minutes)
         focus_position: 
             A:
-                - 130
+                - 310
             B:
-                - 130
+                - 245
             C:
-                - 130
+                - 220
             D:
-                - 130
+                - 270
         
 # Timeline
 states_over_time:
