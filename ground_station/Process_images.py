@@ -1,5 +1,7 @@
 # import download_images.py
 import os
+import sys
+
 import cv2
 import datetime
 import shutil
@@ -65,12 +67,15 @@ def focus_staking(my_dir):
 
 def Video_writer(image_folder, video_folder, camera, start_time):
     images = []
+    # example: datetime.datetime(2017, 6, 21, 18, 25, 30)
+    start_time_format = datetime.datetime(int(start_time[0:2]) + 2000, int(start_time[3:5]), int(start_time[6:8]),
+                                   int(start_time[10:12]), int(start_time[13:15]), 0)
     for img in os.listdir(image_folder):
         if img.endswith(".png") and img.__contains__(camera):
 
             # Calc the time passed from eperiment start time
             image_date = datetime.datetime(int(img[0:2])+2000, int(img[3:5]), int(img[6:8]), int(img[10:12]), int(img[13:15]), 0)
-            delta_time = image_date - start_date
+            delta_time = image_date - start_time_format
 
             # Write the time passed on the mage
             img_with_text= Image.open(image_folder + "/" + img) # Open an Image
@@ -100,13 +105,22 @@ def Video_writer(image_folder, video_folder, camera, start_time):
 
 # run in terminal: python download_images.py 1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh 21-08-17__05_06 21-08-17__06_51 A,C 110,150,190,210,230 C:\Users\GAL\Desktop\Space_Hummus\Images\cycle1
 
-my_dir = "C:/Users/GAL/Desktop/Space_Hummus/Images/cycle1/" # input('enter dir  ')
-print(my_dir)
-print(my_dir + "Merged_images")
+# my_dir = "C:/Users/GAL/Desktop/Space_Hummus/Images/cycle1/" # input('enter dir  ')
+# start_time = "21-08-17__05_00"
+my_dir = sys.argv(1)
+start_time = sys.argv(2)
+list_camera = sys.argv(3)
+list_camera_new = list_camera.split(",")
+
+print("Downloaded files to the following dir:", my_dir)
+print("Creating focus stackes images in the following dir:", my_dir + "Merged_images")
 focus_staking(my_dir)
 video_folder = my_dir
-start_time = "21-08-17__05_00"
-# example: datetime.datetime(2017, 6, 21, 18, 25, 30)
-start_date = datetime.datetime(int(start_time[0:2])+2000, int(start_time[3:5]), int(start_time[6:8]), int(start_time[10:12]), int(start_time[13:15]), 0)
-Video_writer(my_dir + "Merged_images", video_folder, "CA", start_date)
-Video_writer(my_dir + "Merged_images", video_folder, "CC", start_date)
+for cam in list_camera_new:
+    print("Creating video for camera C", cam)
+    Video_writer(my_dir + "Merged_images", video_folder, "C" + cam, start_time)
+
+# Video_writer(my_dir + "Merged_images", video_folder, "CC", start_time)
+
+# Usage example:
+# python Process_images.py "C:/Users/GAL/Desktop/Space_Hummus/Images/cycle1/" "21-08-17__05_00" "A,C"
