@@ -22,8 +22,8 @@ def Upload_images_to_drive(gDrive_folder_ID, local_folder):
 
 
 # Upload_images_to_drive("1z6weX9LhJIZ8iZd_F1t-uAKWvTeuineh", "C:/Users/GAL/Desktop/Space_Hummus/Images/cycle1/")
-GDrive_folder_id = sys.argv(1)
-local_folder = sys.argv(2)
+GDrive_folder_id = sys.argv[1]
+local_folder = sys.argv[2]
 
 Upload_images_to_drive(GDrive_folder_id, local_folder)
 
