@@ -107,9 +107,9 @@ def Video_writer(image_folder, video_folder, camera, start_time):
 
 # my_dir = "C:/Users/GAL/Desktop/Space_Hummus/Images/cycle1/" # input('enter dir  ')
 # start_time = "21-08-17__05_00"
-my_dir = sys.argv(1)
-start_time = sys.argv(2)
-list_camera = sys.argv(3)
+my_dir = sys.argv[1]
+start_time = sys.argv[2]
+list_camera = sys.argv[3]
 list_camera_new = list_camera.split(",")
 
 print("Downloaded files to the following dir:", my_dir)
