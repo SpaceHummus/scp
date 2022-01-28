@@ -54,6 +54,10 @@ def stress_test(num_of_loops):
 if __name__ == "__main__":
     # stress_test(30*24)
     sh = SwitchHandler()
-  #  sh.set_switch(SWITCH_LED_PIN,SWITCH_OFF)
-    # sh.set_switch(SWITCH_AIR_SENSE_PIN,SWITCH_ON)
-    sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_ON)
+    sh.set_switch(SWITCH_LED_PIN,SWITCH_OFF)
+    time.sleep(5)
+    sh.set_switch(SWITCH_LED_PIN,SWITCH_ON)
+    
+    # sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_OFF)
+    # time.sleep(2)
+    # sh.set_switch(SWITCH_MEDTRONIC_PIN,SWITCH_ON)

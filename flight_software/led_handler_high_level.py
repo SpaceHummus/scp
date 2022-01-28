@@ -29,6 +29,7 @@ def set_led_state(new_logic_state):
         
     # If current and new logic states are the same, skip, there is nothing to do.
     if current_logic_state_name == new_logic_state_name:
+        logging.info('State did not change, skipping')
         return
         
     # Specify Transition Logic State
@@ -77,12 +78,12 @@ def set_led_state(new_logic_state):
         # Finally Set Neopixel Values
         th.set_current_logic_state_name(ls_name+"5")
         if ( # Make sure at least one LED value is >0, if not there is no reason to send command
-            new_logic_state.illumination.group1_rgb.R >= 0 or 
-            new_logic_state.illumination.group1_rgb.G >= 0 or 
-            new_logic_state.illumination.group1_rgb.B >= 0 or 
-            new_logic_state.illumination.group2_rgb.R >= 0 or 
-            new_logic_state.illumination.group2_rgb.G >= 0 or 
-            new_logic_state.illumination.group2_rgb.B >= 0
+            new_logic_state.illumination.group1_rgb.R > 0 or 
+            new_logic_state.illumination.group1_rgb.G > 0 or 
+            new_logic_state.illumination.group1_rgb.B > 0 or 
+            new_logic_state.illumination.group2_rgb.R > 0 or 
+            new_logic_state.illumination.group2_rgb.G > 0 or 
+            new_logic_state.illumination.group2_rgb.B > 0
             ):
             led_handler.light_all_pixels(
                 new_logic_state.illumination.group1_rgb,

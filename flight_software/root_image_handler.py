@@ -61,7 +61,7 @@ class RootImageHandler:
         cmd = 10+sector
         values = bytearray([cmd,0]) # first byte in mem is the size of the whole memory 
         m_size = self.send_uart_cmd(ser,values,2)   
-        logging.info(m_size)
+        logging.info("config size:%d",m_size[0])
         file = open(IMAGES_DIR+file_name, "wb")
         try:
             for adress in range(0,m_size[0]+1):
@@ -74,14 +74,11 @@ class RootImageHandler:
     def set_config(self, file_name, sector):
         ser = self.get_serial_connection()
         #first eraze the memory
-        # cmd = 12+sector
-        # values = bytearray([cmd])  
         ack = self.send_uart_cmd(ser,b'\x02')
         ack = self.send_uart_cmd(ser,b'\x0C')
         if ack != b'\x0C':
             logging.error("unable to eraze UFM")
             return
-        return             
         cmd = 14+sector
         file = open(IMAGES_DIR+file_name, "rb")
         try:
@@ -161,7 +158,7 @@ if __name__ == "__main__":
     root_image = RootImageHandler()
     # root_image.get_config("root0.cfg",0)
     # root_image.get_config("root1.cfg",1)
-    # root_image.set_config("root0.cfg",0)
+    # root_image.set_config("root1.cfg",0)
     # root_image.set_config("root1.cfg",1)
     # root_image.white_led_on()
     # sleep(1)
