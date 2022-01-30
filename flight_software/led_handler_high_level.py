@@ -130,7 +130,7 @@ if __name__ == "__main__":
     # Define states and toggle between them
     rgb_day = system_state.RGB(150,210,210)
     rgb_night = system_state.RGB(0,0,0)
-    camera_config = system_state.CameraConfiguration(60,60,10,[])
+    camera_config = system_state.CameraConfiguration(60,60,10)
     day_ilumination = system_state.Illumination(rgb_day,rgb_day,12)
     night_ilumination = system_state.Illumination(rgb_night,rgb_night,0)
     day_in_group_1_ilumination = system_state.Illumination(rgb_day,rgb_night,12)
