@@ -16,7 +16,7 @@ import led_handler
 import switch_handler
 import camera_handler_high_level
 from telematry_handler import TelematryHandler
-import os
+import glob,os
 from shutil import copyfile
 import root_image_handler
 import led_handler_high_level
@@ -84,6 +84,29 @@ def reboot():
 def shutdown():    
     os.system('sudo shutdown now')
     return render_template('simple_commands.html', message="Running 'sudo shutdown now' right now to stop logic")
+    
+# This web page deletes old logs, telemetry and images
+@app.route('/DeleteExperimentFiles/')
+def delete_logs_telemetry_images():  
+    # Stop main file from running
+    os.system('./stop_scp_main.sh')
+    
+    # Delete logs
+    log_files = glob.glob('*.log')
+    for fp in log_files:
+        os.remove(fp)
+    
+    # Delete csvs
+    csv_files = glob.glob('*.csv')
+    for fp in csv_files:
+        os.remove(fp)
+        
+    # Delete images
+    image_list = glob.glob('./images/*.*')
+    for fp in image_list:
+        os.remove(fp)
+    
+    return render_template('simple_commands.html', message="Removed old logs csv and images files, please reboot Pi")
         
 #################### LED Testing ###################################################
 class LEDForm(FlaskForm):
