@@ -59,6 +59,8 @@ def set_led_state(new_logic_state):
         time.sleep(0.5)
         th.write_telemetry_csv() # Gather paramters
     
+    time.sleep(2) # Wait a few seconds between powering off and powering on
+    
     # If new state is not off, power up LEDs
     if new_logic_state_name.lower() != "off":
         logging.info('Powering up LEDs')
@@ -140,18 +142,27 @@ if __name__ == "__main__":
     states.append(system_state.SystemState(camera_config,day_ilumination,'day_all'))
     states.append(system_state.SystemState(camera_config,night_ilumination,'night_all'))
     states.append(system_state.SystemState(camera_config,day_in_group_1_ilumination,'day_in_group1'))
-    
+     
     # Go over all states in a cycle
     while(True):
         set_led_state(states[0]);
+        logging.info('---- Should be in day_all mode ----')
         time.sleep(5)
+       
         set_led_state(states[0]);
+        logging.info('---- Should be in day_all mode ----')
         time.sleep(5)
+        
         set_led_state(states[1]);
+        logging.info('---- Should be in night_all mode ----')
         time.sleep(5)
+        
         set_led_state(states[2]);
+        logging.info('---- Should be in day_in_group1 mode ----')
         time.sleep(5)
+        
         set_led_state("Off");
+        logging.info('---- Should be in off mode ----')
         time.sleep(5)
     
 
