@@ -1,3 +1,4 @@
+from ast import Return
 import logging
 import RPi.GPIO as gp
 import os
@@ -6,12 +7,29 @@ arducam_vcm =CDLL('./lib/libarducam_vcm.so')
 import time
 from datetime import datetime
 import threading
+from pathlib import Path
+
 
 # where do we store the images localy
 IMAGES_DIR = "images/"
 
 def run_camera(name):
     os.system("raspistill -t 2000")
+
+
+# check if the image file name already exists, if yes, generate a new one
+def fix_file_path(file_path: str) -> str:
+    file = Path(file_path)
+    if not file.exists():
+        return str(file)
+    year = 10
+    name = file.name[2:]
+    while year<100: # up to year 99 (2099)
+        new_path = file.parent / f"{year}{name}"
+        if not new_path.exists():
+            return str(new_path)
+        year +=1
+    return str(file.parent / f"{year}{name}")
 
 # convert board pin numbering to bcm numbering
 def board3bcm(pin):
@@ -92,31 +110,30 @@ class CameraHandler:
     # Change camera focus - due to a bug in the HW, we need to open a thread that starts raspstill in the backbround inparallel, why??? who knows...
     def change_focus(self,focus):
         self.focus = focus
-        logging.info("changing focus to:%d",focus)        
+        logging.info("changing focus to:%d",focus)
         x = threading.Thread(target=run_camera, args=(1,))
         x.start()
         time.sleep(2)
         arducam_vcm.vcm_write(focus)
         time.sleep(3)
-        
-    
+
     # take picture , camera_index='A'/'B'/'C'/'D'
     # make sure you first call change_active_camera & change_focus
     # return full path saved file, file name
     def take_pic(self, file_name, flip_image=False, file_directory=IMAGES_DIR):
         # Generate file name and path string
-        new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,self.focus) 
-        saved_file_name = file_directory + new_file_name
-        
+        new_file_name="{0}_C{1}_F{2:04d}.jpg".format(file_name,self.activeCamera,self.focus)
+        saved_file_name = fix_file_path(file_directory + new_file_name)
+
         # Aquire image
         logging.info("taking picture, image name:%s",saved_file_name)
         if flip_image:
             cmd = "raspistill -vf -hf -o %s" %saved_file_name
         else:
-            cmd = "raspistill -o %s" %saved_file_name 
+            cmd = "raspistill -o %s" %saved_file_name
         os.system(cmd)
         logging.info("done taking picture")
-        
+
         return saved_file_name, new_file_name
 
 
@@ -127,10 +144,10 @@ if __name__ == "__main__":
     print("A")
     camera.change_active_camera('A')
     camera.change_focus(200)
-    camera.take_pic("test_take_out_jumpers")
+    camera.take_pic("22-02-01__15_54")
     camera.change_focus(1000)
-    camera.take_pic("test_take_out_jumpers")
-
+    camera.take_pic("22-02-01__15_54")
+    quit()
     print("B")
     camera.change_active_camera('B')
     camera.change_focus(200)
