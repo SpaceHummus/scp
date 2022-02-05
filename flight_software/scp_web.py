@@ -188,7 +188,7 @@ def switch_and_analog_testing():
 #################### Camera Testing ################################################
 class CameraForm(FlaskForm):
     camera = RadioField(label="Camera", choices=[('A','A'),('B','B'),('C','C'),('D','D')])
-    focus_distance_mm = StringField(label="Focus Distance mm")
+    focus_units= StringField(label="Focus Setting")
     
     LED_on = BooleanField(label='Turn LEDs before taking a picture?')
     r = StringField('Red (0-255):', validators=[DataRequired()])
@@ -205,7 +205,7 @@ def camera_testing():
     if request.method == 'GET':
         # User hadn't submitted information yet, set default values
         form.camera.data = 'A'
-        form.focus_distance_mm.data = "100"
+        form.focus_units.data = "200"
         form.r.data = 150
         form.g.data = 210
         form.b.data = 255
@@ -216,7 +216,7 @@ def camera_testing():
         
         out_file_path = ""
     else:    
-        distance = float(form.focus_distance_mm.data)
+        focus_units = int(form.focus_units.data)
         sw_handler = switch_handler.SwitchHandler()
         cam = camera_handler_high_level.CameraHandlerHighLevel()
         cam.init_camera_handler()
@@ -224,6 +224,7 @@ def camera_testing():
         # If needed turn on LEDs
         # Stop all LEDs before starting illumination
         if form.LED_on.data == True:
+            led_handler_high_level.set_led_state("Off")
             led_handler_high_level.set_led_rgb(
                 int(form.r.data),int(form.g.data),int(form.b.data),
                 int(form.r.data),int(form.g.data),int(form.b.data),
@@ -240,8 +241,8 @@ def camera_testing():
         time.sleep(1)
         
         # Take an image
-        file_path = cam.take_pic_all_distances(form.camera.data,[distance],
-            file_name_prefix="{0}".format(round(time.time()*24*60*60)))
+        file_path = cam.take_pic_all_focus(form.camera.data,[focus_units],
+            file_name_prefix="SingleImage_{0}".format(round(time.time()*24*60*60)))
         
         # Copy to the static folder where iamge is found
         out_file_path = file_path[0][1]
@@ -253,6 +254,73 @@ def camera_testing():
         copyfile(file_path[0][0],'static/'+out_file_path)
     
     return render_template('camera_testing.html', form=form, out_file_path=out_file_path)
+      
+class CameraForm2(FlaskForm):
+    camera = RadioField(label="Camera", choices=[('A','A'),('B','B'),('C','C'),('D','D')])
+    focus_start_units= StringField(label="Focus Start")
+    focus_jump_units= StringField(label="Focus Jump")
+    focus_end_units= StringField(label="Focus End")
+    
+    LED_on = BooleanField(label='Turn LEDs before taking a picture?')
+    r = StringField('Red (0-255):', validators=[DataRequired()])
+    g = StringField('Green (0-255):', validators=[DataRequired()])
+    b = StringField('Blue (0-255):', validators=[DataRequired()])
+    fr = StringField('Far Red (0-100):', validators=[DataRequired()])
+    medtronic_white_LEDs = BooleanField(label='Use Medtronic White LEDs?')
+    
+    submit = SubmitField('Take Pictures')
+     
+@app.route('/CameraFocusCalibration/', methods=['GET', 'POST'])
+def camera_focus_calibration():
+    form = CameraForm2()
+    if request.method == 'GET':
+        # User hadn't submitted information yet, set default values
+        form.focus_start_units.data = 20
+        form.focus_jump_units.data = 20
+        form.focus_end_units.data = 300
+        form.r.data = 150
+        form.g.data = 210
+        form.b.data = 255
+        form.fr.data = 12
+        
+        form.camera.data = 'A'
+        
+        form.LED_on.data = False
+        form.medtronic_white_LEDs.data = False
+
+    else:    
+        focus_start_units = int(form.focus_start_units.data)
+        focus_jump_units = int(form.focus_jump_units.data)
+        focus_end_units = int(form.focus_end_units.data)
+        sw_handler = switch_handler.SwitchHandler()
+        cam = camera_handler_high_level.CameraHandlerHighLevel()
+        cam.init_camera_handler()
+        
+        # If needed turn on LEDs
+        # Stop all LEDs before starting illumination
+        if form.LED_on.data == True:
+            led_handler_high_level.set_led_state("Off")
+            led_handler_high_level.set_led_rgb(
+                int(form.r.data),int(form.g.data),int(form.b.data),
+                int(form.r.data),int(form.g.data),int(form.b.data),
+                int(form.fr.data))
+        else:
+            led_handler_high_level.set_led_state("Off")
+        
+        image_handler = root_image_handler.RootImageHandler()
+        if form.medtronic_white_LEDs.data == True:
+            image_handler.white_led_on()
+        else:
+            image_handler.white_led_off()
+        
+        time.sleep(1)
+        
+        # Take an image
+        file_path = cam.take_pic_all_focus(form.camera.data,
+            range(focus_start_units,focus_end_units,focus_jump_units),
+            file_name_prefix="CameraFocusCalibration_{0}".format(round(time.time()*24*60*60)))
+    
+    return render_template('camera_testing.html', form=form, out_file_path="")
     
 #################### Medtronic #####################################################
 class MedtronicForm(FlaskForm):

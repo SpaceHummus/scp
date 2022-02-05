@@ -104,7 +104,7 @@ def set_led_rgb(r1,g1,b1,r2,g2,b2,far_red):
     # Define dummy state
     rgb1 = system_state.RGB(r1,g1,b1)
     rgb2 = system_state.RGB(r2,g2,b2)
-    camera_config = system_state.CameraConfiguration(60,60,10,[])
+    camera_config = system_state.CameraConfiguration(60,60,10)
     ilumination = system_state.Illumination(rgb1,rgb2,far_red)
     state = system_state.SystemState(camera_config,ilumination,'my_state')
     

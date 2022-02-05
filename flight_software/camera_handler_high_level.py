@@ -116,6 +116,27 @@ class CameraHandlerHighLevel:
             
         # Return the files we generated
         return files_list
+        
+    # Take picture using cameras of some focus settings (skip the conversion distance -> f)
+    # Inputs are:
+    #   camera position 'A','B','C' or 'D'
+    #   the list of distances to take images at in mm. e.g: [50, 100]  
+    #   file_name_prefix is usually the date
+    def take_pic_all_focus (self, camera_pos, focus_list, file_name_prefix = "test"):
+        # Init
+        files_list=[]
+
+        # Set active camera 
+        self.camera_handler.change_active_camera(camera_pos)
+        
+        # Loop over all distances
+        for f in focus_list:
+            self.camera_handler.change_focus(f)
+            full_path_file_name,title_name = self.camera_handler.take_pic(file_name_prefix,True)
+            files_list.append((full_path_file_name,title_name))
+            
+        # Return the files we generated
+        return files_list
   
 
 # Auxilery function for testing
