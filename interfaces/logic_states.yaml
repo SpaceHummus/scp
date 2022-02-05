@@ -7,15 +7,15 @@
 system_states:
   - name: 'day_shade' 
     illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
-        group1:
+        group1: #30 mu E
+            red: 82 
+            green: 115
+            blue: 153
+        group2: # 50 mu E
             red: 150 
             green: 210
             blue: 255
-        group2:
-            red: 150 
-            green: 210
-            blue: 255
-        far_red: 12
+        far_red: 6
     camera_configuration: 
         image_frequency_min: 30 # How often should we take images (minutes)
         root_image_frequency_min: 60 # How often should we take root images (minutes)
@@ -41,17 +41,6 @@ system_states:
             blue: 0
         far_red: 0
     camera_configuration:
-        image_frequency_min: 60 # How often should we take images (minutes)
-        root_image_frequency_min: 60 # How often should we take root images (minutes)
-        focus_position: 
-            A:
-                - 310
-            B:
-                - 245
-            C:
-                - 220
-            D:
-                - 270
         
 # Timeline
 states_over_time:
