@@ -23,25 +23,26 @@ class HeroShots:
     
     def __init__(self):
         self.cam = camera_handler_high_level.CameraHandlerHighLevel()
+        self.cam.init_camera_handler()
 
     def hero_shot_cameras_abcd(self, hero_name, date_name, r_g_b_fr_mw):
         logging.info("Take {0}".format(hero_name))
-        cam.take_pic_all_focus('A',camera_A_focus_setting,
+        self.cam.take_pic_all_focus('A',self.camera_A_focus_setting,
             file_name_prefix="HeroShot_{0}_{1}".format(hero_name,date_name),
             r_g_b_fr_mw = r_g_b_fr_mw)
-        time.pause(1)
-        cam.take_pic_all_focus('B',camera_B_focus_setting,
+        time.sleep(1)
+        self.cam.take_pic_all_focus('B',self.camera_B_focus_setting,
             file_name_prefix="HeroShot_{0}_{1}".format(hero_name,date_name),
             r_g_b_fr_mw = r_g_b_fr_mw)
-        time.pause(1)
-        cam.take_pic_all_focus('C',camera_C_focus_setting,
+        time.sleep(1)
+        self.cam.take_pic_all_focus('C',self.camera_C_focus_setting,
             file_name_prefix="HeroShot_{0}_{1}".format(hero_name,date_name),
             r_g_b_fr_mw = r_g_b_fr_mw)
-        time.pause(1)
-        cam.take_pic_all_focus('D',camera_D_focus_setting,
+        time.sleep(1)
+        self.cam.take_pic_all_focus('D',self.camera_D_focus_setting,
             file_name_prefix="HeroShot_{0}_{1}".format(hero_name,date_name),
             r_g_b_fr_mw = r_g_b_fr_mw)
-        time.pause(1)
+        time.sleep(1)
 
 
 # Auxilery function for testing

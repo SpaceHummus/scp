@@ -312,7 +312,7 @@ def camera_focus_calibration():
 @app.route('/TakeHeroShots/')
 def take_hero_shots():    
     os.system('sudo python3 take_hero_shots.py')
-    return render_template('simple_commands.html', message="Hero shot taken, restart OBC")
+    return render_template('simple_commands.html', message="Hero shot taken, restart OBC in 15 minutes")
 
 #################### Medtronic #####################################################
 class MedtronicForm(FlaskForm):
