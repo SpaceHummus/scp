@@ -223,26 +223,19 @@ def camera_testing():
         
         # If needed turn on LEDs
         # Stop all LEDs before starting illumination
-        if form.LED_on.data == True:
-            led_handler_high_level.set_led_state("Off")
-            led_handler_high_level.set_led_rgb(
-                int(form.r.data),int(form.g.data),int(form.b.data),
-                int(form.r.data),int(form.g.data),int(form.b.data),
-                int(form.fr.data))
-        else:
-            led_handler_high_level.set_led_state("Off")
-        
-        image_handler = root_image_handler.RootImageHandler()
         if form.medtronic_white_LEDs.data == True:
-            image_handler.white_led_on()
+            mw = 1
         else:
-            image_handler.white_led_off()
-        
-        time.sleep(1)
+            mw = 0
+        if form.LED_on.data == True:
+            r_g_b_fr_mw = [int(form.r.data),int(form.g.data),int(form.b.data),int(form.fr.data),int(mw)]
+        else:
+            r_g_b_fr_mw = None
         
         # Take an image
         file_path = cam.take_pic_all_focus(form.camera.data,[focus_units],
-            file_name_prefix="SingleImage_{0}".format(round(time.time()*24*60*60)))
+            file_name_prefix="SingleImage_{0}".format(round(time.time()*24*60*60)),
+            r_g_b_fr_mw = r_g_b_fr_mw)
         
         # Copy to the static folder where iamge is found
         out_file_path = file_path[0][1]
@@ -277,7 +270,7 @@ def camera_focus_calibration():
         # User hadn't submitted information yet, set default values
         form.focus_start_units.data = 20
         form.focus_jump_units.data = 20
-        form.focus_end_units.data = 300
+        form.focus_end_units.data = 340
         form.r.data = 150
         form.g.data = 210
         form.b.data = 255
@@ -298,27 +291,20 @@ def camera_focus_calibration():
         
         # If needed turn on LEDs
         # Stop all LEDs before starting illumination
-        if form.LED_on.data == True:
-            led_handler_high_level.set_led_state("Off")
-            led_handler_high_level.set_led_rgb(
-                int(form.r.data),int(form.g.data),int(form.b.data),
-                int(form.r.data),int(form.g.data),int(form.b.data),
-                int(form.fr.data))
-        else:
-            led_handler_high_level.set_led_state("Off")
-        
-        image_handler = root_image_handler.RootImageHandler()
         if form.medtronic_white_LEDs.data == True:
-            image_handler.white_led_on()
+            mw = 1
         else:
-            image_handler.white_led_off()
-        
-        time.sleep(1)
+            mw = 0
+        if form.LED_on.data == True:
+            r_g_b_fr_mw = [int(form.r.data),int(form.g.data),int(form.b.data),int(form.fr.data),int(mw)]
+        else:
+            r_g_b_fr_mw = None
         
         # Take an image
         file_path = cam.take_pic_all_focus(form.camera.data,
             range(focus_start_units,focus_end_units,focus_jump_units),
-            file_name_prefix="CameraFocusCalibration_{0}".format(round(time.time()*24*60*60)))
+            file_name_prefix="CameraFocusCalibration_{0}".format(round(time.time()*24*60*60)), 
+            r_g_b_fr_mw = r_g_b_fr_mw)
     
     return render_template('camera_testing.html', form=form, out_file_path="")
     

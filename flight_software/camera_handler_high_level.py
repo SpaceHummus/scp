@@ -7,6 +7,8 @@ from datetime import datetime
 import threading
 import yaml
 from camera_handler import CameraHandler
+import led_handler_high_level
+import root_image_handler
 
 import sys
 sys.path.insert(1, '../common')
@@ -122,9 +124,28 @@ class CameraHandlerHighLevel:
     #   camera position 'A','B','C' or 'D'
     #   the list of distances to take images at in mm. e.g: [50, 100]  
     #   file_name_prefix is usually the date
-    def take_pic_all_focus (self, camera_pos, focus_list, file_name_prefix = "test"):
+    #   r_g_b_fr_mw is r,g,b and far red and medtronic white values to set ilumination prior to taking the picture. Set to None if you don't wish to change ilumination
+    #       r,g,b are 0-255, fr is 0-100, mw is 0 for off, 1 for on. eg [200,200,200,50,1]
+    def take_pic_all_focus (self, camera_pos, focus_list, 
+        file_name_prefix = "test", r_g_b_fr_mw=None):
         # Init
         files_list=[]
+        
+        # Set ilumination if needed
+        if not(r_g_b_fr_mw is None):
+            led_handler_high_level.set_led_state("Off")
+            led_handler_high_level.set_led_rgb(
+                int(r_g_b_fr_mw[0]),int(r_g_b_fr_mw[1]),int(r_g_b_fr_mw[2]),
+                int(r_g_b_fr_mw[0]),int(r_g_b_fr_mw[1]),int(r_g_b_fr_mw[2]),
+                int(r_g_b_fr_mw[3]))
+        
+            image_handler = root_image_handler.RootImageHandler()
+            if r_g_b_fr_mw[4] == 1:
+                image_handler.white_led_on()
+            else:
+                image_handler.white_led_off()
+                
+            time.sleep(1)
 
         # Set active camera 
         self.camera_handler.change_active_camera(camera_pos)
