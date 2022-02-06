@@ -74,7 +74,7 @@ def set_google_folder():
 def stop_scp_main():    
     os.system('./stop_scp_main.sh')
     return render_template('simple_commands.html', message="Running stop_scp_main.sh right now to stop logic")
-
+    
 @app.route('/Reboot/')
 def reboot():    
     os.system('sudo reboot')
@@ -308,6 +308,12 @@ def camera_focus_calibration():
     
     return render_template('camera_testing.html', form=form, out_file_path="")
     
+
+@app.route('/TakeHeroShots/')
+def take_hero_shots():    
+    os.system('sudo python3 take_hero_shots.py')
+    return render_template('simple_commands.html', message="Hero shot taken, restart OBC")
+
 #################### Medtronic #####################################################
 class MedtronicForm(FlaskForm):
     white_LEDs = BooleanField(label='White LEDs')
