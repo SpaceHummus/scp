@@ -112,6 +112,7 @@ start_time = sys.argv[2]
 list_camera = sys.argv[3]
 list_camera_new = list_camera.split(",")
 
+my_dir=my_dir + "/"
 print("Downloaded files to the following dir:", my_dir)
 print("Creating focus stackes images in the following dir:", my_dir + "Merged_images")
 focus_staking(my_dir)
