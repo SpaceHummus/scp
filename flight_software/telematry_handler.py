@@ -38,7 +38,8 @@ class TelematryHandler:
             logging.error(
                 f"error while reading from the bme680: \n{e}"
             )
-            return ['N/A temperature', 'N/A gas', 'N/A humidity', 'N/A pressure']
+            #return ['N/A temperature', 'N/A gas', 'N/A humidity', 'N/A pressure']
+            return ['', '', '', ''] # Return empty csv
 
     def get_veml7700_telemetry(self, chunnel = None): #chunnel can be 1 or 2
         try:
@@ -54,7 +55,8 @@ class TelematryHandler:
             logging.error(
                 f"error while reading from the veml7700: \n{e}"
             )
-            return ['N/A light', 'N/A lux']
+            #return ['N/A light', 'N/A lux']
+            return ['',''] # Return empty csv
 
     def get_ina260_telemetry(self):
         try:
@@ -70,7 +72,8 @@ class TelematryHandler:
             logging.error(
                 f"error while reading from the ina260: \n{e}"
             )
-            return ['N/A current', 'N/A voltage', 'N/A power']
+            #return ['N/A current', 'N/A voltage', 'N/A power']
+            return ['','',''] # Return empty csv
 
     def get_a2d_telemetry(self):
         # A2D telemetry is not functional, return N/A values
@@ -99,7 +102,8 @@ class TelematryHandler:
             logging.error(
                 f"error while reading from the raspberry telemetry: \n{e}"
             )
-            return ['N/A cpu_temp', 'N/A cpu_load', 'N/A used_space']
+            #return ['N/A cpu_temp', 'N/A cpu_load', 'N/A used_space']
+            return ['','',''] # Return empty csv
             
     def get_switch_status_telemetry(self):
         sense = [
