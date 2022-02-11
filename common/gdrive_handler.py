@@ -20,6 +20,7 @@ PROCESSED_IMAGES_FOLDER = "11 processed images"
 class GDriveHandler:
     main_folder_id = ""
     raw_images_folder_id = ""
+    telemetry_folder_id = ""
     drive = None
 
     # main_folder_id - the google drive folder ID. it should include "01 Commands" folder and the file logic_states.yaml in it 
@@ -137,6 +138,18 @@ class GDriveHandler:
         else:
             return self.raw_images_folder_id
 
+    def get_telemetry_folder_id(self):
+        if self.telemetry_folder_id == "":  # first time we ask for folder ID
+            id = self.get_folder_id(RAW_TELEMETRY_FOLDER, self.main_folder_id)
+            if id == "":
+                logging.error("unable to find Raw telemetry folder on G-Drive")
+            else:
+                self.telemetry_folder_id = id
+                logging.info("Telemetry folder id:%s", self.telemetry_folder_id)
+                return self.telemetry_folder_id
+        else:
+            return self.telemetry_folder_id
+
     # get the logic_states.yaml file for G-Drive
     def get_logic_sates_file(self):
         logging.info("Getting logic_states.yaml from G-Drive...")
@@ -161,6 +174,22 @@ class GDriveHandler:
             file.GetContentFile('logic_states.yaml')
 
             # get the logic_states.yaml file for G-Drive
+
+    def delete_file(self,folder_id,file_name):
+        if folder_id != None:
+            file_id = self.get_folder_id(file_name, folder_id)
+            if file_id != None:
+                file = self.drive.CreateFile({'id': file_id})
+                logging.debug("deleting file:%s",file_name)
+                file.Delete()  # Permanently delete the file.        
+                #file.Trash()  # Move file to trash.
+                #file.UnTrash()  # Move file out of trash.
+
+    def upload_telemetry(self,tele_path):
+        self.delete_file(self.get_telemetry_folder_id(),"telemetry.csv")
+        self.upload_file(tele_path+"/telematry.csv","telemetry.csv",self.get_telemetry_folder_id())
+        self.delete_file(self.get_telemetry_folder_id(),"scp_main.log")
+        self.upload_file(tele_path+"/scp_main.log","scp_main.log",self.get_telemetry_folder_id())
 
     def get_folder_content(self, folder_id):
         logging.info("Getting content of folder id:%s", folder_id)

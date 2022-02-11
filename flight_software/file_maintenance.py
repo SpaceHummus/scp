@@ -14,6 +14,7 @@ from utils import wait_4_dns
 
 CONF_FILE_NAME = "scp_conf.yaml"
 IMAGES_PATH = '/home/pi/dev/scp/flight_software/images'
+LOG_PATH ='/home/pi/dev/scp/flight_software'
 MAX_USED_SPACE_ALLOWED = 85 # in percent
 WAIT_FOR_DNS_IN_SEC = 1
 
@@ -108,6 +109,9 @@ def main():
         except Exception as e: 
             logging.error('unable to upload file to g-drive: '+ str(e))
     f.close()  
+    
+
+    g_drive_handler.upload_telemetry(LOG_PATH)
 
     # check and clear space on the SD card if needed
     used_space = check_used_space(IMAGES_PATH)
