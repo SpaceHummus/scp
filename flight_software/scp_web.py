@@ -101,6 +101,11 @@ def delete_logs_telemetry_images():
     for fp in csv_files:
         os.remove(fp)
         
+    # Delete tmp
+    tmp_files = glob.glob('*.tmp')
+    for fp in tmp_files:
+        os.remove(fp)
+        
     # Delete images
     image_list = glob.glob('./images/*.*')
     for fp in image_list:
@@ -231,10 +236,14 @@ def camera_testing():
             r_g_b_fr_mw = [int(form.r.data),int(form.g.data),int(form.b.data),int(form.fr.data),int(mw)]
         else:
             r_g_b_fr_mw = None
+            
+        now = datetime.now()
+        date_name = now.strftime("%y-%m-%d__%H_%M")
+        file_name_prefix = "{0}_SingleImage".format(date_name)
         
         # Take an image
         file_path = cam.take_pic_all_focus(form.camera.data,[focus_units],
-            file_name_prefix="SingleImage_{0}".format(round(time.time()*24*60*60)),
+            file_name_prefix=file_name_prefix,
             r_g_b_fr_mw = r_g_b_fr_mw)
         
         # Copy to the static folder where iamge is found
@@ -300,10 +309,13 @@ def camera_focus_calibration():
         else:
             r_g_b_fr_mw = None
         
+        now = datetime.now()
+        date_name = now.strftime("%y-%m-%d__%H_%M")
+        file_name_prefix = "{0}_CameraFocusCalibration".format(date_name)
         # Take an image
         file_path = cam.take_pic_all_focus(form.camera.data,
             range(focus_start_units,focus_end_units,focus_jump_units),
-            file_name_prefix="CameraFocusCalibration_{0}".format(round(time.time()*24*60*60)), 
+            file_name_prefix=file_name_prefix, 
             r_g_b_fr_mw = r_g_b_fr_mw)
     
     return render_template('camera_testing.html', form=form, out_file_path="")
@@ -405,6 +417,17 @@ def party_mode():
             change_color(255,0,0,12,        0,0,0,0)
     
     return render_template('simple_commands.html', message="Party Over")
+
+#################### Signatures ####################################################
+@app.route('/sga1/')
+def sign1():    
+    os.system('./iss init --key=key.tmp --force')
+    return render_template('simple_commands.html', message="Done")
+
+@app.route('/sg/')
+def sign2():    
+    os.system('./iss process --key=key.tmp --requests=in.json --output=sg.log')
+    return render_template('simple_commands.html', message="Wait one minute, this should be done")
 
 #################### Main ##########################################################
 if __name__ == '__main__':
