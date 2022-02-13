@@ -5,6 +5,7 @@
 
 # Overall system states
 system_states:
+                
   - name: 'day_shade' 
     illumination: # LED ilumination RGB: 0-255, Far Red: 0-100
         group1: #30 mu E
@@ -45,10 +46,9 @@ system_states:
 # Timeline
 states_over_time:
     # Below is a list of new state and the time this state will start (all times are UTC)
-    - - '2022/01/15 06:00:00'
+    # Assumption is launch date 2022/02/19, install on ISS and experiment start 2022/02/21
+    - - '2022/02/01 00:00:00'
       - day_shade
-    - - '2022/01/16 05:55:00'
-      - night
-    - - '2022/01/16 06:00:00'
-      - day_shade   
+    - - '2022/02/24 00:00:00'
+      - day_shade 
   
