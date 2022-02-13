@@ -2,7 +2,7 @@
 base_folder = 'C:\_AvivLabs\FM1 Exp2\';
 base_input_folder = [base_folder 'Raw Images\'];
 
-switch('BD')
+switch('AD')
     case 'AC'
         output_file_name = [base_folder 'AC Animated.gif'];
         ds1 = fileDatastore([base_input_folder '\*CC_F0020.jpg'],'ReadFcn',@imread);
@@ -10,6 +10,10 @@ switch('BD')
     case 'BD'
         output_file_name = [base_folder 'BD Animated.gif'];
         ds1 = fileDatastore([base_input_folder '\*CB_F0080.jpg'],'ReadFcn',@imread);
+        ds2 = fileDatastore([base_input_folder '\*CD_F0100.jpg'],'ReadFcn',@imread);
+    case 'AD'
+        output_file_name = [base_folder 'Ctrl_FR Animated.gif'];
+        ds1 = fileDatastore([base_input_folder '\*CA_F0160.jpg'],'ReadFcn',@imread);
         ds2 = fileDatastore([base_input_folder '\*CD_F0100.jpg'],'ReadFcn',@imread);
 end
 
@@ -114,4 +118,5 @@ for n = 1:length(ds1.Files)
 end
   
 close(v);
+close(h);
 
