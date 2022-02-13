@@ -280,10 +280,10 @@ def camera_focus_calibration():
         form.focus_start_units.data = 20
         form.focus_jump_units.data = 20
         form.focus_end_units.data = 340
-        form.r.data = 150
-        form.g.data = 210
-        form.b.data = 255
-        form.fr.data = 12
+        form.r.data = 100
+        form.g.data = 100
+        form.b.data = 100
+        form.fr.data = 0
         
         form.camera.data = 'A'
         
@@ -317,8 +317,16 @@ def camera_focus_calibration():
             range(focus_start_units,focus_end_units,focus_jump_units),
             file_name_prefix=file_name_prefix, 
             r_g_b_fr_mw = r_g_b_fr_mw)
+            
+        # Copy one of the files to the static folder where iamge is found
+        out_file_path = file_path[0][1]
+        if not os.path.exists('static'): # Make dir if it doesn't exist
+            os.makedirs('static')
+        if os.path.exists('static/'+out_file_path): # Remove file if it's already there
+            os.remove('static/'+out_file_path)
+        copyfile(file_path[0][0],'static/'+out_file_path)
     
-    return render_template('camera_testing.html', form=form, out_file_path="")
+    return render_template('camera_testing.html', form=form, out_file_path=out_file_path)
     
 
 @app.route('/TakeHeroShots/')
