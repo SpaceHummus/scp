@@ -1,9 +1,9 @@
 %% Inputs
-output_file_name = 'animated.gif';
-base_input_folder = '..\images'; % Input images folder (03 Raw Images)
+output_file_name = 'C:\_AvivLabs\FM1 Exp2\AC Animated.gif';
+base_input_folder = 'C:\_AvivLabs\FM1 Exp2\Raw Images';
 
-ds1 = fileDatastore([base_input_folder '\*CA_F0130.jpg'],'ReadFcn',@imread);
-ds2 = fileDatastore([base_input_folder '\*CC_F0130.jpg'],'ReadFcn',@imread);
+ds1 = fileDatastore([base_input_folder '\*CC_F0020.jpg'],'ReadFcn',@imread);
+ds2 = fileDatastore([base_input_folder '\*CA_F0160.jpg'],'ReadFcn',@imread);
 
 frame_freq_hr = 0.5; % Pick one frame every x hours
 
@@ -15,8 +15,16 @@ h = figure(1);
 set(h,'units','normalized','outerposition',[0 0 1 1])
 axis tight manual % this ensures that getframe() returns a consistent size
 
-[~,video_name] = fileparts(output_file_name);
-v = VideoWriter(video_name,'MPEG-4');
+video_file_name = strrep(output_file_name,'.gif','.mp4');
+
+if exist(output_file_name,'file')
+    delete(output_file_name);
+end
+if exist(video_file_name,'file')
+    delete(video_file_name);
+end
+
+v = VideoWriter(video_file_name,'MPEG-4');
 v.FrameRate = 15;
 open(v);
 %% Figure out time
