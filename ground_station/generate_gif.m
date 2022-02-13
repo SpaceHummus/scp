@@ -1,9 +1,17 @@
 %% Inputs
-output_file_name = 'C:\_AvivLabs\FM1 Exp2\AC Animated.gif';
-base_input_folder = 'C:\_AvivLabs\FM1 Exp2\Raw Images';
+base_folder = 'C:\_AvivLabs\FM1 Exp2\';
+base_input_folder = [base_folder 'Raw Images\'];
 
-ds1 = fileDatastore([base_input_folder '\*CC_F0020.jpg'],'ReadFcn',@imread);
-ds2 = fileDatastore([base_input_folder '\*CA_F0160.jpg'],'ReadFcn',@imread);
+switch('BD')
+    case 'AC'
+        output_file_name = [base_folder 'AC Animated.gif'];
+        ds1 = fileDatastore([base_input_folder '\*CC_F0020.jpg'],'ReadFcn',@imread);
+        ds2 = fileDatastore([base_input_folder '\*CA_F0160.jpg'],'ReadFcn',@imread);
+    case 'BD'
+        output_file_name = [base_folder 'BD Animated.gif'];
+        ds1 = fileDatastore([base_input_folder '\*CB_F0080.jpg'],'ReadFcn',@imread);
+        ds2 = fileDatastore([base_input_folder '\*CD_F0100.jpg'],'ReadFcn',@imread);
+end
 
 frame_freq_hr = 0.5; % Pick one frame every x hours
 
@@ -31,9 +39,6 @@ open(v);
 t_0 = time_of_first_picture(base_input_folder);
 t_end = time_picture_was_taken(ds1.Files{end});
 
-
-time_format = 'hours';
-
 %% 
 firstNightImage = true;
 clear isEnvelop
@@ -58,24 +63,25 @@ for n = 1:length(ds1.Files)
     imB = imread(ds2.Files{n});
 
     if mean(double(imA(:))) < 10
-    if ~firstNightImage
-        continue;
+        if ~firstNightImage
+            continue;
+        else
+            firstNightImage = false;
+        end
     else
-        firstNightImage = false;
+        firstNight = true;
     end
-    else
-    firstNight = true;
-    end
-
+    
+    % Calculate time from experiment start and put in the right format
+    dt_hours = (t-t_0)*24;
+    dt_days = floor(dt_hours/24);
+    dt_hours_part = dt_hours - dt_days*24;
+    ttl = sprintf('%.0f Days %02.1f Hours From Experiment Start',...
+        dt_days,dt_hours_part);
    
     subplot(1,6,1:3);
     imshow(imA);
-    switch(time_format)
-        case 'days'
-            title(sprintf('%.2f Days From Experiment Start',t-t_0));
-        case 'hours'
-            title(sprintf('%.1f Hours From Experiment Start',(t-t_0)*24));
-    end
+    title(ttl);
     subplot(1,6,4:6);
     imshow(imB);
 
