@@ -332,8 +332,8 @@ def camera_focus_calibration():
     
 
 @app.route('/TakeHeroShots/')
-def take_hero_shots():    
-    take_hero_shots.main()
+def take_hero_shots_web():    
+    take_hero_shots.take_all_shots()
     return render_template('simple_commands.html', message="Done!")
 
 #################### Medtronic #####################################################

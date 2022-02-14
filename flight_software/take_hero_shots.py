@@ -25,7 +25,7 @@ class HeroShots:
         self.cam = camera_handler_high_level.CameraHandlerHighLevel()
         self.cam.init_camera_handler()
 
-    def hero_shot_cameras_Zabcd(self, hero_name, date_name, r_g_b_fr_mw):
+    def hero_shot_cameras_abcd(self, hero_name, date_name, r_g_b_fr_mw):
         logging.info("Take {0}".format(hero_name))
         file_name_prefix="{1}_HeroShot_{0}".format(hero_name,date_name)
         
@@ -58,7 +58,7 @@ def setup_logging():
         ]
     )  
     
-def main():
+def take_all_shots():
     setup_logging()
     hs = HeroShots()
   
@@ -79,5 +79,5 @@ def main():
 
     
 if __name__ == "__main__":
-     main()
+     take_all_shots()
     

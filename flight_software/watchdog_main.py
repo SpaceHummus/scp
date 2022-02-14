@@ -2,7 +2,7 @@ import os
 import time
  
 FILE_NAME = "scp_main.log"
-MAX_WD_TIME = 300 #5 minutes
+MAX_WD_TIME = 600 # seconds
 
 # check last modify date of a file
 # return true if passed the time limit
