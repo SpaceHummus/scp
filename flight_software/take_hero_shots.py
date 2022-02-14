@@ -58,7 +58,7 @@ def setup_logging():
         ]
     )  
     
-if __name__ == "__main__":
+def main():
     setup_logging()
     hs = HeroShots()
   
@@ -69,11 +69,15 @@ if __name__ == "__main__":
     # Kill main process
     logging.info("Killing SCP main")
     os.system('./stop_scp_main.sh')
+    time.sleep(10) # Make sure it's dead
     
     hs.hero_shot_cameras_abcd('WhiteLight',date_name,[100, 100, 100, 0, 0])
     hs.hero_shot_cameras_abcd('HotRed1',date_name,[0, 0, 0, 10, 0])
     hs.hero_shot_cameras_abcd('HotRed2',date_name,[0, 0, 0, 10, 1])
     hs.hero_shot_cameras_abcd('Backlight1',date_name,[0, 0, 0, 0, 1])
     hs.hero_shot_cameras_abcd('Backlight2',date_name,[100, 100, 100, 0, 1])
- 
+
+    
+if __name__ == "__main__":
+     main()
     

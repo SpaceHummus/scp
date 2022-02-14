@@ -20,6 +20,7 @@ import glob,os
 from shutil import copyfile
 import root_image_handler
 import led_handler_high_level
+import take_hero_shots
 
 def setup_logging():
     logging.basicConfig(
@@ -332,8 +333,8 @@ def camera_focus_calibration():
 
 @app.route('/TakeHeroShots/')
 def take_hero_shots():    
-    os.system('sudo python3 take_hero_shots.py')
-    return render_template('simple_commands.html', message="Hero shot taken, restart OBC in 15 minutes")
+    take_hero_shots.main()
+    return render_template('simple_commands.html', message="Done!")
 
 #################### Medtronic #####################################################
 class MedtronicForm(FlaskForm):
