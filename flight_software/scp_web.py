@@ -288,7 +288,7 @@ def camera_focus_calibration():
         
         form.camera.data = 'A'
         
-        form.LED_on.data = False
+        form.LED_on.data = True
         form.medtronic_white_LEDs.data = False
 
     else:    
