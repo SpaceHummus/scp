@@ -275,6 +275,7 @@ class CameraForm2(FlaskForm):
 @app.route('/CameraFocusCalibration/', methods=['GET', 'POST'])
 def camera_focus_calibration():
     form = CameraForm2()
+    out_file_path=""
     if request.method == 'GET':
         # User hadn't submitted information yet, set default values
         form.focus_start_units.data = 20
