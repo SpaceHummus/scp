@@ -16,7 +16,7 @@ system_states:
             red: 150 
             green: 210
             blue: 255
-        far_red: 6
+        far_red: 6 # (group 1)
     camera_configuration: 
         image_frequency_min: 30 # How often should we take images (minutes)
         root_image_frequency_min: 60 # How often should we take root images (minutes)
