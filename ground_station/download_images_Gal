@@ -18,6 +18,10 @@ def setup_logging():
 
 
 setup_logging()
+
+for inp in range(6):
+    print("Input", inp, ":", sys.argv[inp])
+
 if len(sys.argv)==7:
     logging.info("start g-drive testing")
     folder_ID=sys.argv[1]
