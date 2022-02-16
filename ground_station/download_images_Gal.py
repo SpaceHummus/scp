@@ -30,7 +30,7 @@ if len(sys.argv)==7:
     start_date = sys.argv[2]
     start_date_new = datetime.strptime(start_date.strip('\u200e'),"%y-%m-%d__%H_%M")
     end_date = sys.argv[3]
-    end_date_new = datetime.strptime(end_date,"%y-%m-%d__%H_%M")
+    end_date_new = datetime.strptime(end_date.strip('\u200e'),"%y-%m-%d__%H_%M")
     list_camera = sys.argv[4]
     list_camera_new=list_camera.split(",")
     list_focus = sys.argv[5]
