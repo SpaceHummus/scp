@@ -28,7 +28,7 @@ if len(sys.argv)==7:
     g_drive_handler = GDriveHandler(folder_ID)
     # usage example: python3 download_images.py 1usWtERCev43R107ccgdIZG83ORlwGnyB 21-09-14__06_20 21-09-14__06_22 A,C 160,260 /home/pi/dev/scp/ground_station/down_images
     start_date = sys.argv[2]
-    start_date2 = start_date[0] + ":" + start_date[1] + ":" + start_date[2] + ":" + start_date[3] + ":" + start_date[4] + ":"
+    start_date2 = start_date[1:15]
     print(start_date2)
     start_date_new = datetime.strptime(start_date2,"%y-%m-%d__%H_%M")
     end_date = sys.argv[3]
