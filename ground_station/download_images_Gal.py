@@ -25,7 +25,7 @@ for inp in range(6):
 if len(sys.argv)==7:
     logging.info("start g-drive testing")
     folder_ID=sys.argv[1]
-    g_drive_handler = GDriveHandler(folder_ID)
+    g_drive_handler = GDriveHandler(folder_ID.strip('\u200e'))
     # usage example: python3 download_images.py 1usWtERCev43R107ccgdIZG83ORlwGnyB 21-09-14__06_20 21-09-14__06_22 A,C 160,260 /home/pi/dev/scp/ground_station/down_images
     start_date = sys.argv[2]
     start_date_new = datetime.strptime(start_date.strip('\u200e'),"%y-%m-%d__%H_%M")
