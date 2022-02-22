@@ -16,12 +16,16 @@ end
 date_time = cellfun(@getdatetime,c{1}(2:end));
 days_from_exp_start = date_time-date_time(1);
 
+SW_LED_on = cellfun(@isswon,c{2}(2:end));
+SW_air_sensir_on = cellfun(@isswon,c{2}(3:end));
+SW_air_medetronic_on = cellfun(@isswon,c{3}(3:end));
 BME680_Temperature_C = cellfun(@getscalarparameter,c{6}(2:end));
 BME680_Gas_Ohm = cellfun(@getscalarparameter,c{7}(2:end));
 BME680_Humidity_Percent = cellfun(@getscalarparameter,c{8}(2:end)); 
 BME680_Pressure_hPa = cellfun(@getscalarparameter,c{9}(2:end)); 
 VEML7700_1_Lux = cellfun(@getscalarparameter,c{11}(2:end));
 VEML7700_2_Lux = cellfun(@getscalarparameter,c{13}(2:end));
+INA260_Current_A = cellfun(@getscalarparameter,c{14}(2:end))/1e3;
 INA260_Power_W = cellfun(@getscalarparameter,c{16}(2:end))/1e3;
 RPI_CPU_Temperature_C = cellfun(@getscalarparameter,c{21}(2:end));
 RPI_Used_Space_Percent = cellfun(@getscalarparameter,c{23}(2:end));
@@ -48,6 +52,7 @@ plot(days_from_exp_start,BME680_Temperature_C,'o',days_from_exp_start,RPI_CPU_Te
 title('Temperatures');
 xlabel('Days from Experiment Start');
 ylabel('Temperature [C]');
+ylim([0 60]);
 legend('BME','CPU');
 grid on;
 ax(1) = gca;
@@ -65,11 +70,11 @@ grid on;
 ax(2) = gca;
 
 subplot(2,2,3);
-plot(days_from_exp_start,INA260_Power_W,'o' ...
+plot(days_from_exp_start,INA260_Current_A,'o' ...
      );
-title('INA Power [W]');
+title('INA Current [A]');
 xlabel('Days from Experiment Start');
-ylabel('Power[W]');
+ylabel('Current [A]');
 legend('INA');
 grid on;
 ax(3) = gca;
@@ -115,6 +120,67 @@ ylabel('Power Consumtion[W]');
 legend('INA Power[W]');
 xtickangle(45)
 
+%%
+
+% Grid of one hour
+%Estimate for each hour using the transitions in this hour
+t_grid = min(days_from_exp_start):(2/24):max(days_from_exp_start);
+led_sw_current_A = NaN*t_grid; 
+fr_current_A = NaN*t_grid; 
+neopixel_current_A = NaN*t_grid;
+base_current_A = NaN*t_grid; 
+
+for i=1:length(t_grid)
+    relavent_i = abs(days_from_exp_start-t_grid(i)) < t_grid(2)-t_grid(1);
+    
+    if isempty(relavent_i)
+        continue;
+    end
+    
+    % Measure current by comparing the transition which LED switch is
+    % switched on
+    i_off_ONPART  =   when_is_state(states,'Off->day_shade_TransitionStep0') & relavent_i; %On
+    i_sw_on =  when_is_state(states,'Off->day_shade_TransitionStep3') & relavent_i; %Off
+    i_fr_on =  when_is_state(states,'Off->day_shade_TransitionStep4') & relavent_i; %Off
+    i_all_on = when_is_state(states,'Off->day_shade_TransitionStep5') & relavent_i; %Off
+    
+    i_all_on2 = when_is_state(states,'day_shade->Off_TransitionStep0') & relavent_i; %Off
+    
+    if ~any(i_off_ONPART) || ~any(i_sw_on)
+        led_sw_current_A(i) = NaN;
+    else
+        led_sw_current_A(i) = mean(INA260_Current_A(i_sw_on))-mean(INA260_Current_A(i_off_ONPART));
+    end
+    
+    if ~any(i_sw_on) || ~any(i_fr_on)
+        fr_current_A(i) = NaN;
+    else
+        fr_current_A(i) = mean(INA260_Current_A(i_fr_on))-mean(INA260_Current_A(i_sw_on));
+    end
+    
+    if ~any(i_fr_on) || ~any(i_all_on)
+        neopixel_current_A(i) = NaN;
+    else
+        neopixel_current_A(i) = mean(INA260_Current_A(i_all_on))-mean(INA260_Current_A(i_fr_on));
+    end
+    
+   
+    base_current_A(i) = mean([mean(INA260_Current_A(i_sw_on)),mean(INA260_Current_A(i_off_ONPART))]);
+       
+    
+    mean(INA260_Current_A(i_all_on)) - mean(INA260_Current_A(i_all_on2))
+end  
+
+% LED current between consequence steps
+plot(...
+    t_grid,led_sw_current_A,'o',...
+    t_grid,fr_current_A,'o',...
+    t_grid,neopixel_current_A,'o')
+legend('SW','fr','neopixel');
+ylabel('Current [A]');
+
+return;
+
 %% Helper functions
 function y = getdatetime(x)
 try
@@ -129,6 +195,14 @@ try
     y = str2double(x);
 catch
     y = NaN;
+end
+end
+
+function y = isswon(x)
+if strcmpi(x,'on')
+    y = true;
+else
+    y = false;
 end
 end
 
