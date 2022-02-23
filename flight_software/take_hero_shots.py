@@ -15,10 +15,10 @@ sys.path.insert(1, '../common')
 from focus_setting import FocusSetting
 
 class HeroShots:
-    camera_A_focus_setting = [100]
-    camera_B_focus_setting = [100]
-    camera_C_focus_setting = [100]
-    camera_D_focus_setting = [100]
+    camera_A_focus_setting = [310]
+    camera_B_focus_setting = [245]
+    camera_C_focus_setting = [220]
+    camera_D_focus_setting = [270]
     cam = [] 
     
     def __init__(self):
@@ -73,7 +73,6 @@ def take_all_shots():
     
     hs.hero_shot_cameras_abcd('WhiteLight',date_name,[100, 100, 100, 0, 0])
     hs.hero_shot_cameras_abcd('HotRed1',date_name,[0, 0, 0, 10, 0])
-    hs.hero_shot_cameras_abcd('HotRed2',date_name,[0, 0, 0, 10, 1])
     hs.hero_shot_cameras_abcd('Backlight1',date_name,[0, 0, 0, 0, 1])
     hs.hero_shot_cameras_abcd('Backlight2',date_name,[100, 100, 100, 0, 1])
 
