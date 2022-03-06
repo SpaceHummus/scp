@@ -1,23 +1,30 @@
 %% Inputs
-base_folder = 'C:\_AvivLabs\FM1 Exp2\';
-base_input_folder = [base_folder 'Raw Images\'];
+base_folder = '..\..\EarthControl\';
+base_input_folder = [base_folder 'images\'];
 
-switch('AD')
+base_folder = '..\..\ISSModule\';
+base_input_folder = [base_folder '03 Raw Images\'];
+
+switch('med')
     case 'AC'
         output_file_name = [base_folder 'AC Animated.gif'];
-        ds1 = fileDatastore([base_input_folder '\*CC_F0020.jpg'],'ReadFcn',@imread);
-        ds2 = fileDatastore([base_input_folder '\*CA_F0160.jpg'],'ReadFcn',@imread);
+        ds1 = fileDatastore([base_input_folder '\*CC_F0080.jpg'],'ReadFcn',@imread);
+        ds2 = fileDatastore([base_input_folder '\*CA_F0080.jpg'],'ReadFcn',@imread);
     case 'BD'
         output_file_name = [base_folder 'BD Animated.gif'];
-        ds1 = fileDatastore([base_input_folder '\*CB_F0080.jpg'],'ReadFcn',@imread);
+        ds1 = fileDatastore([base_input_folder '\*CB_F0060.jpg'],'ReadFcn',@imread);
         ds2 = fileDatastore([base_input_folder '\*CD_F0100.jpg'],'ReadFcn',@imread);
     case 'AD'
         output_file_name = [base_folder 'Ctrl_FR Animated.gif'];
-        ds1 = fileDatastore([base_input_folder '\*CA_F0160.jpg'],'ReadFcn',@imread);
+        ds1 = fileDatastore([base_input_folder '\*CA_F0080.jpg'],'ReadFcn',@imread);
         ds2 = fileDatastore([base_input_folder '\*CD_F0100.jpg'],'ReadFcn',@imread);
+    case 'med'
+        output_file_name = [base_folder 'med.gif'];
+        ds1 = fileDatastore([base_input_folder '\*C0.jpg'],'ReadFcn',@imread);
+        ds2 = fileDatastore([base_input_folder '\*C1.jpg'],'ReadFcn',@imread);
 end
 
-frame_freq_hr = 0.5; % Pick one frame every x hours
+frame_freq_hr = 2; 0.5; % Pick one frame every x hours
 
 % Set start and end times for the video
 t_start_hr = 0;
@@ -40,13 +47,14 @@ v = VideoWriter(video_file_name,'MPEG-4');
 v.FrameRate = 15;
 open(v);
 %% Figure out time
-t_0 = time_of_first_picture(base_input_folder);
+t_0 = time_of_experiment_start(base_input_folder);
 t_end = time_picture_was_taken(ds1.Files{end});
 
 %% 
 firstNightImage = true;
 clear isEnvelop
 t_image = t_0-1;
+never_wrote = true;
 for n = 1:length(ds1.Files)
     try
     t = time_picture_was_taken(ds1.Files{n});
@@ -105,7 +113,8 @@ for n = 1:length(ds1.Files)
 
     [imind,cm] = rgb2ind(im,256); 
     % Write to the GIF File 
-    if n == 1 
+    if never_wrote
+      never_wrote=false;
       imwrite(imind,cm,output_file_name,'gif', 'Loopcount',inf); 
     else
       imwrite(imind,cm,output_file_name,'gif','WriteMode','append'); 

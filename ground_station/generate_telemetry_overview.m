@@ -1,6 +1,11 @@
 % This script generates overview of the telemetry file
 
-telemetry_csv_path = '../Earth Backup/telematry.csv';
+%telemetry_csv_path = '../../EarthControl/telematry.csv';
+telemetry_csv_path = '../../ISSModule/02 Raw Telemetry/telematry.csv';
+
+if exist('telemetry_csv_path_','var')
+    telemetry_csv_path = telemetry_csv_path_;
+end
 
 %% Read data
 fid = fopen(telemetry_csv_path);
