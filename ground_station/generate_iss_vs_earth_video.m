@@ -5,9 +5,9 @@ base_earth_input_folder = ['..\..\EarthControl\images\'];
 base_iss_input_folder = ['..\..\ISSModule\03 Raw Images\'];
 
 % What times to include in the picture
-t_hr = 1:1:(11*24);
+t_hr = 1:1:(14*24);
 
-if false
+if true
     % Output file path
     video_file_name = '..\..\SpaceVsEarth_ControlChamber.mp4';
 
@@ -93,8 +93,9 @@ for i=1:length(t_hr)
     
     % Add text
     im_e = add_title(im_e,earth_name_im);
-    im_e = add_title(im_e,t_im,'bottomleft');
+    %im_e = add_title(im_e,t_im,'bottomleft');
     im_iss = add_title(im_iss,iss_name_im);
+    im_iss = add_title(im_iss,t_im,'bottomleft');
     
     im = [im_iss;(im_iss(1:3,:,:)*0);im_e];
     writeVideo(v,im);

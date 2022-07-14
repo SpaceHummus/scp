@@ -39,7 +39,7 @@ states = c{2}(2:end);
 mods = {'Booting_0','Booting_1','Booting_2',...
     'Off->day_shade_TransitionStep0','Off->day_shade_TransitionStep3','Off->day_shade_TransitionStep4','Off->day_shade_TransitionStep5',...
     'day_shade','day_shade->Off_TransitionStep0','day_shade->Off_TransitionStep1','day_shade->Off_TransitionStep2',...
-    };
+    'day','night'};
 
 states_num = zeros(size(VEML7700_2_Lux));
 for imods = 1:length(mods)
@@ -62,6 +62,7 @@ legend('BME','CPU');
 grid on;
 ax(1) = gca;
 
+% Ilumination
 subplot(2,2,2);
 %i = when_is_state(states,'day_shade');
 i = 1:length(days_from_exp_start);
@@ -73,6 +74,7 @@ ylabel('Lumination [Lux]');
 legend('VEML7700-1 [Exp]','VEML7700-2 [Ctrl]');
 grid on;
 ax(2) = gca;
+ylim([0 200]);
 
 subplot(2,2,3);
 plot(days_from_exp_start,INA260_Current_A,'o' ...
@@ -148,7 +150,6 @@ for i=1:length(t_grid)
     i_sw_on =  when_is_state(states,'Off->day_shade_TransitionStep3') & relavent_i; %Off
     i_fr_on =  when_is_state(states,'Off->day_shade_TransitionStep4') & relavent_i; %Off
     i_all_on = when_is_state(states,'Off->day_shade_TransitionStep5') & relavent_i; %Off
-    
     i_all_on2 = when_is_state(states,'day_shade->Off_TransitionStep0') & relavent_i; %Off
     
     if ~any(i_off_ONPART) || ~any(i_sw_on)
@@ -173,7 +174,7 @@ for i=1:length(t_grid)
     base_current_A(i) = mean([mean(INA260_Current_A(i_sw_on)),mean(INA260_Current_A(i_off_ONPART))]);
        
     
-    mean(INA260_Current_A(i_all_on)) - mean(INA260_Current_A(i_all_on2))
+    mean(INA260_Current_A(i_all_on)) - mean(INA260_Current_A(i_all_on2));
 end  
 
 % LED current between consequence steps
